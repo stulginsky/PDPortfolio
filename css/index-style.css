@@ -73,6 +73,10 @@ footer {
   transform: scale(1.2);
 }
 
+.article-link:active .img-scale {
+  transform: scale(1.2);
+}
+
 html {
   font-size: 16px;
 }
@@ -194,7 +198,6 @@ a:hover {
 }
 
 .resume {
-  display: block;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.5rem;
@@ -283,13 +286,13 @@ footer {
 @media (max-width: 780px) {
   .btn-browse-more {
     max-width: 100%;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .itm-h1 {
-    font-size: calc(0.7rem + 1vw);
+    font-size: calc(0.75rem + 1vw);
   }
   .itm-h2 {
-    font-size: calc(0.45rem + 1vw);
+    font-size: calc(0.5rem + 1vw);
     line-height: 135%;
   }
   .page-h1 {
@@ -297,8 +300,23 @@ footer {
     line-height: 3rem;
   }
   .speech-text {
-    font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.4rem;
+  }
+  .skills li {
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+  }
+  .resume {
+    display: block;
+    margin: 2.5rem 0;
+  }
+}
+@media (max-width: 425px) {
+  .item-16by9 {
+    padding-top: 44%;
+  }
+  .img-scale {
+    width: 50%;
   }
 }/*# sourceMappingURL=index-style.css.map */
