@@ -1,0 +1,309 @@
+$dark: #0f121a;
+$white: #ffffff;
+$text-on-dark: #6c8493;
+$text-on-dark-hover: #869eac;
+$link: #0065a3;
+
+body {
+  background-color: $dark;
+}
+
+main {
+  margin-bottom: 5rem;
+}
+
+main,
+footer {
+  margin: 0 auto;
+  max-width: 50vw;
+}
+
+.page-h1,
+.page-h2,
+.speech-text,
+.skills,
+.get-touch-header {
+  color: $text-on-dark;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: calc(1rem + 4vw);
+  padding-bottom: calc(1rem + 4vw);
+}
+
+.arr-back {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  padding-left: 0.4rem;
+}
+
+.arr-back > svg {
+  width: 100%;
+  height: 100%;
+  max-width: 2.3rem;
+}
+
+.arr-back > svg > path {
+  stroke: $text-on-dark;
+}
+
+nav:hover .arr-back > svg > path {
+  transition-property: stroke;
+  stroke: $text-on-dark-hover;
+  transition: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.skills {
+  padding: 0 0 0 1.365rem;
+}
+
+.skills li {
+  list-style-type: disc;
+  list-style-position: inside;
+  text-indent: -1.375rem;
+  max-width: 75%;
+}
+
+////
+
+html {
+  font-size: 16px;
+}
+
+.itm-h1 {
+  color: $dark;
+  font-size: calc(1rem + 2vw);
+  font-weight: 700;
+  line-height: 125%;
+  margin-bottom: 2.8%;
+}
+
+.itm-h2 {
+  color: $dark;
+  font-size: calc(0.55rem + 1vw);
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 2%;
+}
+
+article {
+  margin: 0 0 5% 0;
+}
+
+////
+
+.page-h1 {
+  font-weight: 900;
+  font-size: 3.1rem;
+  line-height: 3.8rem;
+  letter-spacing: 0.12rem;
+  margin: 0 0 1vw 0;
+}
+
+.get-touch-header,
+a[href^="tel:"],
+a[href^="mailto:"] li,
+a {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  letter-spacing: 0.03rem;
+  margin: 0 0 4% 0;
+  text-decoration: none;
+  color: $link;
+
+  &:hover {
+    color: $text-on-dark-hover;
+  }
+}
+
+.page-h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 1%;
+}
+
+.speech-text {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  // max-width: 100%;
+}
+
+.speech-text-margin {
+  margin: 0 0 4% 0;
+}
+
+.date-margin {
+  margin: 0 0 1% 0;
+}
+
+.margin-left {
+  margin-left: 2rem;
+}
+
+.w-i-do {
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: $text-on-dark;
+}
+
+.app-name {
+  font-weight: 600;
+}
+
+.portfolio {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: $link;
+  margin-bottom: 6%;
+  display: block;
+}
+
+.resume:hover {
+  transition-property: color;
+  transition: 0.2s;
+  color: $text-on-dark;
+}
+
+.resume:active {
+  color: $text-on-dark;
+}
+
+////
+
+.btn-browse-more-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8% 0 20% 0;
+}
+
+.btn-browse-more {
+  background-color: $text-on-dark;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 100%;
+  color: $dark;
+  width: 100%;
+  max-width: 24rem;
+  height: 4.2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: calc(0.1rem + 1vw);
+  cursor: pointer;
+
+  &:hover {
+    background-color: $text-on-dark-hover;
+    color: $dark;
+    transition-property: background-color;
+    transition: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+
+  &:active {
+    background-color: $text-on-dark;
+    color: $dark;
+  }
+}
+
+footer {
+  height: 15rem;
+}
+
+.get-touch-footer li:first-child {
+  color: $text-on-dark;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6rem;
+}
+
+.get-touch-footer {
+  opacity: 0.3;
+}
+
+.get-touch-footer > li:nth-child(2) > a,
+.get-touch-footer > li:nth-child(3) > a {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6rem;
+  color: $text-on-dark;
+}
+
+// @media (max-width: 1024px) {
+//   main,
+//   footer {
+//     max-width: 90vw;
+//   }
+
+//   .speech-text {
+//     max-width: 100%;
+//   }
+
+//   .skills li {
+//     max-width: 100%;
+//   }
+// }
+
+@media (max-width: 768px) {
+  main,
+  footer {
+    max-width: 85vw;
+  }
+
+  .page-h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin: 0 0 4vw 0;
+  }
+
+  .get-touch-header,
+  a[href^="tel:"],
+  a[href^="mailto:"] li,
+  a {
+    margin: 0 0 6% 0;
+  }
+
+  .page-h2 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    margin-bottom: 1%;
+  }
+
+  .speech-text {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    // max-width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 1.4rem;
+  }
+  .w-i-do {
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    margin: 0 0 8% 0;
+  }
+
+  .skills li {
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+  }
+
+  .portfolio {
+    margin-bottom: 8%;
+  }
+}

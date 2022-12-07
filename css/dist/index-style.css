@@ -10,7 +10,7 @@ main {
 main,
 footer {
   margin: 0 auto;
-  max-width: 75vmax;
+  max-width: 75vw;
 }
 
 .page-h1,
@@ -201,11 +201,13 @@ a:hover {
   text-decoration: none;
   font-weight: 600;
   font-size: 1.5rem;
-  color: #6c8493;
+  color: #0065a3;
 }
 
 .resume:hover {
-  color: #869eac;
+  transition-property: color;
+  transition: 0.2s;
+  color: #6c8493;
 }
 
 .resume:active {
