@@ -110,7 +110,6 @@ html {
 
 .itm-img {
   width: 100%;
-  // height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,27 +133,23 @@ html {
 
 .item-responsive {
   position: relative;
-  /* относительное позиционирование */
 }
 
 .item-responsive:before {
   display: block;
-  /* отображать элемент как блок */
+
   content: "";
-  /* содержимое псевдоэлемента */
+
   width: 100%;
-  /* ширина элемента */
 }
 
 .item-16by9 {
   padding-top: 35%;
-  /* (9:16)*100% */
 }
 
 .item-responsive > .content {
   position: absolute;
-  /* абсолютное положение элемента */
-  /* положение элемента */
+
   top: 0;
   left: 0;
   right: 0;

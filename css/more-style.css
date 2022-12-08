@@ -152,37 +152,34 @@ footer {
 .smf-more-link {
   display: flex;
   justify-content: center;
+  max-height: 40px;
+  margin-bottom: 8%;
 }
 
 .smf-more-txt {
   text-align: center;
-  margin-bottom: 8%;
+  margin-bottom: 10%;
   padding: 0;
   font-weight: 300;
 }
 
 .smf-more-logo {
-  width: 25%;
+  width: 100%;
+  max-width: 60%;
   height: auto;
-  margin-bottom: 8%;
 }
 
 div > a:nth-child(3) > svg {
   padding-top: 0.5rem;
 }
 
-@media (max-width: 1024px) {
-  .smf-more-logo {
-    width: 35%;
-  }
-}
 @media (max-width: 780px) {
   main,
 footer {
     max-width: 90vw;
   }
   .smf-more-logo {
-    width: 38%;
+    max-width: 50%;
   }
   .itm-caption {
     font-weight: 400;
@@ -195,7 +192,7 @@ footer {
     grid-gap: 4vw;
   }
   .smf-more-logo {
-    width: 25%;
+    max-width: 30%;
   }
   .itm-caption {
     font-weight: 400;
