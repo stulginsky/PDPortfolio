@@ -237,6 +237,7 @@ a:hover {
   text-decoration: none;
   border-radius: calc(0.1rem + 1vw);
   cursor: pointer;
+  margin: 0;
 }
 .btn-browse-more:hover {
   background-color: #869eac;
