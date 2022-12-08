@@ -69,7 +69,7 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2vw;
-  margin: 0 0 20% 0;
+  height: inherit;
 }
 
 article {
@@ -123,7 +123,17 @@ article {
 ////////////////////////////////
 
 footer {
-  height: 15rem;
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.get-touch-footer-wrp {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  opacity: 0.3;
+  padding-bottom: 8%;
+  grid-row: 1;
 }
 
 .get-touch-footer li:first-child {
@@ -131,10 +141,6 @@ footer {
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 1.6rem;
-}
-
-.get-touch-footer {
-  opacity: 0.3;
 }
 
 .get-touch-footer > li:nth-child(2) > a,
@@ -145,18 +151,30 @@ footer {
   color: $text-on-dark;
 }
 
+.smf-more {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-column: 2;
+}
+
 .smf-more-link {
-  display: block;
-  margin-bottom: 8%;
+  display: flex;
+  justify-content: center;
+  // margin-bottom: 8%;
 }
 
 .smf-more-txt {
-  margin: 10% 0;
+  text-align: center;
+  margin-bottom: 8%;
+  padding: 0;
+  font-weight: 300;
 }
 
 .smf-more-logo {
   width: 25%;
   height: auto;
+  margin-bottom: 8%;
 }
 
 div > a:nth-child(3) > svg {
@@ -180,11 +198,17 @@ div > a:nth-child(3) > svg {
   .smf-more-logo {
     width: 38%;
   }
+
+  .itm-caption {
+    font-weight: 400;
+    font-size: calc(0.5rem + 1vw);
+  }
 }
 
 @media (max-width: 425px) {
   section {
     grid-template-columns: 1fr;
+    grid-gap: 4vw;
   }
 
   .smf-more-logo {
@@ -194,5 +218,14 @@ div > a:nth-child(3) > svg {
   .itm-caption {
     font-weight: 400;
     font-size: calc(0.7rem + 1vw);
+  }
+
+  .smf-more {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .get-touch-footer-wrp {
+    grid-row: 2;
   }
 }
