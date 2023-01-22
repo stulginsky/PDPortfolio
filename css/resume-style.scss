@@ -1,4 +1,4 @@
-$dark: #0f121a;
+$dark: #131620;
 $white: #ffffff;
 $text-on-dark: #6c8493;
 $text-on-dark-hover: #869eac;
@@ -140,6 +140,10 @@ a {
   margin: 0 0 4% 0;
 }
 
+.speech-text-margin-2 {
+  margin: 0 0 2% 0;
+}
+
 .date-margin {
   margin: 0 0 1% 0;
 }
@@ -219,7 +223,8 @@ a {
 }
 
 footer {
-  height: 15rem;
+  margin-top: 16%;
+  margin-bottom: 8%;
 }
 
 .get-touch-footer li:first-child {
@@ -275,6 +280,7 @@ footer {
   .margin-left {
     margin-left: 1.4rem;
   }
+
   .w-i-do {
     font-size: 1.3rem;
     line-height: 2.2rem;
@@ -288,5 +294,15 @@ footer {
 
   .portfolio {
     margin-bottom: 8%;
+  }
+
+  .date-margin {
+    margin: 0 0 2% 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .speech-text-margin-2 {
+    margin: 0 0 5% 0;
   }
 }
