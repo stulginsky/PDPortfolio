@@ -171,6 +171,12 @@ a[href^="mailto:"] li:hover,
 a:hover {
   color: #869eac;
 }
+.get-touch-header:active,
+a[href^="tel:"]:active,
+a[href^="mailto:"] li:active,
+a:active {
+  color: #0065a3;
+}
 
 .page-h2 {
   font-weight: 600;
@@ -193,7 +199,6 @@ a:hover {
   text-decoration: none;
   font-weight: 600;
   font-size: 1.5rem;
-  color: #0065a3;
 }
 
 .resume:hover {
@@ -203,7 +208,7 @@ a:hover {
 }
 
 .resume:active {
-  color: #6c8493;
+  color: #0065a3;
 }
 
 .btn-browse-more-wrp {
