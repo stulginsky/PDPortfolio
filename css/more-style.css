@@ -175,7 +175,7 @@ div > a:nth-child(3) > svg {
 
 @media (max-width: 780px) {
   main,
-footer {
+  footer {
     max-width: 90vw;
   }
   .smf-more-logo {

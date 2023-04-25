@@ -185,10 +185,10 @@ a:active {
 }
 
 .speech-text {
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.6rem;
-  max-width: 75%;
+  font-weight: 200;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  max-width: 100%;
 }
 
 .speech-text-margin {
@@ -274,7 +274,7 @@ footer {
 
 @media (max-width: 1024px) {
   main,
-footer {
+  footer {
     max-width: 90vw;
   }
   .speech-text {
@@ -301,8 +301,8 @@ footer {
     line-height: 3rem;
   }
   .speech-text {
-    font-size: 0.85rem;
-    line-height: 1.4rem;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
   }
   .skills li {
     font-size: 0.85rem;
@@ -316,6 +316,10 @@ footer {
 @media (max-width: 425px) {
   .item-16by9 {
     padding-top: 44%;
+  }
+  .speech-text {
+    font-size: 1.2rem;
+    line-height: 2.1rem;
   }
   .img-scale {
     width: 50%;
