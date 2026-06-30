@@ -1,0 +1,26 @@
+{
+  "name": "PDPortfolio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prebuild": "npm run typograf:apply",
+    "pregenerate": "npm run typograf:apply",
+    "typograf:apply": "node scripts/apply-typograf-content.mjs",
+    "typograf:preview": "node scripts/typograf-preview.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/roboto-flex": "^5.2.8",
+    "@fontsource/inter": "^5.2.8",
+    "nuxt": "^4.4.4",
+    "vue": "^3.5.33",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "typograf": "^7.7.0"
+  }
+}

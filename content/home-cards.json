@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Vendor App",
+    "subtitle": "Проект компании Delivery Club",
+    "badges": "B2B, HoReCa, Delivery, Takeaway, UX-research, CustDev, Product design",
+    "image": "/home-cards/vendor-app.png",
+    "href": "/cases/vendor-app",
+    "coming-soon": {
+      "show": false,
+      "badge-image": ""
+    },
+    "background-color": "#cdf9cd",
+    "background-color-hover": "#B6F6B6",
+    "background-color-active": "#9ee89e",
+    "background-color-tap": "#9ee89e",
+    "height": "540px",
+    "show": true,
+    "index": 1
+  },
+  {
+    "title": "Chirp AI health assistant",
+    "subtitle": "Product case / AI health assistant для проверки назначений и медицинских рисков",
+    "badges": "B2C, B2B, MedTech, AI product, Product discovery, CustDev, Business analysis, MVP scope",
+    "image": "/home-cards/chirp-ai-health-assistant.png",
+    "href": "/cases/chirp-ai-health-assistant",
+    "coming-soon": {
+      "show": false,
+      "badge-image": ""
+    },
+    "background-color": "#d3f7ff",
+    "background-color-hover": "#ADF1FF",
+    "background-color-active": "#9de3ff",
+    "background-color-tap": "#9de3ff",
+    "height": "697px",
+    "show": true,
+    "index": 2
+  },
+  {
+    "title": "LeCar OMS",
+    "subtitle": "Проект компании ЛАДА Цифра",
+    "badges": "B2B, E-commerce, CustDev, UX-research, Product design",
+    "image": "/home-cards/lecar-online-oms.png",
+    "href": "/cases/lecar-online-oms",
+    "coming-soon": {
+      "show": false,
+      "badge-image": ""
+    },
+    "background-color": "#e4e0dd",
+    "background-color-hover": "#D6D3D1",
+    "background-color-active": "#C5C1BE",
+    "background-color-tap": "#C5C1BE",
+    "height": "598px",
+    "show": true,
+    "index": 3
+  },
+  {
+    "title": "LADA Business",
+    "subtitle": "Проект компании ЛАДА Имидж",
+    "badges": "B2B, E-commerce, Business analysis, UX-research, Product design",
+    "image": "/home-cards/platforma-lada-business.png",
+    "href": "/cases/platforma-lada-business",
+    "coming-soon": {
+      "show": false,
+      "badge-image": ""
+    },
+    "background-color": "#e4e0dd",
+    "background-color-hover": "#d4cfc9",
+    "background-color-active": "#c4beb8",
+    "background-color-tap": "#c4beb8",
+    "height": "584px",
+    "show": true,
+    "index": 4
+  },
+  {
+    "title": "Self-service kiosk",
+    "subtitle": "Проект компании r_keeper",
+    "badges": "B2B, HoReCa, Delivery, Takeaway, UX-research, CustDev, Product design",
+    "image": "/home-cards/self-service-kiosk-for-horeca.png",
+    "href": "/cases/self-service-kiosk-for-horeca",
+    "coming-soon": {
+      "show": false,
+      "badge-image": ""
+    },
+    "background-color": "#f3e6c4",
+    "background-color-hover": "#e8d4a8",
+    "background-color-active": "#ddc88c",
+    "background-color-tap": "#ddc88c",
+    "height": "620px",
+    "show": true,
+    "index": 5
+  },
+  {
+    "title": "Cash Desk",
+    "subtitle": "Проект компании r_keeper",
+    "badges": "B2B, HoReCa, Business analysis, UX-research, CustDev, Product design",
+    "image": "/home-cards/cash-desk.png",
+    "href": "",
+    "coming-soon": {
+      "show": true,
+      "badge-image": "/badges/coming-soon.png"
+    },
+    "background-color": "#d5cdf9",
+    "background-color-hover": "#d5cdf9",
+    "background-color-active": "#d5cdf9",
+    "background-color-tap": "#d5cdf9",
+    "height": "540px",
+    "show": true,
+    "index": 6
+  }
+]

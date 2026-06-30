@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Vendor App",
+    "slug": "vendor-app",
+    "notionPageId": "30af7ee7bf04801db14fcb2ef97af0a5",
+    "notionUrl": "https://www.notion.so/30af7ee7bf04801db14fcb2ef97af0a5",
+    "summary": "# Vendor App",
+    "cover": "/notion-assets/vendor-app/img-01-f682092d36.png",
+    "status": "published",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "title": "LeCar Online. OMS",
+    "slug": "lecar-online-oms",
+    "notionPageId": "30af7ee7bf0480719e36df4878fba069",
+    "notionUrl": "https://www.notion.so/30af7ee7bf0480719e36df4878fba069",
+    "summary": "# LeCar Online. OMS",
+    "cover": "/notion-assets/lecar-online-oms/img-01-1a022b5b53.jpg",
+    "status": "published",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "title": "Chirp AI health assistant",
+    "slug": "chirp-ai-health-assistant",
+    "notionPageId": "312f7ee7bf04801e829beba4fdd56fcb",
+    "notionUrl": "https://www.notion.so/312f7ee7bf04801e829beba4fdd56fcb",
+    "summary": "# Chirp AI health assistant",
+    "cover": "/notion-assets/chirp-ai-health-assistant/img-01-f51d5819c3.png",
+    "status": "published",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "title": "Платформа LADA Business",
+    "slug": "платформа-lada-business",
+    "notionPageId": "309f7ee7bf048190bc1ef3146d1f11ac",
+    "notionUrl": "https://www.notion.so/309f7ee7bf048190bc1ef3146d1f11ac",
+    "summary": "# Платформа LADA Business",
+    "cover": "/notion-assets/платформа-lada-business/img-01-3204ebbbaf.png",
+    "status": "published",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "title": "Self-service kiosk for HoReCa",
+    "slug": "self-service-kiosk-for-horeca",
+    "notionPageId": "341f7ee7bf0480108648e3e1ec415f0d",
+    "notionUrl": "https://www.notion.so/341f7ee7bf0480108648e3e1ec415f0d",
+    "summary": "# Self-service kiosk for HoReCa",
+    "cover": "/notion-assets/self-service-kiosk-for-horeca/img-01-1bf45ac42b.png",
+    "status": "published",
+    "featured": true,
+    "order": 5
+  }
+]

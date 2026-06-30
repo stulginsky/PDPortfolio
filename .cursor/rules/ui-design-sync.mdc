@@ -1,0 +1,19 @@
+---
+description: Перед UI-кодом — синхронизация с Figma и дизайн-системой (обязательно)
+globs: app/**/*.{vue,css,scss},content/home-cards.json,DS/**,public/badges/**
+alwaysApply: false
+---
+
+# UI: синхронизация с Figma и ДС
+
+Перед любыми изменениями, затрагивающими интерфейс (вёрстка, стили, карточки главной, UI-ассеты):
+
+1. Прочитать **`DS/DS.md`** в корне репозитория.
+2. Прочитать **`E:\GitHub\PDPortfolio-DS\ds\CONTRACT.md`** (и при необходимости `foundation.md`, `components.md`).
+3. Сверить экран с **Figma** [Site-Portfolio-Bazarov](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov); главная — фрейм [Main `46:489`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov?node-id=46-489).
+4. Данные плиток главной — plain в **`content/sources/home-cards.json`**, затем `npm run typograf:apply` → **`content/home-cards.json`**; сверять с Figma Main.
+5. Токены и UI-компоненты — из **`PDPortfolio-DS\ds\`**, не придумывать параллельные hex/размеры в компонентах.
+
+**При конфликте:** Figma → DS md (`PDPortfolio-DS\ds\`) → `home-cards.json` → код.
+
+**Запрещено:** менять UI «по памяти» или по устаревшему хардкоду в `index.vue`, если Figma/JSON уже другие.
