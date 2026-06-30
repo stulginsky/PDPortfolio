@@ -90,11 +90,11 @@
 
 ### Этап 1. Стабилизация
 
-- [ ] Проверить `.gitignore`.
-- [ ] Убедиться, что `.nuxt`, `.output`, `node_modules`, временные файлы и кэши не попадут в git.
-- [ ] Сделать первый commit текущей базы.
-- [ ] Исправить падение `npm run generate`.
-- [ ] Повторно проверить `npm run build` и `npm run generate`.
+- [x] Проверить `.gitignore`.
+- [x] Убедиться, что `.nuxt`, `.output`, `node_modules`, временные файлы и кэши не попадут в git.
+- [x] Сделать первый commit текущей базы.
+- [x] Исправить падение `npm run generate`.
+- [x] Повторно проверить `npm run build` и `npm run generate`.
 
 ### Этап 2. Маршруты и контент
 
