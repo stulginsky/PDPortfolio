@@ -8,7 +8,7 @@ notionUrl: https://www.notion.so/309f7ee7bf048190bc1ef3146d1f11ac
 
 B2B-платформа для управления партнёрской сетью рынка автозапчастей.
 
-![](/notion-assets/платформа-lada-business/img-01-3204ebbbaf.png)
+![](/cases/platforma-lada-business/img-01-f7f383fb07.png)
 
 ## Deep dive
 

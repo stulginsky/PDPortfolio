@@ -6,7 +6,7 @@
       <h1>Deep Dive (object inspector)</h1>
       <p>Подход "детали по запросу" через инспектор объекта для сложных сценариев в B2B.</p>
 
-      <img src="/notion-assets/nested-lada-inspector/img-signed-01.png" alt="Deep Dive object inspector" />
+      <img src="/cases/nested-lada-inspector/img-signed-01.png" alt="Deep Dive object inspector" />
     </section>
   </main>
 </template>

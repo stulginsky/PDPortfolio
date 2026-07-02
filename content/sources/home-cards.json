@@ -3,7 +3,7 @@
     "title": "Vendor App",
     "subtitle": "Проект компании Delivery Club",
     "badges": "B2B, HoReCa, Delivery, Takeaway, UX-research, CustDev, Product design",
-    "image": "/home-cards/vendor-app.png",
+    "image": "/cases/vendor-app/cover.png",
     "href": "/cases/vendor-app",
     "coming-soon": {
       "show": false,
@@ -21,7 +21,7 @@
     "title": "Chirp AI health assistant",
     "subtitle": "Product case / AI health assistant для проверки назначений и медицинских рисков",
     "badges": "B2C, B2B, MedTech, AI product, Product discovery, CustDev, Business analysis, MVP scope",
-    "image": "/home-cards/chirp-ai-health-assistant.png",
+    "image": "/cases/chirp-ai-health-assistant/cover.png",
     "href": "/cases/chirp-ai-health-assistant",
     "coming-soon": {
       "show": false,
@@ -39,7 +39,7 @@
     "title": "LeCar OMS",
     "subtitle": "Проект компании ЛАДА Цифра",
     "badges": "B2B, E-commerce, CustDev, UX-research, Product design",
-    "image": "/home-cards/lecar-online-oms.png",
+    "image": "/cases/lecar-online-oms/cover.png",
     "href": "/cases/lecar-online-oms",
     "coming-soon": {
       "show": false,
@@ -57,7 +57,7 @@
     "title": "LADA Business",
     "subtitle": "Проект компании ЛАДА Имидж",
     "badges": "B2B, E-commerce, Business analysis, UX-research, Product design",
-    "image": "/home-cards/platforma-lada-business.png",
+    "image": "/cases/platforma-lada-business/cover.png",
     "href": "/cases/platforma-lada-business",
     "coming-soon": {
       "show": false,
@@ -75,7 +75,7 @@
     "title": "Self-service kiosk",
     "subtitle": "Проект компании r_keeper",
     "badges": "B2B, HoReCa, Delivery, Takeaway, UX-research, CustDev, Product design",
-    "image": "/home-cards/self-service-kiosk-for-horeca.png",
+    "image": "/cases/self-service-kiosk-for-horeca/cover.png",
     "href": "/cases/self-service-kiosk-for-horeca",
     "coming-soon": {
       "show": false,
@@ -93,7 +93,7 @@
     "title": "Cash Desk",
     "subtitle": "Проект компании r_keeper",
     "badges": "B2B, HoReCa, Business analysis, UX-research, CustDev, Product design",
-    "image": "/home-cards/cash-desk.png",
+    "image": "/cases/cash-desk/cover.png",
     "href": "",
     "coming-soon": {
       "show": true,

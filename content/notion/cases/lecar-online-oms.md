@@ -8,4 +8,4 @@ notionUrl: https://www.notion.so/30af7ee7bf0480719e36df4878fba069
 
 UX-архитектура OMS платформы, снижение операционной сложности и времени обработки заказов.
 
-![](/notion-assets/lecar-online-oms/img-01-1a022b5b53.jpg)
+![](/cases/lecar-online-oms/img-01-1a022b5b53.jpg)

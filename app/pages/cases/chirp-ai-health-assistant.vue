@@ -57,7 +57,7 @@
         коммуникации врач-пациент.
       </p>
       <p>Основные инсайты:</p>
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-01.png" alt="Chirp insights" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-01.png" alt="Chirp insights" />
       <ul>
         <li><strong>Пользователи склонны бездумно доверять назначениям, а не проверять их</strong> → интерфейс должен поддерживать доверие, но мотивировать осознанность в манипуляциях со своим здоровьем.</li>
         <li><strong>Медицинские данные воспринимаются фрагментарно</strong> → нужен системный контекст лечения.</li>
@@ -81,7 +81,7 @@
         <li>назначения и процедуры.</li>
       </ul>
       <p>Это позволило воспринимать лечение как систему, а не как набор разрозненных данных.</p>
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-02.png" alt="Информационная архитектура" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-02.png" alt="Информационная архитектура" />
 
       <h3>Ключевые сценарии</h3>
       <ul>
@@ -93,7 +93,7 @@
       <hr />
       <h3>DEEP DIVE №1</h3>
       <p><NuxtLink to="/cases/nested-chirp-ai-check"><strong>Как я спроектировал AI-проверку лечения</strong></NuxtLink></p>
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-03.png" alt="Deep Dive 1" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-03.png" alt="Deep Dive 1" />
       <p>
         После формирования продуктовой идеи AI-ассистента ключевой задачей стало:
       </p>
@@ -104,7 +104,7 @@
       <hr />
       <h3>DEEP DIVE №2</h3>
       <p><NuxtLink to="/cases/nested-chirp-brand">Бренд как инструмент доверия в медицинском AI-продукте</NuxtLink></p>
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-04.png" alt="Deep Dive 2" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-04.png" alt="Deep Dive 2" />
       <p>
         После проработки UX и логики AI стало очевидно:
       </p>
@@ -125,7 +125,7 @@
       <p>👉 превращена в понятный пользовательский опыт</p>
 
       <h3>Профиль пользователя</h3>
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-05.png" alt="Профиль пользователя" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-05.png" alt="Профиль пользователя" />
       <ul>
         <li>профиль - точка входа в систему лечения</li>
         <li>быстрый доступ к:
@@ -137,7 +137,7 @@
         </li>
       </ul>
 
-      <img src="/notion-assets/chirp-ai-health-assistant/img-signed-06.png" alt="Диагнозы и управление данными" />
+      <img src="/cases/chirp-ai-health-assistant/img-signed-06.png" alt="Диагнозы и управление данными" />
       <h3>Диагнозы</h3>
       <ul>
         <li>разделение на:

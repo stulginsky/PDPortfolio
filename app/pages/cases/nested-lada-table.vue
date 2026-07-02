@@ -6,15 +6,15 @@
       <h1>Deep Dive (table)</h1>
       <p>Микро-UX решения для табличного компонента и сценариев управления колонками/строками.</p>
 
-      <img src="/notion-assets/nested-lada-table/img-signed-01.png" alt="Deep Dive table 1" />
-      <img src="/notion-assets/nested-lada-table/img-signed-02.png" alt="Deep Dive table 2" />
-      <img src="/notion-assets/nested-lada-table/img-signed-03.png" alt="Deep Dive table 3" />
-      <img src="/notion-assets/nested-lada-table/img-signed-04.png" alt="Deep Dive table 4" />
-      <img src="/notion-assets/nested-lada-table/img-signed-05.png" alt="Deep Dive table 5" />
-      <img src="/notion-assets/nested-lada-table/img-signed-06.png" alt="Deep Dive table 6" />
-      <img src="/notion-assets/nested-lada-table/img-signed-07.png" alt="Deep Dive table 7" />
-      <img src="/notion-assets/nested-lada-table/img-signed-08.png" alt="Deep Dive table 8" />
-      <img src="/notion-assets/nested-lada-table/img-signed-09.png" alt="Deep Dive table 9" />
+      <img src="/cases/nested-lada-table/img-signed-01.png" alt="Deep Dive table 1" />
+      <img src="/cases/nested-lada-table/img-signed-02.png" alt="Deep Dive table 2" />
+      <img src="/cases/nested-lada-table/img-signed-03.png" alt="Deep Dive table 3" />
+      <img src="/cases/nested-lada-table/img-signed-04.png" alt="Deep Dive table 4" />
+      <img src="/cases/nested-lada-table/img-signed-05.png" alt="Deep Dive table 5" />
+      <img src="/cases/nested-lada-table/img-signed-06.png" alt="Deep Dive table 6" />
+      <img src="/cases/nested-lada-table/img-signed-07.png" alt="Deep Dive table 7" />
+      <img src="/cases/nested-lada-table/img-signed-08.png" alt="Deep Dive table 8" />
+      <img src="/cases/nested-lada-table/img-signed-09.png" alt="Deep Dive table 9" />
     </section>
   </main>
 </template>

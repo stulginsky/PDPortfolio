@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const asset = (file: string) => `/notion-assets/self-service-kiosk-for-horeca/${file}`;
+const asset = (file: string) => `/cases/self-service-kiosk-for-horeca/${file}`;
 </script>
 
 <template>

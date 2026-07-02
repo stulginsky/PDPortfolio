@@ -1,18 +1,35 @@
-﻿<template>
+<script setup lang="ts">
+const images = Array.from({ length: 7 }, (_, index) => {
+  const number = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/cases/nested-chirp-brand/img-signed-${number}.png`,
+    alt: `Бренд Chirp AI, экран ${index + 1}`,
+  };
+});
+
+useSiteHead("Бренд как инструмент доверия — Chirp AI");
+</script>
+
+<template>
   <main class="case-page">
-    <NuxtLink to="/cases/chirp-ai-health-assistant" class="back">Back to Chirp AI Health Assistant</NuxtLink>
+    <NuxtLink to="/cases/chirp-ai-health-assistant" class="back">
+      ← К кейсу Chirp AI Health Assistant
+    </NuxtLink>
 
     <section class="content">
-      <h1>Deep Dive (brand trust)</h1>
-      <p>Visual language as part of the trust mechanics for a medical AI product.</p>
+      <h1>Бренд как инструмент доверия в медицинском AI-продукте</h1>
+      <p>
+        Визуальный язык продукта как часть механики доверия в медицинском домене.
+      </p>
 
-      <img src="/notion-assets/nested-chirp-brand/img-signed-01.png" alt="Chirp brand screen 1" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-02.png" alt="Chirp brand screen 2" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-03.png" alt="Chirp brand screen 3" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-04.png" alt="Chirp brand screen 4" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-05.png" alt="Chirp brand screen 5" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-06.png" alt="Chirp brand screen 6" />
-      <img src="/notion-assets/nested-chirp-brand/img-signed-07.png" alt="Chirp brand screen 7" />
+      <img
+        v-for="image in images"
+        :key="image.src"
+        :src="image.src"
+        :alt="image.alt"
+        loading="lazy"
+      >
     </section>
   </main>
 </template>
@@ -22,14 +39,15 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 20px 56px;
-  font-family: Inter, Arial, sans-serif;
-  color: #0f172a;
+  font-family: var(--font-sans);
+  color: var(--text-default);
+  background: var(--surface-default);
 }
 
 .back {
   display: inline-block;
   margin-bottom: 16px;
-  color: #334155;
+  color: var(--text-secondary);
   text-decoration: none;
 }
 
@@ -48,14 +66,14 @@ h1 {
 }
 
 p {
-  color: #334155;
+  color: var(--text-secondary);
 }
 
 img {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
+  border: 1px solid var(--border-default);
+  background: var(--gray-00);
   margin: 4px 0;
 }
 </style>

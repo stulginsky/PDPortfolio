@@ -14,7 +14,7 @@
         <li>сервисные станции</li>
       </ul>
       <p>в единую систему закупок и логистики.</p>
-      <img src="/notion-assets/platforma-lada-business/img-01-f7f383fb07.png" alt="LADA Business intro" />
+      <img src="/cases/platforma-lada-business/img-01-f7f383fb07.png" alt="LADA Business intro" />
       <p>Интерфейс платформы для поиска и заказа автозапчастей внутри партнёрской сети.</p>
 
       <h2>Контекст индустрии</h2>
@@ -42,7 +42,7 @@
         <li>логистическим хабом региона</li>
         <li>посредником между производителем и рынком.</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-02-fb7e1ca362.png" alt="Структура сети" />
+      <img src="/cases/platforma-lada-business/img-02-fb7e1ca362.png" alt="Структура сети" />
       <p>Структура сети.</p>
 
       <h2>Ограниченная прозрачность рынка</h2>
@@ -66,10 +66,10 @@
         <li>схемы старой системы</li>
         <li>legacy интерфейсы</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-03-240e20a620.png" alt="Legacy 1" />
-      <img src="/notion-assets/platforma-lada-business/img-04-53f5a2cd1a.png" alt="Legacy 2" />
-      <img src="/notion-assets/platforma-lada-business/img-05-75e931bc06.png" alt="Legacy 3" />
-      <img src="/notion-assets/platforma-lada-business/img-06-6b8c5d0d47.png" alt="Legacy 4" />
+      <img src="/cases/platforma-lada-business/img-03-240e20a620.png" alt="Legacy 1" />
+      <img src="/cases/platforma-lada-business/img-04-53f5a2cd1a.png" alt="Legacy 2" />
+      <img src="/cases/platforma-lada-business/img-05-75e931bc06.png" alt="Legacy 3" />
+      <img src="/cases/platforma-lada-business/img-06-6b8c5d0d47.png" alt="Legacy 4" />
       <p>Существующая система обработки заказов и её интерфейсы.</p>
       <p>Система исторически развивалась как <strong>инструмент обработки заявок</strong>, а не как торговая платформа.</p>
       <p>Она обслуживала только взаимодействие с оптовыми операторами и не отражала структуру всей партнёрской сети.</p>
@@ -83,11 +83,11 @@
         <li>позволит управлять спросом</li>
         <li>ускорит процессы закупок и логистики.</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-07-48230c883d.png" alt="Product challenge" />
+      <img src="/cases/platforma-lada-business/img-07-48230c883d.png" alt="Product challenge" />
 
       <h2>Выравнивание со стейкхолдерами</h2>
       <p><strong>Stakeholder Alignment</strong></p>
-      <img src="/notion-assets/platforma-lada-business/img-08-311c25dedd.png" alt="Stakeholder workshop" />
+      <img src="/cases/platforma-lada-business/img-08-311c25dedd.png" alt="Stakeholder workshop" />
       <p>Воркшоп по формированию функциональной модели будущей платформы.</p>
       <p>Я провёл серию воркшопов со стейкхолдерами, где мы:</p>
       <ul>
@@ -98,7 +98,7 @@
 
       <h3>Ролевая модель партнёров</h3>
       <p><strong>Partner Role Model</strong></p>
-      <img src="/notion-assets/platforma-lada-business/img-09-478d1df853.png" alt="Role model" />
+      <img src="/cases/platforma-lada-business/img-09-478d1df853.png" alt="Role model" />
       <p>Ролевая модель участников платформы.</p>
       <p>Мы выделили ключевые роли системы:</p>
       <ul>
@@ -110,13 +110,13 @@
 
       <h2>Архитектура продукта</h2>
       <p><strong>Information Architecture</strong></p>
-      <img src="/notion-assets/platforma-lada-business/img-10-03a5d361bf.png" alt="Information architecture" />
+      <img src="/cases/platforma-lada-business/img-10-03a5d361bf.png" alt="Information architecture" />
       <p>Информационная архитектура платформы и последовательность разработки модулей.</p>
       <p>На основе пользовательских сценариев была сформирована архитектура системы и структура основных модулей платформы.</p>
 
       <h2>Навигация платформы</h2>
       <p><strong>Navigation Structure</strong></p>
-      <img src="/notion-assets/platforma-lada-business/img-11-562ffc8fa2.png" alt="Navigation structure" />
+      <img src="/cases/platforma-lada-business/img-11-562ffc8fa2.png" alt="Navigation structure" />
       <p>Формирование структуры меню и её реализация в интерфейсе.</p>
 
       <h2>UX-архитектура</h2>
@@ -134,15 +134,15 @@
       <p>Поэтому таблица становится <strong>ключевым интерфейсным компонентом платформы</strong>.</p>
       <p>Мы проектируем таблицу как <strong>универсальный компонент</strong>, способный масштабироваться для разных сценариев системы.</p>
       <p><NuxtLink to="/cases/nested-lada-table">Deep Dive (table)</NuxtLink></p>
-      <img src="/notion-assets/platforma-lada-business/img-12-2c0fa76cd9.png" alt="Deep Dive table" />
+      <img src="/cases/platforma-lada-business/img-12-2c0fa76cd9.png" alt="Deep Dive table" />
 
       <h3>Filtering</h3>
       <p>Я спроектировал типизированный фильтр, одинаково эффективно работающий <br />как с табличным, так и со списочным представлением данных.</p>
       <p><NuxtLink to="/cases/nested-lada-filtering">Deep Dive (filtering)</NuxtLink></p>
-      <img src="/notion-assets/platforma-lada-business/img-13-ab50966d87.png" alt="Deep Dive filtering" />
+      <img src="/cases/platforma-lada-business/img-13-ab50966d87.png" alt="Deep Dive filtering" />
 
       <h3>Dynamic Toolbar</h3>
-      <img src="/notion-assets/platforma-lada-business/img-14-d1538b8ca1.png" alt="Dynamic toolbar" />
+      <img src="/cases/platforma-lada-business/img-14-d1538b8ca1.png" alt="Dynamic toolbar" />
 
       <h3>Catalog</h3>
       <p>Карточка товара спроектирована как часть рабочего пространства пользователя.</p>
@@ -152,8 +152,8 @@
         <li>сравнение поставщиков</li>
         <li>доступ к технической информации</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-15-b1ba334e21.png" alt="Catalog 1" />
-      <img src="/notion-assets/platforma-lada-business/img-16-19d135f213.png" alt="Catalog 2" />
+      <img src="/cases/platforma-lada-business/img-15-b1ba334e21.png" alt="Catalog 1" />
+      <img src="/cases/platforma-lada-business/img-16-19d135f213.png" alt="Catalog 2" />
 
       <h3>Objects</h3>
       <p>Для заказов и заявок реализован единый интерфейсный паттерн:</p>
@@ -162,7 +162,7 @@
         <li>вложенные элементы</li>
         <li>инспектор параметров</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-17-76c481a6d6.png" alt="Objects" />
+      <img src="/cases/platforma-lada-business/img-17-76c481a6d6.png" alt="Objects" />
 
       <h3>Feedback and Validation</h3>
       <p>Единый интерфейсный паттерн:</p>
@@ -172,17 +172,17 @@
         <li>уведомления о проблемах в заявках</li>
       </ul>
       <p>Это позволило снизить количество ошибок и обращений в поддержку.</p>
-      <img src="/notion-assets/platforma-lada-business/img-18-a25b00ec0d.png" alt="Feedback and validation" />
+      <img src="/cases/platforma-lada-business/img-18-a25b00ec0d.png" alt="Feedback and validation" />
 
       <h3>Data Drill-Down</h3>
       <p>Многоуровневая детализация данных через инспектор объектов</p>
       <p><NuxtLink to="/cases/nested-lada-inspector">Deep Dive (object inspector)</NuxtLink></p>
-      <img src="/notion-assets/platforma-lada-business/img-19-59042c9268.png" alt="Data drill-down" />
+      <img src="/cases/platforma-lada-business/img-19-59042c9268.png" alt="Data drill-down" />
 
       <h3>Simplifying Partner Onboarding</h3>
       <p>Я предложил радикально упростить процесс регистрации.</p>
       <p><NuxtLink to="/cases/nested-lada-partner-onboarding">Deep Dive (partner onboarding)</NuxtLink></p>
-      <img src="/notion-assets/platforma-lada-business/img-20-9a622e7a30.png" alt="Partner onboarding" />
+      <img src="/cases/platforma-lada-business/img-20-9a622e7a30.png" alt="Partner onboarding" />
 
       <h2>Impact</h2>
       <p>New partner segments connected</p>
@@ -215,7 +215,7 @@
         <li>снижение стоимости разработки новых функций;</li>
         <li>база для масштабирования цифровых сервисов компании.</li>
       </ul>
-      <img src="/notion-assets/platforma-lada-business/img-21-add704a591.png" alt="Design system" />
+      <img src="/cases/platforma-lada-business/img-21-add704a591.png" alt="Design system" />
     </section>
   </main>
 </template>

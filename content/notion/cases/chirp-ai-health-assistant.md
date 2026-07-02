@@ -8,7 +8,7 @@ notionUrl: https://www.notion.so/312f7ee7bf04801e829beba4fdd56fcb
 
 AI-assistant для контроля медицинских назначений и снижения рисков лечения.
 
-![](/notion-assets/chirp-ai-health-assistant/img-01-f51d5819c3.png)
+![](/cases/chirp-ai-health-assistant/img-01-f51d5819c3.png)
 
 ## Deep dive
 

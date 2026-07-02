@@ -59,7 +59,7 @@
 
       <h4>1. Замена блюда (Out-of-stock)</h4>
       <p>Вместо мгновенной отмены — оператору предлагается заменить блюдо.</p>
-      <img src="/notion-assets/vendor-app/img-01-f682092d36.png" alt="Замена блюда" />
+      <img src="/cases/vendor-app/img-01-f682092d36.png" alt="Замена блюда" />
       <p><strong>Что сделали:</strong></p>
       <ul>
         <li>встроили call to action “Заменить блюдо” прямо в диалог отмены</li>
@@ -76,7 +76,7 @@
 
       <h4>2. Упреждающее действие (Proactive UX)</h4>
       <p>Вынесли действие <strong>“Заменить блюдо”</strong> на первый уровень интерфейса.</p>
-      <img src="/notion-assets/vendor-app/img-02-9c02234b1e.png" alt="Упреждающее действие" />
+      <img src="/cases/vendor-app/img-02-9c02234b1e.png" alt="Упреждающее действие" />
       <p><strong>Что изменилось:</strong></p>
       <ul>
         <li>оператор видит альтернативу до отмены</li>
@@ -87,7 +87,7 @@
 
       <h4>3. Изменение цены (Price Change)</h4>
       <p>Аналогичный паттерн применили для сценария изменения цены.</p>
-      <img src="/notion-assets/vendor-app/img-03-ec681e347f.png" alt="Изменение цены" />
+      <img src="/cases/vendor-app/img-03-ec681e347f.png" alt="Изменение цены" />
       <p><strong>Что сделали:</strong></p>
       <ul>
         <li>вместо отмены — оформление разницы как скидки</li>
@@ -96,7 +96,7 @@
 
       <h4>4. Stop-list (предотвращение повторных ошибок)</h4>
       <p>Мы не только спасали заказы, но и устраняли причину проблемы.</p>
-      <img src="/notion-assets/vendor-app/img-04-8681b420c3.png" alt="Stop-list" />
+      <img src="/cases/vendor-app/img-04-8681b420c3.png" alt="Stop-list" />
       <p><strong>Как работает:</strong></p>
       <ul>
         <li>при одной позиции в заказе товар автоматически попадает в стоп-лист</li>
@@ -110,7 +110,7 @@
       </ul>
 
       <h3>⚙️ Системное проектирование</h3>
-      <img src="/notion-assets/vendor-app/img-05-df4898ce20.png" alt="BPMN схема" />
+      <img src="/cases/vendor-app/img-05-df4898ce20.png" alt="BPMN схема" />
       <p>
         <a
           href="https://www.figma.com/design/ePMi9EX33q0LyOPAHHMrux/BazarovCaseVAppItemReplaceBPMn?node-id=1-5541&t=ZKevXrZ92jTp2FBq-1"

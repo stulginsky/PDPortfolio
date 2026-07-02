@@ -1,19 +1,36 @@
-﻿<template>
+<script setup lang="ts">
+const images = Array.from({ length: 8 }, (_, index) => {
+  const number = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/cases/nested-chirp-ai-check/img-signed-${number}.png`,
+    alt: `AI-проверка лечения, экран ${index + 1}`,
+  };
+});
+
+useSiteHead("Как я спроектировал AI-проверку лечения — Chirp AI");
+</script>
+
+<template>
   <main class="case-page">
-    <NuxtLink to="/cases/chirp-ai-health-assistant" class="back">Back to Chirp AI Health Assistant</NuxtLink>
+    <NuxtLink to="/cases/chirp-ai-health-assistant" class="back">
+      ← К кейсу Chirp AI Health Assistant
+    </NuxtLink>
 
     <section class="content">
-      <h1>Deep Dive (AI treatment check)</h1>
-      <p>Medical-data flow and UX scenario evolution for the AI-assisted treatment check.</p>
+      <h1>Как я спроектировал AI-проверку лечения</h1>
+      <p>
+        Работа с медицинскими данными и эволюция UX-сценария проверки назначений
+        и медицинских рисков.
+      </p>
 
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-01.png" alt="AI treatment check screen 1" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-02.png" alt="AI treatment check screen 2" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-03.png" alt="AI treatment check screen 3" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-04.png" alt="AI treatment check screen 4" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-05.png" alt="AI treatment check screen 5" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-06.png" alt="AI treatment check screen 6" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-07.png" alt="AI treatment check screen 7" />
-      <img src="/notion-assets/nested-chirp-ai-check/img-signed-08.png" alt="AI treatment check screen 8" />
+      <img
+        v-for="image in images"
+        :key="image.src"
+        :src="image.src"
+        :alt="image.alt"
+        loading="lazy"
+      >
     </section>
   </main>
 </template>
@@ -23,14 +40,15 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 20px 56px;
-  font-family: Inter, Arial, sans-serif;
-  color: #0f172a;
+  font-family: var(--font-sans);
+  color: var(--text-default);
+  background: var(--surface-default);
 }
 
 .back {
   display: inline-block;
   margin-bottom: 16px;
-  color: #334155;
+  color: var(--text-secondary);
   text-decoration: none;
 }
 
@@ -49,14 +67,14 @@ h1 {
 }
 
 p {
-  color: #334155;
+  color: var(--text-secondary);
 }
 
 img {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
+  border: 1px solid var(--border-default);
+  background: var(--gray-00);
   margin: 4px 0;
 }
 </style>

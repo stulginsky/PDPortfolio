@@ -100,7 +100,7 @@
         <li>снизить будущую операционную сложность системы;</li>
         <li>заложить основу платформенного развития OMS.</li>
       </ul>
-      <img src="/notion-assets/lecar-online-oms/img-signed-01.jpeg" alt="LeCar research map" />
+      <img src="/cases/lecar-online-oms/img-signed-01.jpeg" alt="LeCar research map" />
       <p>
         Я сформировал управляемую продуктовую рамку из разрозненных требований
         бизнеса и операций, заложив фундамент масштабируемой OMS-платформы.
@@ -162,8 +162,8 @@
         <li>легче масштабируется на мобильные сценарии;</li>
         <li>поддерживает более гибкую визуализацию статусов процессов.</li>
       </ul>
-      <img src="/notion-assets/lecar-online-oms/img-signed-02.png" alt="Табличный формат" />
-      <img src="/notion-assets/lecar-online-oms/img-signed-03.png" alt="Карточный формат" />
+      <img src="/cases/lecar-online-oms/img-signed-02.png" alt="Табличный формат" />
+      <img src="/cases/lecar-online-oms/img-signed-03.png" alt="Карточный формат" />
       <p>Это решение фактически задало направление дальнейшего развития интерфейсов системы.</p>
 
       <h4>Визуализация статусов и операционный контроль</h4>
@@ -178,12 +178,12 @@
         <li>отклонения и риски SLA.</li>
       </ul>
       <p>Такой подход превратил статусы из формального атрибута в инструмент быстрого операционного контроля.</p>
-      <img src="/notion-assets/lecar-online-oms/img-signed-04.png" alt="Статусы заказа" />
+      <img src="/cases/lecar-online-oms/img-signed-04.png" alt="Статусы заказа" />
       <p>
         Трекинг заказа между участниками процесса, от стартового до терминального статуса
         “внутри” каждого звена, с перемещением статуса в строку соответствующего участника:
       </p>
-      <img src="/notion-assets/lecar-online-oms/img-signed-05.png" alt="Трекинг между участниками" />
+      <img src="/cases/lecar-online-oms/img-signed-05.png" alt="Трекинг между участниками" />
 
       <h4>Инспектор: единая точка работы с объектом</h4>
       <p>
@@ -199,14 +199,14 @@
         Это стало UX-ядром операционной системы, вокруг которого можно
         масштабировать дополнительные сценарии без усложнения интерфейса.
       </p>
-      <img src="/notion-assets/lecar-online-oms/img-signed-06.png" alt="Инспектор 1" />
-      <img src="/notion-assets/lecar-online-oms/img-signed-07.png" alt="Инспектор 2" />
-      <img src="/notion-assets/lecar-online-oms/img-signed-08.png" alt="Инспектор 3" />
-      <img src="/notion-assets/lecar-online-oms/img-signed-09.png" alt="Инспектор 4" />
+      <img src="/cases/lecar-online-oms/img-signed-06.png" alt="Инспектор 1" />
+      <img src="/cases/lecar-online-oms/img-signed-07.png" alt="Инспектор 2" />
+      <img src="/cases/lecar-online-oms/img-signed-08.png" alt="Инспектор 3" />
+      <img src="/cases/lecar-online-oms/img-signed-09.png" alt="Инспектор 4" />
 
       <details>
         <summary>Полная форма атрибутов поставки, просмотр и редактирование [под катом]</summary>
-        <img src="/notion-assets/lecar-online-oms/img-signed-10.png" alt="Форма атрибутов" />
+        <img src="/cases/lecar-online-oms/img-signed-10.png" alt="Форма атрибутов" />
       </details>
 
       <h4>Фильтрация как стратегический UX-инструмент</h4>
@@ -223,7 +223,7 @@
         <li>сохранение пользовательских пресетов.</li>
       </ul>
       <p>Это позволило снизить зависимость от ручной аналитики и ускорить операционные сценарии.</p>
-      <img src="/notion-assets/lecar-online-oms/img-signed-11.png" alt="Фильтры и пресеты" />
+      <img src="/cases/lecar-online-oms/img-signed-11.png" alt="Фильтры и пресеты" />
       <p class="note">[Неэкспортируемый блок из Notion: external_object_instance]</p>
       <p>
         <strong>Прочие пользовательские фильтры</strong> могут быть легко добавлены и сохранены в предустановки.
