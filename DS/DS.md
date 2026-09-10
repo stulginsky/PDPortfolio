@@ -1,19 +1,21 @@
 # Дизайн-система — точка входа (PDPortfolio)
 
+Сверка с Figma: 2026-09-09. Канонические документы обновлены; CSS/Vue ещё требуют миграции. Карта всех пяти страниц, неоднозначности и очередь вёрстки: [figma-sync.md](figma-sync.md).
+
 Документация ДС живёт в **соседнем репозитории** (единый источник правды вместе с Figma). Этот файл — индекс и **обязательный чеклист синхронизации** перед любой UI-работой в коде.
 
 ## Канонические источники (порядок приоритета)
 
 | Что | Где | Зачем |
 |-----|-----|--------|
-| **Макеты экранов** | [Figma — Site-Portfolio-Bazarov](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov) | Актуальная вёрстка, контент карточек, раскладка |
-| **Главная (фрейм)** | [Main `node-id=46-489`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov?node-id=46-489) | Hero, сетка карточек, порядок и размеры |
-| **Резюме (фрейм)** | [About `node-id=46-515`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov?node-id=46-515) | Текст резюме, кнопка скачивания PDF |
+| **Макеты экранов** | [Figma — PDPortfolio-Prod](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod) | Актуальная вёрстка, контент карточек, раскладка |
+| **Главная (фрейм)** | [Main `node-id=46-489`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=46-489) | Hero, сетка карточек, порядок и размеры |
+| **Резюме (фрейм)** | [About `node-id=46-515`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=46-515) | Текст резюме, кнопка скачивания PDF |
 | **Токены и компоненты ДС** | `E:\GitHub\PDPortfolio-DS\ds\` | CONTRACT, foundation, components, brand-brief |
 | **Данные карточек главной** | `content/sources/home-cards.json` → `content/home-cards.json` | Plain в sources; на сайт — после `npm run typograf:apply` |
 | **Текст резюме** | `content/sources/resume.json` → `content/resume.json` | То же; типографика — см. `content/TYPOGRAPHY.md` |
 | **PDF резюме** | `public/resume/konstantin-bazarov-resume.pdf` | Скачивание по кнопке на `/resume` |
-| **Длинные кейсы** | Notion → `content/notion/` | Тела страниц `/cases/*`, не главная |
+| **Длинные кейсы** | Figma; локальные Vue-страницы, план typed markdown в `review-and-plan.md` | Notion исключён из будущего процесса; `content/notion/` содержит прежние артефакты |
 
 > **Правило:** при расхождении между кодом, JSON и Figma — **верна Figma** (и при необходимости обновляется `PDPortfolio-DS\ds\*.md`, затем код).
 
@@ -34,7 +36,7 @@
 
 1. **Прочитать** этот файл (`DS/DS.md`).
 2. **Прочитать** `PDPortfolio-DS\ds\CONTRACT.md` (минимум) и при необходимости `foundation.md` / `components.md`.
-3. **Открыть в Figma** нужный фрейм (для главной — [Main `46:489`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/Site-Portfolio-Bazarov?node-id=46-489)).
+3. **Открыть в Figma** нужный фрейм (для главной — [Main `46:489`](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=46-489)).
 4. **Сверить данные:** для карточек — обновить `content/sources/home-cards.json` по макету, затем `npm run typograf:apply`.
 5. **Сверить UI:** цвета/типографика/компоненты — из токенов `foundation.md`, не выдумывать новые hex в компонентах (фон карточки — поле данных в `home-cards.json`, как в Figma).
 6. **После изменений в Figma или в `PDPortfolio-DS\ds\`:** сначала обновить md в DS-репозитории, затем JSON/код здесь.
@@ -48,7 +50,7 @@
 | `title` | Заголовок карточки |
 | `subtitle` | Подзаголовок (компания) |
 | `badges` | Теги через запятую → отдельные бейджи в UI |
-| `image` | Путь к превью (из `public/home-cards/`) |
+| `image` | Путь к превью (из `public/cases/<slug>/`) |
 | `href` | Ссылка на кейс; пустая строка, если кейса нет |
 | `coming-soon.show` | Показать бейдж «скоро» |
 | `coming-soon.badge-image` | Картинка бейджа (например `/badges/coming-soon.png`) |
@@ -66,13 +68,13 @@
 |----------------------|-----------|
 | Tab `33:1544` | `.tab-link`, `.tab-link--active` в `tokens.css` · `SiteHero.vue` |
 | Icon button `43:803` | `.icon-button` в `tokens.css` · `SiteHero.vue` |
-| Badge `30:131` | `HomeBadge.vue` |
+| Badge set `312:1991`, Card `30:131`, Hero `312:2472` | `HomeBadge.vue` пока не подтверждён для обоих вариантов |
 | TopNav/Default `124:824` | `SiteHero.vue` — полный hero |
-| TopNav/Scroll `124:1106` | `SiteHero.vue` — `.top-nav-scroll` (padding `space/4`, `Shadow/2nd`) |
-| Avatar-Sm `124:709` / hover `124:713` | `.avatar-sm` — hover border `surface/action-primary-hover` |
+| TopNav/Scroll `124:1104` | `SiteHero.vue` — `.top-nav-scroll`; сверить новые padding и Shadow/2nd |
+| Avatar-Sm set `124:712`, Default `124:582` / Hover `124:713` | `.avatar-sm` — требуется сверка всех состояний |
 | Heading/* | `.text-heading-*` в `tokens.css` |
 
-Токены в коде: **`app/assets/css/tokens.css`** (зеркало `foundation.md`).
+Токены в коде: **`app/assets/css/tokens.css`**. Это прежнее зеркало `foundation.md`; после сверки 2026-09-09 оно не синхронизировано с новой шкалой. Менять значения вместе с потребителями; карта соответствия Text Styles и Variables находится в каноническом foundation.md.
 
 ## Что не дублировать
 
