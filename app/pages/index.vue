@@ -1,89 +1,61 @@
 <script setup lang="ts">
 import homeCardsData from "#content/home-cards.json";
-import type { HomeCard } from "~/types/home-card";
-import { getCardsInColumn, getVisibleHomeCards } from "~/utils/home-cards";
+import type { HomeCard, HomeFilterId } from "~/types/home-card";
+import { filterHomeCards, getVisibleHomeCards } from "~/utils/home-cards";
 
+const activeFilter = ref<HomeFilterId>("all");
 const homeCards = getVisibleHomeCards(homeCardsData as HomeCard[]);
-
-const columnCount = ref(3);
-
-function updateColumnCount() {
-  if (typeof window === "undefined") return;
-  const width = window.innerWidth;
-  columnCount.value = width <= 720 ? 1 : width <= 1100 ? 2 : 3;
-}
-
-onMounted(() => {
-  updateColumnCount();
-  window.addEventListener("resize", updateColumnCount, { passive: true });
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", updateColumnCount);
-});
+const filteredCards = computed(() => filterHomeCards(homeCards, activeFilter.value));
 
 useSiteHead();
 </script>
 
 <template>
-  <main class="home">
-    <div class="home__inner">
-      <SiteHero
-        :key="$route.path"
-        active-tab="projects"
+  <main class="home-showcase">
+    <div class="home-showcase__inner">
+      <HomeShowcaseHeader
+        :active-filter="activeFilter"
+        @select-filter="activeFilter = $event"
       />
 
-      <section class="cards-masonry" aria-label="Проекты">
-        <div
-          v-for="col in columnCount"
-          :key="col"
-          class="cards-masonry__col"
-        >
-          <div
-            v-for="card in getCardsInColumn(homeCards, col, columnCount)"
-            :key="card.index"
-            class="cards-masonry__item"
-          >
-            <HomeProjectCard :card="card" />
-          </div>
-        </div>
+      <section class="home-showcase__grid" aria-label="Проекты">
+        <HomeProjectCard
+          v-for="card in filteredCards"
+          :key="card.href"
+          :card="card"
+        />
+        <p v-if="filteredCards.length === 0" class="home-showcase__empty">
+          Кейсов этого направления пока нет.
+        </p>
       </section>
     </div>
   </main>
 </template>
 
 <style scoped>
-.home {
+.home-showcase {
   min-height: 100vh;
   background: var(--surface-default);
 }
 
-.home__inner {
-  max-width: var(--page-max);
-  margin: 0 auto;
-  padding: var(--space-hero-y) var(--space-page-x);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
+.home-showcase__inner {
+  width: 100%;
+  padding: 0 var(--space-6) var(--space-16);
 }
 
-.cards-masonry {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--card-column-gap);
+.home-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-12);
 }
 
-.cards-masonry__col {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--card-column-gap);
+.home-showcase__empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: var(--space-16) 0;
+  color: var(--text-muted);
+  text-align: center;
 }
 
-@media (max-width: 720px) {
-  .home__inner {
-    padding: var(--space-8) var(--space-4);
-  }
-}
 </style>

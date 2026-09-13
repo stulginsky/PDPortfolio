@@ -110,7 +110,8 @@ useSiteHead("Резюме — Константин Базаров");
 .resume-page__inner {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: var(--space-hero-y) var(--space-page-x);
+  /* Shared showcase grid: matches the Figma portfolio frame and home page. */
+  padding: var(--space-16) var(--space-8);
   display: flex;
   flex-direction: column;
   gap: 52px;
@@ -170,7 +171,16 @@ useSiteHead("Резюме — Константин Базаров");
   z-index: 1;
   width: min(274px, 46vw);
   height: auto;
-  opacity: 0.17;
+  opacity: 0;
+  transform: translateX(28px);
+  animation: resume-quote-left-enter 650ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+@keyframes resume-quote-left-enter {
+  to {
+    opacity: 0.17;
+    transform: translateX(0);
+  }
 }
 
 /* Светлые кавычки справа внизу на фоне */
@@ -311,6 +321,14 @@ useSiteHead("Резюме — Константин Базаров");
     --quote-br-size: 72px;
     width: var(--quote-br-size);
     margin-top: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-page__quote--left {
+    opacity: 0.17;
+    transform: none;
+    animation: none;
   }
 }
 </style>

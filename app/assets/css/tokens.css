@@ -6,6 +6,7 @@
   --accent-violet: #9333ea;
   --accent-plum: #6b21a8;
   --accent-aubergine: #2c1f39;
+  --accent-mint: #a8ffeb;
 
   /* Gray */
   --gray-00: #fafaf9;
@@ -81,11 +82,17 @@
   --font-variation-heading-xl-semibold: "wght" 600, "GRAD" 0, "XOPQ" 96,
     "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
     "YTUC" 712, "wdth" 100;
+  --font-variation-heading-base: "wght" 600, "GRAD" 0, "XOPQ" 96,
+    "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
+    "YTUC" 712, "wdth" 100;
   /* Body в Experience-блоках (Figma About) — Regular/Medium, YOPQ 79 */
   --font-variation-body-accent: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
   --font-variation-body-accent-medium: "wght" 500, "GRAD" 0, "XOPQ" 96,
+    "XTRA" 468, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
+    "YTUC" 712, "wdth" 100;
+  --font-variation-body-accent-semibold: "wght" 600, "GRAD" 0, "XOPQ" 96,
     "XTRA" 468, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
     "YTUC" 712, "wdth" 100;
 
@@ -123,6 +130,26 @@
   /* About two-column ratio (Figma 46:535): 710 + 594 */
   --resume-column-main-fr: 710;
   --resume-column-sidebar-fr: 594;
+
+  /* Canonical DS bridge for the Figma-driven showcase.
+     Legacy aliases above remain untouched until the site-wide token migration. */
+  --ds-text-size-xs: 12px;
+  --ds-text-size-base: 16px;
+  --ds-text-size-xl: 24px;
+  --ds-text-size-2xl: 32px;
+  --ds-text-size-3xl: 48px;
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-weight-bold: 700;
+  --ds-radius-xxlg: 32px;
+  --ds-surface-badge-chirp: var(--accent-mint);
+  --ds-surface-action-hover: var(--accent-lavender);
+  --ds-surface-action-pressed: var(--accent-plum);
+  --ds-surface-action-toggled: var(--accent-aubergine);
+  --ds-text-action: var(--accent-aubergine);
+  --ds-shadow-1st: 3px 6px 29px rgba(44, 31, 57, 0.3);
+  --ds-shadow-2nd: 3px 6px 20px rgba(44, 31, 57, 0.1);
 }
 
 *,
@@ -138,6 +165,8 @@ body {
   line-height: var(--line-height-base);
   color: var(--text-default);
   background: var(--surface-default);
+  font-optical-sizing: none;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -215,6 +244,7 @@ body {
   font-family: var(--font-sans);
   font-size: var(--size-base);
   font-weight: var(--weight-medium);
+  font-variation-settings: var(--font-variation-body-accent-medium);
   line-height: var(--line-height-heading-xl);
   letter-spacing: 0.01em;
   text-decoration: none;

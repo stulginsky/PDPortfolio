@@ -65,4 +65,34 @@ const pdfDownloadUrl = RESUME_PDF_PATH;
 .resume-actions__icon {
   display: block;
 }
+
+.resume-actions > .icon-button {
+  opacity: 0;
+  transform: translateX(-8px);
+  animation: resume-action-enter 300ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+.resume-actions > .icon-button:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+@keyframes resume-action-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-actions > .icon-button {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
 </style>

@@ -30,18 +30,19 @@ const props = withDefaults(
   align-items: center;
   max-width: 100%;
   min-width: 0;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-lg);
+  padding: 8px 12px;
+  border-radius: 32px;
   background: var(--surface-default);
   list-style: none;
 }
 
 .home-badge__text {
   font-family: var(--font-sans);
-  font-size: var(--size-sm);
-  font-weight: var(--weight-medium);
-  line-height: 1;
-  letter-spacing: var(--letter-spacing-badge);
+  font-size: 12px;
+  font-weight: var(--ds-font-weight-semibold);
+  font-variation-settings: var(--font-variation-body-accent-semibold);
+  line-height: 1.1;
+  letter-spacing: 0;
   color: var(--text-default);
 }
 
@@ -51,4 +52,5 @@ const props = withDefaults(
   white-space: nowrap;
   min-width: 0;
 }
+
 </style>

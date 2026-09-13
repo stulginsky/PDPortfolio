@@ -7,6 +7,7 @@ import avatarUrl from "~/assets/img/konstantin.png";
 defineProps<{
 
   activeTab: "projects" | "resume";
+  showCompactNav?: boolean;
 
 }>();
 
@@ -179,6 +180,8 @@ useHead({
 
 
   <nav
+
+    v-if="showCompactNav !== false"
 
     class="top-nav-scroll"
 
@@ -397,6 +400,8 @@ useHead({
   font-size: var(--size-base);
 
   font-weight: var(--weight-regular);
+
+  font-variation-settings: var(--font-variation-body-accent);
 
   line-height: 1.35;
 

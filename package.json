@@ -14,7 +14,6 @@
     "typograf:preview": "node scripts/typograf-preview.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/roboto-flex": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
     "nuxt": "^4.4.4",
     "vue": "^3.5.33",
