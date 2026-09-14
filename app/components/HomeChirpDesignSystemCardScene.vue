@@ -15,36 +15,62 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
       <img :src="dsAsset('chat-bubble.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
       <img :src="dsAsset('logotype.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
       <img :src="dsAsset('date-picker.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
-      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-stepper-middle" />
       <img :src="dsAsset('gender-select.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
       <img :src="dsAsset('button.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
-      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-stepper-right" />
-      <img :src="dsAsset('row-query-result.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
       <img :src="dsAsset('row-diagnosis.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
-      <img :src="dsAsset('row-list-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item" />
+      <img :src="dsAsset('row-query-result.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
+      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
+      <img :src="dsAsset('row-list-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
 
       <div class="chirp-ds-v2__code"><img :src="dsAsset('code.png')" alt="" /></div>
       <img :src="dsAsset('ellipse-active-glow.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" data-layer="Ellipse 5" />
       <img :src="dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" data-layer="Ellipse 6" />
     </div>
 
-    <div class="chirp-ds-v2__blur" />
+    <div class="chirp-ds-v2__pict chirp-ds-v2__pict--blurred">
+      <img :src="dsAsset('color-brand.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__color-brand" />
+      <img :src="dsAsset('images.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__images" />
+      <img :src="dsAsset('input-text.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__input-text" />
+      <img :src="dsAsset('chat-bubble.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
+      <img :src="dsAsset('logotype.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
+      <img :src="dsAsset('date-picker.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
+      <img :src="dsAsset('gender-select.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
+      <img :src="dsAsset('button.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
+      <img :src="dsAsset('row-diagnosis.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
+      <img :src="dsAsset('row-query-result.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
+      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
+      <img :src="dsAsset('row-list-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
+
+      <div class="chirp-ds-v2__code"><img :src="dsAsset('code.png')" alt="" /></div>
+      <img :src="dsAsset('ellipse-active-glow.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" />
+      <img :src="dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" />
+    </div>
   </div>
 </template>
 
 <style>
 .chirp-ds-v2 {
+  --chirp-ds-card-blur-height: 57.208cqw;
+
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #4ff5f5;
+  background: #13cacc;
 }
 
 .chirp-ds-v2__pict {
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+
+.chirp-ds-v2__pict--blurred {
+  z-index: 7;
+  filter: blur(20cqw);
+  mask-image: linear-gradient(to bottom, transparent calc(100% - var(--chirp-ds-card-blur-height)), black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(100% - var(--chirp-ds-card-blur-height)), black);
+  pointer-events: none;
 }
 
 .chirp-ds-v2__layer,
@@ -73,13 +99,12 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
 .chirp-ds-v2__chat-bubble { top: 82.787cqw; left: 0; z-index: 3; width: 32.737cqw; height: 83.606cqw; opacity: 1; }
 .chirp-ds-v2__logotype { top: -11.899cqw; left: 34.08cqw; width: 32.514cqw; height: 45.939cqw; }
 .chirp-ds-v2__date-picker { top: 35.382cqw; left: 34.08cqw; z-index: 4; width: 32.514cqw; height: 32.136cqw; }
-.chirp-ds-v2__row-stepper-middle { top: 68.861cqw; left: 34.08cqw; width: 32.514cqw; height: 10.568cqw; }
-.chirp-ds-v2__gender-select { top: 80.771cqw; left: 34.08cqw; width: 32.514cqw; height: 53.272cqw; }
-.chirp-ds-v2__button { top: -15.332cqw; left: 67.934cqw; width: 32.066cqw; height: 67.003cqw; }
-.chirp-ds-v2__row-stepper-right { top: 53.013cqw; left: 67.934cqw; width: 32.066cqw; height: 10.423cqw; }
+.chirp-ds-v2__gender-select { top: 68.86cqw; left: 34.08cqw; width: 32.514cqw; height: 53.272cqw; }
+.chirp-ds-v2__button { top: -15.332cqw; left: 67.934cqw; width: calc(32.066cqw + 2px); height: 67.003cqw; }
+.chirp-ds-v2__row-diagnosis { top: 53.013cqw; left: 67.934cqw; width: 32.066cqw; height: 18.612cqw; }
 .chirp-ds-v2__row-query { top: 64.777cqw; left: 67.934cqw; width: 32.066cqw; height: 10.636cqw; }
-.chirp-ds-v2__row-diagnosis { top: 76.754cqw; left: 67.934cqw; width: 32.066cqw; height: 18.612cqw; }
-.chirp-ds-v2__row-list-item { top: 96.709cqw; left: 67.934cqw; width: 32.066cqw; height: 42.116cqw; }
+.chirp-ds-v2__row-list-item--short { top: 76.754cqw; left: 67.934cqw; width: 32.066cqw; height: 10.423cqw; }
+.chirp-ds-v2__row-list-item--tall { top: 88.5cqw; left: 67.934cqw; width: 32.066cqw; height: 42.116cqw; }
 
 .chirp-ds-v2__code {
   top: 110.485cqw;
@@ -131,31 +156,16 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
     opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.chirp-ds-v2__blur {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 7;
-  height: 57.208cqw;
-  background: rgb(0 0 0 / 1%);
-  backdrop-filter: blur(20cqw);
-  mask-image: linear-gradient(to bottom, transparent, black);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
-  pointer-events: none;
-}
-
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__color-brand { top: -21.739cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__images { top: 10.005cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__input-text { top: 53.206cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__logotype { top: -21.739cqw; }
-:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-stepper-middle { top: 59.02cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__gender-select { top: 70.931cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__button { top: -21.739cqw; }
-:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-stepper-right { top: 46.606cqw; }
+:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-diagnosis { top: 46.606cqw; }
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-query { top: 58.37cqw; }
-:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-diagnosis { top: 70.348cqw; }
-:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-list-item { top: 90.303cqw; }
+:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-list-item--short { top: 70.348cqw; }
+:is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__row-list-item--tall { top: 82.113cqw; }
 
 :is(.project-card--chirp-design-system:hover:not(.project-card--ds-active-locked):not(:active), .project-card--ds-hover-locked) .chirp-ds-v2__chat-bubble {
   top: 7.904cqw;
@@ -197,10 +207,9 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__images { top: 12.922cqw; width: 32.676cqw; height: 41.779cqw; }
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__input-text { top: 56.041cqw; width: 32.676cqw; height: 19.508cqw; }
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__logotype { top: -18.764cqw; left: 34.016cqw; width: 32.452cqw; height: 45.854cqw; }
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-stepper-middle { top: 61.844cqw; left: 34.016cqw; width: 32.452cqw; height: 10.549cqw; }
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__gender-select { top: 73.732cqw; left: 34.016cqw; width: 32.452cqw; height: 53.173cqw; }
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__button { top: -18.764cqw; left: 67.808cqw; width: 32.006cqw; height: 66.879cqw; }
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-stepper-right { top: 49.453cqw; left: 67.808cqw; width: 32.006cqw; height: 10.403cqw; opacity: 0.6; }
+:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__button { top: -18.764cqw; left: 67.808cqw; width: calc(32.006cqw + 2px); height: 66.879cqw; }
+:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-diagnosis { top: 49.453cqw; left: 67.808cqw; width: 32.006cqw; height: 18.577cqw; opacity: 0.6; }
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-query { top: 61.197cqw; left: 67.808cqw; width: 32.006cqw; height: 10.616cqw; }
 
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__chat-bubble {
@@ -220,15 +229,15 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
   box-shadow: 0.754cqw 1.509cqw 7.168cqw rgb(44 31 57 / 30%);
 }
 
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-diagnosis {
+:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-list-item--short {
   top: 52.602cqw;
   left: 56.568cqw;
   width: 45.493cqw;
-  height: 26.405cqw;
+  height: 14.778cqw;
 }
 
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-list-item {
-  top: 81.05cqw;
+:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__row-list-item--tall {
+  top: 68.722cqw;
   left: 56.645cqw;
   width: 45.415cqw;
   height: 59.65cqw;
@@ -254,13 +263,13 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
 }
 
 :is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__ellipse-6 {
-  top: 29.451cqw;
-  left: -12.011cqw;
-  width: 189.906cqw;
-  height: 189.737cqw;
+  top: 72.451cqw;
+  left: 37.989cqw;
+  width: 99.906cqw;
+  height: 99.737cqw;
 }
 
-:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2__blur { height: 45.767cqw; }
+:is(.project-card--chirp-design-system:active, .project-card--ds-active-locked) .chirp-ds-v2 { --chirp-ds-card-blur-height: 45.767cqw; }
 
 .project-card--ds-hover-locked .chirp-ds-v2,
 .project-card--ds-hover-locked .chirp-ds-v2 *,

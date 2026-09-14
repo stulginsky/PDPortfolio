@@ -40,7 +40,44 @@
       </div>
     </div>
 
-    <div class="chirp-brand-v2__blur" data-layer="progressive blur" />
+    <div class="chirp-brand-v2__pict chirp-brand-v2__pict--blurred">
+      <div class="chirp-brand-v2__orb chirp-brand-v2__orb--outer" />
+      <div class="chirp-brand-v2__orb chirp-brand-v2__orb--middle" />
+      <div class="chirp-brand-v2__orb chirp-brand-v2__orb--inner" />
+      <div class="chirp-brand-v2__orb chirp-brand-v2__orb--core" />
+      <div class="chirp-brand-v2__orb chirp-brand-v2__orb--pulse" />
+
+      <div class="chirp-brand-v2__wave chirp-brand-v2__wave--animated">
+        <i v-for="index in 6" :key="`blur-${index}`" />
+      </div>
+
+      <img
+        src="/cases/nested-chirp-brand/layers/frame-hover.svg"
+        alt=""
+        class="chirp-brand-v2__wordmark chirp-brand-v2__wordmark--animated"
+      >
+
+      <div class="chirp-brand-v2__main-bird">
+        <img
+          src="/cases/nested-chirp-brand/layers/songbird-default.png"
+          alt=""
+        >
+        <img src="/cases/nested-chirp-brand/layers/songbird-hover.png" alt="">
+      </div>
+
+      <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--left">
+        <img
+          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          alt=""
+        >
+      </div>
+      <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--right">
+        <img
+          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          alt=""
+        >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,6 +98,14 @@
   inset: 0;
   overflow: hidden;
   transition: transform var(--brand-motion-duration) var(--brand-motion-ease);
+}
+
+.chirp-brand-v2__pict--blurred {
+  z-index: 4;
+  filter: blur(20cqw);
+  mask-image: linear-gradient(to bottom, transparent calc(100% - 57.208cqw), black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(100% - 57.208cqw), black);
+  pointer-events: none;
 }
 
 .chirp-brand-v2__orb {
@@ -286,21 +331,6 @@
   transform: rotate(-59.8deg);
 }
 
-.chirp-brand-v2__blur {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 4;
-  height: 57.208cqw;
-  background: rgb(0 0 0 / 1%);
-  backdrop-filter: blur(20cqw);
-  mask-image: linear-gradient(to bottom, transparent, black);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
-  pointer-events: none;
-  transition: height var(--brand-motion-duration) var(--brand-motion-ease);
-}
-
 :is(.project-card--chirp-brand:hover, .project-card--brand-hover-locked) .chirp-brand-v2__orb--outer {
   top: -7.076cqw;
   left: 9.767cqw;
@@ -404,9 +434,6 @@
   width: 29.326cqw;
   height: 20.707cqw;
   transform: rotate(-59.8deg);
-}
-:is(.project-card--chirp-brand:hover, .project-card--brand-hover-locked) .chirp-brand-v2__blur {
-  height: 57.208cqw;
 }
 
 .project-card--chirp-brand:not(.project-card--brand-hover-locked):is(:active, .project-card--brand-active-locked) .chirp-brand-v2__orb--outer {
@@ -512,9 +539,6 @@
   width: 29.326cqw;
   height: 20.707cqw;
   transform: rotate(-59.8deg);
-}
-.project-card--chirp-brand:not(.project-card--brand-hover-locked):is(:active, .project-card--brand-active-locked) .chirp-brand-v2__blur {
-  height: 57.208cqw;
 }
 
 .project-card--brand-hover-locked .chirp-brand-v2,

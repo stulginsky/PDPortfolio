@@ -83,6 +83,16 @@ function typografHomeCards(src) {
   }));
 }
 
+function typografSite(src) {
+  return {
+    ...src,
+    name: typografText(src.name),
+    role: typografText(src.role),
+    experience: typografText(src.experience),
+    footerCredit: typografText(src.footerCredit),
+  };
+}
+
 const jobs = [
   {
     source: "resume.json",
@@ -93,6 +103,11 @@ const jobs = [
     source: "home-cards.json",
     out: "home-cards.json",
     transform: typografHomeCards,
+  },
+  {
+    source: "site.json",
+    out: "site.json",
+    transform: typografSite,
   },
 ];
 

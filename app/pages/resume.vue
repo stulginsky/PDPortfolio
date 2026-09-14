@@ -97,6 +97,8 @@ useSiteHead("Резюме — Константин Базаров");
         </aside>
       </div>
     </div>
+
+    <SiteFooter />
   </main>
 </template>
 
@@ -111,7 +113,7 @@ useSiteHead("Резюме — Константин Базаров");
   max-width: var(--page-max);
   margin: 0 auto;
   /* Shared showcase grid: matches the Figma portfolio frame and home page. */
-  padding: var(--space-16) var(--space-8);
+  padding: var(--space-16) var(--space-8) 0;
   display: flex;
   flex-direction: column;
   gap: 52px;
@@ -202,9 +204,9 @@ useSiteHead("Резюме — Константин Базаров");
 :deep(.resume-page__summary-p) {
   margin: 0 0 1em;
   hyphens: auto;
-  font-family: var(--font-sans);
-  font-size: var(--size-base);
-  font-weight: var(--weight-bold);
+  font-family: var(--text-font-sans);
+  font-size: var(--text-size-base);
+  font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-xl);
   line-height: 1.4;
   color: var(--text-default);
@@ -223,18 +225,18 @@ useSiteHead("Резюме — Константин Базаров");
 
 .resume-page__section-title {
   margin: 0;
-  font-family: var(--font-sans);
-  font-size: var(--size-xl);
-  font-weight: var(--weight-bold);
+  font-family: var(--text-font-sans);
+  font-size: var(--text-size-lg);
+  font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-xl);
-  line-height: var(--line-height-heading-xl);
+  line-height: 1.3;
   color: var(--text-muted);
 }
 
 .resume-page__highlights {
   margin: 0;
   padding-left: 21px;
-  font-size: var(--size-sm);
+  font-size: var(--text-size-sm);
   line-height: 1.4;
   letter-spacing: 0.01em;
   color: var(--text-default);
@@ -242,7 +244,7 @@ useSiteHead("Резюме — Константин Базаров");
 
 :deep(.resume-page__skill-body) {
   margin: 0;
-  font-size: var(--size-sm);
+  font-size: var(--text-size-sm);
   line-height: 1.4;
   color: var(--text-default);
   white-space: pre-line;
@@ -250,13 +252,13 @@ useSiteHead("Резюме — Константин Базаров");
 
 .resume-page__education-entry {
   margin: 0 0 0.25em;
-  font-size: var(--size-base);
+  font-size: var(--text-size-base);
   line-height: 1.45;
   color: var(--text-default);
 }
 
 .resume-page__education-entry strong {
-  font-weight: var(--weight-medium);
+  font-weight: var(--text-weight-medium);
 }
 
 @media (max-width: 1100px) {
@@ -309,7 +311,7 @@ useSiteHead("Резюме — Константин Базаров");
 
 @media (max-width: 720px) {
   .resume-page__inner {
-    padding: var(--space-8) var(--space-4);
+    padding: var(--space-8) var(--space-4) 0;
     gap: var(--space-8);
   }
 

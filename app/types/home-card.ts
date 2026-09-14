@@ -12,14 +12,15 @@ export const HOME_FILTERS = [
 
 export type HomeFilterId = (typeof HOME_FILTERS)[number]["id"];
 export type HomeDirection = Exclude<HomeFilterId, "all">;
+export type HomeCardScene = "health" | "ux" | "brand" | "design-system";
 
 export type HomeCard = {
   title: string;
   subtitle: string;
   badges: string;
-  image: string;
   backgroundColor?: string;
   href: string;
+  scene: HomeCardScene;
   directions: HomeDirection[];
   show: boolean;
   index: number;

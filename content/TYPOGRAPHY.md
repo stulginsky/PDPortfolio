@@ -23,6 +23,7 @@ npm run typograf:preview  # превью summary из sources (сверка с t
 |-----------------------|----------------------------------|
 | `content/sources/resume.json` | `content/resume.json` |
 | `content/sources/home-cards.json` | `content/home-cards.json` |
+| `content/sources/site.json` | `content/site.json` |
 
 Оба JSON в git: sources — для правок, `content/*.json` — то, что отдаётся на сайт.
 
@@ -89,8 +90,7 @@ Figma (Main / About) → content/sources/*.json (plain) → typograf:apply → c
 | Экран / блок | Откуда текст | Куда класть plain |
 |--------------|--------------|-------------------|
 | Главная, резюме | **Figma** | `content/sources/*.json` |
-| Кейсы (длинные) | **Notion** (синк) | пока в `.vue` / `content/notion/` — при миграции тот же паттерн: sources → apply |
-| Hero (имя, роль) | Figma, редко меняется | шаблон `SiteHero.vue` или вынести в `sources/site.json` при необходимости |
+| Hero (имя, роль, контакты) | Figma | `content/sources/site.json` |
 
 ### Коммит
 

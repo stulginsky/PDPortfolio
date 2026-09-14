@@ -23,5 +23,9 @@ export function getTypograf() {
 export function typografText(text) {
   if (text == null || text === "") return text ?? "";
   if (!String(text).trim()) return text;
-  return getTypograf().execute(String(text)).trimEnd();
+  return getTypograf()
+    .execute(String(text))
+    .replace(/\b([12]\d{3})\s*—\s*([12]\d{3})\b/g, "$1\u00a0—\u00a0$2")
+    .replace(/\bE-(comm(?:erce)?)/gi, "E‑$1")
+    .trimEnd();
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
 import avatarUrl from "~/assets/img/konstantin.png";
+import siteData from "#content/site.json";
+import type { SiteContent } from "~/types/site";
 
 
 
@@ -10,6 +12,9 @@ defineProps<{
   showCompactNav?: boolean;
 
 }>();
+
+const site = siteData as SiteContent;
+const phoneHref = `tel:${site.phone.replace(/[^\d+]/g, "")}`;
 
 
 
@@ -85,13 +90,11 @@ useHead({
 
       <div class="hero__intro">
 
-        <h1 class="hero__name text-heading-4xl">Константин Базаров</h1>
+        <TypoText :content="site.name" tag="h1" class="hero__name text-heading-4xl" />
 
         <p class="hero__role text-heading-xl text-heading-xl--semibold">
 
-          Продуктовый дизайнер
-
-          <strong>7+ лет опыта в SaaS, E-comm, BI, ERP</strong>
+          <TypoText :content="site.role" /><span aria-hidden="true"> </span><strong><TypoText :content="site.experience" /></strong>
 
         </p>
 
@@ -99,15 +102,15 @@ useHead({
 
         <p class="hero__contacts">
 
-          <a href="mailto:stulginsky@gmail.com">stulginsky@gmail.com</a>
+          <a :href="`mailto:${site.email}`"><TypoText :content="site.email" /></a>
 
           <span class="hero__sep" aria-hidden="true">·</span>
 
-          <a href="tel:+79258493933">+7 (925) 849 39 33</a>
+          <a :href="phoneHref"><TypoText :content="site.phone" /></a>
 
           <span class="hero__sep" aria-hidden="true">·</span>
 
-          <span>TG @Stulginsky</span>
+          <a :href="site.telegramUrl" target="_blank" rel="noopener noreferrer"><TypoText :content="site.telegramLabel" /></a>
 
         </p>
 
@@ -269,6 +272,11 @@ useHead({
 
   </nav>
 
+  <SiteScrollToTopButton
+    v-if="activeTab === 'resume'"
+    :visible="isCompact"
+  />
+
 </template>
 
 
@@ -283,7 +291,7 @@ useHead({
 
   align-items: center;
 
-  gap: var(--space-12);
+  gap: 0;
 
 }
 
@@ -297,7 +305,9 @@ useHead({
 
   align-items: center;
 
-  gap: var(--space-3);
+  gap: var(--space-4);
+
+  padding-bottom: var(--space-12);
 
   text-align: center;
 
@@ -365,7 +375,7 @@ useHead({
 
 .hero__role {
 
-  margin: 0 0 var(--space-3) 0;
+  margin: 0;
 
   color: var(--text-default);
 
@@ -397,9 +407,9 @@ useHead({
 
   margin: 0;
 
-  font-size: var(--size-base);
+  font-size: var(--text-size-base);
 
-  font-weight: var(--weight-regular);
+  font-weight: var(--text-weight-regular);
 
   font-variation-settings: var(--font-variation-body-accent);
 
@@ -429,9 +439,28 @@ useHead({
 
 
 
+.hero :is(a, button):focus-visible,
+.top-nav-scroll :is(a, button):focus-visible {
+
+  outline: 2px solid var(--border-focus);
+
+  outline-offset: 3px;
+
+}
+
+
+
+.hero__contacts a:focus-visible {
+
+  border-radius: var(--radius-sm);
+
+}
+
+
+
 .hero__sep {
 
-  font-size: var(--size-sm);
+  font-size: var(--text-size-sm);
 
 }
 
@@ -447,7 +476,13 @@ useHead({
 
   justify-content: center;
 
-  min-height: 50px;
+  height: 82px;
+
+  min-height: 82px;
+
+  padding-bottom: var(--space-8);
+
+  box-sizing: border-box;
 
 }
 
@@ -507,7 +542,7 @@ useHead({
 
   background: var(--surface-default);
 
-  box-shadow: var(--shadow-2nd);
+  box-shadow: var(--effect-shadow-2nd);
 
   transform: translateY(-100%);
 
@@ -591,9 +626,13 @@ useHead({
 
   .hero__nav {
 
+    height: auto;
+
     flex-direction: column;
 
-    gap: var(--space-4);
+    justify-content: flex-start;
+
+    gap: var(--space-8);
 
   }
 
@@ -609,7 +648,7 @@ useHead({
 
   .hero__name {
 
-    font-size: clamp(32px, 8vw, var(--size-4xl));
+    font-size: clamp(32px, 8vw, var(--text-size-3xl));
 
   }
 

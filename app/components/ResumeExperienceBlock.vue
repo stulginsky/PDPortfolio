@@ -94,8 +94,8 @@ defineProps<{
 .resume-exp__list {
   margin: 0;
   padding-left: 24px;
-  font-size: var(--size-base);
-  font-weight: var(--weight-regular);
+  font-size: var(--text-size-base);
+  font-weight: var(--text-weight-regular);
   font-variation-settings: var(--font-variation-body-accent);
   line-height: 1.45;
   color: var(--text-body-accent);
@@ -117,12 +117,12 @@ defineProps<{
 }
 
 :deep(.resume-exp__label) {
-  font-weight: var(--weight-medium);
+  font-weight: var(--text-weight-medium);
   font-variation-settings: var(--font-variation-body-accent-medium);
 }
 
 .resume-exp__paragraphs {
-  font-size: var(--size-base);
+  font-size: var(--text-size-base);
   font-variation-settings: var(--font-variation-body-accent);
   line-height: 1.45;
   color: var(--text-body-accent);

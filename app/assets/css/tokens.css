@@ -1,75 +1,107 @@
-/* Design tokens — sync with PDPortfolio-DS/ds/foundation.md */
+/* Canonical Web syntax is defined on the matching Figma Variables. */
 :root {
-  /* Accent */
+  /* Primitive */
   --accent-lavender: #f5ebff;
   --accent-lilac: #c084fc;
   --accent-violet: #9333ea;
   --accent-plum: #6b21a8;
   --accent-aubergine: #2c1f39;
   --accent-mint: #a8ffeb;
-
-  /* Gray */
+  --blue-600: #019dc0;
   --gray-00: #fafaf9;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
+  --gray-200-alpha-85: rgb(229 231 235 / 85%);
   --gray-300: #d1d5db;
   --gray-500: #6b7280;
   --gray-700: #374151;
   --gray-900: #111827;
   --gray-950: #030712;
-
-  /* Functional */
+  --teal-200-alpha-50: rgb(208 226 221 / 50%);
   --success-500: #22c55e;
   --warning-500: #f59e0b;
   --error-500: #ef4444;
   --info-500: #3b82f6;
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xlg: 24px;
+  --radius-xxlg: 32px;
+  --radius-xxxlg: 48px;
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-2-5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --text-size-xs: 12px;
+  --text-size-sm: 14px;
+  --text-size-base: 16px;
+  --text-size-lg: 18px;
+  --text-size-lg-plus: 22px;
+  --text-size-xl: 24px;
+  --text-size-xl-plus: 28px;
+  --text-size-2xl: 32px;
+  --text-size-3xl: 48px;
+  --text-size-4xl: 72px;
+  --text-weight-light: 300;
+  --text-weight-regular: 400;
+  --text-weight-medium: 500;
+  --text-weight-semibold: 600;
+  --text-weight-bold: 700;
+  --text-font-sans: "Roboto Flex Variable", system-ui, sans-serif;
+  --shadow-color: #164651;
+  --shadow-color-1st: rgb(44 31 57 / 30%);
+  --shadow-color-2nd: rgb(44 31 57 / 10%);
 
-  /* Semantic — surfaces */
+  /* Semantic */
   --surface-default: var(--gray-00);
   --surface-subtle: var(--gray-100);
   --surface-raised: var(--gray-200);
   --surface-action-primary: var(--accent-violet);
   --surface-action-primary-hover: var(--accent-plum);
-
-  /* Semantic — text */
+  --surface-action-hover: var(--accent-lavender);
+  --surface-action-pressed: var(--accent-plum);
+  --surface-action-toggled: var(--accent-aubergine);
+  --surface-badge-chirp: var(--accent-mint);
+  --surface-menu-item-default: var(--accent-plum);
+  --surface-menu-item-hover: var(--accent-violet);
+  --surface-menu-item-pressed: var(--accent-aubergine);
+  --surface-fullscreen-header-start: var(--gray-200-alpha-85);
+  --surface-fullscreen-header-end: var(--teal-200-alpha-50);
   --text-default: var(--gray-900);
   --text-secondary: var(--gray-700);
   --text-muted: var(--gray-500);
   --text-subtle: var(--gray-300);
   --text-inverse: var(--gray-00);
-  --text-accent: var(--accent-violet);
+  --text-accent-general: var(--accent-violet);
+  --text-accent-chirp: var(--blue-600);
   --text-body-accent: var(--accent-aubergine);
+  --text-action: var(--accent-aubergine);
+  --text-link-hover: var(--accent-violet);
+  --text-link-pressed: var(--accent-plum);
   --text-error: var(--error-500);
-
-  /* Semantic — borders */
   --border-default: var(--gray-200);
   --border-strong: var(--gray-300);
   --border-focus: var(--accent-violet);
   --border-error: var(--error-500);
+  --border-action-hover: var(--accent-plum);
+  --border-action-pressed: var(--accent-violet);
+  --bg-success: var(--success-500);
+  --bg-warning: var(--warning-500);
+  --bg-error: var(--error-500);
+  --bg-info: var(--info-500);
+  --effect-shadow-1st: 3.023749px 6.047498px 28.725616px var(--shadow-color-1st);
+  --effect-shadow-2nd: 3.023749px 6.047498px 20px var(--shadow-color-2nd);
 
-  /* Typography */
-  --font-sans: "Roboto Flex Variable", system-ui, sans-serif;
-  --size-xs: 12px;
-  --size-sm: 14px;
-  --size-base: 16px;
-  --size-lg: 16px;
-  --size-xl: 18px;
-  --size-2xl: 20px;
-  --size-3xl: 28px;
-  --size-4xl: 48px;
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-  --line-height-tight: 1.2;
-  --line-height-base: 1.5;
-  --line-height-heading-xl: 1.3;
-  --line-height-heading-lg: 1.4;
-  --letter-spacing-tight: -0.005em;
-  --letter-spacing-badge: 0.03em;
-
-  /* Roboto Flex instances from Figma (DS/Heading/*) */
+  /* Figma Text Style axis values */
   --font-variation-heading-3xl: "wght" 700, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
@@ -85,7 +117,6 @@
   --font-variation-heading-base: "wght" 600, "GRAD" 0, "XOPQ" 96,
     "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
     "YTUC" 712, "wdth" 100;
-  /* Body в Experience-блоках (Figma About) — Regular/Medium, YOPQ 79 */
   --font-variation-body-accent: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
@@ -96,60 +127,12 @@
     "XTRA" 468, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,
     "YTUC" 712, "wdth" 100;
 
-  /* Radius */
-  --radius-none: 0;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xlg: 24px;
-  --radius-card: var(--radius-xlg);
-
-  /* Space */
-  --space-0: 0;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-hero-y: 92px;
-  --space-page-x: 40px;
-
-  /* Shadow (Figma Shadow/1st, Shadow/2nd) */
-  --shadow-color: #164651;
-  --shadow-1st: 3px 6px 29px rgba(22, 70, 81, 0.3);
-  --shadow-2nd: 3px 6px 20px rgba(22, 70, 81, 0.06);
-
-  /* Layout */
+  /* Current page layout, not a Figma Variable collection */
   --page-max: 1360px;
-  --card-column-gap: 20px;
+  --space-page-x: 40px;
   --resume-column-gap: 72px;
-  /* About two-column ratio (Figma 46:535): 710 + 594 */
   --resume-column-main-fr: 710;
   --resume-column-sidebar-fr: 594;
-
-  /* Canonical DS bridge for the Figma-driven showcase.
-     Legacy aliases above remain untouched until the site-wide token migration. */
-  --ds-text-size-xs: 12px;
-  --ds-text-size-base: 16px;
-  --ds-text-size-xl: 24px;
-  --ds-text-size-2xl: 32px;
-  --ds-text-size-3xl: 48px;
-  --ds-font-weight-regular: 400;
-  --ds-font-weight-medium: 500;
-  --ds-font-weight-semibold: 600;
-  --ds-font-weight-bold: 700;
-  --ds-radius-xxlg: 32px;
-  --ds-surface-badge-chirp: var(--accent-mint);
-  --ds-surface-action-hover: var(--accent-lavender);
-  --ds-surface-action-pressed: var(--accent-plum);
-  --ds-surface-action-toggled: var(--accent-aubergine);
-  --ds-text-action: var(--accent-aubergine);
-  --ds-shadow-1st: 3px 6px 29px rgba(44, 31, 57, 0.3);
-  --ds-shadow-2nd: 3px 6px 20px rgba(44, 31, 57, 0.1);
 }
 
 *,
@@ -160,9 +143,9 @@
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
-  font-size: var(--size-base);
-  line-height: var(--line-height-base);
+  font-family: var(--text-font-sans);
+  font-size: var(--text-size-base);
+  line-height: 1.5;
   color: var(--text-default);
   background: var(--surface-default);
   font-optical-sizing: none;
@@ -170,43 +153,43 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* DS text styles — use on headings instead of font-weight alone */
+/* Existing page styles now consume canonical Figma primitives. */
 .text-heading-3xl,
 .text-heading-4xl,
 .text-heading-xl {
-  font-family: var(--font-sans);
+  font-family: var(--text-font-sans);
   font-synthesis: none;
 }
 
 .text-heading-3xl {
-  font-size: var(--size-3xl);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-size-xl-plus);
+  font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-3xl);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
 }
 
 .text-heading-4xl {
-  font-size: var(--size-4xl);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-size-3xl);
+  font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-4xl);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
 }
 
 .text-heading-xl {
-  font-size: var(--size-xl);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-size-lg);
+  font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-xl);
-  line-height: var(--line-height-heading-xl);
+  line-height: 1.3;
 }
 
 .text-heading-xl--semibold {
-  font-weight: var(--weight-semibold);
+  font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-xl-semibold);
 }
 
-/* Icon button — DS component (43:803) */
+/* Icon button — DS component (43:803). */
 .icon-button {
   display: inline-flex;
   align-items: center;
@@ -225,15 +208,15 @@ body {
 
 .icon-button:hover {
   color: var(--text-default);
-  background: var(--accent-lavender);
+  background: var(--surface-action-hover);
 }
 
 .icon-button:active {
   color: var(--text-inverse);
-  background: var(--accent-plum);
+  background: var(--surface-action-pressed);
 }
 
-/* Tab — DS component (33:1544), inactive states */
+/* Tab — DS component (33:1544), inactive states. */
 .tab-link {
   display: inline-flex;
   align-items: center;
@@ -241,11 +224,11 @@ body {
   min-width: 100px;
   padding: 14px var(--space-4);
   border-radius: var(--radius-xlg);
-  font-family: var(--font-sans);
-  font-size: var(--size-base);
-  font-weight: var(--weight-medium);
+  font-family: var(--text-font-sans);
+  font-size: var(--text-size-base);
+  font-weight: var(--text-weight-medium);
   font-variation-settings: var(--font-variation-body-accent-medium);
-  line-height: var(--line-height-heading-xl);
+  line-height: 1.3;
   letter-spacing: 0.01em;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -258,21 +241,21 @@ body {
 
 .tab-link:not(.tab-link--active):hover {
   color: var(--text-default);
-  background: var(--accent-lavender);
+  background: var(--surface-action-hover);
 }
 
 .tab-link:not(.tab-link--active):active {
   color: var(--text-inverse);
-  background: var(--accent-plum);
+  background: var(--surface-action-pressed);
 }
 
 .tab-link--active {
   color: var(--text-inverse);
-  background: var(--accent-aubergine);
+  background: var(--surface-action-toggled);
   cursor: default;
 }
 
-/* Avatar-Sm — DS 124:709 (default), hover 124:713 → surface/action-primary-hover */
+/* Avatar-Sm — DS 124:582. */
 .avatar-sm {
   flex-shrink: 0;
   width: 50px;

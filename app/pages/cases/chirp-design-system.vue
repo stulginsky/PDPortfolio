@@ -22,6 +22,6 @@ useSiteHead("Chirp Design System");
 
 .design-system-placeholder h1,
 .design-system-placeholder p { margin: 0; }
-.design-system-placeholder h1 { font-size: var(--ds-text-size-2xl); }
-.design-system-placeholder__back { color: var(--ds-text-action); }
+.design-system-placeholder h1 { font-size: var(--text-size-2xl); }
+.design-system-placeholder__back { color: var(--text-action); }
 </style>
