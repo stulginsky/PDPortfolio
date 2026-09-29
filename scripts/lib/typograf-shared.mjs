@@ -2,6 +2,19 @@ import Typograf from "typograf";
 
 let instance;
 
+const widowWords = [
+  "а", "в", "во", "и", "к", "ко", "на", "не", "ни", "о", "об", "от", "по",
+  "с", "со", "у", "за", "из", "до", "для", "над", "под", "при", "про", "без",
+  "как", "что", "это", "его", "её", "их", "всё", "все", "или", "либо", "ещё", "еще",
+].join("|");
+
+function bindWidowWords(text) {
+  return text.replace(
+    new RegExp(`(^|[^\\p{L}])(${widowWords})[ \\t]+(?=\\p{L})`, "giu"),
+    "$1$2\u00a0",
+  );
+}
+
 export function getTypograf() {
   if (!instance) {
     instance = new Typograf({
@@ -23,9 +36,10 @@ export function getTypograf() {
 export function typografText(text) {
   if (text == null || text === "") return text ?? "";
   if (!String(text).trim()) return text;
-  return getTypograf()
+  return bindWidowWords(getTypograf()
     .execute(String(text))
     .replace(/\b([12]\d{3})\s*—\s*([12]\d{3})\b/g, "$1\u00a0—\u00a0$2")
     .replace(/\bE-(comm(?:erce)?)/gi, "E‑$1")
-    .trimEnd();
+    .replace(/\b(AI|B2B|B2C|UX|UI|MVP)-(?=\p{L})/gu, "$1‑")
+    .trimEnd());
 }

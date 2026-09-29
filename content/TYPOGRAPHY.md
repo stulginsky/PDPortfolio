@@ -24,6 +24,8 @@ npm run typograf:preview  # превью summary из sources (сверка с t
 | `content/sources/resume.json` | `content/resume.json` |
 | `content/sources/home-cards.json` | `content/home-cards.json` |
 | `content/sources/site.json` | `content/site.json` |
+| `content/sources/cases/chirp-product.json` | `content/cases/chirp-product.json` |
+| `content/sources/cases/chirp-product.typograf.txt` | основной текст Chirp (ручная типографика) |
 
 Оба JSON в git: sources — для правок, `content/*.json` — то, что отдаётся на сайт.
 
@@ -41,12 +43,13 @@ npm run typograf:preview  # превью summary из sources (сверка с t
 |-------|------|
 | `/resume` | summary, опыт, highlights, skills, education |
 | Главная | `title`, `subtitle`, бейджи |
+| Product case Chirp | весь видимый текст страницы и case-компонентов |
 
 Заголовки секций резюме (`<h2>` с `title`) — plain в шаблоне или из JSON без типографа по желанию; сейчас `education.title`, `highlights.title` тоже проходят apply.
 
 ## Добавление нового текста
 
-1. Добавить plain text в `content/sources/…`.
+1. Добавить plain text в `content/sources/…` (для кейса — `content/sources/cases/<case>.json`).
 2. При необходимости расширить `scripts/apply-typograf-content.mjs` (новые поля).
 3. `npm run typograf:apply`.
 4. Вывести в Vue через `<TypoText :content="..." />`.
@@ -74,6 +77,14 @@ Figma (Main / About) → content/sources/*.json (plain) → typograf:apply → c
 4. При вставке **убрать артефакты Figma**: лишние переводы строк, неразрывные пробелы Unicode (U+00A0), ручные переносы в середине слова. Обычные пробелы и абзацы — ок.
 5. `npm run typograf:apply` — nbsp, кавычки «ёлочки», тире для веба.
 6. Сверить страницу с макетом (смысл и переносы; пиксель-в-пиксель переносы строк не копируем).
+
+### Кейсы
+
+Для кейса финальный текст Figma попадает в `content/sources/cases/<case>.json`, а страница и её case-компоненты получают только сгенерированный `content/cases/<case>.json` через `TypoText`. Не вставлять текст Figma или ручные `&nbsp;`/неразрывные дефисы в `.vue`.
+
+Если текст выдан после ручной типографики, вставлять его в `content/sources/cases/<case>.typograf.txt` по одной смысловой строке: метаданные, заголовки, абзацы, подписи изображений и связанный кейс — в визуальном порядке страницы. Пустые строки используются только для читаемости и не считаются. Допустимы HTML-сущности (`&nbsp;`, `&laquo;`, `&raquo;`, `&mdash;`, `&ndash;`, `&middot;`, `&rarr;`, `&#8209;`): build декодирует их в Unicode и не применяет к этому тексту Typograf повторно.
+
+Для автоматически типографируемых источников `typograf:apply` делает неразрывными составные термины с дефисом: `AI‑`, `B2B‑`, `B2C‑`, `UX‑`, `UI‑`, `MVP‑`. Ручной источник `.typograf.txt` является финальным и не проходит эти автоматические замены.
 
 ### Что не переносим из Figma
 

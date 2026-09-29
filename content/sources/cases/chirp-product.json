@@ -1,0 +1,60 @@
+{
+  "pageTitle": "Chirp AI health assistant — Product Discovery",
+  "backLabel": "Вернуться к проектам",
+  "copy": [
+    "Chirp AI health assistant — Product Discovery",
+    "My role",
+    "Product Designer · UX Researcher",
+    "Case focus",
+    "Product Discovery · Product Architecture · Business Analysis · MVP Scope · AI Product Design"
+  ],
+  "media": [
+    {
+      "title": "Когда включается Chirp",
+      "asset": "P02.svg",
+      "alt": "Схема сценариев включения Chirp"
+    },
+    {
+      "title": "Разные данные — общий принцип",
+      "asset": "P03.svg",
+      "alt": "Схема двух контуров Chirp"
+    },
+    {
+      "title": "Одна архитектура — три уровня ценности",
+      "asset": "P04.svg",
+      "alt": "Карта ценности для врача, пациента и клиники"
+    },
+    {
+      "title": "От контекста к основанию для действия",
+      "asset": "P05.svg",
+      "alt": "Схема проверяемого ответа Chirp"
+    },
+    {
+      "title": "Каждому риску — мера контроля",
+      "asset": "P06.svg",
+      "alt": "Карта рисков медицинского AI и мер контроля"
+    },
+    {
+      "title": "Что необходимо для проверки гипотезы",
+      "asset": "P07.svg",
+      "alt": "Схема границ первого MVP Chirp"
+    },
+    {
+      "title": "Два контура — два статуса",
+      "asset": "P08.svg",
+      "alt": "Схема статусов B2B и B2C контуров"
+    }
+  ],
+  "ui": {
+    "relatedTitle": "Related cases",
+    "relatedDescription": "Product Discovery → UX Deep Dive → Brand → Design system\nПочему продукт должен существовать → как он должен работать → как он должен ощущаться → как он должен выглядеть",
+    "openMedia": "Открыть «{title}» на весь экран",
+    "viewerLabel": "Просмотр иллюстрации: {title}",
+    "closeViewer": "Закрыть просмотр",
+    "zoomTo": "Zoom to {value}%",
+    "zoomToFit": "Zoom to Fit",
+    "previousRelated": "Показать предыдущие связанные кейсы",
+    "nextRelated": "Показать следующие связанные кейсы"
+  }
+}
+

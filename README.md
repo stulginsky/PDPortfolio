@@ -1,5 +1,9 @@
 # Nuxt Minimal Starter
 
+## Project contracts
+
+- Design-system contracts, including case-page composition, are maintained in the sibling repository `E:\GitHub\PDPortfolio-DS\ds`.
+
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import avatarUrl from "~/assets/img/konstantin.png";
+import avatarUrl from "~/assets/img/avatar-portrait.jpeg";
 import { HOME_FILTERS, type HomeFilterId } from "~/types/home-card";
 
 defineProps<{ activeFilter: HomeFilterId }>();

@@ -10,13 +10,60 @@ import { typografText } from "./lib/typograf-shared.mjs";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const sourcesDir = join(root, "content", "sources");
 const contentDir = join(root, "content");
+const manualCaseBodyPath = join(sourcesDir, "cases", "chirp-product.typograf.txt");
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
 }
 
 function writeJson(path, data) {
+  mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+}
+
+function typografTree(value) {
+  if (typeof value === "string") return typografText(value);
+  if (Array.isArray(value)) return value.map(typografTree);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, child]) => [key, typografTree(child)]),
+    );
+  }
+  return value;
+}
+
+function decodeTypografEntities(text) {
+  const entities = {
+    "&nbsp;": "\u00a0",
+    "&#160;": "\u00a0",
+    "&#xA0;": "\u00a0",
+    "&laquo;": "«",
+    "&raquo;": "»",
+    "&mdash;": "—",
+    "&ndash;": "–",
+    "&middot;": "·",
+    "&rarr;": "→",
+    "&#8209;": "‑",
+  };
+  return text.replace(/&(?:nbsp|#160|#xA0|laquo|raquo|mdash|ndash|middot|rarr|#8209);/g, (entity) => entities[entity]);
+}
+
+function readManualCaseText() {
+  if (!existsSync(manualCaseBodyPath)) {
+    throw new Error(`Нет источника ручной типографики: ${manualCaseBodyPath}`);
+  }
+
+  const lines = readFileSync(manualCaseBodyPath, "utf8")
+    .split(/\r?\n/)
+    .filter((line) => line.trim())
+    .map((line) => decodeTypografEntities(line.trim()));
+
+  if (lines.length !== 61) {
+    throw new Error(
+      `Неверное число строк в ${manualCaseBodyPath}: ${lines.length}; ожидается 61.`,
+    );
+  }
+  return lines;
 }
 
 function typografBadgesString(badges) {
@@ -93,6 +140,33 @@ function typografSite(src) {
   };
 }
 
+function typografCase(src) {
+  const out = typografTree(src);
+  const lines = readManualCaseText();
+  const copyLineIndexes = [
+    3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    23, 24, 25, 28, 29, 30, 33, 34, 35, 38, 39, 40, 41, 42, 43,
+    44, 45, 46, 49, 50, 51, 52, 53, 56, 57,
+  ];
+  const mediaLineIndexes = [[9, 10], [21, 22], [26, 27], [31, 32], [36, 37], [47, 48], [54, 55]];
+  return {
+    ...out,
+    // Весь текст ниже предоставлен после ручной типографики и не должен быть
+    // повторно изменён библиотекой Typograf.
+    copy: [out.copy[0], out.copy[1], lines[0], lines[1], lines[2], ...copyLineIndexes.map((index) => lines[index])],
+    media: out.media.map((item, index) => ({
+      ...item,
+      title: lines[mediaLineIndexes[index][0]],
+      alt: lines[mediaLineIndexes[index][1]],
+    })),
+    ui: {
+      ...out.ui,
+      relatedTitle: lines[58],
+      relatedDescription: `${lines[59]}\n${lines[60]}`,
+    },
+  };
+}
+
 const jobs = [
   {
     source: "resume.json",
@@ -108,6 +182,11 @@ const jobs = [
     source: "site.json",
     out: "site.json",
     transform: typografSite,
+  },
+  {
+    source: "cases/chirp-product.json",
+    out: "cases/chirp-product.json",
+    transform: typografCase,
   },
 ];
 

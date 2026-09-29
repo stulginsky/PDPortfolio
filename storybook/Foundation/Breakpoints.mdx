@@ -1,0 +1,32 @@
+﻿import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Breakpoints" />
+
+# Responsive Breakpoints
+
+DS использует `min-width` breakpoints. Свойство `Breakpoint` в Component Sets: `base` — ниже первого порога, `min-N` — начиная с N px.
+
+| Viewport preset | Ширина | Роль |
+|---|---|---|
+| Mobile 320 | 320px | Минимальный поддерживаемый |
+| Mobile 370 | 370px | Средний мобильный |
+| Mobile 410 | 410px | Крупный мобильный |
+| Mobile 425 | 425px | Граница Footer `min-410` |
+| Phablet 534 | 534px | — |
+| Tablet 720 | 720px | — |
+| Tablet 768 | 768px | `min-768`: case layout changes |
+| Desktop 1024 | 1024px | `min-1024`: dropdown вместо fullscreen menu |
+| Desktop 1280 | 1280px | `min-1280`: case body style changes |
+| Desktop 1440 | 1440px | Reference desktop |
+| Desktop 1920 | 1920px | Wide desktop |
+
+## Компонентные breakpoints
+
+| Компонент | Threshold | Поведение |
+|---|---|---|
+| Footer | `min-410` | vertical → horizontal layout |
+| Filters | `min-1024` | FullscreenMenu/Mob → DropdownFilter-web |
+| Case layout | `min-768` | `--case-flow-gap`, `--case-heading-size` |
+| Case layout | `min-1280` | `--case-body-size`, `--case-body-weight`, `--case-subheading-size` |
+
+> Storybook viewport presets настроены в `.storybook/preview.ts` и доступны в тулбаре Storybook.

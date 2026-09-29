@@ -1,0 +1,94 @@
+﻿import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Spacing & Radii" />
+
+# Spacing & Radii
+
+Примитивные токены из Figma Variables (`tokens.css`).
+
+## Spacing
+
+| Токен | CSS var | Value |
+|---|---|---|
+| `space/0` | `var(--space-0)` | 0px |
+| `space/1` | `var(--space-1)` | 4px |
+| `space/2` | `var(--space-2)` | 8px |
+| `space/2-5` | `var(--space-2-5)` | 10px |
+| `space/3` | `var(--space-3)` | 12px |
+| `space/4` | `var(--space-4)` | 16px |
+| `space/5` | `var(--space-5)` | 20px |
+| `space/6` | `var(--space-6)` | 24px |
+| `space/8` | `var(--space-8)` | 32px |
+| `space/12` | `var(--space-12)` | 48px |
+| `space/16` | `var(--space-16)` | 64px |
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px 0' }}>
+  {[
+    ['space/1', 'var(--space-1)', '4px'],
+    ['space/2', 'var(--space-2)', '8px'],
+    ['space/2-5', 'var(--space-2-5)', '10px'],
+    ['space/3', 'var(--space-3)', '12px'],
+    ['space/4', 'var(--space-4)', '16px'],
+    ['space/5', 'var(--space-5)', '20px'],
+    ['space/6', 'var(--space-6)', '24px'],
+    ['space/8', 'var(--space-8)', '32px'],
+    ['space/12', 'var(--space-12)', '48px'],
+    ['space/16', 'var(--space-16)', '64px'],
+  ].map(([name, cssVar, value]) => (
+    <div key={name} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ width: cssVar, height: '24px', background: 'var(--accent-violet)', borderRadius: '2px', flexShrink: 0 }} />
+      <code style={{ fontSize: '12px', color: 'var(--text-muted)', minWidth: '160px' }}>{name} — {value}</code>
+    </div>
+  ))}
+</div>
+
+## Radii
+
+| Токен | CSS var | Value |
+|---|---|---|
+| `radius/none` | `var(--radius-none)` | 0px |
+| `radius/sm` | `var(--radius-sm)` | 4px |
+| `radius/md` | `var(--radius-md)` | 8px |
+| `radius/lg` | `var(--radius-lg)` | 16px |
+| `radius/xlg` | `var(--radius-xlg)` | 24px |
+| `radius/xxlg` | `var(--radius-xxlg)` | 32px |
+| `radius/xxxlg` | `var(--radius-xxxlg)` | 48px |
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '24px 0' }}>
+  {[
+    ['none', 'var(--radius-none)', '0px'],
+    ['sm', 'var(--radius-sm)', '4px'],
+    ['md', 'var(--radius-md)', '8px'],
+    ['lg', 'var(--radius-lg)', '16px'],
+    ['xlg', 'var(--radius-xlg)', '24px'],
+    ['xxlg', 'var(--radius-xxlg)', '32px'],
+    ['xxxlg', 'var(--radius-xxxlg)', '48px'],
+  ].map(([name, cssVar, value]) => (
+    <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '80px', height: '80px', background: 'var(--surface-action-hover)', border: '2px solid var(--accent-violet)', borderRadius: cssVar }} />
+      <code style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center' }}>radius/{name}<br />{value}</code>
+    </div>
+  ))}
+</div>
+
+## Effects (Shadows)
+
+| Стиль | CSS var | Параметры |
+|---|---|---|
+| Shadow/1st | `var(--effect-shadow-1st)` | `#2C1F39` 30% · 3px 6px 29px |
+| Shadow/2nd | `var(--effect-shadow-2nd)` | `#2C1F39` 10% · 3px 6px 20px |
+
+<div style={{ display: 'flex', gap: '48px', padding: '32px 0' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-1st)' }} />
+    <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Shadow/1st</code>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-2nd)' }} />
+    <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Shadow/2nd</code>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-1st), var(--effect-shadow-2nd)' }} />
+    <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>1st + 2nd</code>
+  </div>
+</div>

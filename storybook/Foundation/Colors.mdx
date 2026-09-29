@@ -1,0 +1,141 @@
+﻿import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Colors" />
+
+# Colors
+
+Цвета PDPortfolio DS. Источник правды — [Figma PDPortfolio-Prod](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=0-1).
+Все значения читаются из `tokens.css` — CSS custom properties, отображённые из Figma Variables.
+
+## Accent (Primitive)
+
+<ColorPalette>
+  <ColorItem
+    title="accent/lavender"
+    subtitle="var(--accent-lavender)"
+    colors={{ lavender: 'var(--accent-lavender)' }}
+  />
+  <ColorItem
+    title="accent/lilac"
+    subtitle="var(--accent-lilac)"
+    colors={{ lilac: 'var(--accent-lilac)' }}
+  />
+  <ColorItem
+    title="accent/violet"
+    subtitle="var(--accent-violet)"
+    colors={{ violet: 'var(--accent-violet)' }}
+  />
+  <ColorItem
+    title="accent/plum"
+    subtitle="var(--accent-plum)"
+    colors={{ plum: 'var(--accent-plum)' }}
+  />
+  <ColorItem
+    title="accent/aubergine"
+    subtitle="var(--accent-aubergine)"
+    colors={{ aubergine: 'var(--accent-aubergine)' }}
+  />
+  <ColorItem
+    title="accent/mint"
+    subtitle="var(--accent-mint)"
+    colors={{ mint: 'var(--accent-mint)' }}
+  />
+  <ColorItem
+    title="blue-600"
+    subtitle="var(--blue-600)"
+    colors={{ blue600: 'var(--blue-600)' }}
+  />
+</ColorPalette>
+
+## Gray (Primitive)
+
+<ColorPalette>
+  <ColorItem title="gray-00" subtitle="var(--gray-00)" colors={{ gray00: 'var(--gray-00)' }} />
+  <ColorItem title="gray-50" subtitle="var(--gray-50)" colors={{ gray50: 'var(--gray-50)' }} />
+  <ColorItem title="gray-100" subtitle="var(--gray-100)" colors={{ gray100: 'var(--gray-100)' }} />
+  <ColorItem title="gray-200" subtitle="var(--gray-200)" colors={{ gray200: 'var(--gray-200)' }} />
+  <ColorItem title="gray-300" subtitle="var(--gray-300)" colors={{ gray300: 'var(--gray-300)' }} />
+  <ColorItem title="gray-500" subtitle="var(--gray-500)" colors={{ gray500: 'var(--gray-500)' }} />
+  <ColorItem title="gray-700" subtitle="var(--gray-700)" colors={{ gray700: 'var(--gray-700)' }} />
+  <ColorItem title="gray-900" subtitle="var(--gray-900)" colors={{ gray900: 'var(--gray-900)' }} />
+  <ColorItem title="gray-950" subtitle="var(--gray-950)" colors={{ gray950: 'var(--gray-950)' }} />
+</ColorPalette>
+
+## Status (Primitive)
+
+<ColorPalette>
+  <ColorItem title="success-500" subtitle="var(--success-500)" colors={{ success: 'var(--success-500)' }} />
+  <ColorItem title="warning-500" subtitle="var(--warning-500)" colors={{ warning: 'var(--warning-500)' }} />
+  <ColorItem title="error-500" subtitle="var(--error-500)" colors={{ error: 'var(--error-500)' }} />
+  <ColorItem title="info-500" subtitle="var(--info-500)" colors={{ info: 'var(--info-500)' }} />
+</ColorPalette>
+
+## Surface (Semantic)
+
+| Токен | Alias | Роль |
+|---|---|---|
+| `--surface-default` | `gray-00` | Фон страницы |
+| `--surface-subtle` | `gray-100` | Приподнятые панели |
+| `--surface-raised` | `gray-200` | Бордеры, разделители |
+| `--surface-action-primary` | `accent/violet` | CTA-кнопка (default) |
+| `--surface-action-primary-hover` | `accent/plum` | CTA hover + Avatar border hover |
+| `--surface-action-hover` | `accent/lavender` | Hover интерактивных элементов |
+| `--surface-action-pressed` | `accent/plum` | ActivePressed состояние |
+| `--surface-action-toggled` | `accent/aubergine` | Toggled/Selected состояние |
+| `--surface-badge-chirp` | `accent/mint` | Badge Type=HeroChirp фон |
+| `--surface-menu-item-default` | `accent/plum` | Пункт меню (default) |
+| `--surface-menu-item-hover` | `accent/violet` | Пункт меню (hover) |
+| `--surface-menu-item-pressed` | `accent/aubergine` | Пункт меню (pressed) |
+
+<ColorPalette>
+  <ColorItem title="surface/default" subtitle="var(--surface-default)" colors={{ default: 'var(--surface-default)' }} />
+  <ColorItem title="surface/subtle" subtitle="var(--surface-subtle)" colors={{ subtle: 'var(--surface-subtle)' }} />
+  <ColorItem title="surface/raised" subtitle="var(--surface-raised)" colors={{ raised: 'var(--surface-raised)' }} />
+  <ColorItem title="surface/action-primary" subtitle="var(--surface-action-primary)" colors={{ actionPrimary: 'var(--surface-action-primary)' }} />
+  <ColorItem title="surface/action-primary-hover" subtitle="var(--surface-action-primary-hover)" colors={{ actionPrimaryHover: 'var(--surface-action-primary-hover)' }} />
+  <ColorItem title="surface/action-hover" subtitle="var(--surface-action-hover)" colors={{ actionHover: 'var(--surface-action-hover)' }} />
+  <ColorItem title="surface/action-pressed" subtitle="var(--surface-action-pressed)" colors={{ actionPressed: 'var(--surface-action-pressed)' }} />
+  <ColorItem title="surface/action-toggled" subtitle="var(--surface-action-toggled)" colors={{ actionToggled: 'var(--surface-action-toggled)' }} />
+  <ColorItem title="surface/badge-chirp" subtitle="var(--surface-badge-chirp)" colors={{ badgeChirp: 'var(--surface-badge-chirp)' }} />
+  <ColorItem title="surface/menu-item-default" subtitle="var(--surface-menu-item-default)" colors={{ menuDefault: 'var(--surface-menu-item-default)' }} />
+  <ColorItem title="surface/menu-item-hover" subtitle="var(--surface-menu-item-hover)" colors={{ menuHover: 'var(--surface-menu-item-hover)' }} />
+  <ColorItem title="surface/menu-item-pressed" subtitle="var(--surface-menu-item-pressed)" colors={{ menuPressed: 'var(--surface-menu-item-pressed)' }} />
+</ColorPalette>
+
+## Text (Semantic)
+
+| Токен | Alias | Роль |
+|---|---|---|
+| `--text-default` | `gray-900` | Основной текст |
+| `--text-secondary` | `gray-700` | Вторичный текст |
+| `--text-muted` | `gray-500` | Приглушённый текст |
+| `--text-subtle` | `gray-300` | Очень приглушённый |
+| `--text-inverse` | `gray-00` | Инверсный (на тёмном фоне) |
+| `--text-accent-general` | `accent/violet` | Акцентный (общий) |
+| `--text-accent-chirp` | `blue-600` | Акцентный (Chirp) |
+| `--text-body-accent` | `accent/aubergine` | Body акцент |
+| `--text-action` | `accent/aubergine` | Action-текст |
+| `--text-link-hover` | `accent/violet` | Ссылка hover |
+| `--text-link-pressed` | `accent/plum` | Ссылка pressed |
+| `--text-error` | `error-500` | Ошибка |
+
+<ColorPalette>
+  <ColorItem title="text/default" subtitle="var(--text-default)" colors={{ default: 'var(--text-default)' }} />
+  <ColorItem title="text/secondary" subtitle="var(--text-secondary)" colors={{ secondary: 'var(--text-secondary)' }} />
+  <ColorItem title="text/muted" subtitle="var(--text-muted)" colors={{ muted: 'var(--text-muted)' }} />
+  <ColorItem title="text/subtle" subtitle="var(--text-subtle)" colors={{ subtle: 'var(--text-subtle)' }} />
+  <ColorItem title="text/inverse" subtitle="var(--text-inverse)" colors={{ inverse: 'var(--text-inverse)' }} />
+  <ColorItem title="text/accent-general" subtitle="var(--text-accent-general)" colors={{ accentGeneral: 'var(--text-accent-general)' }} />
+  <ColorItem title="text/accent-chirp" subtitle="var(--text-accent-chirp)" colors={{ accentChirp: 'var(--text-accent-chirp)' }} />
+</ColorPalette>
+
+## Border (Semantic)
+
+<ColorPalette>
+  <ColorItem title="border/default" subtitle="var(--border-default)" colors={{ borderDefault: 'var(--border-default)' }} />
+  <ColorItem title="border/strong" subtitle="var(--border-strong)" colors={{ borderStrong: 'var(--border-strong)' }} />
+  <ColorItem title="border/focus" subtitle="var(--border-focus)" colors={{ borderFocus: 'var(--border-focus)' }} />
+  <ColorItem title="border/error" subtitle="var(--border-error)" colors={{ borderError: 'var(--border-error)' }} />
+  <ColorItem title="border/action-hover" subtitle="var(--border-action-hover)" colors={{ borderActionHover: 'var(--border-action-hover)' }} />
+  <ColorItem title="border/action-pressed" subtitle="var(--border-action-pressed)" colors={{ borderActionPressed: 'var(--border-action-pressed)' }} />
+</ColorPalette>

@@ -1,10 +1,10 @@
 [
   {
     "title": "Chirp AI health assistant",
-    "subtitle": "Product Discovery AI-ассистента для врача и пациента",
+    "subtitle": "Product Discovery AI‑ассистента для врача и пациента",
     "badges": "B2C, B2B, MedTech, Product Discovery, CustDev, MVP Scope",
     "backgroundColor": "#1FE1E3",
-    "href": "/cases/chirp-design-system",
+    "href": "/cases/chirp-product",
     "scene": "health",
     "directions": [
       "product"
@@ -14,9 +14,9 @@
   },
   {
     "title": "Chirp Explainable AI UX",
-    "subtitle": "UX/UI-кейс о прозрачной проверке лечения в медицинском AI-продукте",
+    "subtitle": "UX/UI‑кейс о прозрачной проверке лечения в медицинском AI‑продукте",
     "badges": "B2C, UX Architecture, Explainable AI, Mobile UX, User Flows, Healthcare UX",
-    "href": "/cases/chirp-design-system",
+    "href": "/cases/chirp-ux",
     "scene": "ux",
     "directions": [
       "ux"
@@ -28,7 +28,7 @@
     "title": "Chirp Medical AI Brand",
     "subtitle": "Бренд, который помогает понять сложное",
     "badges": "Brand Strategy, Brand Positioning, Brand Identity, Tone of Voice, B2B, B2C, MedTech",
-    "href": "/cases/chirp-design-system",
+    "href": "/cases/chirp-brand",
     "scene": "brand",
     "directions": [
       "branding"
@@ -38,7 +38,7 @@
   },
   {
     "title": "Chirp Design System",
-    "subtitle": "Целостность продукта в B2B- и B2C-контурах",
+    "subtitle": "Целостность продукта в B2B- и B2C‑контурах",
     "badges": "UI Foundations, Component Architecture, MedTech, B2C, B2B",
     "href": "/cases/chirp-design-system",
     "scene": "design-system",

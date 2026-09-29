@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import avatarUrl from "~/assets/img/konstantin.png";
+import avatarUrl from "~/assets/img/avatar-portrait.jpeg";
 import siteData from "#content/site.json";
 import type { SiteContent } from "~/types/site";
 

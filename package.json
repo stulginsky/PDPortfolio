@@ -8,10 +8,14 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prebuild": "npm run typograf:apply",
-    "pregenerate": "npm run typograf:apply",
+    "prebuild": "npm run typograf:apply && npm run check:case-typography",
+    "pregenerate": "npm run typograf:apply && npm run check:case-typography",
+    "check:case-typography": "node scripts/check-case-typography.mjs",
     "typograf:apply": "node scripts/apply-typograf-content.mjs",
-    "typograf:preview": "node scripts/typograf-preview.mjs"
+    "typograf:preview": "node scripts/typograf-preview.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "vitest --project=storybook --run"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
@@ -20,6 +24,18 @@
     "vue-router": "^5.0.6"
   },
   "devDependencies": {
-    "typograf": "^7.7.0"
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-mcp": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/vue3-vite": "^10.6.0",
+    "@vitest/browser": "4.1.6",
+    "@vitest/browser-playwright": "4.1.6",
+    "playwright": "^1.55.0",
+    "storybook": "^10.6.0",
+    "typescript": "~5.8.0",
+    "typograf": "^7.7.0",
+    "vitest": "4.1.6",
+    "vue-component-meta": "^3.3.11"
   }
 }

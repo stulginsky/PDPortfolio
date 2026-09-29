@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import arrowUpUrl from "~/assets/icons/arrow-up-nav.svg";
-import arrowUpPressedUrl from "~/assets/icons/arrow-up-nav-pressed.svg";
+import arrowNavUp from "~/assets/icons/arrow-nav-up.svg?raw";
 
 defineProps<{ visible: boolean }>();
-
-const isPressed = ref(false);
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -15,18 +12,15 @@ function scrollToTop() {
   <button
     type="button"
     class="scroll-to-top-button"
-    :class="{
-      'scroll-to-top-button--visible': visible,
-      'scroll-to-top-button--pressed': isPressed,
-    }"
+    :class="{ 'scroll-to-top-button--visible': visible }"
     aria-label="Наверх"
-    @pointerdown="isPressed = true"
-    @pointerup="isPressed = false"
-    @pointercancel="isPressed = false"
-    @pointerleave="isPressed = false"
     @click="scrollToTop"
   >
-    <img :src="isPressed ? arrowUpPressedUrl : arrowUpUrl" alt="" width="24" height="24">
+    <span
+      class="scroll-to-top-button__icon"
+      aria-hidden="true"
+      v-html="arrowNavUp"
+    />
   </button>
 </template>
 
@@ -43,6 +37,7 @@ function scrollToTop() {
   border: 0;
   border-radius: var(--radius-xxlg);
   background: var(--surface-raised);
+  color: var(--text-default);
   box-sizing: border-box;
   cursor: pointer;
   place-items: center;
@@ -58,19 +53,31 @@ function scrollToTop() {
   transform: translateY(0);
 }
 
-.scroll-to-top-button img {
+.scroll-to-top-button__icon {
   display: block;
   width: 24px;
   height: 24px;
-  transform: scaleY(-1);
+  line-height: 0;
+}
+
+.scroll-to-top-button__icon :deep(svg) {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.scroll-to-top-button__icon :deep(path) {
+  fill: currentColor;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .scroll-to-top-button:hover { background: var(--surface-action-hover); }
 }
 
-.scroll-to-top-button:active,
-.scroll-to-top-button--pressed { background: var(--surface-action-pressed); }
+.scroll-to-top-button:active {
+  background: var(--surface-action-pressed);
+  color: var(--text-inverse);
+}
 
 @media (max-width: 720px) {
   .scroll-to-top-button { right: var(--space-4); bottom: var(--space-4); }
