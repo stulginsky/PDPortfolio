@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, userEvent } from 'storybook/test'
 import DsFilter from './DsFilter.vue'
 
 /**
@@ -38,7 +39,7 @@ DS Filter 43:867, Design=2nd. Portfolio category selection chip.
 |---|---|---|---|
 | Default | — | transparent | text/action (accent/aubergine) |
 | Hover | :hover | surface/action-hover | text/default |
-| ActivePressed | :active | surface/action-pressed | text/inverse |
+| ActivePressed | Figma reference; not rendered for local selection | — | — |
 | Toggled | prop toggled=true | surface/action-toggled | text/inverse |
 | Disabled | prop disabled=true | — | text/muted |
         `,
@@ -50,7 +51,14 @@ DS Filter 43:867, Design=2nd. Portfolio category selection chip.
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+  play: async ({ canvas }) => {
+    const filter = canvas.getByRole('button', { name: 'Продукт' })
+
+    await userEvent.tab()
+    await expect(filter).toHaveFocus()
+  },
+}
 
 export const Toggled: Story = {
   args: { toggled: true, label: 'Все кейсы' },

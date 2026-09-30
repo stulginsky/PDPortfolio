@@ -37,7 +37,7 @@ DS DropdownSelect-web 1015:4517. Compact universal web dropdown.
 |---|---|
 | Default | Closed Button + ChevronDown |
 | Hover | Closed Button + ChevronDown :hover |
-| ActivePressed | Closed Button + ChevronDown :active |
+| ActivePressed | Figma reference; not rendered for this local toggle |
 | Opened | Button Toggled + ChevronUp + list of ≤4 ListItem/Sm |
         `,
       },

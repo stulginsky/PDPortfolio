@@ -26,7 +26,7 @@ const meta = {
       description: {
         component: `Figma [Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544).
 
-Default, Hover and ActivePressed are real pointer states. \`toggled\` is the controlled persistent state and sets \`aria-current="page"\`.
+Default and Hover are real pointer states. For this local tab switcher, \`ActivePressed\` remains only a Figma reference; \`toggled\` is the controlled persistent state and sets \`aria-current="page"\`.
 
 The icon is the original Figma ExternalLink asset.`,
       },

@@ -8,7 +8,7 @@
 
 
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import HomeBadge from './HomeBadge.vue'
+import DsBadge from './DsBadge.vue'
 
 /**
  * Badge — DS component 312:1991
@@ -22,12 +22,11 @@ import HomeBadge from './HomeBadge.vue'
  */
 const meta = {
   title: 'Components/Badge',
-  component: HomeBadge,
+  component: DsBadge,
   tags: ['autodocs'],
   args: {
     label: 'UX-research',
     type: 'Card',
-    truncate: true,
   },
   argTypes: {
     type: {
@@ -43,11 +42,6 @@ const meta = {
       control: 'text',
       description: 'Badge text content (TEXT override Text#312:0)',
     },
-    truncate: {
-      control: 'boolean',
-      description: 'Single-line with ellipsis overflow; full text in title attribute',
-      table: { defaultValue: { summary: 'true' } },
-    },
   },
   parameters: {
     layout: 'centered',
@@ -59,18 +53,17 @@ Three variants from Figma Component Set [312:1991](https://www.figma.com/design/
 
 | Type | Size | Typography | Background |
 |---|---|---|---|
-| Card | 94×29 | DS/Body/xs strong (12px, w600) | surface/default |
-| HeroChirp | 123×40 | DS/Body/base strong (16px, w600) | surface/badge-chirp (accent/mint) |
+| Card | 94×29 | DS/Body/xs strong (12px, w600), radius 32px | surface/default |
+| HeroChirp | 123×40 | DS/Body/base strong (16px, w600), radius 32px | surface/badge-chirp (accent/mint) |
 | CardCompact | 79×24 | DS/Badge/Card/min (10px, w600) | surface/default |
         `,
       },
     },
   },
-  // Render as <ul> wrapper since HomeBadge renders <li>
   decorators: [
-    () => ({ template: '<ul style="list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap;"><story /></ul>' }),
+    () => ({ template: '<div style="display:flex;gap:8px;flex-wrap:wrap;"><story /></div>' }),
   ],
-} satisfies Meta<typeof HomeBadge>
+} satisfies Meta<typeof DsBadge>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -93,31 +86,17 @@ export const CardCompact: Story = {
 /** All three variants side by side */
 export const AllVariants: Story = {
   render: () => ({
-    components: { HomeBadge },
+    components: { DsBadge },
     template: `
-      <ul style="list-style:none;margin:0;padding:24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--surface-subtle);">
-        <HomeBadge label="UX-research" type="Card" />
-        <HomeBadge label="Product Design" type="Card" />
-        <HomeBadge label="AI-strategy" type="Card" />
-        <HomeBadge label="Chirp" type="HeroChirp" />
-        <HomeBadge label="B2B-platform" type="CardCompact" />
-        <HomeBadge label="MVP" type="CardCompact" />
-      </ul>
+      <div style="padding:24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--surface-subtle);">
+        <DsBadge label="UX-research" type="Card" />
+        <DsBadge label="Product Design" type="Card" />
+        <DsBadge label="AI-strategy" type="Card" />
+        <DsBadge label="Chirp" type="HeroChirp" />
+        <DsBadge label="B2B-platform" type="CardCompact" />
+        <DsBadge label="MVP" type="CardCompact" />
+      </div>
     `,
   }),
   parameters: { layout: 'fullscreen' },
-}
-
-/** Truncate behavior — long label is clipped to single line */
-export const Truncate: Story = {
-  args: {
-    type: 'Card',
-    label: 'Very long badge text that exceeds available space',
-    truncate: true,
-  },
-  decorators: [
-    () => ({
-      template: '<ul style="list-style:none;margin:0;padding:0;max-width:140px;"><story /></ul>',
-    }),
-  ],
 }

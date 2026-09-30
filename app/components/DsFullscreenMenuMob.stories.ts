@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, within } from 'storybook/test'
 import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 
 /**
@@ -40,7 +41,8 @@ DS FullscreenMenu/Mob 1021:3359. Universal fullscreen single-select menu for mob
 | Opened | full-screen | Full-screen overlay with items + cross button |
 
 Trigger label = intro placeholder until selection, then selected item name.
-Closes on: item select, cross button, Escape.
+The closed trigger also supports the base Button Raised state. Opened uses a 64×4 violet handle,
+an inner scroll for long lists, and closes on item select, cross button, or downward touch swipe at scroll top.
         `,
       },
     },
@@ -56,6 +58,13 @@ export const Selected: Story = {
   args: {
     modelValue: 'product',
     placeholder: 'Продукт · креатив · бренд & more',
+  },
+}
+
+export const Raised: Story = {
+  args: {
+    raised: true,
+    placeholder: 'Product · creative · brand & more',
   },
 }
 
@@ -98,5 +107,46 @@ export const FiltersContext: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'mobile320' },
+  },
+}
+
+export const Interaction: Story = {
+  render: () => ({
+    components: { DsFullscreenMenuMob },
+    data: () => ({ selected: null as string | null }),
+    template: `
+      <DsFullscreenMenuMob
+        v-model="selected"
+        :items="[
+          { label: 'Product', value: 'product' },
+          { label: 'Creative', value: 'creative' },
+          { label: 'Brand', value: 'brand' }
+        ]"
+        placeholder="Product · creative · brand & more"
+        aria-label="Choose category"
+        raised
+      />
+    `,
+  }),
+  play: async ({ canvas, userEvent }) => {
+    const trigger = canvas.getByRole('button', { name: 'Choose category' })
+
+    await userEvent.click(trigger)
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true')
+
+    const dialog = within(document.body).getByRole('dialog', { name: 'Choose category' })
+    await expect(dialog).toBeVisible()
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Product' }))
+
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    await expect(trigger).toHaveTextContent('Product')
+    await expect(trigger).toHaveFocus()
+
+    await userEvent.click(trigger)
+    const reopenedDialog = within(document.body).getByRole('dialog', { name: 'Choose category' })
+    const buttons = within(reopenedDialog).getAllByRole('button')
+    await userEvent.click(buttons.at(-1)!)
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
+
   },
 }

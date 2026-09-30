@@ -42,6 +42,14 @@ provide(dropdownListTypeKey, computed(() => props.type))
   box-shadow: var(--effect-shadow-2nd);
 }
 
+/* All Figma variants have radius/xlg with cornerSmoothing=1 (100%).
+ * Unsupported browsers retain the documented 24px rounded-corner fallback. */
+@supports (corner-shape: superellipse(1.6)) {
+  .ds-dropdown-list-selector {
+    corner-shape: superellipse(1.6);
+  }
+}
+
 .ds-dropdown-list-selector--filter {
   width: 100%;
   min-width: 100%;

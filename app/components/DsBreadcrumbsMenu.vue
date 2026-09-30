@@ -1,20 +1,16 @@
 <script setup lang="ts">
 /**
- * DsBreadcrumbsMenu — DS component 1262:2524 (BreadcrumbsMenu)
- * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1262-2524
- *
- * Tooltip/dropdown под триггером "…". Contains DsDropdownListItem.
- * Items: { label, href } — navigates on select, closes menu.
- * Closes on: item select, click outside, Escape, re-click trigger.
- * Accessible: aria-expanded/aria-controls; focus returns to trigger on close without navigation.
+ * DsBreadcrumbsMenu — DS component 1262:2524 (BreadcrumbsMenu).
+ * The overflow trigger owns keyboard disclosure and positions its list at 26 px.
  */
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import DsDropdownListSelector from './DsDropdownListSelector.vue'
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
+import dotIcon from '../assets/icons/dot.svg'
 import DsDropdownListItem from './DsDropdownListItem.vue'
+import DsDropdownListSelector from './DsDropdownListSelector.vue'
 
 interface MenuItem {
+  id: string
   label: string
-  href: string
 }
 
 const props = defineProps<{
@@ -53,9 +49,8 @@ function updateListAlignment() {
   const triggerRect = trigger.getBoundingClientRect()
   const listWidth = list.getBoundingClientRect().width
   const gutter = 16
-  alignEnd.value =
-    triggerRect.left + listWidth > window.innerWidth - gutter &&
-    triggerRect.right - listWidth >= gutter
+  alignEnd.value = triggerRect.left + listWidth > window.innerWidth - gutter
+    && triggerRect.right - listWidth >= gutter
 }
 
 function selectItem(item: MenuItem) {
@@ -63,18 +58,15 @@ function selectItem(item: MenuItem) {
   isOpen.value = false
 }
 
-function handleKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') {
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape') {
     isOpen.value = false
     triggerRef.value?.focus()
   }
 }
 
-function handleClickOutside(e: MouseEvent) {
-  const target = e.target as Node
-  if (!rootRef.value?.contains(target)) {
-    isOpen.value = false
-  }
+function handleClickOutside(event: MouseEvent) {
+  if (!rootRef.value?.contains(event.target as Node)) isOpen.value = false
 }
 
 onMounted(() => {
@@ -91,32 +83,35 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="rootRef" class="ds-bcr-menu">
-    <!-- Trigger "…" -->
+  <div ref="rootRef" class="ds-breadcrumbs-menu" :class="{ 'ds-breadcrumbs-menu--open': isOpen }">
     <button
       ref="triggerRef"
-      class="ds-bcr-menu__trigger"
+      class="ds-breadcrumbs-menu__trigger"
       type="button"
       :aria-expanded="isOpen"
-      :aria-controls="menuId || 'ds-bcr-menu-list'"
-      aria-haspopup="true"
+      :aria-controls="menuId || 'ds-breadcrumbs-menu-list'"
+      aria-haspopup="menu"
       @click="toggle"
-    >…</button>
+    >...</button>
+    <span
+      class="ds-breadcrumbs-menu__dot"
+      :style="{ '--ds-breadcrumbs-menu-dot-mask': `url(&quot;${dotIcon}&quot;)` }"
+      aria-hidden="true"
+    />
 
-    <!-- Dropdown -->
     <div
       v-if="isOpen"
       ref="listRef"
-      class="ds-bcr-menu__list-position"
-      :class="{ 'ds-bcr-menu__list-position--end': alignEnd }"
+      class="ds-breadcrumbs-menu__list-position"
+      :class="{ 'ds-breadcrumbs-menu__list-position--end': alignEnd }"
     >
       <DsDropdownListSelector
-        :id="menuId || 'ds-bcr-menu-list'"
-        class="ds-bcr-menu__list"
+        :id="menuId || 'ds-breadcrumbs-menu-list'"
+        class="ds-breadcrumbs-menu__list"
         type="General"
         role="menu"
       >
-        <li v-for="item in items" :key="item.href" role="none">
+        <li v-for="item in items" :key="item.id" role="none">
           <DsDropdownListItem
             :label="item.label"
             appearance="Sm"
@@ -130,55 +125,81 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* BreadcrumbsMenu — DS 325:1622 */
-.ds-bcr-menu {
+.ds-breadcrumbs-menu {
   position: relative;
   display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 26px;
+  padding-right: var(--space-2);
+  color: var(--text-muted);
 }
 
-.ds-bcr-menu__trigger {
+.ds-breadcrumbs-menu__trigger {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
-  border: none;
+  min-width: 0;
+  margin: 0;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
   background: none;
+  color: inherit;
+  cursor: pointer;
   font-family: var(--text-font-sans);
   font-size: var(--text-size-base);
   font-weight: var(--text-weight-regular);
-  color: var(--text-muted);
-  cursor: pointer;
-  height: 26px;
-  letter-spacing: 0.02em;
-  line-height: 1;
+  font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
+    "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
+    "wdth" 100;
+  letter-spacing: 0;
+  line-height: 1.6;
 }
 
-.ds-bcr-menu__trigger:hover:not(:active) {
-  color: var(--text-link-hover);
-}
+.ds-breadcrumbs-menu__trigger:hover:not(:active) { color: var(--text-link-hover); }
+.ds-breadcrumbs-menu__trigger:active { color: var(--text-link-pressed); }
 
-.ds-bcr-menu__trigger:active {
-  color: var(--text-link-pressed);
-}
-
-.ds-bcr-menu__trigger:focus-visible {
+.ds-breadcrumbs-menu__trigger:focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
-/* Dropdown list */
-.ds-bcr-menu__list-position {
+.ds-breadcrumbs-menu__dot {
+  width: 4px;
+  height: 4px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--ds-breadcrumbs-menu-dot-mask) center / contain no-repeat;
+  mask: var(--ds-breadcrumbs-menu-dot-mask) center / contain no-repeat;
+}
+
+.ds-breadcrumbs-menu__trigger:hover:not(:active) + .ds-breadcrumbs-menu__dot {
+  background: var(--text-link-hover);
+}
+
+.ds-breadcrumbs-menu__trigger:active + .ds-breadcrumbs-menu__dot,
+.ds-breadcrumbs-menu--open .ds-breadcrumbs-menu__dot {
+  background: var(--surface-action-toggled);
+}
+
+.ds-breadcrumbs-menu--open .ds-breadcrumbs-menu__trigger { color: var(--surface-action-toggled); }
+
+.ds-breadcrumbs-menu__list-position {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 26px;
   left: 0;
   z-index: 100;
   width: max-content;
-  min-width: 146px;
+  min-width: 100%;
   max-width: calc(100vw - 32px);
 }
 
-.ds-bcr-menu__list-position--end {
+.ds-breadcrumbs-menu__list-position--end {
   right: 0;
   left: auto;
 }

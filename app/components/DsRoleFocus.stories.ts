@@ -15,12 +15,17 @@ const meta = {
   component: DsRoleFocus,
   tags: ['autodocs'],
   args: {
-    role: 'Product designer',
-    focus: 'Mobile app UX, Design system',
+    role: 'Product Designer · UX Researcher',
+    focus: 'Product Discovery · Product Architecture · Business Analysis · MVP Scope · AI Product Design',
   },
   argTypes: {
     role: { control: 'text', description: 'Role value text' },
     focus: { control: 'text', description: 'Focus value text' },
+    breakpoint: {
+      control: 'radio',
+      options: ['base', 'min-425'],
+      description: 'Optional explicit Figma breakpoint; omitted uses the viewport.',
+    },
   },
   parameters: {
     layout: 'padded',
@@ -34,6 +39,8 @@ Static labels: "My role" / "Case focus". Values from props.
 |---|---|---|
 | base (<425px) | vertical (label over value) | DS/Body/base 16px w400 |
 | min-425 (>=425px) | horizontal (label col 116px) | DS/Body/md 20px w300 |
+
+The optional \`breakpoint\` prop forces one Figma variant in a constrained composition; without it, the component follows the viewport.
         `,
       },
     },
@@ -43,47 +50,30 @@ Static labels: "My role" / "Case focus". Values from props.
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
-
-export const Mobile: Story = {
-  args: {
-    role: 'UX Designer, PM',
-    focus: 'User research, AI product strategy',
-  },
-  parameters: {
-    viewport: { defaultViewport: 'mobile320' },
-  },
-}
-
-export const Desktop: Story = {
-  args: {
-    role: 'UX Designer, PM',
-    focus: 'User research, AI product strategy, MVP Scope',
-  },
-  parameters: {
-    viewport: { defaultViewport: 'desktop1440' },
-  },
-}
-
-export const AllVariants: Story = {
-  render: () => ({
+export const Breakpoints: Story = {
+  render: (args) => ({
     components: { DsRoleFocus },
+    setup() {
+      return { args }
+    },
     template: `
-      <div style="display:flex;flex-direction:column;gap:48px;padding:24px;background:var(--surface-subtle);">
-        <div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;font-family:var(--text-font-sans);">base (&lt;425px) — vertical layout</div>
-          <div style="max-width:288px;border:1px dashed var(--border-default);padding:12px;">
-            <DsRoleFocus role="Product designer" focus="Mobile app UX, Design system" />
+      <div style="display:flex;flex-direction:column;gap:32px;align-items:flex-start;font-family:var(--text-font-sans);">
+        <section>
+          <p style="margin:0 0 12px;font-size:14px;color:var(--text-muted);">base</p>
+          <div style="width:288px;max-width:100%;">
+            <DsRoleFocus v-bind="args" breakpoint="base" />
           </div>
-        </div>
-        <div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;font-family:var(--text-font-sans);">min-425 — horizontal layout</div>
-          <div style="min-width:425px;border:1px dashed var(--border-default);padding:12px;">
-            <DsRoleFocus role="Product designer" focus="Mobile app UX, Design system" />
+        </section>
+        <section>
+          <p style="margin:0 0 12px;font-size:14px;color:var(--text-muted);">min-425</p>
+          <div style="width:min(924px, 100%);">
+            <DsRoleFocus v-bind="args" breakpoint="min-425" />
           </div>
-        </div>
+        </section>
       </div>
     `,
   }),
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'padded',
+  },
 }

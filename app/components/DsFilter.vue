@@ -4,7 +4,8 @@
  * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=43-867
  *
  * Portfolio filter chip. 90×50, radius=24. DS/Control/base.
- * States: Default (text/action), Hover, ActivePressed, Toggled/Selected, Disabled.
+ * States: Default (text/action), Hover, Toggled/Selected, Disabled.
+ * ActivePressed is a Figma reference only: local selection switches directly to Toggled.
  * Use aria-pressed for toggle semantics.
  */
 withDefaults(
@@ -70,22 +71,22 @@ defineEmits<{
   color: var(--text-default);
 }
 
-/* ActivePressed */
-.ds-filter:active:not(:disabled) {
-  background: var(--surface-action-pressed);
-  color: var(--text-inverse);
-}
-
 /* Toggled/Selected */
 .ds-filter--toggled,
 .ds-filter--toggled:hover {
   background: var(--surface-action-toggled);
   color: var(--text-inverse);
+  cursor: default;
 }
 
 /* Disabled */
 .ds-filter:disabled {
   color: var(--text-muted);
   cursor: not-allowed;
+}
+
+.ds-filter:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 </style>

@@ -78,19 +78,14 @@ defineEmits<{
   gap: var(--space-1);
 }
 
-.ds-tab:hover:not(:active):not(.ds-tab--toggled) {
+.ds-tab:hover:not(.ds-tab--toggled) {
   background: var(--surface-action-hover);
 }
 
-/* State=ActivePressed takes precedence while a toggled tab is pressed. */
-.ds-tab:active {
-  background: var(--surface-action-pressed);
-  color: var(--text-inverse);
-}
-
-.ds-tab--toggled:not(:active) {
+.ds-tab--toggled {
   background: var(--surface-action-toggled);
   color: var(--text-inverse);
+  cursor: default;
 }
 
 .ds-tab:focus-visible {

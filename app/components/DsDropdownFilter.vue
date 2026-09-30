@@ -5,7 +5,7 @@
  *
  * Overflow filter selector for viewport 1024–1279px.
  * Contains 3 ListItem/Sm (Gamedev, Видео, Упаковка).
- * Selecting one makes it the only active filter; trigger label changes to selected.
+ * Selecting one makes it the only active filter; trigger label and closed visual stay Toggled.
  * Selecting an external filter → dropdown returns to Default, shows "Gamedev & more".
  * Opened: 256×198, 3 items × 40px.
  */
@@ -37,6 +37,7 @@ const emit = defineEmits<{
 
 const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
+const suppressTriggerHover = ref(false)
 
 // Show selected label if active, else default
 const triggerLabel = computed(() => {
@@ -46,13 +47,27 @@ const triggerLabel = computed(() => {
   return DEFAULT_LABEL
 })
 
+// An overflow value belongs to this selector only when it is one of its items.
+// In that case the closed trigger keeps the persistent Button Toggled visual.
+const hasSelectedOverflow = computed(() =>
+  Boolean(props.modelValue && props.items.includes(props.modelValue)),
+)
+
 function toggle() {
   isOpen.value = !isOpen.value
   if (isOpen.value) {
     nextTick(() => {
-      triggerRef.value?.querySelector('[role="listbox"] button')?.focus()
+      triggerRef.value?.querySelector('.ds-dropdown-filter__list button')?.focus()
     })
   }
+}
+
+function suppressHoverUntilLeave() {
+  suppressTriggerHover.value = true
+}
+
+function restoreHover() {
+  suppressTriggerHover.value = false
 }
 
 function select(label: string) {
@@ -89,13 +104,15 @@ onUnmounted(() => {
 <template>
   <div class="ds-dropdown-filter" ref="triggerRef">
     <DsButton
+      :class="{ 'ds-dropdown-filter__trigger--hover-suppressed': suppressTriggerHover }"
       :text="triggerLabel"
-      :toggled="isOpen"
+      :toggled="isOpen || hasSelectedOverflow"
       :icon="isOpen ? 'ChevronUp' : 'ChevronDown'"
       icon-right
       :aria-expanded="isOpen"
-      aria-haspopup="listbox"
       aria-controls="ds-dropdown-filter-list"
+      @pointerdown="suppressHoverUntilLeave"
+      @pointerleave="restoreHover"
       @click="toggle"
     />
 
@@ -108,9 +125,9 @@ onUnmounted(() => {
         id="ds-dropdown-filter-list"
         class="ds-dropdown-filter__list"
         type="Filter"
-        role="listbox"
+        aria-label="Filter options"
       >
-        <li v-for="item in items" :key="item" role="option" :aria-selected="modelValue === item">
+        <li v-for="item in items" :key="item">
           <DsDropdownListItem
             :label="item"
             appearance="Sm"
@@ -138,5 +155,18 @@ onUnmounted(() => {
   min-width: 100%;
   max-width: calc(100vw - 32px);
   transform: translateX(-50%);
+}
+
+/* Local disclosure toggles directly to Opened; never flash ActivePressed. */
+:deep(.button-base.button-base--pressed),
+:deep(.button-base:active) {
+  background: var(--surface-action-toggled) !important;
+  color: var(--text-inverse) !important;
+}
+
+/* Keep the first hover out of the Default → Toggled transition. */
+:deep(.ds-dropdown-filter__trigger--hover-suppressed.button-base:hover) {
+  background: var(--surface-action-toggled) !important;
+  color: var(--text-inverse) !important;
 }
 </style>

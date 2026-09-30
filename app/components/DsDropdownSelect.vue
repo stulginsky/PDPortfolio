@@ -3,8 +3,9 @@
  * DsDropdownSelect — DS component 1015:4517 (DropdownSelect-web)
  * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517
  *
- * Compact universal web dropdown. States: Default / Hover / ActivePressed / Opened.
- * Default/Hover/ActivePressed → closed Button with ChevronDown.
+ * Compact universal web dropdown. States: Default / Hover / Opened.
+ * ActivePressed is a Figma reference only: this local toggle switches directly to Opened.
+ * Default/Hover → closed Button with ChevronDown.
  * Opened → Button in Toggled state with ChevronUp + list of up to 4 ListItem/Sm.
  * Select new item → apply + close. Select current item / re-click / click outside / Escape → close only.
  */
@@ -166,6 +167,13 @@ onUnmounted(() => {
 /* The visible menu is at least as wide as its trigger, but may hug longer rows. */
 :deep(.ds-dropdown-select__list) {
   min-width: 100%;
+}
+
+/* Local disclosure toggles directly to Opened; never flash ActivePressed. */
+:deep(.button-base.button-base--pressed),
+:deep(.button-base:active) {
+  background: var(--surface-action-toggled) !important;
+  color: var(--text-inverse) !important;
 }
 
 .ds-dropdown-select__list-position--end {

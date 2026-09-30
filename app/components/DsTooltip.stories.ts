@@ -30,7 +30,7 @@ const meta = {
     docs: {
       description: {
         component: `
-DS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/aubergine bg, text/inverse.
+DS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.
 Non-interactive — parent controls visibility.
         `,
       },

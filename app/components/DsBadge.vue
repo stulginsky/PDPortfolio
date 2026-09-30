@@ -6,59 +6,47 @@
  * Props:
  *   label   — text content (TEXT override Text#312:0)
  *   type    — 'Card' | 'HeroChirp' | 'CardCompact'  (VARIANT Type)
- *   truncate — single-line overflow ellipsis (default: true)
  *
  * Non-interactive; no states, no transitions.
- * aria-hidden if used purely decoratively; caller decides.
+ * Generic inline element. A consumer that renders a list owns its <li>.
  */
 const props = withDefaults(
   defineProps<{
     label: string
     /** DS variant: Card (default) / HeroChirp / CardCompact */
     type?: 'Card' | 'HeroChirp' | 'CardCompact'
-    /** Single line; overflow → ellipsis. Full text in title. */
-    truncate?: boolean
   }>(),
   {
     type: 'Card',
-    truncate: true,
   },
 )
 </script>
 
 <template>
-  <li
-    class="home-badge"
-    :class="[`home-badge--${type.toLowerCase()}`, { 'home-badge--truncate': truncate }]"
-  >
-    <TypoText
-      :content="label"
-      class="home-badge__text"
-      :title="truncate ? label : undefined"
-    />
-  </li>
+  <span class="ds-badge" :class="`ds-badge--${type.toLowerCase()}`">
+    <TypoText :content="label" class="ds-badge__text" />
+  </span>
 </template>
 
 <style scoped>
 /* Base — shared geometry */
-.home-badge {
+.ds-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   max-width: 100%;
   min-width: 0;
-  list-style: none;
   color: var(--text-default);
 }
 
-/* Type=Card — DS/Body/xs strong, 94×29, pad 8/12, radius 16, bg surface/default */
-.home-badge--card {
+/* Type=Card — DS/Body/xs strong, 94×29, pad 8/12, radius 32, bg surface/default */
+.ds-badge--card {
   padding: 8px 12px;
-  border-radius: var(--radius-lg); /* 16px */
+  border-radius: var(--radius-xxlg); /* 32px */
   background: var(--surface-default);
 }
 
-.home-badge--card .home-badge__text {
+.ds-badge--card .ds-badge__text {
   font-family: var(--text-font-sans);
   font-size: var(--text-size-xs); /* 12px */
   font-weight: var(--text-weight-semibold); /* 600 */
@@ -69,14 +57,14 @@ const props = withDefaults(
   letter-spacing: 0;
 }
 
-/* Type=HeroChirp — DS/Body/base strong, 123×40, pad 8/16, radius 24, bg surface/badge-chirp */
-.home-badge--herochirp {
+/* Type=HeroChirp — DS/Body/base strong, 123×40, pad 8/16, radius 32, bg surface/badge-chirp */
+.ds-badge--herochirp {
   padding: 8px 16px;
-  border-radius: var(--radius-xlg); /* 24px */
+  border-radius: var(--radius-xxlg); /* 32px */
   background: var(--surface-badge-chirp); /* accent/mint */
 }
 
-.home-badge--herochirp .home-badge__text {
+.ds-badge--herochirp .ds-badge__text {
   font-family: var(--text-font-sans);
   font-size: var(--text-size-base); /* 16px */
   font-weight: var(--text-weight-semibold); /* 600 */
@@ -88,13 +76,13 @@ const props = withDefaults(
 }
 
 /* Type=CardCompact — DS/Badge/Card/min, 79×24.33, coeff 5/6, pad 6.67/10, radius 26.67 */
-.home-badge--cardcompact {
+.ds-badge--cardcompact {
   padding: 6.667px 10px;
   border-radius: 26.667px;
   background: var(--surface-default);
 }
 
-.home-badge--cardcompact .home-badge__text {
+.ds-badge--cardcompact .ds-badge__text {
   font-family: var(--text-font-sans);
   font-size: var(--text-size-badge-card-min); /* 10px */
   font-weight: var(--text-weight-semibold); /* 600 */
@@ -106,15 +94,9 @@ const props = withDefaults(
 }
 
 /* Shared text element */
-.home-badge__text {
+.ds-badge__text {
   display: block;
   color: inherit;
 }
 
-.home-badge--truncate .home-badge__text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
-}
 </style>

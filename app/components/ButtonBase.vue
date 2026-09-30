@@ -28,6 +28,10 @@ const emit = defineEmits<{
 const isPressed = ref(false)
 const isPointerOver = ref(false)
 const suppressHoverUntilLeave = ref(false)
+const rootRef = ref<HTMLElement | null>(null)
+
+const isHovered = () =>
+  isPointerOver.value || rootRef.value?.matches(':hover') === true
 
 const pressStyle = computed(() => {
   if (!isPressed.value) return undefined
@@ -70,7 +74,7 @@ const handleClick = (event: MouseEvent) => {
 watch(
   () => props.toggled,
   (toggled, wasToggled) => {
-    if (toggled && !wasToggled && isPointerOver.value) {
+    if (toggled && !wasToggled && isHovered()) {
       suppressHoverUntilLeave.value = true
     }
     else if (!toggled) {
@@ -83,6 +87,7 @@ watch(
 <template>
   <component
     :is="tag"
+    ref="rootRef"
     v-bind="$attrs"
     class="button-base"
     :class="{

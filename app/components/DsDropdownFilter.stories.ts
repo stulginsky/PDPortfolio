@@ -13,7 +13,6 @@ const meta = {
   args: {
     items: ['Gamedev', 'Видео', 'Упаковка'],
     modelValue: null,
-    placeholder: 'Gamedev & more',
   },
   argTypes: {
     modelValue: { control: 'text', description: 'Currently selected overflow filter' },
@@ -29,7 +28,7 @@ Contains 3 hidden categories: Gamedev, Видео, Упаковка.
 | Trigger label | Condition |
 |---|---|
 | "Gamedev & more" | No overflow category selected |
-| Category name | Overflow category selected; closed trigger |
+| Category name | Overflow category selected; closed trigger retains Toggled visual |
         `,
       },
     },
@@ -100,19 +99,29 @@ export const Sandbox: Story = {
       : ''
 
     await expect(closedMask).not.toBe('')
+    await userEvent.hover(button)
     await userEvent.click(button)
     await expect(button).toHaveAttribute('aria-expanded', 'true')
+    await expect(button).toHaveClass('button-base--hover-suppressed')
+    await expect(button).toHaveClass('ds-dropdown-filter__trigger--hover-suppressed')
     await expect(
       icon instanceof HTMLElement
         ? icon.style.getPropertyValue('--ds-button-icon-mask')
         : '',
     ).not.toBe(closedMask)
+    await userEvent.unhover(button)
+    await expect(button).not.toHaveClass('button-base--hover-suppressed')
+    await expect(button).not.toHaveClass('ds-dropdown-filter__trigger--hover-suppressed')
     await userEvent.click(canvas.getByRole('button', { name: 'Gamedev' }))
     await expect(button).toHaveAttribute('aria-expanded', 'false')
+    await expect(button).toHaveClass('button-base--toggled')
     await expect(
       button.querySelector('.ds-button__icon') instanceof HTMLElement
         ? button.querySelector('.ds-button__icon')?.style.getPropertyValue('--ds-button-icon-mask')
         : '',
     ).toBe(closedMask)
+    await userEvent.click(button)
+    await expect(button).toHaveAttribute('aria-expanded', 'true')
+    await expect(button).toHaveClass('button-base--toggled')
   },
 }

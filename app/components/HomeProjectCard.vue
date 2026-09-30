@@ -191,12 +191,12 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
         </div>
 
         <ul class="project-card__badges" aria-label="Специализации">
-          <HomeBadge
+          <li
             v-for="badge in badgeList"
             :key="badge"
-            :label="badge"
-            :truncate="false"
-          />
+          >
+            <DsBadge :label="badge" />
+          </li>
         </ul>
       </div>
     </div>

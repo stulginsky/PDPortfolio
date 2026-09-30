@@ -17,7 +17,7 @@
  * Accessibility: role=scrollbar, aria-orientation, aria-controls, aria-valuemin/max/now.
  * Arrow/PgUp/PgDown/Home/End keyboard navigation.
  */
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -39,6 +39,7 @@ const thumbState = ref<'default' | 'hover' | 'pressed'>('default')
 const thumbOffset = ref(TRACK_PADDING)
 const thumbLength = ref(MIN_THUMB)
 const visible = ref(false)
+const ariaValue = ref(0)
 
 // Track ref (the visual overlay element)
 const trackRef = ref<HTMLDivElement | null>(null)
@@ -66,8 +67,11 @@ function updateThumb() {
   }
   visible.value = true
 
-  const available = trackLength - TRACK_PADDING * 2
-  const tLen = Math.min(available, Math.max(MIN_THUMB, available * clientSize / scrollSize))
+  const available = Math.max(0, trackLength - TRACK_PADDING * 2)
+  const tLen = Math.min(
+    available,
+    Math.max(Math.min(MIN_THUMB, available), available * clientSize / scrollSize),
+  )
   const travel = available - tLen
   const maxScroll = scrollSize - clientSize
   const tOffset = TRACK_PADDING + (maxScroll > 0 ? (scrollPos / maxScroll) * travel : 0)
@@ -75,11 +79,7 @@ function updateThumb() {
   thumbLength.value = tLen
   thumbOffset.value = tOffset
 
-  // Update aria
-  if (trackRef.value) {
-    const valueNow = Math.round((scrollPos / maxScroll) * 100)
-    trackRef.value.setAttribute('aria-valuenow', String(valueNow))
-  }
+  ariaValue.value = maxScroll > 0 ? Math.round((scrollPos / maxScroll) * 100) : 0
 }
 
 function onScroll() {
@@ -95,6 +95,7 @@ function onPointerLeave() {
 }
 
 function onPointerDown(e: PointerEvent) {
+  if (!scrollEl || e.pointerType === 'touch') return
   e.preventDefault()
   isDragging = true
   thumbState.value = 'pressed'
@@ -111,7 +112,7 @@ function onPointerMove(e: PointerEvent) {
   const isX = props.axis === 'X'
   const delta = (isX ? e.clientX : e.clientY) - dragStart
   const trackLength = isX ? trackRef.value.clientWidth : trackRef.value.clientHeight
-  const available = trackLength - TRACK_PADDING * 2
+  const available = Math.max(0, trackLength - TRACK_PADDING * 2)
   const travel = available - thumbLength.value
   const scrollSize = isX ? scrollEl.scrollWidth : scrollEl.scrollHeight
   const clientSize = isX ? scrollEl.clientWidth : scrollEl.clientHeight
@@ -123,6 +124,20 @@ function onPointerMove(e: PointerEvent) {
   } else {
     scrollEl.scrollTop = Math.max(0, Math.min(maxScroll, dragScrollStart + scrollDelta))
   }
+}
+
+function onTrackPointerDown(e: PointerEvent) {
+  if (!scrollEl || e.button !== 0 || e.pointerType === 'touch') return
+
+  const isX = props.axis === 'X'
+  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+  const point = isX ? e.clientX - rect.left : e.clientY - rect.top
+  const thumbCenter = thumbOffset.value + thumbLength.value / 2
+  const clientSize = isX ? scrollEl.clientWidth : scrollEl.clientHeight
+  const delta = point < thumbCenter ? -clientSize : clientSize
+
+  if (isX) scrollEl.scrollLeft += delta
+  else scrollEl.scrollTop += delta
 }
 
 function onPointerUp(e: PointerEvent) {
@@ -167,6 +182,7 @@ onMounted(() => {
   scrollEl.addEventListener('scroll', onScroll, { passive: true })
   ro?.observe(scrollEl)
   updateThumb()
+  nextTick(updateThumb)
 })
 
 onUnmounted(() => {
@@ -186,11 +202,13 @@ onUnmounted(() => {
     role="scrollbar"
     :aria-orientation="axis === 'X' ? 'horizontal' : 'vertical'"
     :aria-controls="scrollId"
+    :aria-label="axis === 'X' ? 'Horizontal scroll' : 'Vertical scroll'"
     aria-valuemin="0"
     aria-valuemax="100"
-    aria-valuenow="0"
+    :aria-valuenow="ariaValue"
     tabindex="0"
     @keydown="onTrackKeydown"
+    @pointerdown.self="onTrackPointerDown"
   >
     <div
       class="ds-scroll__thumb"
@@ -212,14 +230,17 @@ onUnmounted(() => {
 <style scoped>
 /* Scroll — DS 968:3619 */
 .ds-scroll {
-  display: none; /* hidden by default */
+  display: block;
   position: relative;
   overflow: hidden;
   outline: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .ds-scroll--visible {
-  display: block;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* X: 72×20 track */
@@ -266,5 +287,11 @@ onUnmounted(() => {
 
 .ds-scroll__thumb--pressed {
   background: var(--surface-scroll-thumb-pressed, var(--gray-700));
+}
+
+@media (pointer: coarse) {
+  .ds-scroll--visible {
+    pointer-events: none;
+  }
 }
 </style>
