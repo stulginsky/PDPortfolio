@@ -13,6 +13,15 @@ export default defineConfig({
     },
   },
   test: {
+    // Vue emits this message while Storybook evaluates string-based story
+    // templates through its Node-side test bridge. It is an ignored compiler
+    // option, not an application warning, and does not occur in the browser
+    // Storybook build.
+    onConsoleLog(log) {
+      if (log.includes('decodeEntities option is passed but will be ignored in non-browser builds')) {
+        return false
+      }
+    },
     projects: [
       {
         extends: true,

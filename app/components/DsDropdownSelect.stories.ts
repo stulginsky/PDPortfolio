@@ -16,15 +16,22 @@ const meta = {
     raised: false,
     items: [
       { label: 'Overview', value: 'overview' },
-      { label: 'Foundation', value: 'foundation' },
-      { label: 'Tokens', value: 'tokens' },
-      { label: 'Figma', value: 'figma' },
+      { label: 'Foundation.md', value: 'foundation' },
+      { label: 'Tokens.json', value: 'tokens' },
+      {
+        label: 'Figma',
+        value: 'figma',
+        href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517',
+        icon: 'ExternalLink',
+        showIcon: true,
+      },
     ],
   },
   argTypes: {
     placeholder: { control: 'text' },
     modelValue: { control: 'text' },
     raised: { control: 'boolean' },
+    items: { control: false, description: 'Menu items accept `href?`; an external item opens in a new tab and preserves `modelValue`.' },
   },
   parameters: {
     layout: 'centered',
@@ -53,7 +60,7 @@ export const Default: Story = {}
 export const WithSelection: Story = {
   args: { modelValue: 'foundation' },
   play: async ({ canvas, userEvent }) => {
-    const trigger = canvas.getByRole('button', { name: 'Foundation' })
+    const trigger = canvas.getByRole('button', { name: 'Foundation.md' })
     await userEvent.click(trigger)
 
     const menu = canvas.getByRole('list', { name: 'Select options' })
@@ -68,21 +75,7 @@ export const Raised: Story = {
 }
 
 export const Sandbox: Story = {
-  args: {
-    raised: true,
-
-    items: [{
-      "label": "Overview",
-      "value": "overview"
-    }, {
-      "label": "Tokens",
-      "value": "tokens"
-    }, {
-      "label": "Figma",
-      "value": "figma"
-    }]
-  },
-
+  args: { raised: true },
   render: (args) => ({
     components: { DsDropdownSelect },
     data() {
@@ -90,10 +83,16 @@ export const Sandbox: Story = {
         args,
         value: '',
         items: [
-          { label: 'Overview', value: 'overview' },
-          { label: 'Foundation', value: 'foundation' },
-          { label: 'Tokens', value: 'tokens' },
-          { label: 'Figma', value: 'figma' },
+          { label: 'Overview', value: 'overview', showIcon: false },
+          { label: 'Foundation.md', value: 'foundation', showIcon: false },
+          { label: 'Tokens.json', value: 'tokens', showIcon: false },
+          {
+            label: 'Figma',
+            value: 'figma',
+            href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517',
+            icon: 'ExternalLink',
+            showIcon: true,
+          },
         ],
       }
     },
@@ -124,11 +123,13 @@ export const Sandbox: Story = {
     ).not.toBe(closedMask)
     await expect(canvas.getByRole('list', { name: 'Select options' })).toBeVisible()
 
-    await userEvent.click(canvas.getByRole('button', { name: 'Foundation' }))
-    const foundationButton = canvas.getByRole('button', { name: 'Foundation' })
+    await userEvent.click(canvas.getByRole('button', { name: 'Foundation.md' }))
+    const foundationButton = canvas.getByRole('button', { name: 'Foundation.md' })
 
     await userEvent.click(foundationButton)
-    await userEvent.click(canvas.getByRole('button', { name: 'Figma' }))
-    await expect(canvas.getByRole('button', { name: 'Figma' })).toBeVisible()
+    const figma = canvas.getByRole('link', { name: 'Figma' })
+    await expect(figma).toHaveAttribute('target', '_blank')
+    await userEvent.click(figma)
+    await expect(canvas.getByRole('button', { name: 'Foundation.md' })).toBeVisible()
   }
 }

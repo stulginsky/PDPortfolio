@@ -1,0 +1,3 @@
+.scroll-story__content::-webkit-scrollbar {
+  display: none;
+}

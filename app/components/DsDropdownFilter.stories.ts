@@ -13,9 +13,13 @@ const meta = {
   args: {
     items: ['Gamedev', 'Видео', 'Упаковка'],
     modelValue: null,
+    showIcons: true,
+    lockInitialWidth: false,
   },
   argTypes: {
     modelValue: { control: 'text', description: 'Currently selected overflow filter' },
+    showIcons: { control: 'boolean', description: 'Shows canonical Favicon in standalone list rows.' },
+    lockInitialWidth: { control: 'boolean', description: 'Locks the Default trigger width when labels vary in a composed filter row.' },
   },
   parameters: {
     layout: 'centered',

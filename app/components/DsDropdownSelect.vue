@@ -11,12 +11,17 @@
  */
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import DsButton from './DsButton.vue'
+import type { ButtonIconName } from './button-icons'
 import DsDropdownListSelector from './DsDropdownListSelector.vue'
 import DsDropdownListItem from './DsDropdownListItem.vue'
 
 interface DropdownItem {
   label: string
   value: string
+  icon?: ButtonIconName
+  showIcon?: boolean
+  /** External resource: opens in a new tab without changing modelValue. */
+  href?: string
 }
 
 const props = withDefaults(
@@ -52,7 +57,7 @@ function toggle() {
   isOpen.value = !isOpen.value
   if (isOpen.value) {
     nextTick(() => {
-      triggerRef.value?.querySelector('.ds-dropdown-select__list button')?.focus()
+      triggerRef.value?.querySelector('.ds-dropdown-select__list button, .ds-dropdown-select__list a')?.focus()
       updateListAlignment()
     })
   }
@@ -72,7 +77,7 @@ function updateListAlignment() {
 }
 
 function select(item: DropdownItem) {
-  if (item.value !== props.modelValue) {
+  if (!item.href && item.value !== props.modelValue) {
     emit('update:modelValue', item.value)
     emit('change', item)
   }
@@ -138,6 +143,9 @@ onUnmounted(() => {
         >
           <DsDropdownListItem
             :label="item.label"
+            :icon="item.icon"
+            :show-icon="item.showIcon"
+            :href="item.href"
             appearance="Sm"
             @click="select(item)"
           />

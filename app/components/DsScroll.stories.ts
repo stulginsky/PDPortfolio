@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, userEvent, waitFor } from 'storybook/test'
 import { ref } from 'vue'
 import DsScroll from './DsScroll.vue'
+import './DsScroll.stories.css'
 
 const meta = {
   title: 'Components/Scroll',
@@ -32,7 +33,6 @@ export const VerticalY: Story = {
   render: () => ({
     components: { DsScroll },
     template: `
-      <style>.scroll-story__content::-webkit-scrollbar { display:none; }</style>
       <div style="position:relative;width:260px;height:200px;border:1px solid var(--border-default);border-radius:8px;overflow:hidden">
         <div id="scroll-y-demo" class="scroll-story__content" style="height:200px;overflow-y:auto;padding:16px 28px 16px 16px;scrollbar-width:none">
           <p v-for="i in 16" :key="i" style="margin:0 0 12px;font-family:var(--text-font-sans);font-size:14px;color:var(--text-default)">Line {{ i }}: scrollable content.</p>
@@ -48,7 +48,6 @@ export const HorizontalX: Story = {
   render: () => ({
     components: { DsScroll },
     template: `
-      <style>.scroll-story__content::-webkit-scrollbar { display:none; }</style>
       <div style="position:relative;width:320px;height:120px;border:1px solid var(--border-default);border-radius:8px;overflow:hidden">
         <div id="scroll-x-demo" class="scroll-story__content" style="height:100px;overflow-x:auto;padding:16px 16px 0;scrollbar-width:none;white-space:nowrap">
           <span v-for="i in 20" :key="i" style="display:inline-block;margin-right:24px;font-family:var(--text-font-sans);font-size:14px;color:var(--text-default)">Item {{ i }}</span>
@@ -64,7 +63,6 @@ export const AllVariants: Story = {
   render: () => ({
     components: { DsScroll },
     template: `
-      <style>.scroll-story__content::-webkit-scrollbar { display:none; }</style>
       <div style="display:flex;gap:32px;align-items:flex-start;padding:24px;background:var(--surface-default)">
         <div style="position:relative;width:180px;height:120px;border:1px solid var(--border-default);overflow:hidden">
           <div id="scroll-all-y" class="scroll-story__content" style="height:120px;overflow-y:auto;padding:12px 28px 12px 12px;scrollbar-width:none">
@@ -93,7 +91,6 @@ export const Sandbox: Story = {
       return { xPosition, yPosition }
     },
     template: `
-      <style>.scroll-story__content::-webkit-scrollbar { display:none; }</style>
       <div style="display:grid;gap:24px;padding:32px;background:var(--surface-default);font-family:var(--text-font-sans)">
         <div style="position:relative;width:320px;height:220px;border:1px solid var(--border-default);border-radius:8px;overflow:hidden">
           <div id="scroll-sandbox" data-testid="scroll-sandbox" class="scroll-story__content" style="width:100%;height:100%;overflow:auto;padding:16px 28px 28px 16px;box-sizing:border-box;scrollbar-width:none" @scroll="yPosition = $event.target.scrollTop; xPosition = $event.target.scrollLeft">

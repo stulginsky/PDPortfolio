@@ -1,49 +1,87 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import type { Meta, StoryObj } from '@storybook/vue3'
+import { ref } from 'vue'
 import { expect, within } from 'storybook/test'
 import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 
-/**
- * FullscreenMenu/Mob — DS component 1021:3359
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359
- */
 const meta = {
-  title: 'Components/FullscreenMenuMob',
+  title: 'Components/FullscreenMenu-mob',
   component: DsFullscreenMenuMob,
   tags: ['autodocs'],
   args: {
-    items: [
-      { label: 'Все кейсы', value: 'all' },
-      { label: 'Продукт', value: 'product' },
-      { label: 'UX', value: 'ux' },
-      { label: 'Дизайн система', value: 'ds' },
-      { label: 'Брендинг', value: 'branding' },
-    ],
-    modelValue: null,
-    placeholder: 'Продукт · креатив · бренд & more',
-    ariaLabel: 'Выбрать категорию',
+    raised: false,
   },
   argTypes: {
-    placeholder: { control: 'text' },
-    modelValue: { control: 'text' },
+    items: {
+      control: false,
+      description: 'Список пунктов `{ label, value, icon?, showIcon?, href? }`. `href` открывается в новой вкладке и не меняет `modelValue`; для Figma задаются `href`, `icon: ExternalLink` и `showIcon: true`.',
+      table: {
+        category: 'Содержимое',
+        type: { summary: 'MenuItem[]' },
+      },
+    },
+    modelValue: {
+      control: false,
+      description: 'Выбранное значение. `null` показывает вводную подпись trigger.',
+      table: {
+        category: 'Состояние',
+        type: { summary: 'string | null' },
+        defaultValue: { summary: 'null' },
+      },
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Вводная подпись закрытого trigger, пока `modelValue` не выбран.',
+      table: {
+        category: 'Содержимое',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Продукт · Креатив · Бренд & ...' },
+      },
+    },
+    ariaLabel: {
+      control: 'text',
+      description: 'Доступное имя trigger и полноэкранного диалога.',
+      table: {
+        category: 'Доступность',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Открыть меню' },
+      },
+    },
+    raised: {
+      control: 'boolean',
+      description: 'Figma Button `Raised=On` для закрытого trigger. В Sandbox применяется ко всем трём примерам.',
+      table: {
+        category: 'Внешний вид',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    toggled: {
+      control: false,
+      description: 'Устойчивый Figma Button `State=Toggled`. Применяется потребителем только к выбранному фильтру; navigation и Zoom после выбора возвращаются в Default.',
+      table: {
+        category: 'Состояние',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
   parameters: {
-    layout: 'centered',
-    viewport: { defaultViewport: 'mobile320' },
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile320',
+    },
     docs: {
       description: {
-        component: `
-DS FullscreenMenu/Mob 1021:3359. Universal fullscreen single-select menu for mobile (320–767px).
+        component:
+          `FullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359). Fullscreen single-select menu for mobile.
 
-| State | Size | Description |
-|---|---|---|
-| Default | 97×50 | Closed trigger with label + chevronDown |
-| ActivePressed | 97×50 | Press → release: pressed styling + chevronUp |
-| Opened | full-screen | Full-screen overlay with items + cross button |
+| State | Trigger / surface |
+|---|---|
+| Default | Closed DsButton + ChevronDown; optional Raised |
+| ActivePressed | Touch press only: DsButton + ChevronUp until release |
+| Opened | Plum fullscreen surface; centred Lr rows, Cross and inner scroll |
 
-Trigger label = intro placeholder until selection, then selected item name.
-The closed trigger also supports the base Button Raised state. Opened uses a 64×4 violet handle,
-an inner scroll for long lists, and closes on item select, cross button, or downward touch swipe at scroll top.
-        `,
+Trigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.`,
       },
     },
   },
@@ -52,101 +90,93 @@ an inner scroll for long lists, and closes on item select, cross button, or down
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
-
-export const Selected: Story = {
-  args: {
-    modelValue: 'product',
-    placeholder: 'Продукт · креатив · бренд & more',
-  },
-}
-
-export const Raised: Story = {
-  args: {
-    raised: true,
-    placeholder: 'Product · creative · brand & more',
-  },
-}
-
-/** Sandbox for Filters use-case */
-export const FiltersContext: Story = {
-  render: () => ({
+export const Sandbox: Story = {
+  render: (args) => ({
     components: { DsFullscreenMenuMob },
-    data() {
+    setup() {
+      const filterValue = ref<string | null>(null)
+      const navigationValue = ref<string | null>('overview')
+      const zoomValue = ref<string | null>(null)
+
+      const filterItems = [
+        { label: 'Все кейсы', value: 'all' },
+        { label: 'Продукт', value: 'product' },
+        { label: 'UX', value: 'ux' },
+        { label: 'Дизайн система', value: 'design-system' },
+        { label: 'Брендинг', value: 'branding' },
+        { label: 'Креатив', value: 'creative' },
+        { label: 'Jewelry', value: 'jewelry' },
+        { label: 'Gamedev', value: 'gamedev' },
+        { label: 'Видео', value: 'video' },
+        { label: 'Упаковка', value: 'packaging' },
+      ]
+      const navigationItems = [
+        { label: 'Overview', value: 'overview' },
+        { label: 'Foundation.md', value: 'foundation' },
+        { label: 'Tokens.json', value: 'tokens' },
+        {
+          label: 'Figma',
+          value: 'figma',
+          href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359',
+          icon: 'ExternalLink',
+          showIcon: true,
+        },
+      ]
+      const zoomItems = [
+        { label: 'Zoom 75%', value: '75' },
+        { label: 'Zoom 100%', value: '100' },
+        { label: 'Zoom 125%', value: '125' },
+        { label: 'Fit to screen', value: 'fit' },
+      ]
+
       return {
-        selected: null as string | null,
-        items: [
-          { label: 'Все кейсы', value: 'all' },
-          { label: 'Продукт', value: 'product' },
-          { label: 'UX', value: 'ux' },
-          { label: 'Дизайн система', value: 'ds' },
-          { label: 'Брендинг', value: 'branding' },
-          { label: 'Kreатив', value: 'creative' },
-          { label: 'Gamedev', value: 'gamedev' },
-        ],
+        args,
+        filterValue,
+        navigationValue,
+        zoomValue,
+        filterItems,
+        navigationItems,
+        zoomItems,
       }
     },
     template: `
-      <div style="padding:24px;font-family:var(--text-font-sans);max-width:375px;">
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Mobile filter row (base viewport &lt;394px):</p>
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:16px; box-sizing:border-box; width:320px; min-height:100vh; padding:16px;">
         <DsFullscreenMenuMob
-          v-model="selected"
-          :items="items"
-          placeholder="Продукт · креатив · бренд & more"
+          :model-value="filterValue"
+          :items="filterItems"
+          placeholder="Продукт · Креатив · Бренд & ..."
           aria-label="Выбрать категорию"
+          :raised="args.raised"
+          :toggled="filterValue !== null"
+          @update:model-value="filterValue = $event === 'all' ? null : $event"
         />
-        <p style="font-size:14px;color:var(--text-muted);margin-top:16px;">
-          Selected: <strong>{{ selected || '(none)' }}</strong>
-        </p>
-        <p style="font-size:12px;color:var(--text-subtle);margin-top:4px;">
-          Tap trigger to open fullscreen overlay
-        </p>
+        <DsFullscreenMenuMob
+          v-model="navigationValue"
+          :items="navigationItems"
+          placeholder="Overview · Docs · Figma"
+          aria-label="Выбрать раздел"
+          :raised="args.raised"
+        />
+        <DsFullscreenMenuMob
+          v-model="zoomValue"
+          :items="zoomItems"
+          placeholder="Zoom 100%"
+          aria-label="Выбрать масштаб"
+          :raised="args.raised"
+        />
       </div>
     `,
   }),
-  parameters: {
-    layout: 'fullscreen',
-    viewport: { defaultViewport: 'mobile320' },
-  },
-}
-
-export const Interaction: Story = {
-  render: () => ({
-    components: { DsFullscreenMenuMob },
-    data: () => ({ selected: null as string | null }),
-    template: `
-      <DsFullscreenMenuMob
-        v-model="selected"
-        :items="[
-          { label: 'Product', value: 'product' },
-          { label: 'Creative', value: 'creative' },
-          { label: 'Brand', value: 'brand' }
-        ]"
-        placeholder="Product · creative · brand & more"
-        aria-label="Choose category"
-        raised
-      />
-    `,
-  }),
   play: async ({ canvas, userEvent }) => {
-    const trigger = canvas.getByRole('button', { name: 'Choose category' })
+    const navigationTrigger = canvas.getByRole('button', { name: 'Выбрать раздел' })
+    await expect(navigationTrigger).toHaveTextContent('Overview')
+    await userEvent.click(navigationTrigger)
 
-    await userEvent.click(trigger)
-    await expect(trigger).toHaveAttribute('aria-expanded', 'true')
-
-    const dialog = within(document.body).getByRole('dialog', { name: 'Choose category' })
-    await expect(dialog).toBeVisible()
-    await userEvent.click(within(dialog).getByRole('button', { name: 'Product' }))
-
-    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
-    await expect(trigger).toHaveTextContent('Product')
-    await expect(trigger).toHaveFocus()
-
-    await userEvent.click(trigger)
-    const reopenedDialog = within(document.body).getByRole('dialog', { name: 'Choose category' })
-    const buttons = within(reopenedDialog).getAllByRole('button')
-    await userEvent.click(buttons.at(-1)!)
-    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
-
+    const overlay = within(document.body)
+    const figma = overlay.getByRole('link', { name: 'Figma' })
+    await expect(figma).toHaveAttribute('target', '_blank')
+    await userEvent.click(figma)
+    await expect(overlay.queryByRole('dialog')).toBeNull()
+    await expect(canvas.getByRole('button', { name: 'Выбрать раздел' })).toHaveTextContent('Overview')
   },
 }

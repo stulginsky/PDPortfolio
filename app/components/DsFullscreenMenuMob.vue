@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useId } from 'vue'
 import DsButton from './DsButton.vue'
+import type { ButtonIconName } from './button-icons'
 import DsCrossButton from './DsCrossButton.vue'
 import DsDropdownListItem from './DsDropdownListItem.vue'
+import DsScroll from './DsScroll.vue'
 
 /**
  * DsFullscreenMenuMob — DS component 1021:3359 (FullscreenMenu-mob)
@@ -14,6 +16,10 @@ import DsDropdownListItem from './DsDropdownListItem.vue'
 interface MenuItem {
   label: string
   value: string
+  icon?: ButtonIconName
+  showIcon?: boolean
+  /** External resource: opens separately and does not change the selected value. */
+  href?: string
 }
 
 const props = withDefaults(
@@ -26,12 +32,15 @@ const props = withDefaults(
     ariaLabel?: string
     /** Figma Button Raised=On for the closed Default trigger only. */
     raised?: boolean
+    /** Persistent Figma Button State=Toggled for a selected filter trigger. */
+    toggled?: boolean
   }>(),
   {
     modelValue: null,
-    placeholder: 'Продукт · креатив · бренд & more',
+    placeholder: 'Продукт · Креатив · Бренд & ...',
     ariaLabel: 'Открыть меню',
     raised: false,
+    toggled: false,
   },
 )
 
@@ -47,6 +56,7 @@ const isActive = ref(false)
 const listRef = ref<HTMLElement | null>(null)
 const triggerRef = ref<{ $el: HTMLElement } | null>(null)
 const menuId = `ds-fullscreen-menu-mob-${useId()}`
+const listId = `${menuId}-list`
 const swipeStart = ref<{ pointerId: number; y: number } | null>(null)
 
 const triggerLabel = computed(() => {
@@ -79,8 +89,10 @@ function close() {
 }
 
 function selectItem(item: MenuItem) {
-  emit('update:modelValue', item.value)
-  emit('select', item)
+  if (!item.href) {
+    emit('update:modelValue', item.value)
+    emit('select', item)
+  }
   close()
 }
 
@@ -118,11 +130,17 @@ function finishSwipe(event: PointerEvent) {
     <DsButton
       ref="triggerRef"
       class="ds-fs-menu__trigger"
+      :class="{
+        'ds-fs-menu__trigger--raised': raised && !isActive,
+        'ds-fs-menu__trigger--toggled': toggled && !isActive,
+      }"
       :text="triggerLabel"
       :icon="isActive ? 'ChevronUp' : 'ChevronDown'"
       icon-right
       :raised="raised && !isActive"
+      :toggled="toggled && !isActive"
       :aria-label="ariaLabel"
+      aria-haspopup="dialog"
       :aria-controls="menuId"
       :aria-expanded="isOpen"
       @pointerdown="startPress"
@@ -149,25 +167,40 @@ function finishSwipe(event: PointerEvent) {
         </div>
 
         <div class="ds-fs-menu__content">
-          <ul ref="listRef" class="ds-fs-menu__list" role="listbox" :aria-label="ariaLabel">
-            <li
-              v-for="item in items"
-              :key="item.value"
-              role="option"
-              :aria-selected="modelValue === item.value"
+          <div class="ds-fs-menu__list-wrap">
+            <ul
+              :id="listId"
+              ref="listRef"
+              class="ds-fs-menu__list"
+              role="list"
+              :aria-label="ariaLabel"
             >
-              <DsDropdownListItem
-                :label="item.label"
-                appearance="Lr"
-                type="Filter"
-                @click="selectItem(item)"
-              />
-            </li>
-          </ul>
+              <li v-for="item in items" :key="item.value">
+                <DsDropdownListItem
+                  class="ds-fs-menu__item"
+                  style="width: 100%"
+                  :label="item.label"
+                  :icon="item.icon"
+                  :show-icon="item.showIcon ?? false"
+                  :href="item.href"
+                  appearance="Lr"
+                  type="Filter"
+                  @click="selectItem(item)"
+                />
+              </li>
+            </ul>
+            <DsScroll
+              class="ds-fs-menu__scroll"
+              style="position: absolute; top: 0; right: 0"
+              axis="Y"
+              :scroll-id="listId"
+            />
+          </div>
 
           <DsCrossButton
             class="ds-fs-menu__close"
             aria-label="Закрыть меню"
+            pressed-appearance="Toggled"
             @click="close"
           />
         </div>
@@ -176,10 +209,36 @@ function finishSwipe(event: PointerEvent) {
   </div>
 </template>
 
-<style scoped>
+<style>
 /* FullscreenMenu-mob — DS 1021:3359 */
 .ds-fs-menu__trigger {
   max-width: min(288px, calc(100vw - 32px));
+}
+
+/* The component represents a touch UI even when Storybook is inspected with a mouse. */
+@media (hover: hover) and (pointer: fine) {
+  .button-base.ds-fs-menu__trigger:hover:not(:active):not(:disabled):not([aria-disabled="true"]):not(.button-base--pressed):not(.button-base--hover-suppressed) {
+    background: transparent;
+    color: var(--text-default);
+  }
+
+  .button-base.ds-fs-menu__trigger--raised:hover:not(:active):not(:disabled):not([aria-disabled="true"]):not(.button-base--pressed):not(.button-base--hover-suppressed) {
+    background: var(--surface-raised);
+  }
+
+  .button-base.ds-fs-menu__trigger--toggled:hover:not(:active):not(:disabled):not([aria-disabled="true"]):not(.button-base--pressed):not(.button-base--hover-suppressed) {
+    background: var(--surface-action-toggled);
+    color: var(--text-inverse);
+  }
+
+  .button-base.ds-fs-menu__close:hover:not(:active):not(:disabled):not([aria-disabled="true"]):not(.button-base--pressed):not(.button-base--hover-suppressed) {
+    background: transparent;
+    color: var(--text-inverse);
+  }
+
+  .ds-fs-menu__overlay .ds-dropdown-list-item:hover:not(:active) {
+    background: var(--surface-menu-item-default);
+  }
 }
 </style>
 
@@ -229,9 +288,18 @@ function finishSwipe(event: PointerEvent) {
   gap: var(--space-2);
 }
 
-.ds-fs-menu__list {
+.ds-fs-menu__list-wrap {
+  position: relative;
   display: flex;
   flex: 0 1 auto;
+  width: 100%;
+  min-height: 0;
+  max-height: calc(100dvh - 162px);
+}
+
+.ds-fs-menu__list {
+  display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
   min-height: 0;
@@ -240,7 +308,12 @@ function finishSwipe(event: PointerEvent) {
   padding: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: none;
   list-style: none;
+}
+
+.ds-fs-menu__list::-webkit-scrollbar {
+  display: none;
 }
 
 .ds-fs-menu__list li,

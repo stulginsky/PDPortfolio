@@ -22,11 +22,17 @@ const props = withDefaults(
     /** Currently selected value from outside (external filter active) */
     externalValue?: string | null
     modelValue?: string | null
+    /** List item icons are visible in the standalone Figma component by default. */
+    showIcons?: boolean
+    /** Keep the initial Default trigger width after its label changes. */
+    lockInitialWidth?: boolean
   }>(),
   {
     items: () => ['Gamedev', 'Видео', 'Упаковка'],
     externalValue: null,
     modelValue: null,
+    showIcons: true,
+    lockInitialWidth: false,
   },
 )
 
@@ -38,6 +44,7 @@ const emit = defineEmits<{
 const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
 const suppressTriggerHover = ref(false)
+const triggerWidth = ref<number | null>(null)
 
 // Show selected label if active, else default
 const triggerLabel = computed(() => {
@@ -90,9 +97,23 @@ function handleKeydown(e: KeyboardEvent) {
   }
 }
 
+function lockInitialWidth() {
+  if (!props.lockInitialWidth || triggerWidth.value || !triggerRef.value) return
+
+  const trigger = triggerRef.value.querySelector('button')
+  if (!(trigger instanceof HTMLElement)) return
+
+  const width = Math.ceil(trigger.getBoundingClientRect().width)
+  if (width > 0) triggerWidth.value = width
+}
+
 onMounted(() => {
   document.addEventListener('mousedown', handleClickOutside)
   document.addEventListener('keydown', handleKeydown)
+  if (props.lockInitialWidth) {
+    void nextTick(lockInitialWidth)
+    void document.fonts?.ready.then(lockInitialWidth)
+  }
 })
 
 onUnmounted(() => {
@@ -102,8 +123,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="ds-dropdown-filter" ref="triggerRef">
+  <div
+    class="ds-dropdown-filter"
+    :class="{ 'ds-dropdown-filter--initial-width-locked': lockInitialWidth }"
+    ref="triggerRef"
+    :style="lockInitialWidth && triggerWidth ? { width: `${triggerWidth}px` } : undefined"
+  >
     <DsButton
+      class="ds-dropdown-filter__trigger"
       :class="{ 'ds-dropdown-filter__trigger--hover-suppressed': suppressTriggerHover }"
       :text="triggerLabel"
       :toggled="isOpen || hasSelectedOverflow"
@@ -130,6 +157,7 @@ onUnmounted(() => {
         <li v-for="item in items" :key="item">
           <DsDropdownListItem
             :label="item"
+            :show-icon="showIcons"
             appearance="Sm"
             @click="select(item)"
           />
@@ -155,6 +183,11 @@ onUnmounted(() => {
   min-width: 100%;
   max-width: calc(100vw - 32px);
   transform: translateX(-50%);
+}
+
+.ds-dropdown-filter--initial-width-locked .ds-dropdown-filter__trigger,
+.ds-dropdown-filter--initial-width-locked .ds-dropdown-filter__list-position {
+  width: 100%;
 }
 
 /* Local disclosure toggles directly to Opened; never flash ActivePressed. */

@@ -78,7 +78,15 @@ export const FilterType: Story = {
 }
 
 export const WithExternalLink: Story = {
-  args: { label: 'External resource', icon: 'ExternalLink' },
+  args: {
+    label: 'External resource',
+    href: 'https://www.figma.com/',
+    icon: 'ExternalLink',
+  },
+  play: async ({ canvas }) => {
+    const link = canvas.getByRole('link', { name: 'External resource' })
+    await expect(link).toHaveAttribute('target', '_blank')
+  },
 }
 
 export const AllVariants: Story = {

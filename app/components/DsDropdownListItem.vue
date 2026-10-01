@@ -17,12 +17,18 @@ const props = withDefaults(
     icon?: ButtonIconName
     showIcon?: boolean
     type?: DropdownListType
+    /** External resource. Renders a native link instead of a selection button. */
+    href?: string
+    /** Defaults to a new browsing context for an external resource. */
+    target?: string
   }>(),
   {
     appearance: 'Sm',
     icon: 'Favicon',
     showIcon: true,
     type: 'General',
+    href: undefined,
+    target: undefined,
   },
 )
 
@@ -35,13 +41,18 @@ defineEmits<{
 </script>
 
 <template>
-  <button
+  <component
+    :is="href ? 'a' : 'button'"
     class="ds-dropdown-list-item"
     :class="[
       `ds-dropdown-list-item--${appearance.toLowerCase()}`,
       `ds-dropdown-list-item--${resolvedType.toLowerCase()}`,
+      { 'ds-dropdown-list-item--has-icon': showIcon },
     ]"
-    type="button"
+    :href="href"
+    :target="href ? (target ?? '_blank') : undefined"
+    :rel="href ? 'noopener noreferrer' : undefined"
+    :type="href ? undefined : 'button'"
     @click="$emit('click', $event)"
   >
     <span class="ds-dropdown-list-item__label">{{ label }}</span>
@@ -51,7 +62,7 @@ defineEmits<{
       :style="{ '--ds-dropdown-list-item-icon-mask': `url(&quot;${getButtonIconSource(icon)}&quot;)` }"
       aria-hidden="true"
     />
-  </button>
+  </component>
 </template>
 
 <style scoped>
@@ -76,6 +87,7 @@ defineEmits<{
   letter-spacing: 0;
   gap: 12px;
   cursor: pointer;
+  text-decoration: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -103,6 +115,10 @@ defineEmits<{
 
 .ds-dropdown-list-item--filter .ds-dropdown-list-item__label {
   flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.ds-dropdown-list-item--filter.ds-dropdown-list-item--has-icon .ds-dropdown-list-item__label {
   max-width: calc(100% - 28px);
 }
 

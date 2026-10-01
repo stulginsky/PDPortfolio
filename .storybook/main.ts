@@ -23,9 +23,10 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
     '@storybook/addon-mcp',
+    '@chromatic-com/storybook'
   ],
-  // Ensure @vitejs/plugin-vue is included so .vue SFCs are compiled correctly.
-  // templateCompilation() only adds the vue alias; the SFC plugin must be explicit.
+  // templateCompilation() only adds the Vue alias; the SFC plugin is required
+  // for Storybook's browser-test Vite server as well.
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [vue()],
