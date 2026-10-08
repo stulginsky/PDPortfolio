@@ -32,17 +32,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-DS Filter 43:867, Design=2nd. Portfolio category selection chip.
-
-| State | Trigger | Surface | Text |
-|---|---|---|---|
-| Default | — | transparent | text/action (accent/aubergine) |
-| Hover | :hover | surface/action-hover | text/default |
-| ActivePressed | Figma reference; not rendered for local selection | — | — |
-| Toggled | prop toggled=true | surface/action-toggled | text/inverse |
-| Disabled | prop disabled=true | — | text/muted |
-        `,
+        component: "[Figma 43:867](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=43-867)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Filter 43:867, Design=2nd. Portfolio category selection chip.\n\n| State | Trigger | Surface | Text |\n|---|---|---|---|\n| Default | — | transparent | text/action (accent/aubergine) |\n| Hover | :hover | surface/action-hover | text/default |\n| ActivePressed | Figma reference; not rendered for local selection | — | — |\n| Toggled | prop toggled=true | surface/action-toggled | text/inverse |\n| Disabled | prop disabled=true | — | text/muted |\n\n</details>",
       },
     },
   },

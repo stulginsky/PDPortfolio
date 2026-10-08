@@ -14,6 +14,7 @@ import DsButton from './DsButton.vue'
 import type { ButtonIconName } from './button-icons'
 import DsDropdownListSelector from './DsDropdownListSelector.vue'
 import DsDropdownListItem from './DsDropdownListItem.vue'
+import type { DropdownListType } from './dropdown-list-context'
 
 interface DropdownItem {
   label: string
@@ -31,10 +32,13 @@ const props = withDefaults(
     placeholder?: string
     /** Raised Default surface inherited from DsButton. */
     raised?: boolean
+    /** Alignment of the shared web dropdown surface. */
+    type?: DropdownListType
   }>(),
   {
     placeholder: 'Select',
     raised: false,
+    type: 'General',
   },
 )
 
@@ -46,7 +50,7 @@ const emit = defineEmits<{
 const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
 const listRef = ref<HTMLElement | null>(null)
-const alignEnd = ref(false)
+const listOffset = ref(0)
 
 const currentLabel = computed(() => {
   const found = props.items.find((i) => i.value === props.modelValue)
@@ -71,9 +75,9 @@ function updateListAlignment() {
   const triggerRect = trigger.getBoundingClientRect()
   const listWidth = list.getBoundingClientRect().width
   const gutter = 16
-  alignEnd.value =
-    triggerRect.left + listWidth > window.innerWidth - gutter &&
-    triggerRect.right - listWidth >= gutter
+  const centeredLeft = triggerRect.left + (triggerRect.width - listWidth) / 2
+  const clampedLeft = Math.max(gutter, Math.min(centeredLeft, window.innerWidth - gutter - listWidth))
+  listOffset.value = clampedLeft - centeredLeft
 }
 
 function select(item: DropdownItem) {
@@ -129,12 +133,12 @@ onUnmounted(() => {
       v-if="isOpen"
       ref="listRef"
       class="ds-dropdown-select__list-position"
-      :class="{ 'ds-dropdown-select__list-position--end': alignEnd }"
+      :style="{ marginLeft: `${listOffset}px` }"
     >
       <DsDropdownListSelector
         id="ds-dropdown-select-list"
         class="ds-dropdown-select__list"
-        type="General"
+        :type="props.type"
         aria-label="Select options"
       >
         <li
@@ -165,7 +169,8 @@ onUnmounted(() => {
 .ds-dropdown-select__list-position {
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 200;
   width: max-content;
   min-width: 100%;
@@ -184,8 +189,4 @@ onUnmounted(() => {
   color: var(--text-inverse) !important;
 }
 
-.ds-dropdown-select__list-position--end {
-  right: 0;
-  left: auto;
-}
 </style>

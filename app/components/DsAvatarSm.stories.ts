@@ -25,17 +25,7 @@ const smMeta = {
     layout: "centered",
     docs: {
       description: {
-        component: `
-DS Avatar-Sm 124:712. Interactive compact avatar 50×50, radius=60.
-Action: scroll to hero top (К началу страницы).
-Uses the original Figma asset AvatarPortrait.
-
-| State | Border | Image origin |
-|---|---|---|
-| Default | border/default 1px inside | -0.28 / -1.07px |
-| Hover | border/action-hover 3px inside | -0.28 / -1.07px |
-| ActivePressed | border/action-pressed 3px inside | -0.28 / -1.07px |
-        `,
+        component: "[Figma 124:712](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=124-712)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Avatar-Sm 124:712. Interactive compact avatar 50×50, radius=60.\nAction: scroll to hero top (К началу страницы).\nUses the original Figma asset AvatarPortrait.\n\n| State | Border | Image origin |\n|---|---|---|\n| Default | border/default 1px inside | -0.28 / -1.07px |\n| Hover | border/action-hover 3px inside | -0.28 / -1.07px |\n| ActivePressed | border/action-pressed 3px inside | -0.28 / -1.07px |\n\n</details>",
       },
     },
   },

@@ -31,17 +31,7 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: `
-DS Role-Focus 1107:7326. Case role/focus block, non-interactive.
-Static labels: "My role" / "Case focus". Values from props.
-
-| Breakpoint | Layout | Typography |
-|---|---|---|
-| base (<425px) | vertical (label over value) | DS/Body/base 16px w400 |
-| min-425 (>=425px) | horizontal (label col 116px) | DS/Body/md 20px w300 |
-
-The optional \`breakpoint\` prop forces one Figma variant in a constrained composition; without it, the component follows the viewport.
-        `,
+        component: "[Figma 1107:7326](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1107-7326)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Role-Focus 1107:7326. Case role/focus block, non-interactive.\nStatic labels: \"My role\" / \"Case focus\". Values from props.\n\n| Breakpoint | Layout | Typography |\n|---|---|---|\n| base (<425px) | vertical (label over value) | DS/Body/base 16px w400 |\n| min-425 (>=425px) | horizontal (label col 116px) | DS/Body/md 20px w300 |\n\nThe optional `breakpoint` prop forces one Figma variant in a constrained composition; without it, the component follows the viewport.\n\n</details>",
       },
     },
   },

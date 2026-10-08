@@ -10,7 +10,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Figma [Avatar-Lg 124:563](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=124-563). Static 120×120 author portrait with a 2px `border/default` stroke. The registered local `AvatarPortrait` asset is fixed by the component; it has no public props or interaction states.',
+        component: "[Avatar-Lg 124:563](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=124-563)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Avatar-Lg 124:563](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=124-563). Static 120×120 author portrait with a 2px `border/default` stroke. The registered local `AvatarPortrait` asset is fixed by the component; it has no public props or interaction states.\n\n</details>",
       },
     },
   },

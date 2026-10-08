@@ -16,7 +16,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Figma [cross button 290:1960](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=290-1960). It composes `DsButtonIcon` with the canonical `Cross` asset. Default is transparent; Hover and ActivePressed are native pointer states.',
+        component: "[cross button 290:1960](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=290-1960)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [cross button 290:1960](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=290-1960). It composes `DsButtonIcon` with the canonical `Cross` asset. Default is transparent; Hover and ActivePressed are native pointer states.\n\n</details>",
       },
     },
   },

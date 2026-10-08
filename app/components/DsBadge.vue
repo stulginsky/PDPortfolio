@@ -24,7 +24,7 @@ const props = withDefaults(
 
 <template>
   <span class="ds-badge" :class="`ds-badge--${type.toLowerCase()}`">
-    <TypoText :content="label" class="ds-badge__text" />
+    <span class="ds-badge__text"><TypoText :content="label" class="ds-badge__glyphs" /></span>
   </span>
 </template>
 
@@ -95,8 +95,17 @@ const props = withDefaults(
 
 /* Shared text element */
 .ds-badge__text {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  height: 1lh;
   color: inherit;
+}
+
+/* One font-based baseline for every label, including words with descenders.
+   The outer line box preserves the original badge dimensions at every scale. */
+.ds-badge__glyphs {
+  display: block;
+  text-box: trim-both cap alphabetic;
 }
 
 </style>

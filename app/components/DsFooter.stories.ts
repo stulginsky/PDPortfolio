@@ -10,14 +10,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: `
-Footer — DS [1094:6423](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1094-6423).
-
-| Breakpoint | Layout |
-|---|---|
-| base (<410px) | Centred vertical stack |
-| min-410 (≥410px) | Centred horizontal row |
-        `,
+        component: "[1094:6423](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1094-6423)\n\n<details>\n<summary>Техническое описание</summary>\n\nFooter — DS [1094:6423](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1094-6423).\n\n| Breakpoint | Layout |\n|---|---|\n| base (<410px) | Centred vertical stack |\n| min-410 (≥410px) | Centred horizontal row |\n\n</details>",
       },
     },
   },

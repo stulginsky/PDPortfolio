@@ -112,6 +112,7 @@ defineEmits<{
 
 /* Original Figma ExternalLink; semantic text color controls its state color. */
 .ds-tab__icon :deep(path) {
-  fill: currentColor;
+  fill: none;
+  stroke: currentColor;
 }
 </style>

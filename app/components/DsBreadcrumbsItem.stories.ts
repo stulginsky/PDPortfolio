@@ -22,7 +22,7 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: 'One Figma breadcrumb step. It owns its 8 px label-to-dot gap and 8 px trailing spacing; composition controls real navigation through `click`.',
+        component: "<details>\n<summary>Техническое описание</summary>\n\nOne Figma breadcrumb step. It owns its 8 px label-to-dot gap and 8 px trailing spacing; composition controls real navigation through `click`.\n\n</details>",
       },
     },
   },

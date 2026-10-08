@@ -45,15 +45,7 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: `
-One generic hierarchy component. It never renders navigation as placeholder links:
-selection is emitted through \`select\`, and the optional parent button emits \`parent\`.
-
-| Mode | Display |
-|---|---|
-| Default | The complete hierarchy |
-| Overflow | \`… · previous · current\`; earlier items open in the menu |
-        `,
+        component: "<details>\n<summary>Техническое описание</summary>\n\nOne generic hierarchy component. It never renders navigation as placeholder links:\nselection is emitted through `select`, and the optional parent button emits `parent`.\n\n| Mode | Display |\n|---|---|\n| Default | The complete hierarchy |\n| Overflow | `… · previous · current`; earlier items open in the menu |\n\n</details>",
       },
     },
   },

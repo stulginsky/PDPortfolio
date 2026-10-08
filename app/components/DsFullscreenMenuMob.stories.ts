@@ -73,15 +73,7 @@ const meta = {
     docs: {
       description: {
         component:
-          `FullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359). Fullscreen single-select menu for mobile.
-
-| State | Trigger / surface |
-|---|---|
-| Default | Closed DsButton + ChevronDown; optional Raised |
-| ActivePressed | Touch press only: DsButton + ChevronUp until release |
-| Opened | Plum fullscreen surface; centred Lr rows, Cross and inner scroll |
-
-Trigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.`,
+          "[1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359)\n\n<details>\n<summary>Техническое описание</summary>\n\nFullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359). Fullscreen single-select menu for mobile.\n\n| State | Trigger / surface |\n|---|---|\n| Default | Closed DsButton + ChevronDown; optional Raised |\n| ActivePressed | Touch press only: DsButton + ChevronUp until release |\n| Opened | Plum fullscreen surface; centred Lr rows, Cross and inner scroll |\n\nTrigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.\n\n</details>",
       },
     },
   },

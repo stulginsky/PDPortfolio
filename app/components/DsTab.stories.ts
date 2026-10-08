@@ -24,11 +24,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `Figma [Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544).
-
-Default and Hover are real pointer states. For this local tab switcher, \`ActivePressed\` remains only a Figma reference; \`toggled\` is the controlled persistent state and sets \`aria-current="page"\`.
-
-The icon is the original Figma ExternalLink asset.`,
+        component: "[Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544).\n\nDefault and Hover are real pointer states. For this local tab switcher, `ActivePressed` remains only a Figma reference; `toggled` is the controlled persistent state and sets `aria-current=\"page\"`.\n\nThe icon is the original Figma ExternalLink asset.\n\n</details>",
       },
     },
   },

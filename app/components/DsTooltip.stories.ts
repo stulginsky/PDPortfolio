@@ -29,10 +29,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-DS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.
-Non-interactive — parent controls visibility.
-        `,
+        component: "[Figma 324:2111](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=324-2111)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.\nNon-interactive — parent controls visibility.\n\n</details>",
       },
     },
   },

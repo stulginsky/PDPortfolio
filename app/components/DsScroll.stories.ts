@@ -20,7 +20,7 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: 'Scrollable-content indicator. The production thumb follows native X/Y scroll, supports keyboard and desktop drag, and is hidden when its axis has no overflow.',
+        component: "<details>\n<summary>Техническое описание</summary>\n\nScrollable-content indicator. The production thumb follows native X/Y scroll, supports keyboard and desktop drag, and is hidden when its axis has no overflow.\n\n</details>",
       },
     },
   },
@@ -109,6 +109,23 @@ export const Sandbox: Story = {
   parameters: { layout: 'fullscreen' },
   play: async ({ canvas }) => {
     const verticalScroll = canvas.getByRole('scrollbar', { name: 'Vertical scroll' })
+    const thumb = verticalScroll.querySelector<HTMLElement>('.ds-scroll__thumb')!
+    const horizontalThumb = canvas.getByRole('scrollbar', { name: 'Horizontal scroll' }).querySelector<HTMLElement>('.ds-scroll__thumb')!
+    await waitFor(() => expect(getComputedStyle(thumb).backgroundColor).toBe('rgba(55, 65, 81, 0.2)'))
+    expect(getComputedStyle(horizontalThumb).backgroundColor).toBe('rgba(55, 65, 81, 0.2)')
+    expect(getComputedStyle(thumb).width).toBe('12px')
+    expect(getComputedStyle(thumb).left).toBe('4px')
+    expect(getComputedStyle(horizontalThumb).height).toBe('12px')
+    expect(getComputedStyle(horizontalThumb).top).toBe('4px')
+    expect(getComputedStyle(thumb).borderRadius).toBe('8px')
+    if (window.matchMedia('(pointer: fine)').matches) {
+      await userEvent.hover(thumb)
+      await waitFor(() => expect(getComputedStyle(thumb).backgroundColor).toBe('rgba(55, 65, 81, 0.35)'))
+      await userEvent.pointer({ target: thumb, keys: '[MouseLeft>]' })
+      await waitFor(() => expect(getComputedStyle(thumb).backgroundColor).toBe('rgba(55, 65, 81, 0.5)'))
+      await userEvent.pointer({ target: thumb, keys: '[/MouseLeft]' })
+      await userEvent.unhover(thumb)
+    }
     verticalScroll.focus()
     await userEvent.keyboard('{ArrowDown}')
     await waitFor(() => expect(canvas.getByRole('status')).not.toHaveTextContent('Vertical: 0; Horizontal: 0'))

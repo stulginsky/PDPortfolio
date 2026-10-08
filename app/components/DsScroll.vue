@@ -278,15 +278,15 @@ onUnmounted(() => {
 
 /* States */
 .ds-scroll__thumb--default {
-  background: var(--surface-scroll-thumb, var(--gray-300));
+  background: var(--surface-scroll-thumb);
 }
 
 .ds-scroll__thumb--hover {
-  background: var(--surface-scroll-thumb-hover, var(--gray-500));
+  background: var(--surface-scroll-thumb-hover);
 }
 
 .ds-scroll__thumb--pressed {
-  background: var(--surface-scroll-thumb-pressed, var(--gray-700));
+  background: var(--surface-scroll-thumb-pressed);
 }
 
 @media (pointer: coarse) {

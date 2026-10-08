@@ -1,0 +1,18 @@
+/* Internal composition presentation; standalone cards never opt into this. */
+[data-presentation='related-cases'][data-presentation] [class$='__copy'] {
+  left: calc(16px * var(--chirp-copy-zoom));
+  right: calc(16px * var(--chirp-copy-zoom));
+  bottom: calc(16px * var(--chirp-copy-zoom));
+  gap: calc(12px * var(--chirp-copy-zoom));
+}
+[data-presentation='related-cases'][data-presentation] [class$='__title-block'] { gap: calc(4px * var(--chirp-copy-zoom)); }
+[data-presentation='related-cases'][data-presentation] [class$='__title'] { font-size: calc(22px * var(--chirp-copy-zoom)); }
+[data-presentation='related-cases'][data-presentation] [class$='__subtitle'] { font-size: calc(16px * var(--chirp-copy-zoom)); }
+[data-presentation='related-cases'][data-presentation] [class$='__badges'] { gap: calc(8px * var(--chirp-copy-zoom)); }
+[data-presentation='related-cases'][data-presentation] .ds-badge--card {
+  padding: calc(8px * var(--chirp-copy-zoom)) calc(12px * var(--chirp-copy-zoom));
+  border-radius: calc(var(--radius-xxlg) * var(--chirp-copy-zoom));
+}
+[data-presentation='related-cases'][data-presentation] .ds-badge--card .ds-badge__text {
+  font-size: calc(var(--text-size-xs) * var(--chirp-copy-zoom));
+}

@@ -20,14 +20,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-DS DropdownListSelector 1282:6724. Shared web surface for dropdown rows.
-
-Figma references Items = 3 | 4 and Type = General | Filter with Shadow/2nd in every variant.
-In production, the default slot can contain any number of DsDropdownListItem rows.
-General web menus hug the widest row and keep every option on one line. The Sandbox exposes
-the nested row data without turning it into public Selector props.
-        `,
+        component: "[Figma 1282:6724](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1282-6724)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownListSelector 1282:6724. Shared web surface for dropdown rows.\n\nFigma references Items = 3 | 4 and Type = General | Filter with Shadow/2nd in every variant.\nIn production, the default slot can contain any number of DsDropdownListItem rows.\nGeneral web menus hug the widest row and keep every option on one line. The Sandbox exposes\nthe nested row data without turning it into public Selector props.\n\n</details>",
       },
     },
   },

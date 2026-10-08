@@ -48,7 +48,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'General aligns text and icon to opposing edges. Filter centers the text-plus-icon group. Long text wraps; it is never truncated with an ellipsis.',
+          "<details>\n<summary>Техническое описание</summary>\n\nGeneral aligns text and icon to opposing edges. Filter centers the text-plus-icon group. Long text wraps; it is never truncated with an ellipsis.\n\n</details>",
       },
     },
   },

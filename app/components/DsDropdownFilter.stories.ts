@@ -25,15 +25,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-DS DropdownFilter-web 1016:6638. Overflow filter for 1024–1279px viewport range.
-Contains 3 hidden categories: Gamedev, Видео, Упаковка.
-
-| Trigger label | Condition |
-|---|---|
-| "Gamedev & more" | No overflow category selected |
-| Category name | Overflow category selected; closed trigger retains Toggled visual |
-        `,
+        component: "[Figma 1016:6638](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-6638)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownFilter-web 1016:6638. Overflow filter for 1024–1279px viewport range.\nContains 3 hidden categories: Gamedev, Видео, Упаковка.\n\n| Trigger label | Condition |\n|---|---|\n| \"Gamedev & more\" | No overflow category selected |\n| Category name | Overflow category selected; closed trigger retains Toggled visual |\n\n</details>",
       },
     },
   },

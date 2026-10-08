@@ -55,7 +55,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Figma [Button 968:5914](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=968-5914). `Raised` exists only for `State=Default`; hover and physical press are live DOM states, and `toggled` is controlled persistent state.',
+        component: "[Button 968:5914](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=968-5914)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Button 968:5914](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=968-5914). `Raised` exists only for `State=Default`; hover and physical press are live DOM states, and `toggled` is controlled persistent state.\n\n</details>",
       },
     },
   },
@@ -135,7 +135,7 @@ export const ClickTogglesPersistentState: Story = {
     await userEvent.click(button)
     await expect(button).toHaveAttribute('aria-pressed', 'true')
     await expect(button).toHaveClass('button-base--hover-suppressed')
-    await expect(button).toHaveStyle({ backgroundColor: 'rgb(44, 31, 57)' })
+    await expect(button).toHaveStyle({ backgroundColor: 'rgb(47, 13, 74)' })
     await expect(output).toHaveTextContent('Clicks: 1; persistent toggle: on')
     await userEvent.unhover(button)
     await expect(button).not.toHaveClass('button-base--hover-suppressed')

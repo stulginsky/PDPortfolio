@@ -1,109 +1,128 @@
 <script setup lang="ts">
-/**
- * DsTopNav — DS component 1025:7335 (TopNav)
- * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1025-7335
- *
- * Sticky navigation bar. Composed from TopNavScroll/Vitrina (1025:5059) and TopNavScroll/Resume (1047:4060).
- *
- * Place=Vitrina breakpoints (min-width):
- *   base (<394px): 320×82, full-width
- *   min-394 (394–767px): 394×82
- *   min-768 (≥768px): 394×90 — web composition
- *
- * Place=Resume breakpoints:
- *   base (<534px): 320×164, full-width, 2-row layout
- *   min-534 (534–767px): 534×82, 1-row
- *   min-768 (≥768px): 534×90, web composition
- *
- * The slot composition (avatar, filters, nav, etc.) is injected by the consumer.
- * DsTopNav provides only the sticky shell: background, height, position, z-index.
- */
-withDefaults(
+import DsTab from './DsTab.vue'
+import DsButtonIcon from './DsButtonIcon.vue'
+import './resume-actions-motion.css'
+
+const props = withDefaults(
   defineProps<{
-    /** Which page context */
+    /** Figma Place: controls the current view and Resume actions. */
     place?: 'Vitrina' | 'Resume'
+    /** Accessible name of the navigation landmark. */
+    ariaLabel?: string
   }>(),
   {
     place: 'Vitrina',
+    ariaLabel: 'Навигация портфолио',
   },
 )
+
+const emit = defineEmits<{
+  /** Requests a view change; the consumer owns Place. */
+  'update:place': [place: 'Vitrina' | 'Resume']
+  /** Consumer supplies the download action. */
+  download: [event: MouseEvent]
+  /** Consumer supplies the print action. */
+  print: [event: MouseEvent]
+}>()
+
+function selectPlace(place: 'Vitrina' | 'Resume') {
+  if (place !== props.place) emit('update:place', place)
+}
 </script>
 
 <template>
-  <header
-    class="ds-top-nav"
-    :class="[`ds-top-nav--${place.toLowerCase()}`]"
-    role="banner"
-  >
-    <slot />
-  </header>
+  <nav class="ds-top-nav" :aria-label="ariaLabel">
+    <div class="ds-top-nav__layout">
+      <div class="ds-top-nav__tabs">
+        <DsTab
+          class="ds-top-nav__tab"
+          tab-label="Проекты"
+          :toggled="place === 'Vitrina'"
+          @click="selectPlace('Vitrina')"
+        />
+        <DsTab
+          class="ds-top-nav__tab"
+          tab-label="Резюме"
+          :toggled="place === 'Resume'"
+          @click="selectPlace('Resume')"
+        />
+      </div>
+      <div v-if="place === 'Resume'" class="ds-top-nav__actions resume-actions-enter">
+        <DsButtonIcon
+          icon="Download"
+          aria-label="Скачать резюме PDF"
+          @click="emit('download', $event)"
+        />
+        <DsButtonIcon
+          icon="Print"
+          aria-label="Печать резюме"
+          @click="emit('print', $event)"
+        />
+      </div>
+    </div>
+  </nav>
 </template>
 
 <style scoped>
-/* TopNav — DS 1025:7335 */
-/* Shared: sticky, full-width */
+/* TopNav — 1025:7335. Sticky navigation is a separate Component Set. */
 .ds-top-nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 300;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 var(--space-4);
+}
+
+.ds-top-nav__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  width: 100%;
+  min-width: 0;
+}
+
+.ds-top-nav__tabs {
   display: flex;
   align-items: center;
+  gap: var(--space-6);
+  flex: none;
   width: 100%;
-  background: var(--surface-default);
-  /* Subtle bottom separator to distinguish from content */
-  border-bottom: 1px solid var(--border-default);
-  /* Glass effect on scroll */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
-/* ── Vitrina ─────────────────────────────── */
-/* base (<394px): h=82 */
-.ds-top-nav--vitrina {
-  height: 82px;
-  padding: 0 16px;
+.ds-top-nav__tab {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
-/* min-394: 394px wide, h=82 */
-@media (min-width: 394px) {
-  .ds-top-nav--vitrina {
-    height: 82px;
-    padding: 0 24px;
+.ds-top-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex: none;
+}
+
+/* Preserve Figma's centred 288px tab group, with actions extending right. */
+.ds-top-nav[data-storybook-breakpoint='min-570'] {
+  padding: 0;
+}
+
+.ds-top-nav[data-storybook-breakpoint='min-570'] .ds-top-nav__layout {
+  flex-direction: row;
+  gap: var(--space-6);
+  width: 288px;
+}
+
+@media (min-width: 570px) {
+  .ds-top-nav:not([data-storybook-breakpoint='base']) {
+    padding: 0;
   }
-}
 
-/* min-768: web composition, h=90 */
-@media (min-width: 768px) {
-  .ds-top-nav--vitrina {
-    height: 90px;
-    padding: 0 32px;
-  }
-}
-
-/* ── Resume ──────────────────────────────── */
-/* base (<534px): h=164, 2-row layout */
-.ds-top-nav--resume {
-  height: 164px;
-  flex-wrap: wrap;
-  padding: 0 16px;
-}
-
-/* min-534: 1-row, h=82 */
-@media (min-width: 534px) {
-  .ds-top-nav--resume {
-    height: 82px;
-    flex-wrap: nowrap;
-    padding: 0 24px;
-  }
-}
-
-/* min-768: web composition, h=90 */
-@media (min-width: 768px) {
-  .ds-top-nav--resume {
-    height: 90px;
-    padding: 0 32px;
+  .ds-top-nav:not([data-storybook-breakpoint='base']) .ds-top-nav__layout {
+    flex-direction: row;
+    gap: var(--space-6);
+    width: 288px;
   }
 }
 </style>

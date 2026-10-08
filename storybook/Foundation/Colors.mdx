@@ -7,6 +7,34 @@
 Цвета PDPortfolio DS. Источник правды — [Figma PDPortfolio-Prod](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=0-1).
 Все значения читаются из `tokens.css` — CSS custom properties, отображённые из Figma Variables.
 
+## Decorative — декоративные фоны
+
+Отдельная группа внутри Primitive и Semantic, не новая коллекция. Только оформление витрины: не текст, управляющие элементы или продуктовые статусы.
+
+### Палитра (Primitive)
+
+<ColorPalette>
+  <ColorItem title="decorative/turquoise" subtitle="var(--decorative-turquoise)" colors={{ turquoise: 'var(--decorative-turquoise)' }} />
+  <ColorItem title="decorative/mint" subtitle="var(--decorative-mint)" colors={{ mint: 'var(--decorative-mint)' }} />
+  <ColorItem title="decorative/cyan" subtitle="var(--decorative-cyan)" colors={{ cyan: 'var(--decorative-cyan)' }} />
+  <ColorItem title="decorative/teal" subtitle="var(--decorative-teal)" colors={{ teal: 'var(--decorative-teal)' }} />
+</ColorPalette>
+
+### Фоны витрины (Semantic)
+
+Префикс всех ролей — `decorative/showcase/`. Значения являются aliases на декоративную палитру.
+
+<table>
+  <thead><tr><th>Роль</th><th>Primitive</th></tr></thead>
+  <tbody>
+    <tr><td><code>chirp-ai-health-assistant/background</code></td><td><code>decorative/turquoise</code></td></tr>
+    <tr><td><code>chirp-explainable-ai-ux/background</code></td><td><code>decorative/mint</code></td></tr>
+    <tr><td><code>chirp-ai-medical-brand/background</code></td><td><code>decorative/cyan</code></td></tr>
+    <tr><td><code>chirp-ai-design-system/background</code></td><td><code>decorative/cyan</code></td></tr>
+    <tr><td><code>chirp-ai-design-system/background-underlay</code></td><td><code>decorative/teal</code></td></tr>
+  </tbody>
+</table>
+
 ## Accent (Primitive)
 
 <ColorPalette>

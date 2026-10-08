@@ -37,16 +37,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-DS DropdownSelect-web 1015:4517. Compact universal web dropdown.
-
-| State | Trigger |
-|---|---|
-| Default | Closed Button + ChevronDown |
-| Hover | Closed Button + ChevronDown :hover |
-| ActivePressed | Figma reference; not rendered for this local toggle |
-| Opened | Button Toggled + ChevronUp + list of ≤4 ListItem/Sm |
-        `,
+        component: "[Figma 1015:4517](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownSelect-web 1015:4517. Compact universal web dropdown.\n\n| State | Trigger |\n|---|---|\n| Default | Closed Button + ChevronDown |\n| Hover | Closed Button + ChevronDown :hover |\n| ActivePressed | Figma reference; not rendered for this local toggle |\n| Opened | Button Toggled + ChevronUp + list of ≤4 ListItem/Sm |\n\n</details>",
       },
     },
   },

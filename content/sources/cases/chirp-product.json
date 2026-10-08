@@ -1,5 +1,9 @@
 {
   "pageTitle": "Chirp AI health assistant — Product Discovery",
+  "hero": {
+    "title": "AI health assistant",
+    "badge": "Product discovery"
+  },
   "backLabel": "Вернуться к проектам",
   "copy": [
     "Chirp AI health assistant — Product Discovery",
@@ -57,4 +61,3 @@
     "nextRelated": "Показать следующие связанные кейсы"
   }
 }
-

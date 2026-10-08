@@ -43,7 +43,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Figma [ButtonIcon 1258:6254](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1258-6254).\n\nThe component uses original Foundation SVGs as monochrome masks so the glyph follows the semantic color of each state. Hover and ActivePressed are real pointer states; toggled is the persistent state.',
+        component: "[ButtonIcon 1258:6254](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1258-6254)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [ButtonIcon 1258:6254](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1258-6254).\n\nThe component uses original Foundation SVGs as monochrome masks so the glyph follows the semantic color of each state. Hover and ActivePressed are real pointer states; toggled is the persistent state.\n\n</details>",
       },
     },
   },
@@ -117,7 +117,7 @@ export const ToggleOnClick: Story = {
     await userEvent.click(button)
     await expect(button).toHaveAttribute('aria-pressed', 'true')
     await expect(button).toHaveClass('button-base--hover-suppressed')
-    await expect(button).toHaveStyle({ backgroundColor: 'rgb(44, 31, 57)' })
+    await expect(button).toHaveStyle({ backgroundColor: 'rgb(47, 13, 74)' })
     await expect(output).toHaveTextContent('Clicks: 1; persistent toggle: on')
     await userEvent.unhover(button)
     await expect(button).not.toHaveClass('button-base--hover-suppressed')
@@ -237,7 +237,7 @@ export const Sandbox: Story = {
     await expect(button).toHaveClass('button-base--pressed-appearance-toggled')
     await expect(output).toHaveTextContent('Press visual: Toggled')
     await userEvent.pointer({ target: button, keys: '[MouseLeft>]' })
-    await expect(button).toHaveStyle({ backgroundColor: 'rgb(44, 31, 57)' })
+    await expect(button).toHaveStyle({ backgroundColor: 'rgb(47, 13, 74)' })
     await userEvent.pointer({ target: button, keys: '[/MouseLeft]' })
     await userEvent.click(toggledOnClick)
     await expect(toggledOnClick).toHaveAttribute('aria-pressed', 'true')
