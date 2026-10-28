@@ -25,7 +25,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[1021:3477](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3477)\n\n<details>\n<summary>Техническое описание</summary>\n\nResponsive portfolio filters — DS [1021:3477](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3477).\n\n| Breakpoint | Composition |\n|---|---|\n| base (<1024px) | FullscreenMenu/Mob with all ten categories |\n| min-1024 (1024–1279px) | Seven priority filters + Gamedev & more overflow |\n| min-1280 (≥1280px) | All ten filters in one row |\n\n</details>",
+        component: "[1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477)\n\n<details>\n<summary>Техническое описание</summary>\n\nResponsive portfolio filters — DS [1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477).\n\n| Breakpoint | Composition |\n|---|---|\n| base (<1024px) | FullscreenMenu/Mob with all ten categories |\n| min-1024 (1024–1279px) | Seven priority filters + Gamedev & more overflow |\n| min-1280 (≥1280px) | All ten filters in one row |\n\n</details>",
       },
     },
   },

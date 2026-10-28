@@ -94,7 +94,7 @@ defineProps<{
 .resume-exp__list {
   margin: 0;
   padding-left: 24px;
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-regular);
   font-variation-settings: var(--font-variation-body-accent);
   line-height: 1.45;
@@ -122,7 +122,7 @@ defineProps<{
 }
 
 .resume-exp__paragraphs {
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-variation-settings: var(--font-variation-body-accent);
   line-height: 1.45;
   color: var(--text-body-accent);

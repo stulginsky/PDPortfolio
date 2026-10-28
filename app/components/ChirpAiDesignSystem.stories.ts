@@ -10,7 +10,7 @@ const meta = {
   component: ChirpAiDesignSystem, tags: ['autodocs'],
   args: { title: cards[3]!.title, subtitle: cards[3]!.subtitle, badges: cards[3]!.badges.split(',').map(x => x.trim()), href: cards[3]!.href },
   parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 815:2280](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=815-2280)
+[Figma 815:2280](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2280)
 
 <details>
 <summary>Техническое описание</summary>
@@ -30,6 +30,8 @@ export const Sandbox: Story = {
   }),
   play: async ({ canvas, canvasElement }) => {
     const card = canvas.getByRole('link')
+    await waitFor(() => expect(card).toHaveAttribute('data-media-state', 'ready'))
+    await waitFor(() => expect(card).toHaveAttribute('data-scene-state', 'ready'))
     await waitFor(() => expect(canvas.getByTestId('scene-breakpoint')).toHaveTextContent(window.innerWidth < 768 ? 'base' : 'min-768'))
     await waitFor(() => expect(Math.round(card.getBoundingClientRect().width)).toBe(Math.min(430, canvasElement.querySelector('.chirp-ds-card-sandbox__preview')!.clientWidth)))
     const pict = canvasElement.querySelector<HTMLElement>('.chirp-ds-card__pict')!

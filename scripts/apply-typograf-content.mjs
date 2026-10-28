@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { typografText } from "./lib/typograf-shared.mjs";
+import { normalizeCaseEditorial } from "./lib/case-editorial.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const sourcesDir = join(root, "content", "sources");
@@ -169,6 +170,41 @@ function typografCase(src) {
 
 const jobs = [
   {
+    source: "dc-picker-app-ux.json",
+    out: "dc-picker-app-ux.json",
+    transform: typografTree,
+  },
+  {
+    source: "about.json",
+    out: "about.json",
+    transform: typografTree,
+  },
+  {
+    source: "cases/chirp-design-system.json",
+    out: "cases/chirp-design-system.json",
+    transform: typografTree,
+  },
+  {
+    source: "cases/chirp-brand.json",
+    out: "cases/chirp-brand.json",
+    transform: typografTree,
+  },
+  {
+    source: "cases/chirp-ux.json",
+    out: "cases/chirp-ux.json",
+    transform: typografTree,
+  },
+  {
+    source: "cases/dc-vendor-app-pr.json",
+    out: "cases/dc-vendor-app-pr.json",
+    transform: typografTree,
+  },
+  {
+    source: "cases/dc-vendor-app-ux.json",
+    out: "cases/dc-vendor-app-ux.json",
+    transform: typografTree,
+  },
+  {
     source: "resume.json",
     out: "resume.json",
     transform: typografResume,
@@ -208,7 +244,10 @@ for (const { source, out, transform } of jobs) {
   }
 
   const plain = readJson(sourcePath);
-  const baked = transform(plain);
+  // Align source runs before Typograf can independently alter their whitespace.
+  const editorialSource = source.startsWith("cases/") ? normalizeCaseEditorial(plain) : plain;
+  const transformed = transform(editorialSource);
+  const baked = source.startsWith("cases/") ? normalizeCaseEditorial(transformed) : transformed;
   writeJson(outPath, baked);
   console.log(`✓ ${out} ← content/sources/${source}`);
 }

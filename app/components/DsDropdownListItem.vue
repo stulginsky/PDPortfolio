@@ -13,7 +13,7 @@ import { dropdownListTypeKey, type DropdownListType } from './dropdown-list-cont
 const props = withDefaults(
   defineProps<{
     label: string
-    appearance?: 'Sm' | 'Lr'
+    appearance?: 'Sm' | 'Lg'
     icon?: ButtonIconName
     showIcon?: boolean
     type?: DropdownListType
@@ -57,9 +57,9 @@ defineEmits<{
   >
     <span class="ds-dropdown-list-item__label">{{ label }}</span>
     <span
-      v-if="showIcon"
+      v-if="showIcon || resolvedType === 'General'"
       class="ds-dropdown-list-item__icon"
-      :style="{ '--ds-dropdown-list-item-icon-mask': `url(&quot;${getButtonIconSource(icon)}&quot;)` }"
+      :style="{ visibility: showIcon ? undefined : 'hidden', '--ds-dropdown-list-item-icon-mask': `url(&quot;${getButtonIconSource(icon)}&quot;)` }"
       aria-hidden="true"
     />
   </component>
@@ -78,7 +78,7 @@ defineEmits<{
   background: var(--surface-menu-item-default); /* accent/plum */
   color: var(--text-inverse);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-sm);
+  font-size: var(--text-size-14);
   font-weight: var(--text-weight-regular);
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
@@ -94,6 +94,7 @@ defineEmits<{
 
 .ds-dropdown-list-item--general {
   justify-content: space-between;
+  gap: 4px;
   text-align: left;
 }
 
@@ -111,6 +112,7 @@ defineEmits<{
 
 .ds-dropdown-list-item--general .ds-dropdown-list-item__label {
   flex: 1 1 auto;
+  padding-right: 12px;
 }
 
 .ds-dropdown-list-item--filter .ds-dropdown-list-item__label {
@@ -138,12 +140,12 @@ defineEmits<{
   padding: 0 12px;
 }
 
-/* Lr: 52px minimum; used by mobile fullscreen menus. */
-.ds-dropdown-list-item--lr {
+/* Lg: 52px minimum; used by mobile fullscreen menus. */
+.ds-dropdown-list-item--lg {
   min-height: 52px;
   padding: 0 12px;
   min-width: 105px;
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   line-height: 1.6;
 }
 

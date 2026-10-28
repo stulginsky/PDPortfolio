@@ -3,6 +3,7 @@ import arrowNavRight from '../assets/icons/arrow-nav-right.svg'
 import arrowNavUp from '../assets/icons/arrow-nav-up.svg'
 import chevronDown from '../assets/icons/chevron-down.svg'
 import chevronUp from '../assets/icons/chevron-up.svg'
+import check from '../assets/icons/check.svg'
 import cross from '../assets/icons/cross.svg'
 import download from '../assets/icons/download.svg'
 import externalLink from '../assets/icons/external-link.svg'
@@ -22,6 +23,7 @@ export const buttonIconSources = {
   ArrowNavRight: arrowNavRight,
   ArrowNavUp: arrowNavUp,
   Cross: cross,
+  Check: check,
   MagnifyingGlass: magnifyingGlass,
   Sun: sun,
   Moon: moon,

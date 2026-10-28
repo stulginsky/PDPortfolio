@@ -58,12 +58,12 @@ function move(direction: -1 | 1) {
 .case-related { width: min(924px, calc(100% - (var(--space-page-x) * 2))); margin: 0 auto; padding: var(--space-8) 0 var(--space-16); }
 .case-related__title-row { display: grid; gap: var(--space-6); margin-bottom: var(--space-16); }
 .case-related__title-row h2, .case-related__title-row p { margin: 0; }
-.case-related__title-row h2 { color: var(--accent-aubergine); font-size: var(--text-size-2xl); font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-xl-semibold); letter-spacing: -0.16px; line-height: 1.2; }
-.case-related__title-row p { color: var(--text-default); font-size: var(--text-size-lg-plus); font-weight: var(--text-weight-light); font-variation-settings: var(--font-variation-body-accent); letter-spacing: 0.2px; line-height: 1.6; white-space: pre-line; }
+.case-related__title-row h2 { color: var(--accent-aubergine); font-size: var(--text-size-32); font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-xl-semibold); letter-spacing: -0.16px; line-height: 1.2; }
+.case-related__title-row p { color: var(--text-default); font-size: var(--text-size-20); font-weight: var(--text-weight-light); font-variation-settings: var(--font-variation-body-accent); letter-spacing: 0.2px; line-height: 1.6; white-space: pre-line; }
 .case-related__viewport { position: relative; width: 100%; overflow: hidden; }
 .case-related__track { display: flex; gap: var(--space-2); width: max-content; transform: translateX(calc(var(--case-related-index) * var(--case-related-step, 408px) * -1)); transition: transform 240ms ease; }
 .case-related__track :deep(.project-card) { width: 400px; flex: 0 0 400px; }
-.case-related__nav { position: absolute; top: 50%; z-index: 2; display: grid; width: 50px; height: 50px; place-items: center; padding: 0; border: 0; border-radius: 50%; background: var(--surface-raised); box-shadow: var(--effect-shadow-2nd); cursor: pointer; transform: translateY(-50%); }
+.case-related__nav { position: absolute; top: 50%; z-index: 2; display: grid; width: 50px; height: 50px; place-items: center; padding: 0; border: 0; border-radius: 50%; background: var(--surface-raised); box-shadow: var(--shadow-2nd); cursor: pointer; transform: translateY(-50%); }
 .case-related__nav:hover { background: var(--surface-action-hover); }
 .case-related__nav:active { background: var(--surface-action-pressed); }
 .case-related__nav img { width: 18px; height: 18px; }

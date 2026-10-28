@@ -1,0 +1,29 @@
+﻿/* Cached pages stay attached and renderable; only the ready selected page is exposed. */
+.weapon-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.weapon-page-active { opacity: 1; pointer-events: auto; z-index: 20; }
+.weapon-host-inactive #base,
+.weapon-host-inactive #u105 { opacity: 0; pointer-events: none; }
+.model-preloading iframe:not(.weapon-page) { opacity: 0; pointer-events: none; }
+.weapon-navigation-status {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 10px 16px;
+  background: white;
+  color: #333;
+  font: 16px/1.5 Arial, sans-serif;
+}
+.weapon-navigation-status[hidden], .weapon-navigation-status button[hidden] { display: none; }
+.weapon-navigation-status button { margin-left: 12px; font: inherit; cursor: pointer; }

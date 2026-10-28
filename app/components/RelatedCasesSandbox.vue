@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import RelatedCases from './RelatedCases.vue'
 const props = defineProps<{
-  componentArgs?: { ariaLabel?: string; previousLabel?: string; nextLabel?: string }
+  componentArgs?: { currentCaseHref?: string; ariaLabel?: string; previousLabel?: string; nextLabel?: string }
 }>()
 const lastPosition = ref('Start')
 const lastOffset = ref(0)

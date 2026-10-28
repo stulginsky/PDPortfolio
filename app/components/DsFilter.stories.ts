@@ -3,8 +3,8 @@ import { expect, userEvent } from 'storybook/test'
 import DsFilter from './DsFilter.vue'
 
 /**
- * Filter — DS component 43:867 (Design=2nd)
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=43-867
+ * Filter — DS component 43:867
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=43-867
  * DS docs: ds/components.md § Filter
  *
  * Portfolio category filter chip. 90×50 reference, radius=24.
@@ -32,7 +32,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 43:867](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=43-867)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Filter 43:867, Design=2nd. Portfolio category selection chip.\n\n| State | Trigger | Surface | Text |\n|---|---|---|---|\n| Default | — | transparent | text/action (accent/aubergine) |\n| Hover | :hover | surface/action-hover | text/default |\n| ActivePressed | Figma reference; not rendered for local selection | — | — |\n| Toggled | prop toggled=true | surface/action-toggled | text/inverse |\n| Disabled | prop disabled=true | — | text/muted |\n\n</details>",
+        component: "[Figma 43:867](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=43-867)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Filter 43:867. Portfolio category selection chip.\n\n| State | Trigger | Surface | Text |\n|---|---|---|---|\n| Default | — | transparent | text/action (accent/aubergine) |\n| Hover | :hover | surface/action-hover | text/default |\n| ActivePressed | Figma reference; not rendered for local selection | — | — |\n| Toggled | prop toggled=true | surface/action-toggled | text/inverse |\n| Disabled | prop disabled=true | — | text/muted |\n\n</details>",
       },
     },
   },

@@ -59,7 +59,7 @@ const items: NavigationItem[] = [
   {
     label: 'Figma',
     value: 'figma',
-    href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1394-6239',
+    href: 'https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc/Chirp-DS?node-id=0-1',
     icon: 'ExternalLink',
     showIcon: true,
   },
@@ -163,7 +163,7 @@ onBeforeUnmount(() => {
     aria-label="Навигация по материалам изображения"
   >
     <div class="ds-img-title-toolbar__header">
-      <h2 class="ds-img-title-toolbar__title">{{ props.title }}</h2>
+      <h2 class="ds-img-title-toolbar__title"><span class="ds-img-title-toolbar__glyphs">{{ props.title }}</span></h2>
 
       <nav v-if="!useMenu" class="ds-img-title-toolbar__tabs" aria-label="Материалы">
         <DsTab
@@ -219,7 +219,7 @@ onBeforeUnmount(() => {
       inert
       aria-hidden="true"
     >
-      <span class="ds-img-title-toolbar__measure-title">{{ props.title }}</span>
+      <span class="ds-img-title-toolbar__measure-title"><span class="ds-img-title-toolbar__glyphs">{{ props.title }}</span></span>
       <div class="ds-img-title-toolbar__measure-tabs">
         <DsTab
           v-for="item in internalItems"
@@ -233,7 +233,7 @@ onBeforeUnmount(() => {
       <span v-if="props.showZoom" class="ds-img-title-toolbar__measure-zoom" />
     </div>
     <div ref="mobileMeasureRef" class="ds-img-title-toolbar__measure ds-img-title-toolbar__measure--mobile">
-      <span class="ds-img-title-toolbar__measure-title">{{ props.title }}</span>
+      <span class="ds-img-title-toolbar__measure-title"><span class="ds-img-title-toolbar__glyphs">{{ props.title }}</span></span>
       <DsButton :text="triggerLabel" icon="ChevronDown" icon-right />
       <span v-if="props.showZoom" class="ds-img-title-toolbar__measure-zoom" />
     </div>
@@ -277,7 +277,7 @@ onBeforeUnmount(() => {
   padding-left: var(--space-4);
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
@@ -338,7 +338,7 @@ onBeforeUnmount(() => {
 }
 
 .ds-img-title-toolbar__measure--mobile .ds-img-title-toolbar__measure-title {
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
   letter-spacing: 0.01em;
@@ -347,7 +347,7 @@ onBeforeUnmount(() => {
 .ds-img-title-toolbar__measure-title {
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-xl);
+  font-size: var(--text-size-22);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-md);
   line-height: 1.3;
@@ -387,7 +387,7 @@ onBeforeUnmount(() => {
   .ds-img-title-toolbar:not([data-storybook-breakpoint='base']) .ds-img-title-toolbar__title {
     flex: 0 1 auto;
     padding-left: 0;
-    font-size: var(--text-size-xl);
+    font-size: var(--text-size-22);
     font-variation-settings: var(--font-variation-heading-md);
     line-height: 1.3;
     letter-spacing: 0.03em;
@@ -413,7 +413,7 @@ onBeforeUnmount(() => {
 .ds-img-title-toolbar[data-storybook-breakpoint='base'] .ds-img-title-toolbar__title {
   flex: 1 1 auto;
   padding-left: var(--space-4);
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
   letter-spacing: 0.01em;
@@ -444,7 +444,7 @@ onBeforeUnmount(() => {
 .ds-img-title-toolbar[data-storybook-breakpoint='min-768'] .ds-img-title-toolbar__title {
   flex: 0 1 auto;
   padding-left: 0;
-  font-size: var(--text-size-xl);
+  font-size: var(--text-size-22);
   font-variation-settings: var(--font-variation-heading-md);
   line-height: 1.3;
   letter-spacing: 0.03em;
@@ -480,5 +480,10 @@ onBeforeUnmount(() => {
   flex: 1 1 auto;
   padding-left: 0;
   text-align: center;
+}
+/* Preserve the original line-box height, including wrapped headings. */
+@supports (text-box: trim-both cap alphabetic) {
+ .ds-img-title-toolbar__title, .ds-img-title-toolbar__measure-title { padding-block: calc((1lh - 1cap) / 2); }
+ .ds-img-title-toolbar__glyphs { display: block; text-box: trim-both cap alphabetic; }
 }
 </style>

@@ -1,47 +1,84 @@
 /* Canonical Web syntax is defined on the matching Figma Variables. */
 :root {
+  /* Normalized Figma text styles */
+  --heading-72-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 500;
+  --heading-48-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --heading-32-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --heading-24-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --heading-22-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --heading-18-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --heading-16-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --body-24-regular-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 300;
+  --body-20-regular-font-variation: "wght" 300, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-20-strong-font-variation: "wght" 500, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-16-regular-font-variation: "wght" 400, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-16-strong-font-variation: "wght" 600, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-14-regular-font-variation: "wght" 400, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-14-strong-font-variation: "wght" 500, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-12-regular-font-variation: "wght" 400, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --body-12-strong-font-variation: "wght" 600, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --label-12-font-variation: "wght" 400, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --control-16-font-variation: "wght" 500, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --card-title-min-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --card-description-min-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
+  --badge-card-min-font-variation: "wght" 600, "YTFI" 738, "XOPQ" 96, "slnt" 0, "YOPQ" 79, "XTRA" 468, "wdth" 100, "YTLC" 514, "YTDE" -203, "YTAS" 750, "YTUC" 712, "GRAD" 0;
+  --green-600: rgb(20.000000708 179.00000453 93.000002056 / 1);
+  --decorative-deep-water: rgb(59.000000283 114.000000805 157.000005841 / 1);
+  --text-link-default: var(--accent-plum);
+  --text-accent-dc: var(--green-600);
+  --decorative-ostrich: rgb(20.000000708 179.00000453 93.000002056 / 1);
+  --decorative-showcase-dc-background-green: var(--decorative-ostrich);
+  --decorative-kitchen: rgb(52.0000007 48.000000939 45.000001118 / 1);
+  --decorative-showcase-dc-background-brown: var(--decorative-kitchen);
+  --decorative-showcase-dc-background-blue: var(--decorative-deep-water);
+  /* Figma1559:6121 →1559:6123: canonical spelling retained. */
+  --decorative-waxwing: rgb(94.000001997 237.000001073 190.000003874 / 1);
+  --decorative-case-background-chirp-ds: var(--decorative-waxwing);
   /* Original Figma Paint Styles CaseImagePreview/Mob and Web. */
   --case-image-preview-mob: linear-gradient(124.951958deg, rgb(228.9900005 231.0300046 235.1099977) 46.798646%, rgb(184.0356919 220.531624 205.3823537) 106.379299%);
   --case-image-preview-web: linear-gradient(146.892765deg, rgb(228.9900005 231.0300046 235.1099977) 55.518851%, rgb(184.0356919 220.531624 205.3823537) 85.813151%);
   /* Primitive */
   /* Decorative palette: not for UI controls, text, or status colors. */
-  --decorative-turquoise: rgb(31.000000052 225.000001788 227.000001073);
-  --decorative-mint: rgb(99.000001699 255 227.000001073);
-  --decorative-cyan: rgb(79.000002891 245.000000596 245.000000596);
-  --decorative-teal: rgb(18.772535473 202.458805740 204.352457523);
-  --accent-lavender: #f5ebff;
-  --accent-lilac: #c084fc;
-  --accent-violet: #9333ea;
-  --accent-plum: #6b21a8;
-  --accent-aubergine: #2f0d4a;
-  --accent-mint: #a8ffeb;
-  --blue-600: #019dc0;
-  --gray-00: #fafaf9;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-200-alpha-85: rgb(229 231 235 / 85%);
-  --gray-300: #d1d5db;
-  --gray-500: #6b7280;
-  --gray-700: #374151;
-  --gray-700-alpha-20: rgb(55 65 81 / 20%);
-  --gray-700-alpha-35: rgb(55 65 81 / 35%);
-  --gray-700-alpha-50: rgb(55 65 81 / 50%);
-  --gray-900: #111827;
-  --gray-950: #030712;
-  --teal-200-alpha-50: rgb(208 226 221 / 50%);
-  --success-500: #22c55e;
-  --warning-500: #f59e0b;
-  --error-500: #ef4444;
-  --info-500: #3b82f6;
-  --radius-none: 0;
+  --decorative-sparrow: rgb(31.000000052 225.000001788 227.000001669 / 1);
+  --decorative-jackdaw: rgb(99.000001699 255 227.000001669 / 1);
+  --decorative-robin: rgb(79.000002891 245.000000596 245.000000596 / 1);
+  --decorative-teal: rgb(18.772535473 202.45880574 204.352456927 / 1);
+  --accent-lavender: rgb(240.000000894 224.000001848 255 / 1);
+  --accent-lilac: rgb(192.01500535 132.090001702 251.939993799 / 1);
+  --accent-violet: rgb(146.879993677 51.00000076 234.089995623 / 1);
+  --accent-plum: rgb(107.099996656 32.894998267 168.044994771 / 1);
+  --accent-aubergine: rgb(47.000000998 13.000000175 74.000003189 / 1);
+  --accent-mint: rgb(167.956733108 255 234.689922631 / 1);
+  --blue-600: rgb(1.000000059 157.000005841 192.000003755 / 1);
+  --gray-00: rgb(250.000000298 250.000000298 249.000000358 / 1);
+  --gray-50: rgb(248.880002797 249.900004864 250.920006931 / 1);
+  --gray-100: rgb(243.01500231 244.035004377 246.074993312 / 1);
+  --gray-200: rgb(228.990000486 231.030004621 235.10999769 / 1);
+  --gray-200-alpha-85: rgb(228.990000486 231.030004621 235.10999769 / 0.850000024);
+  --gray-300: rgb(209.099998176 212.924994528 219.045006931 / 1);
+  --gray-500: rgb(118.937311471 126.255429983 141.162683666 / 1);
+  --gray-700: rgb(76.328092664 90.109626353 112.371909767 / 1);
+  --gray-700-alpha-20: rgb(55.080001429 65.024998784 81.089997143 / 0.200000003);
+  --gray-700-alpha-35: rgb(55.080001429 65.024998784 81.089997143 / 0.349999994);
+  --gray-700-alpha-50: rgb(55.080001429 65.024998784 81.089997143 / 0.5);
+  --gray-900: rgb(17.085000426 23.969999179 39.01499927 / 1);
+  --gray-950: rgb(3.060000027 6.885000179 18.105000593 / 1);
+  --teal-200-alpha-50: rgb(208.079996109 225.929994285 221.084995866 / 0.5);
+  --success-500: rgb(33.915000334 197.115000486 94.094996899 / 1);
+  --warning-500: rgb(245.055006444 158.100001216 10.965000372 / 1);
+  --error-500: rgb(238.934994042 68.084997386 68.084997386 / 1);
+  --info-500: rgb(58.905001581 130.049997568 246.074993312 / 1);
+  --radius-none: 0px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xlg: 24px;
   --radius-xxlg: 32px;
   --radius-xxxlg: 48px;
-  --space-0: 0;
+  --radius-xxxxlg: 64px;
+  --card-color-border: rgb(176.000004709 217.000017464 193.000003695 / 1);
+  --border-case-card: var(--card-color-border);
+  --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
   --space-2-5: 10px;
@@ -52,18 +89,19 @@
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
-  --text-size-xs: 12px;
-  --text-size-sm: 14px;
-  --text-size-base: 16px;
-  --text-size-lg: 18px;
-  --text-size-lg-plus: 20px;
-  --text-size-xl: 22px;
-  --text-size-xl-plus: 24px;
-  --text-size-2xl: 32px;
-  --text-size-3xl: 48px;
-  --text-size-4xl: 72px;
-  --text-size-card-title-min: 18.333333px;
-  --text-size-card-description-min: 13.333333px;
+  --space-20: 72px;
+  --text-size-12: 12px;
+  --text-size-14: 14px;
+  --text-size-16: 16px;
+  --text-size-18: 18px;
+  --text-size-20: 20px;
+  --text-size-22: 22px;
+  --text-size-24: 24px;
+  --text-size-32: 32px;
+  --text-size-48: 48px;
+  --text-size-72: 72px;
+  --text-size-card-title-min: 18.33333396911621px;
+  --text-size-card-description-min: 13.333333015441895px;
   --text-size-badge-card-min: 10px;
   --text-weight-light: 300;
   --text-weight-regular: 400;
@@ -71,15 +109,15 @@
   --text-weight-semibold: 600;
   --text-weight-bold: 700;
   --text-font-sans: "Roboto Flex Variable", system-ui, sans-serif;
-  --shadow-color: #164651;
-  --shadow-color-1st: rgb(44 31 57 / 30%);
-  --shadow-color-2nd: rgb(44 31 57 / 10%);
+  --shadow-color: rgb(22.000000589 70.000003427 81.000002772 / 1);
+  --shadow-color-1st: rgb(44.114998206 31.11000035 57.120001763 / 0.300000012);
+  --shadow-color-2nd: rgb(44.114998206 31.11000035 57.120001763 / 0.100000001);
 
   /* Semantic */
-  --decorative-showcase-chirp-ai-health-assistant-background: var(--decorative-turquoise);
-  --decorative-showcase-chirp-explainable-ai-ux-background: var(--decorative-mint);
-  --decorative-showcase-chirp-ai-medical-brand-background: var(--decorative-cyan);
-  --decorative-showcase-chirp-ai-design-system-background: var(--decorative-cyan);
+  --decorative-showcase-chirp-ai-health-assistant-background: var(--decorative-sparrow);
+  --decorative-showcase-chirp-explainable-ai-ux-background: var(--decorative-jackdaw);
+  --decorative-showcase-chirp-ai-medical-brand-background: var(--decorative-robin);
+  --decorative-showcase-chirp-ai-design-system-background: var(--decorative-robin);
   --decorative-showcase-chirp-ai-design-system-background-underlay: var(--decorative-teal);
   --surface-default: var(--gray-00);
   --surface-subtle: var(--gray-100);
@@ -108,8 +146,13 @@
   --text-body-accent: var(--accent-aubergine);
   --text-action: var(--accent-aubergine);
   --text-link-hover: var(--accent-violet);
-  --text-link-pressed: var(--accent-plum);
+  --text-link-pressed: var(--accent-aubergine);
   --text-error: var(--error-500);
+  --text-success: var(--success-500);
+  --surface-magnifying-img-preview: var(--gray-700-alpha-20);
+  /* Original BACKGROUND_BLUR effect styles; Figma radius / 2 in CSS. */
+  --image-preview-header-blur: blur(15px);
+  --image-preview-magnifying-img-preview: blur(2px);
   --border-default: var(--gray-200);
   --border-strong: var(--gray-300);
   --border-focus: var(--accent-violet);
@@ -120,8 +163,10 @@
   --bg-warning: var(--warning-500);
   --bg-error: var(--error-500);
   --bg-info: var(--info-500);
-  --effect-shadow-1st: 3.023749px 6.047498px 28.725616px var(--shadow-color-1st);
-  --effect-shadow-2nd: 3.023749px 6.047498px 20px var(--shadow-color-2nd);
+  --effect-shadow-1st: var(--shadow-color-1st);
+  --effect-shadow-2nd: var(--shadow-color-2nd);
+  --shadow-1st: 3.023749px 6.047498px 28.725616px var(--effect-shadow-1st);
+  --shadow-2nd: 3.023749px 6.047498px 20px var(--effect-shadow-2nd);
 
   /* Figma Text Style axis values */
   --font-variation-heading-3xl: "wght" 500, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
@@ -179,20 +224,20 @@
   --case-page-x: var(--space-4);
   --case-flow-gap: var(--space-8);
   --case-text-block-gap: var(--space-6);
-  --case-heading-size: var(--text-size-xl-plus);
+  --case-heading-size: var(--text-size-24);
   --case-heading-line-height: 1.25;
-  --case-body-size: var(--text-size-base);
+  --case-body-size: var(--text-size-16);
   --case-body-weight: var(--text-weight-regular);
   --case-body-variation: normal;
-  --case-subheading-size: var(--text-size-lg);
+  --case-subheading-size: var(--text-size-18);
   --case-subheading-line-height: 1.45;
-  --case-accent-size: var(--text-size-lg-plus);
+  --case-accent-size: var(--text-size-20);
 }
 
 @media (min-width: 768px) {
   :root {
     --case-flow-gap: var(--space-12);
-    --case-heading-size: var(--text-size-2xl);
+    --case-heading-size: var(--text-size-32);
     --case-heading-line-height: 1.2;
   }
 }
@@ -201,12 +246,12 @@
   :root {
     --case-page-x: var(--space-page-x);
     --case-flow-gap: var(--space-16);
-    --case-body-size: var(--text-size-lg-plus);
+    --case-body-size: var(--text-size-20);
     --case-body-weight: var(--text-weight-light);
     --case-body-variation: var(--font-variation-body-accent);
-    --case-subheading-size: var(--text-size-xl);
+    --case-subheading-size: var(--text-size-22);
     --case-subheading-line-height: 1.3;
-    --case-accent-size: var(--text-size-xl-plus);
+    --case-accent-size: var(--text-size-24);
   }
 }
 
@@ -219,7 +264,7 @@
 body {
   margin: 0;
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   line-height: 1.5;
   color: var(--text-default);
   background: var(--surface-default);
@@ -237,7 +282,7 @@ body {
 }
 
 .text-heading-3xl {
-  font-size: var(--text-size-xl-plus);
+  font-size: var(--text-size-24);
   font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-3xl);
   line-height: 1.2;
@@ -245,7 +290,7 @@ body {
 }
 
 .text-heading-4xl {
-  font-size: var(--text-size-3xl);
+  font-size: var(--text-size-48);
   font-weight: var(--text-weight-bold);
   font-variation-settings: var(--font-variation-heading-4xl);
   line-height: 1.2;
@@ -253,7 +298,7 @@ body {
 }
 
 .text-heading-xl {
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-xl);
   line-height: 1.3;
@@ -300,7 +345,7 @@ body {
   padding: 14px var(--space-4);
   border-radius: var(--radius-xlg);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-medium);
   font-variation-settings: var(--font-variation-body-accent-medium);
   line-height: 1.3;

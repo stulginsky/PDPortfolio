@@ -73,7 +73,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "[1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359)\n\n<details>\n<summary>Техническое описание</summary>\n\nFullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359). Fullscreen single-select menu for mobile.\n\n| State | Trigger / surface |\n|---|---|\n| Default | Closed DsButton + ChevronDown; optional Raised |\n| ActivePressed | Touch press only: DsButton + ChevronUp until release |\n| Opened | Plum fullscreen surface; centred Lr rows, Cross and inner scroll |\n\nTrigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.\n\n</details>",
+          "[1021:3359](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359)\n\n<details>\n<summary>Техническое описание</summary>\n\nFullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359). Fullscreen single-select menu for mobile.\n\n| State | Trigger / surface |\n|---|---|\n| Default | Closed DsButton + ChevronDown; optional Raised |\n| ActivePressed | Touch press only: DsButton + ChevronUp until release |\n| Opened | Plum fullscreen surface; centred Lg rows, Cross and inner scroll |\n\nTrigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.\n\n</details>",
       },
     },
   },
@@ -109,7 +109,7 @@ export const Sandbox: Story = {
         {
           label: 'Figma',
           value: 'figma',
-          href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1021-3359',
+          href: 'https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359',
           icon: 'ExternalLink',
           showIcon: true,
         },
@@ -167,6 +167,10 @@ export const Sandbox: Story = {
     const overlay = within(document.body)
     const figma = overlay.getByRole('link', { name: 'Figma' })
     await expect(figma).toHaveAttribute('target', '_blank')
+    for (const row of document.querySelectorAll<HTMLElement>('.ds-fs-menu__list .ds-dropdown-list-item')) {
+      const label = row.querySelector<HTMLElement>('.ds-dropdown-list-item__label')!.getBoundingClientRect()
+      await expect(label.left + label.width / 2).toBeCloseTo(window.innerWidth / 2, 0)
+    }
     await userEvent.click(figma)
     await expect(overlay.queryByRole('dialog')).toBeNull()
     await expect(canvas.getByRole('button', { name: 'Выбрать раздел' })).toHaveTextContent('Overview')

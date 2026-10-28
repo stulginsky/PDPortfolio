@@ -24,11 +24,11 @@ const meta = {
     icon: {
       control: 'select',
       options: ['Favicon', 'ChevronDown', 'ChevronUp', 'ExternalLink'],
-      description: 'Figma Instance#968:0; used only while Icon right=On.',
+      description: 'Figma Icon#968:0; used only while IconRight=On.',
     },
     iconRight: {
       control: 'boolean',
-      description: 'Figma Icon right=Off / On.',
+      description: 'Figma IconRight=Off / On.',
     },
     raised: {
       control: 'boolean',
@@ -55,7 +55,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Button 968:5914](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=968-5914)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Button 968:5914](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=968-5914). `Raised` exists only for `State=Default`; hover and physical press are live DOM states, and `toggled` is controlled persistent state.\n\n</details>",
+        component: "[Button 968:5914](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-5914)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Button 968:5914](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-5914). `Raised` exists only for `State=Default`; hover and physical press are live DOM states, and `toggled` is controlled persistent state.\n\n</details>",
       },
     },
   },
@@ -153,27 +153,27 @@ export const AllVariants: Story = {
         <p style="margin:0">Hover and ActivePressed use live pointer interaction in Sandbox.</p>
         <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Default / Icon right=Off / Raised=Off</h2>
+            <h2 style="margin:0">Default / IconRight=Off / Raised=Off</h2>
             <DsButton text="Button" />
           </section>
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Default / Icon right=Off / Raised=On</h2>
+            <h2 style="margin:0">Default / IconRight=Off / Raised=On</h2>
             <DsButton text="Button" raised />
           </section>
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Default / Icon right=On / Raised=Off</h2>
+            <h2 style="margin:0">Default / IconRight=On / Raised=Off</h2>
             <DsButton text="Button" icon-right />
           </section>
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Default / Icon right=On / Raised=On</h2>
+            <h2 style="margin:0">Default / IconRight=On / Raised=On</h2>
             <DsButton text="Button" icon-right raised />
           </section>
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Toggled / Icon right=Off</h2>
+            <h2 style="margin:0">Toggled / IconRight=Off</h2>
             <DsButton text="Button" toggled />
           </section>
           <section style="display:grid;justify-items:center;gap:12px">
-            <h2 style="margin:0">Toggled / Icon right=On</h2>
+            <h2 style="margin:0">Toggled / IconRight=On</h2>
             <DsButton text="Button" toggled icon-right icon="ChevronUp" />
           </section>
         </div>

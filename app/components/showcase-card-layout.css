@@ -1,0 +1,7 @@
+/* Unified card contract: user-approved sizes2026-10-26; artwork motion is independent. */
+.showcase-card { container-type:inline-size; --showcase-nominal-width:min(430px,calc(100vw - 32px)); --showcase-copy-scale:min(1,calc(100cqw / var(--showcase-nominal-width))); width:100%; max-width:430px; height:500px; }
+@media(min-width:462px){.showcase-card{height:532px;}}
+.showcase-card.showcase-card .ds-badge--card { padding:calc(8px * var(--showcase-copy-scale)) calc(12px * var(--showcase-copy-scale)); }
+.showcase-card.showcase-card .ds-badge--card .ds-badge__text { font-size:calc(12px * var(--showcase-copy-scale)); }
+.showcase-card.showcase-card .ds-badge--cardcompact { padding:calc(6.666667px * var(--showcase-copy-scale)) calc(10px * var(--showcase-copy-scale)); }
+.showcase-card.showcase-card .ds-badge--cardcompact .ds-badge__text { font-size:calc(10px * var(--showcase-copy-scale)); }

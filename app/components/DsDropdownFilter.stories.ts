@@ -4,7 +4,7 @@ import DsDropdownFilter from './DsDropdownFilter.vue'
 
 /**
  * DropdownFilter-web — DS component 1016:6638
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-6638
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-6638
  */
 const meta = {
   title: 'Components/DropdownFilter',
@@ -25,7 +25,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 1016:6638](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-6638)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownFilter-web 1016:6638. Overflow filter for 1024–1279px viewport range.\nContains 3 hidden categories: Gamedev, Видео, Упаковка.\n\n| Trigger label | Condition |\n|---|---|\n| \"Gamedev & more\" | No overflow category selected |\n| Category name | Overflow category selected; closed trigger retains Toggled visual |\n\n</details>",
+        component: "[Figma 1016:6638](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-6638)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownFilter-web 1016:6638. Overflow filter for 1024–1279px viewport range.\nContains 3 hidden categories: Gamedev, Видео, Упаковка.\n\n| Trigger label | Condition |\n|---|---|\n| \"Gamedev & more\" | No overflow category selected |\n| Category name | Overflow category selected; closed trigger retains Toggled visual |\n\n</details>",
       },
     },
   },

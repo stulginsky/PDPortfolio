@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 /**
  * DsDropdownFilter — DS component 1016:6638 (DropdownFilter-web)
  * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-6638
@@ -45,6 +46,11 @@ const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
 const suppressTriggerHover = ref(false)
 const triggerWidth = ref<number | null>(null)
+
+const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(() => {
+  isOpen.value = false
+  triggerRef.value?.querySelector("button")?.focus({ preventScroll: true })
+})
 
 // Show selected label if active, else default
 const triggerLabel = computed(() => {
@@ -147,6 +153,10 @@ onUnmounted(() => {
     <div
       v-if="isOpen"
       class="ds-dropdown-filter__list-position"
+      @touchstart.passive="beginSwipe"
+      @touchmove="moveSwipe"
+      @touchend="endSwipe"
+      @touchcancel="cancelSwipe"
     >
       <DsDropdownListSelector
         id="ds-dropdown-filter-list"

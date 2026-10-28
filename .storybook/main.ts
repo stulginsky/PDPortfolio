@@ -30,6 +30,7 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [vue()],
+      optimizeDeps: { include: ['typograf'] },
       resolve: {
         alias: {
           '~': fileURLToPath(new URL('../app', import.meta.url)),

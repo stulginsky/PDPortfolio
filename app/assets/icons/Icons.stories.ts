@@ -40,7 +40,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: `Original SVG assets from the Figma [Icons section](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1944).\n\nThe catalog is a Foundation asset inventory, not a replacement for a component API.`,
+        component: `Original SVG assets from the Figma [Icons section](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1944).\n\nThe catalog is a Foundation asset inventory, not a replacement for a component API.`,
       },
     },
   },

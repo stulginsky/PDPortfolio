@@ -10,17 +10,19 @@ const meta = {
   component: DsImgTitle,
   tags: ['autodocs'],
   args: {
+    btnOnly: false,
     title,
     onZoom: fn(),
   },
   argTypes: {
+    btnOnly: { control: 'boolean', description: 'Figma Btn only: круглая лупа без видимого заголовка; 128×128 px во всех брейкпоинтах.' },
     title: { control: 'text', description: 'Figma TEXT Title. Текст переносится при переполнении в base и min-768.' },
   },
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[ImgTitle — Figma 1016:5882](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-5882)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitle — Figma 1016:5882](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1016-5882).\n\nСамостоятельный первый компонент пары: только заголовок медиа и действие увеличения. Дополнительный toolbar будет отдельным компонентом. Лупа обязательна.\n\n| Breakpoint | Типографика заголовка | Геометрия |\n| --- | --- | --- |\n| base (<768px) | Heading/sm — 18px / 145% | Fill; reference 288×74px; padding 12/12/12/24; перенос при переполнении |\n| min-768 | Heading/md — 22px / 130% | Fill при viewport 768px, Hug выше; cap 924px; padding 12/12/12/24; перенос при переполнении |\n\nСобытие zoom — запрос на открытие viewer. Изображение само по себе не является триггером.\n\n</details>",
+        component: "[ImgTitle — Figma 1016:5882](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-5882)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitle — Figma 1016:5882](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-5882).\n\nBtn only=On: круглая лупа 128×128px, внутренний круг 66×66px, действие 50×50px; видимый заголовок скрыт, текст остаётся в доступном имени действия. Btn only=Off сохраняет панель заголовка и действие увеличения. Дополнительный toolbar будет отдельным компонентом. Лупа обязательна.\n\n| Breakpoint | Типографика заголовка | Геометрия |\n| --- | --- | --- |\n| base (<768px) | Heading/sm — 18px / 145% | Fill; reference 288×74px; padding 12/12/12/24; перенос при переполнении |\n| min-768 | Heading/md — 22px / 130% | Fill при viewport 768px, Hug выше; cap 924px; padding 12/12/12/24; перенос при переполнении |\n\nСобытие zoom — запрос на открытие viewer. Изображение само по себе не является триггером.\n\n</details>",
       },
     },
   },
@@ -28,6 +30,20 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const ButtonOnly: Story = {
+  args: { btnOnly: true },
+  render: args => ({ components: { DsImgTitle }, setup: () => ({ args }), template: '<div style="padding:24px"><DsImgTitle v-bind="args" /></div>' }),
+  play: async ({ canvas, args }) => {
+    const button = canvas.getByRole('button', { name: /Увеличить изображение/ })
+    const root = button.closest('.ds-img-title')!
+    await expect(root.getBoundingClientRect().width).toBe(128)
+    await expect(root.getBoundingClientRect().height).toBe(128)
+    await expect(canvas.queryByRole('heading')).not.toBeInTheDocument()
+    await userEvent.click(button)
+    await expect(args.onZoom).toHaveBeenCalledTimes(1)
+  },
+}
 
 export const Sandbox: Story = {
   render: (args) => ({
@@ -79,9 +95,9 @@ export const Sandbox: Story = {
     const zoomButton = canvas.getByRole('button', { name: /Увеличить изображение/ })
     await expect(component).toHaveAttribute('data-storybook-breakpoint', 'base')
     await expect(Math.round(component.getBoundingClientRect().height)).toBe(74)
-    await expect(zoomButton).toHaveStyle({ color: 'rgb(107, 114, 128)' })
+    await expect(zoomButton).toHaveStyle({ color: 'rgb(119, 126, 141)' })
     await userEvent.hover(zoomButton)
-    await expect(zoomButton).toHaveStyle({ color: 'rgb(107, 114, 128)' })
+    await expect(zoomButton).toHaveStyle({ color: 'rgb(119, 126, 141)' })
     await expect(zoomButton).toHaveStyle({ backgroundColor: 'rgba(0, 0, 0, 0)' })
     await userEvent.click(zoomButton)
     await expect(canvas.getByRole('status')).toHaveTextContent('Увеличений: 1')

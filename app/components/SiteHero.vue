@@ -407,7 +407,7 @@ useHead({
 
   margin: 0;
 
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
 
   font-weight: var(--text-weight-regular);
 
@@ -460,7 +460,7 @@ useHead({
 
 .hero__sep {
 
-  font-size: var(--text-size-sm);
+  font-size: var(--text-size-14);
 
 }
 
@@ -542,7 +542,7 @@ useHead({
 
   background: var(--surface-default);
 
-  box-shadow: var(--effect-shadow-2nd);
+  box-shadow: var(--shadow-2nd);
 
   transform: translateY(-100%);
 
@@ -648,7 +648,7 @@ useHead({
 
   .hero__name {
 
-    font-size: clamp(32px, 8vw, var(--text-size-3xl));
+    font-size: clamp(32px, 8vw, var(--text-size-48));
 
   }
 

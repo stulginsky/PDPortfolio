@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { expect, userEvent } from 'storybook/test'
+import { expect, userEvent, waitFor, fireEvent } from 'storybook/test'
 import { computed, ref } from 'vue'
 import DsBreadcrumbs from './DsBreadcrumbs.vue'
 
@@ -14,7 +14,7 @@ const children = [
 
 /**
  * Breadcrumbs — DS component 1097:4338.
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1097-4338
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1097-4338
  */
 const meta = {
   title: 'Components/Breadcrumbs',
@@ -33,7 +33,7 @@ const meta = {
     mode: {
       control: 'inline-radio',
       options: ['Default', 'Overflow'],
-      description: 'Overflow keeps the final two items and exposes the earlier path through …. ',
+      description: 'Overflow: below 768px only the current item remains; from 768px the final two remain. Earlier steps open through …. ',
     },
     parent: {
       control: 'object',
@@ -45,7 +45,7 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: "<details>\n<summary>Техническое описание</summary>\n\nOne generic hierarchy component. It never renders navigation as placeholder links:\nselection is emitted through `select`, and the optional parent button emits `parent`.\n\n| Mode | Display |\n|---|---|\n| Default | The complete hierarchy |\n| Overflow | `… · previous · current`; earlier items open in the menu |\n\n</details>",
+        component: "<details>\n<summary>Техническое описание</summary>\n\nOne generic hierarchy component. It never renders navigation as placeholder links:\nselection is emitted through `select`, and the optional parent button emits `parent`.\n\n| Mode | Display |\n|---|---|\n| Default | The complete hierarchy |\n| Overflow | base: `… · current`; min-768: `… · previous · current`; earlier items open in the menu |\n\n</details>",
       },
     },
   },
@@ -61,6 +61,30 @@ export const Overflow: Story = {
     items: children,
     mode: 'Overflow',
     parent,
+  },
+  play: async ({ canvas, canvasElement }) => {
+    const visibleCount = window.innerWidth < 768 ? 1 : 2
+    await waitFor(() => expect(canvasElement.querySelectorAll('.ds-breadcrumbs-item')).toHaveLength(visibleCount))
+    const trigger = canvas.getByRole('button', { name: '...', exact: true })
+    await userEvent.click(trigger)
+    await expect(canvas.getAllByRole('menuitem')).toHaveLength(children.length - visibleCount)
+    await userEvent.keyboard('{Escape}')
+    await expect(trigger).toHaveFocus()
+    if (window.innerWidth < 768) {
+      await userEvent.click(trigger)
+      const menu = canvas.getByRole('menu')
+      const touch = (y: number) => ({ identifier: 1, clientX: 80, clientY: y })
+      fireEvent.touchStart(menu, { touches: [touch(80)] })
+      fireEvent.touchMove(menu, { touches: [touch(100)] })
+      fireEvent.touchEnd(menu, { touches: [], changedTouches: [touch(100)] })
+      await expect(trigger).toHaveAttribute('aria-expanded', 'true')
+      fireEvent.touchStart(menu, { touches: [touch(80)] })
+      fireEvent.touchMove(menu, { touches: [touch(170)] })
+      fireEvent.touchEnd(menu, { touches: [], changedTouches: [touch(170)] })
+      await expect(trigger).toHaveAttribute('aria-expanded', 'false')
+      await expect(trigger).toHaveFocus()
+      await expect(canvas.getByText('Child 4')).toHaveAttribute('aria-current', 'page')
+    }
   },
 }
 

@@ -33,13 +33,13 @@ provide(dropdownListTypeKey, computed(() => props.type))
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: clip;
+  overflow: hidden;
   list-style: none;
   margin: 0;
   padding: 12px 0;
   border-radius: var(--radius-xlg);
   background: var(--surface-menu-item-default);
-  box-shadow: var(--effect-shadow-2nd);
+  box-shadow: var(--shadow-2nd);
 }
 
 /* All Figma variants have radius/xlg with cornerSmoothing=1 (100%).
@@ -63,7 +63,7 @@ provide(dropdownListTypeKey, computed(() => props.type))
 }
 
 /* Literal Figma instance override for rows placed in the dropdown surface. */
-:deep(.ds-dropdown-list-item) {
+.ds-dropdown-list-selector :deep(.ds-dropdown-list-item) {
   flex: 1 1 auto;
   width: 100%;
   padding-right: 32px;

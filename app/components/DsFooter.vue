@@ -39,7 +39,7 @@ import favicon from '../assets/icons/favicon.svg'
   margin: 0;
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: "wght" 600, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514,

@@ -12,28 +12,31 @@
  * All text: text/secondary (gray-700).
  */
 import { computed } from 'vue'
+import { typografRoleFocusItems } from '../../scripts/lib/typograf-shared.mjs'
 
 const props = defineProps<{
-  role: string
-  focus: string
   /** Explicit Figma variant for constrained compositions; omitted = responsive viewport. */
   breakpoint?: 'base' | 'min-425'
+  role: string
+  focus: string
 }>()
 
 const breakpointClass = computed(() =>
   props.breakpoint ? `ds-role-focus--${props.breakpoint}` : undefined,
 )
+const roleItems = computed(() => typografRoleFocusItems(props.role))
+const focusItems = computed(() => typografRoleFocusItems(props.focus))
 </script>
 
 <template>
   <div class="ds-role-focus" :class="breakpointClass">
     <div class="ds-role-focus__row">
       <span class="ds-role-focus__label">My role</span>
-      <span class="ds-role-focus__value">{{ role }}</span>
+      <span class="ds-role-focus__value"><template v-for="(item, index) in roleItems" :key="index"><span class="ds-role-focus__item">{{ item }}</span>{{ index < roleItems.length - 1 ? ' ' : '' }}</template></span>
     </div>
     <div class="ds-role-focus__row">
       <span class="ds-role-focus__label">Case focus</span>
-      <span class="ds-role-focus__value">{{ focus }}</span>
+      <span class="ds-role-focus__value"><template v-for="(item, index) in focusItems" :key="index"><span class="ds-role-focus__item">{{ item }}</span>{{ index < focusItems.length - 1 ? ' ' : '' }}</template></span>
     </div>
   </div>
 </template>
@@ -55,7 +58,7 @@ const breakpointClass = computed(() =>
 
 .ds-role-focus__label {
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-lg); /* base: DS/Heading/md — 18px */
+  font-size: var(--text-size-18); /* base: DS/Heading/md — 18px */
   font-weight: var(--text-weight-semibold); /* 600 */
   font-variation-settings: "wght" 600, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
@@ -65,8 +68,9 @@ const breakpointClass = computed(() =>
 }
 
 .ds-role-focus__value {
+  min-width: 0;
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base); /* base: DS/Body/base — 16px */
+  font-size: var(--text-size-16); /* base: DS/Body/base — 16px */
   font-weight: var(--text-weight-regular); /* 400 */
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
@@ -75,22 +79,28 @@ const breakpointClass = computed(() =>
   letter-spacing: 0;
 }
 
+.ds-role-focus__item {
+  white-space: nowrap;
+}
+
 .ds-role-focus--min-425 .ds-role-focus__row {
   flex-direction: row;
+  align-items: first baseline;
   gap: var(--space-3);
 }
 
 .ds-role-focus--min-425 .ds-role-focus__label {
+  text-align: right;
   flex: 0 0 116px;
   width: 116px;
   min-width: 116px;
-  font-size: var(--text-size-xl);
+  font-size: var(--text-size-22);
   line-height: 1.3;
 }
 
 .ds-role-focus--min-425 .ds-role-focus__value {
   flex: 1;
-  font-size: var(--text-size-lg-plus);
+  font-size: var(--text-size-20);
   font-weight: var(--text-weight-light);
   font-variation-settings: "wght" 300, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
@@ -101,20 +111,22 @@ const breakpointClass = computed(() =>
 @media (min-width: 425px) {
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__row {
     flex-direction: row;
+    align-items: first baseline;
     gap: var(--space-3); /* 12px between label col and value */
   }
 
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__label {
+    text-align: right;
     flex: 0 0 116px; /* fixed label column */
     width: 116px;
     min-width: 116px;
-    font-size: var(--text-size-xl); /* min-425: DS/Heading/lg — 22px */
+    font-size: var(--text-size-22); /* min-425: DS/Heading/lg — 22px */
     line-height: 1.3;
   }
 
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__value {
     flex: 1;
-    font-size: var(--text-size-lg-plus); /* min-425: DS/Body/md — 20px */
+    font-size: var(--text-size-20); /* min-425: DS/Body/md — 20px */
     font-weight: var(--text-weight-light); /* 300 */
     font-variation-settings: "wght" 300, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
       "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

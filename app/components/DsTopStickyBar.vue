@@ -2,45 +2,46 @@
 import { computed, onMounted, onBeforeUnmount, ref, watch, useId, nextTick } from 'vue'
 import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 import DsDropdownSelect from './DsDropdownSelect.vue'
-import DsCrossButton from './DsCrossButton.vue'
+import DsBtnCross from './DsBtnCross.vue'
 import DsTooltip from './DsTooltip.vue'
 
-const props = withDefaults(defineProps<{ text?: string; zoom?: number; fitToScreen?: boolean; viewerReady?: boolean }>(), { text: 'Value', zoom: 100, fitToScreen: false, viewerReady: false })
-const emit = defineEmits<{ 'update:zoom': [value: number]; fit: []; close: [event: MouseEvent] }>()
+const props = withDefaults(defineProps<{ text?: string; zoom?: number; fitMode?: 'width' | 'height' | 'screen' | null; viewerReady?: boolean; controlsOnly?: boolean }>(), { text: 'Value', zoom: 100, fitMode: null, viewerReady: false, controlsOnly: false })
+const emit = defineEmits<{ 'update:zoom': [value: number]; fit: [mode: 'width' | 'height' | 'screen']; close: [event: MouseEvent] }>()
 const root = ref<HTMLElement | null>(null)
 const web = ref(false)
 let query: MediaQueryList | undefined
 let observer: MutationObserver | undefined
-const label = computed(() => props.fitToScreen ? 'Fit to screen' : `Zoom ${Math.round(props.zoom)}%`)
-const items = [50, 100, 150].map(value => ({ label: `Zoom ${value}%`, value: String(value), showIcon: false }))
-items.push({ label: 'Fit to screen', value: 'fit', showIcon: false })
+const selected = computed(() => props.fitMode ? `fit-${props.fitMode}` : [50, 100, 150].includes(props.zoom) ? String(props.zoom) : undefined)
+const label = computed(() => props.fitMode ? `Fit to ${props.fitMode}` : `Zoom ${Math.round(props.zoom)}%`)
+const items = computed(() => [
+  ...[50, 100, 150].map(value => ({ label: `Zoom ${value}%`, value: String(value) })),
+  ...(['width', 'height', 'screen'] as const).map(mode => ({ label: `Fit to ${mode}`, value: `fit-${mode}` })),
+].map(item => ({ ...item, icon: 'Check' as const, showIcon: item.value === selected.value })))
+const selection = computed({
+  get: () => selected.value,
+  set: (value: string | null | undefined) => { if (value) select({ value }) },
+})
 const hint = ref(false)
-const instant = ref(false)
 const tooltipId = `zoom-hint-${useId()}`
 let timer: ReturnType<typeof setTimeout> | undefined
 let mounted = false
-function hideHint(immediate = true) {
+function hideHint() {
   clearTimeout(timer)
-  instant.value = immediate
   hint.value = false
 }
 function showMobileHint() {
   hideHint()
   if (!mounted || web.value || !props.viewerReady) return
-  instant.value = false
   hint.value = true
   const enter = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300
-  timer = setTimeout(() => hideHint(false), enter + 5000)
+  timer = setTimeout(() => hideHint(), enter + 5000)
 }
 function showWebHint(event?: Event) {
+  if (root.value?.querySelector('.ds-top-sticky-bar__menu [aria-expanded="true"]')) return
   if (event?.type === 'focusin' && event.target !== root.value?.querySelector('.ds-top-sticky-bar__menu button')) return
-  if (web.value) { instant.value = false; hint.value = true }
+  if (web.value) hint.value = true
 }
-function leaveWebHint() { if (web.value) hideHint(false) }
-function leaveHint(_element: Element, done: () => void) {
-  if (instant.value || window.matchMedia('(prefers-reduced-motion: reduce)').matches) done()
-  else setTimeout(done, 300)
-}
+function leaveWebHint() { if (web.value) hideHint() }
 watch(() => props.viewerReady, ready => ready ? showMobileHint() : hideHint())
 watch(web, () => { hideHint(); showMobileHint() })
 watch(hint, async visible => {
@@ -51,7 +52,10 @@ watch(hint, async visible => {
 })
 function close(event: MouseEvent) { hideHint(); emit('close', event) }
 function select(item: { value: string }) {
-  if (item.value === 'fit') emit('fit')
+  if (item.value === selected.value) return
+  if (item.value === 'fit-width') emit('fit', 'width')
+  else if (item.value === 'fit-height') emit('fit', 'height')
+  else if (item.value === 'fit-screen') emit('fit', 'screen')
   else emit('update:zoom', Number(item.value))
 }
 function update() {
@@ -71,17 +75,15 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
 </script>
 
 <template>
-  <header ref="root" class="ds-top-sticky-bar" :class="{ 'ds-top-sticky-bar--web': web }">
-    <h2 class="ds-top-sticky-bar__title">{{ text }}</h2>
+  <header ref="root" class="ds-top-sticky-bar" :class="{ 'ds-top-sticky-bar--web': web, 'ds-top-sticky-bar--controls-only': controlsOnly }" :aria-label="controlsOnly ? text : undefined">
+    <h2 v-if="!controlsOnly" class="ds-top-sticky-bar__title">{{ text }}</h2>
     <div class="ds-top-sticky-bar__menu" @mouseenter="showWebHint" @mouseleave="leaveWebHint" @focusin="showWebHint" @focusout="leaveWebHint" @click.capture="hideHint()">
-      <DsDropdownSelect v-if="web" :items="items" :placeholder="label" @change="select" />
-      <DsFullscreenMenuMob v-else :items="items" :placeholder="label" aria-label="Выбрать масштаб" @select="select" @open="hideHint()" />
-      <Transition name="zoom-hint" @leave="leaveHint">
-        <DsTooltip v-if="hint" :id="tooltipId" class="ds-top-sticky-bar__hint" :class="{ 'ds-top-sticky-bar__hint--instant': instant }" pointer="Top"
+      <DsDropdownSelect v-if="web" :items="items" :placeholder="label" :raised="controlsOnly" v-model="selection" />
+      <DsFullscreenMenuMob v-else :items="items" :placeholder="label" :raised="controlsOnly" v-model="selection" aria-label="Выбрать масштаб" @open="hideHint()" />
+        <DsTooltip :visible="hint" :id="tooltipId" class="ds-top-sticky-bar__hint" pointer="Top"
           :label="web ? 'Масштаб: Ctrl/⌘ + колесо' : 'Разведите или сведите два пальца, чтобы изменить масштаб'" />
-      </Transition>
     </div>
-    <DsCrossButton class="ds-top-sticky-bar__close" aria-label="Закрыть просмотрщик" @click="close" />
+    <DsBtnCross class="ds-top-sticky-bar__close" :raised="controlsOnly" aria-label="Закрыть просмотрщик" @click="close" />
   </header>
 </template>
 
@@ -98,15 +100,18 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
   row-gap: var(--space-3);
   width: 100%;
   padding: var(--space-4);
-  background: linear-gradient(90deg, var(--surface-fullscreen-header-start), var(--surface-fullscreen-header-end));
-  backdrop-filter: blur(15px);
+  /* Figma gradient paint opacity45%; do not fade the header's content. */
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--surface-fullscreen-header-start) 45%, transparent),
+    color-mix(in srgb, var(--surface-fullscreen-header-end) 45%, transparent));
+  backdrop-filter: var(--image-preview-header-blur);
 }
 .ds-top-sticky-bar__title {
   min-width: 0;
   margin: 0;
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
@@ -127,19 +132,30 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
 .ds-top-sticky-bar--web .ds-top-sticky-bar__title {
   flex: 0 1 auto;
   padding: 0 var(--space-4);
-  font-size: var(--text-size-xl);
+  font-size: var(--text-size-22);
   font-variation-settings: var(--font-variation-heading-md);
   line-height: 1.3;
   letter-spacing: .03em;
 }
 .ds-top-sticky-bar--web .ds-top-sticky-bar__menu { flex: none; width: auto; }
 .ds-top-sticky-bar__close { flex: none; }
+.ds-top-sticky-bar--controls-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 78px;
+  background: none;
+}
+.ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu { flex: none; width: auto; }
+.ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu),
+.ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu__trigger) { width: auto; }
+.ds-top-sticky-bar--controls-only.ds-top-sticky-bar--web {
+  justify-content: flex-end;
+  width: max-content;
+  max-width: 100%;
+  margin-left: auto;
+}
 .ds-top-sticky-bar__hint { position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); width: max-content; max-width: min(288px, calc(100vw - 32px)); z-index: 20; }
 .ds-top-sticky-bar__hint :deep(.ds-tooltip__body) { box-sizing: border-box; max-width: 100%; white-space: normal; text-align: center; }
-.zoom-hint-enter-active { transition: opacity 300ms ease-out, transform 300ms ease-out; }
-.zoom-hint-leave-active { transition: opacity 300ms ease-in; }
-.zoom-hint-enter-from { opacity: 0; transform: translate(-50%, 4px); }
-.zoom-hint-leave-to { opacity: 0; }
-.ds-top-sticky-bar__hint--instant.zoom-hint-leave-active { transition: none; }
-@media (prefers-reduced-motion: reduce) { .zoom-hint-enter-active, .zoom-hint-leave-active { transition: none; } .zoom-hint-enter-from { transform: translateX(-50%); } }
 </style>

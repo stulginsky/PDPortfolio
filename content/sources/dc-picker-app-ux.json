@@ -1,0 +1,8 @@
+{
+  "title": "Picker\nApp",
+  "badges": ["B2B", "Business Analysis", "UX Audit", "Operational UX", "User Flows", "Interaction Design", "Prototyping"],
+  "tooltip": "Подписаться на обновления",
+  "subscribeLabel": "Скоро — сообщить о публикации кейса Picker App",
+  "emailSubject": "Сообщите о новом кейсе",
+  "emailBody": "Привет, Константин! Очень хочу посмотреть новый кейс {Название кейса}. Сообщите о публикации. Спасибо."
+}

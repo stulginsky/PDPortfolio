@@ -32,7 +32,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1388-4795)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1388-4795).\n\nНавигационный toolbar использует DsTab, мобильный DsFullscreenMenuMob, web DsDropdownSelect и DsButtonIcon.\n\n| Figma variant | Production rule |\n| --- | --- |\n| base + Menu | 320–767px: title + текущий trigger + zoom в одной строке, если помещаются (Hug); иначе две строки на всю доступную ширину (Fill). Меню остаётся FullscreenMenu/Mob. |\n| min-768 + Inline | Ряд tab, пока он помещается в доступную ширину до 924px. |\n| min-768 + Menu | Автоматический overflow fallback: web dropdown с DropdownListSelector Type=Filter. |\n\nNavigation не является prop: режим выбирается измерением реального ряда. Figma открывается в новом окне и не меняет modelValue.\nПри отключённой лупе заголовок центрируется. Скрытые измерительные ряды изолированы и не создают горизонтальный scroll.\n\n</details>",
+        component: "[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1388-4795)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1388-4795).\n\nНавигационный toolbar использует DsTab, мобильный DsFullscreenMenuMob, web DsDropdownSelect и DsButtonIcon.\n\n| Figma variant | Production rule |\n| --- | --- |\n| base + Menu | 320–767px: title + текущий trigger + zoom в одной строке, если помещаются (Hug); иначе две строки на всю доступную ширину (Fill). Меню остаётся FullscreenMenu/Mob. |\n| min-768 + Inline | Ряд tab, пока он помещается в доступную ширину до 924px. |\n| min-768 + Menu | Автоматический overflow fallback: web dropdown с DropdownListSelector Type=Filter. |\n\nNavigation не является prop: режим выбирается измерением реального ряда. Figma открывается в новом окне и не меняет modelValue.\nПри отключённой лупе заголовок центрируется. Скрытые измерительные ряды изолированы и не создают горизонтальный scroll.\n\n</details>",
       },
     },
   },
@@ -126,6 +126,7 @@ export const Sandbox: Story = {
 
     await userEvent.click(canvas.getByRole('button', { name: 'Выбрать материал' }))
     const figma = overlay.getByRole('link', { name: 'Figma' })
+    await expect(figma).toHaveAttribute('href', 'https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc/Chirp-DS?node-id=0-1')
     await expect(figma).toHaveAttribute('target', '_blank')
     await userEvent.click(figma)
     await expect(overlay.queryByRole('dialog')).toBeNull()
@@ -133,6 +134,15 @@ export const Sandbox: Story = {
 
     await userEvent.click(canvas.getByRole('button', { name: 'min-768', exact: true }))
     await waitFor(() => expect(toolbar).toHaveClass('ds-img-title-toolbar--inline'))
+    await document.fonts.ready
+    if (CSS.supports('text-box', 'trim-both cap alphabetic')) {
+      const row = toolbar.querySelector('.ds-img-title-toolbar__header')!.getBoundingClientRect()
+      const center = row.y + row.height / 2
+      for (const glyphs of toolbar.querySelectorAll('.ds-img-title-toolbar__header .ds-img-title-toolbar__glyphs, .ds-img-title-toolbar__header .ds-tab__glyphs')) {
+        const box = glyphs.getBoundingClientRect()
+        await expect(Math.abs(box.y + box.height / 2 - center)).toBeLessThan(.2)
+      }
+    }
     await userEvent.click(canvas.getByRole('button', { name: 'Tokens.json' }))
     await expect(canvas.getByRole('status')).toHaveTextContent('Selected: tokens')
 

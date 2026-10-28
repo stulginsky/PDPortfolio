@@ -15,7 +15,7 @@ const meta = {
   },
   argTypes: {
     tabLabel: { control: 'text', description: 'Figma TEXT property TabLabel' },
-    iconRight: { control: 'boolean', description: 'Figma property Icon right: Off / On' },
+    iconRight: { control: 'boolean', description: 'Figma property IconRight: Off / On' },
     toolbar: { control: 'inline-radio', options: ['Main', 'Image'], description: 'Figma property Toolbar' },
     toggled: { control: 'boolean', description: 'Controlled state; maps to Figma State=Toggled.' },
     click: { action: 'click' },
@@ -24,7 +24,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Tab 33:1544](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=33-1544).\n\nDefault and Hover are real pointer states. For this local tab switcher, `ActivePressed` remains only a Figma reference; `toggled` is the controlled persistent state and sets `aria-current=\"page\"`.\n\nThe icon is the original Figma ExternalLink asset.\n\n</details>",
+        component: "[Tab 33:1544](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1544)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Tab 33:1544](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1544).\n\nDefault and Hover are real pointer states. For this local tab switcher, `ActivePressed` remains only a Figma reference; `toggled` is the controlled persistent state and sets `aria-current=\"page\"`.\n\nThe icon is the original Figma ExternalLink asset.\n\n</details>",
       },
     },
   },
@@ -68,6 +68,14 @@ export const Sandbox: Story = {
     const imageToolbar = canvas.getByRole('button', { name: 'Toolbar = Image' })
     const output = canvas.getByRole('status')
 
+    await document.fonts.ready
+    if (CSS.supports('text-box', 'trim-both cap alphabetic')) {
+      for (const tab of [firstTab, secondTab]) {
+        const outer = tab.getBoundingClientRect(), glyph = tab.querySelector('.ds-tab__glyphs')!.getBoundingClientRect()
+        await expect(outer.height).toBe(50)
+        await expect(Math.abs(glyph.y + glyph.height / 2 - outer.y - outer.height / 2)).toBeLessThan(.2)
+      }
+    }
     await expect(firstTab).toHaveAttribute('aria-current', 'page')
     await userEvent.click(imageToolbar)
     await expect(imageToolbar).toHaveAttribute('aria-pressed', 'true')

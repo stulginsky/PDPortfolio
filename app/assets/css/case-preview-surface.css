@@ -1,0 +1,11 @@
+/* Caller-owned legacy paint. Preview itself remains transparent. */
+.case-preview-surface {
+  width: 100%;
+  background: var(--case-image-preview-mob);
+}
+
+@media (min-width: 1024px) {
+  .case-preview-surface {
+    background: var(--case-image-preview-web);
+  }
+}

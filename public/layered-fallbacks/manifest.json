@@ -1,0 +1,1490 @@
+[
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-design-system/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 16566,
+    "sha256": "05400c287ee15f974c26f7d7d45326d15e85b74bc945438bc04f74aacc5c82ce"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-design-system/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 16566,
+    "sha256": "05400c287ee15f974c26f7d7d45326d15e85b74bc945438bc04f74aacc5c82ce"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-design-system/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 16550,
+    "sha256": "2a26ca46cd13a5c7d6140530fe6cc5ac03178273692b4d8e66933cb97603493f"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-design-system/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 16992,
+    "sha256": "0565ac8b663c9fe98d790f1cafc3d036633f1648766ad45e602d1fd67c7b5f87"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-design-system/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 16992,
+    "sha256": "0565ac8b663c9fe98d790f1cafc3d036633f1648766ad45e602d1fd67c7b5f87"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 23558,
+    "sha256": "deedde5ab51b0e56138e458b8a9a1de7d56d677cca79c4bd4df67e427038ae95"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 23580,
+    "sha256": "be5e86cbffa3d5dbd5e90f8cbcf1de0755a6a5714b24f64368c216ccf3165cd7"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 23562,
+    "sha256": "9fe988e6a59a58f189ab93104df70a4431498d3b3fdd87626c651d45dc62a945"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 1710,
+    "sha256": "c716ed6504d9571eca554d0ff48e170dc67eec7c5f7600c5b7ca4e9682da6e66"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 17078,
+    "sha256": "3c27143bea380bed42ac1ec8ed3caf2035cfc31fe4080dd3ff500de86277b1b5"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 19674,
+    "sha256": "226e5cc1533b03e86420cbc79230910e0a2d2faab4c69f4b8f8603c960d57848"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 19806,
+    "sha256": "6b8bd656e94c1a78e29f63d248b52a6b3f14e0c4cf68a315f7ed966e91e9457d"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 19726,
+    "sha256": "4ed65a408012f3b899e9c8c2e496bd0dc55293965aa252a451360f3c0e399a20"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 22100,
+    "sha256": "7091734e432dcec21ae494646bc7171f579a8648b56867e756b315c8ebdca96e"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 22070,
+    "sha256": "447667a050ed7da3ba959e69ea482d2522759e8fe84f0ca7de0b1fa3b313581b"
+  },
+  {
+    "component": "chirp-ai-design-system",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-ai-design-system/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 23864,
+    "sha256": "a3396fbd05366849be7d6aeb46efa4ac69fecaf964c32b60b59149f2af27f77b"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 15260,
+    "sha256": "a0f6dac2998f80bd3fbb4f64439a92f7ef5aa1e35e23dbea623c2f5e8b662351"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 15260,
+    "sha256": "a0f6dac2998f80bd3fbb4f64439a92f7ef5aa1e35e23dbea623c2f5e8b662351"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 15260,
+    "sha256": "a0f6dac2998f80bd3fbb4f64439a92f7ef5aa1e35e23dbea623c2f5e8b662351"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 15892,
+    "sha256": "f0bc918f25377c8aa0f32cdac758a420969aad391202c9005c882cb153943b65"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 15892,
+    "sha256": "85eebc9d71599d24cbcaa6e467bb5da331f8533956fc0c3b33bdbbf7b59c9e19"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17816,
+    "sha256": "cfc9550edc1b610dd421901735ed2d9c5970b24a62de161cf8adab4abd583577"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17816,
+    "sha256": "3a5bad2b52f4dcb12817856d72ca0ab8b697ceb036082b3114bccb7fe3910963"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17816,
+    "sha256": "3a5bad2b52f4dcb12817856d72ca0ab8b697ceb036082b3114bccb7fe3910963"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17816,
+    "sha256": "9722fb6549132f4fe837bc6f4609fb5fa38bded26a788c674750ddb212b642e1"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 15054,
+    "sha256": "7a09c8c212181dbae11ac311f75492fd1a81bfa80b491a5fd4a40eba486d0bec"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 16646,
+    "sha256": "e16df2b4481b13891ca3dfbd6fed0ac56f22b224facea5a6ceb8ea05336f03fb"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 17342,
+    "sha256": "2bdf97e5dcc3c48873da0bb99c606a4f933617246bd4b682f13563bae7d27675"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 17364,
+    "sha256": "c68f5c723e9594790a953cc643c202c9001c0406436c24d6d1fae80d6da9c1c3"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17638,
+    "sha256": "dfe143b81dc114133d34386502b4fedfca347b782506ff07b83478e4da46dffd"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17638,
+    "sha256": "dfe143b81dc114133d34386502b4fedfca347b782506ff07b83478e4da46dffd"
+  },
+  {
+    "component": "chirp-ai-health-assistant",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-ai-health-assistant/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 17816,
+    "sha256": "3a5bad2b52f4dcb12817856d72ca0ab8b697ceb036082b3114bccb7fe3910963"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 9872,
+    "sha256": "4f5c9039fab5e7046709ba72921e10118a7cc7c0f089b9af55e8e98f3f798a3c"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 9808,
+    "sha256": "547e397b22018f3180512b4704219f06582b6e524274a950f19bd6ed05009f05"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 9872,
+    "sha256": "4f5c9039fab5e7046709ba72921e10118a7cc7c0f089b9af55e8e98f3f798a3c"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 9856,
+    "sha256": "0977f7e1ed84c24d15adb768fd3946950455cbee03408f9c192a8d0fc85e7ed2"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 9856,
+    "sha256": "0977f7e1ed84c24d15adb768fd3946950455cbee03408f9c192a8d0fc85e7ed2"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13338,
+    "sha256": "22955d5571d7ae7ea5c593b9e683a995e53764675f2bf7eb6d7fb9c53e8e33c1"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13230,
+    "sha256": "530091c7b70531c689c161b398e768031a4544eaa0d5691b22420a38f9f90c00"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13326,
+    "sha256": "9f2395babc04ae5c01e3f647ccedbb1f10181f7c3afa341753c83407679a2b90"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13352,
+    "sha256": "237d8021d909f3605a8da98b595579721c28f89013cdcaa3947db706d2ebffd1"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 10000,
+    "sha256": "6e348b0e501a758f8e046c73c0891761e18c93c6ff6a8a722ae60ae1f50437be"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 11662,
+    "sha256": "325b01095cd35f648488394d60500074ee1a217e33e6b1ef5773fa422af19ba5"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 12234,
+    "sha256": "626035e33293fb7d56960cee74415f819a62b948511af1067df96c6811dfb465"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 12822,
+    "sha256": "9f0226043b99ea60447914b096e6e7dc99e8b6409bac4b718a9d8d3b2caac8c7"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13448,
+    "sha256": "e6d17e2dd0df3d166321647234a7cc7ab53943a26daa89e6cadfe7e1ba0e4412"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13436,
+    "sha256": "a13180055e15319cf2c93e99b0350e3056243e284b6f9a08bbdfb120da25fd54"
+  },
+  {
+    "component": "chirp-ai-medical-brand",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-ai-medical-brand/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 13354,
+    "sha256": "5544cc5798363d76656ae045f10082059fa08c1c7519841d37aa2690894875c4"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 562,
+    "bytes": 26830,
+    "sha256": "53b575c4b12204bf6d25c52f7922b2bcead3b604cb5231146f02931874ecec5d"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 702,
+    "bytes": 27988,
+    "sha256": "fc3deeae83ba8ca11464c5078b664e0cd9604a05f153ca2e6e64694f47119fca"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 790,
+    "bytes": 33592,
+    "sha256": "1ed4ef65be71c88c67f4ac2ce85c57434e3027de91fd5fb0e460de9ca73cf1f2"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 1055,
+    "bytes": 45182,
+    "sha256": "2b97dd3285ede415c219eb96ab5bc6ba414f160719e3f7f7f769a836a4475e90"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-320.webp",
+    "width": 320,
+    "height": 907,
+    "bytes": 15102,
+    "sha256": "365404e8283104c491e5480c8439bc2b0a76e5d93d04147054fa01494ee34786"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-370.webp",
+    "width": 370,
+    "height": 1049,
+    "bytes": 18542,
+    "sha256": "d343c229ff369431e63c777bb87f16816ddf7b6d0eae31a3362c45a5bcd28f58"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-410.webp",
+    "width": 410,
+    "height": 1163,
+    "bytes": 21170,
+    "sha256": "8da788a6d41a26bb226fc7ef0d4b0a85d1a65b5b085b2fceabea0324a7898d11"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-425.webp",
+    "width": 425,
+    "height": 1205,
+    "bytes": 22318,
+    "sha256": "522b8de9d48962d617cd88fccbff5717fd5add686499ff4d38f9748d12d8667c"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-534.webp",
+    "width": 534,
+    "height": 1514,
+    "bytes": 30130,
+    "sha256": "57ac64d90a426ef23dabb072c1fdac10b886e69757eccbfdf2292ecc8ef23451"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-720.webp",
+    "width": 720,
+    "height": 2041,
+    "bytes": 44254,
+    "sha256": "f6bfd2c651b6dd32cca5193c4e89cc90c667af2e6b135d172658c2c5bed2ecf3"
+  },
+  {
+    "component": "chirp-br-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-br-hero/viewport-768.webp",
+    "width": 768,
+    "height": 1362,
+    "bytes": 38260,
+    "sha256": "5f34cd544496c25feb79b32990b869ced9f4ada86fbcfbfb3d2ec618431afde3"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 410,
+    "bytes": 2272,
+    "sha256": "088b4a4478fdd2e5dcf77759ebefa06454713507a776c2a22e0f1fb5c494e68a"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 540,
+    "bytes": 2910,
+    "sha256": "73d72991e5ed738d55c13f53078ec8041912b2c8fab4e5282266107528335f8f"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 560,
+    "bytes": 3436,
+    "sha256": "25c619b9c802b6c867d6b4c08bebf532152489006040234b3970e1035aedfbda"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 560,
+    "bytes": 4208,
+    "sha256": "5e81740ccf24f2719cc6409ff1ce654d4671039765853f8daba90aca4a6217f2"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-320.webp",
+    "width": 320,
+    "height": 533,
+    "bytes": 1456,
+    "sha256": "eb0230a9808ecefa56e73d81db7e10ff586ef0231d5d0abe1b0a25264c4905c5"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-370.webp",
+    "width": 370,
+    "height": 616,
+    "bytes": 1690,
+    "sha256": "344ec119948c2d3d69e31e1215211abaa42da5cc1b3b00846f3ec48598ae69fc"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-410.webp",
+    "width": 410,
+    "height": 682,
+    "bytes": 1910,
+    "sha256": "a4cfdb5d5eb52d15d1e9f6dee8b80949a4b9ea1fbc411076354f3c90a5df0bca"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-425.webp",
+    "width": 425,
+    "height": 707,
+    "bytes": 1996,
+    "sha256": "8b99b92446527773f1f77692e9e910a7dfd09a83ef5e738646b0eb84edff7f7a"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-534.webp",
+    "width": 534,
+    "height": 889,
+    "bytes": 2506,
+    "sha256": "d7d37e84b45b57c421c9fc9dac77ae2108a764dd74e459def200b585cdedb67c"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-720.webp",
+    "width": 720,
+    "height": 1198,
+    "bytes": 3640,
+    "sha256": "bc997e83eea6ea4a9c29cee89355e40878f2561b840f2798501ac902d58e354d"
+  },
+  {
+    "component": "chirp-ds-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-ds-hero/viewport-768.webp",
+    "width": 768,
+    "height": 766,
+    "bytes": 2898,
+    "sha256": "32bf7c8bef19a6e162f4abc73f73f97dfe163002a7d6d0cb982307b6fa692779"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 11894,
+    "sha256": "6e9fda14576a156ea125ad3758ee2c8fef0e4e38727289e90def2aff87e83d33"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 11894,
+    "sha256": "6e9fda14576a156ea125ad3758ee2c8fef0e4e38727289e90def2aff87e83d33"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 11894,
+    "sha256": "6e9fda14576a156ea125ad3758ee2c8fef0e4e38727289e90def2aff87e83d33"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 11820,
+    "sha256": "17d9dde73ce273f1cdc3d8cf2106d5ca89d200f8651f61aae246fe6cfe8bfe18"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 11820,
+    "sha256": "17d9dde73ce273f1cdc3d8cf2106d5ca89d200f8651f61aae246fe6cfe8bfe18"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12686,
+    "sha256": "c89a80929e01ccb6cc2d25e59862b22161558d2faf72aefc14a8680656bae2e8"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12690,
+    "sha256": "4ffa4c005b96c1b64f514d4c113dff69f5a1ab8ef48e9308f51b7e414a9b34e6"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12688,
+    "sha256": "9b54c5cd1e64cb5066936bbd1648e46dc411dad6e39aa6aff911ea4274cf1483"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12684,
+    "sha256": "b0ad68ae2d91155188bd1fa3b90505f43df2987c305d3e76d2887610c3a7ce14"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 11676,
+    "sha256": "e8ae8c066778b751458e0bb596abd5f3749d570008319c7feb942a878d6883bc"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 12828,
+    "sha256": "64c05225f1833e00d5ca1c4db984ecc4a9cfb2403f22b6660d94b36e3d4af11a"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 12546,
+    "sha256": "4dc6168ef3eb74c58c306209fec71e07051f33827c89d6f1269c2e4818c472a2"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 12594,
+    "sha256": "f8c4f16302d3d5d6d40ef22b3d9376ec3713b7c333ad5878a919561b8b10e36d"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12750,
+    "sha256": "7321948f398ef383fa8bfe4c75e877f86ad5ca243edcfd955b8924dfa5da21bc"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12544,
+    "sha256": "5c34ea1dfa4ffebe9da6812e887e2047d608b2cff2f6ea2bd9c4c7c5740e99ae"
+  },
+  {
+    "component": "chirp-explainable-ai-ux",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-explainable-ai-ux/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 12684,
+    "sha256": "b0ad68ae2d91155188bd1fa3b90505f43df2987c305d3e76d2887610c3a7ce14"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 659,
+    "bytes": 36716,
+    "sha256": "ce0d5e8377ce6cda2765a17c346e8fb25b53b8d316e538c12fdcbd2756d7ccd2"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 783,
+    "bytes": 45614,
+    "sha256": "043f8441deab07242dc9cdc63d3cb66adb522fb398bfcc8e268b21bce093e27f"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 816,
+    "bytes": 52184,
+    "sha256": "416ac797181eff1f0cb2626b89ede94897349755d54e323776e96bd7977d6e68"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 1007,
+    "bytes": 75556,
+    "sha256": "c3443a10ed04224d4a496b6bd33cd5b895cb05018a1a1cfb0fd80b04c00f78ec"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-320.webp",
+    "width": 320,
+    "height": 661,
+    "bytes": 12878,
+    "sha256": "0608b94f39126ff65c3276573a4c8de3b076b497b81813e8ea5d592ae31503c8"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-370.webp",
+    "width": 370,
+    "height": 688,
+    "bytes": 15542,
+    "sha256": "337070489cc9c31804d6d13e2db30798331f77713b7ea22451b75a7abbca0969"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-410.webp",
+    "width": 410,
+    "height": 704,
+    "bytes": 18084,
+    "sha256": "ecaa7b41deb0c6c6e0c240ba46d6b90f39d5a10e1924c79062bb3c1f5f70351a"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-425.webp",
+    "width": 425,
+    "height": 720,
+    "bytes": 19004,
+    "sha256": "8625b3e6299fd38291158042dc098bcfc960774709c24143d79d944034af5202"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-534.webp",
+    "width": 534,
+    "height": 834,
+    "bytes": 25608,
+    "sha256": "7725ac6ec9a746037866ecbb16255814649a6535d21993e2c2ecca5394984800"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-720.webp",
+    "width": 720,
+    "height": 1003,
+    "bytes": 37730,
+    "sha256": "18ad8423a682631d8f54b88ea84464f2f85b66e890a149626044df362eed4e4f"
+  },
+  {
+    "component": "chirp-pr-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-pr-hero/viewport-768.webp",
+    "width": 768,
+    "height": 1001,
+    "bytes": 40764,
+    "sha256": "1c0f4ea64d085371e2fad4e1fac11e36d00f8be0d74e2ae6d9de0e1c8115e1b4"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 456,
+    "bytes": 21520,
+    "sha256": "87102cfd3858bda73fde76796b7d0370c7bc58923267b96eed8a6e31e3dc93ef"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 570,
+    "bytes": 30514,
+    "sha256": "fe8262435b45d140480ae6f36ff64509562358f912b2eda313b6c4abf14a204a"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 641,
+    "bytes": 37056,
+    "sha256": "e8d564afe81b401156a8c2fdfd26cc2e7c766999890655ea6dc4d2e78ec19121"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 854,
+    "bytes": 55306,
+    "sha256": "ad9a4694bf753e04d42de48d808b19c0a46e54e619a2bcad2465800dd0bb1992"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-320.webp",
+    "width": 320,
+    "height": 557,
+    "bytes": 12894,
+    "sha256": "f3604e87ff715f01f4a3f6ca89e0718128d954fcb9bf6d928609d71a7f8fe127"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-370.webp",
+    "width": 370,
+    "height": 622,
+    "bytes": 15506,
+    "sha256": "b327beefbc99160a3964dce0569bc1968a3d352a0ad518438bfe9cff50c20488"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-410.webp",
+    "width": 410,
+    "height": 674,
+    "bytes": 17220,
+    "sha256": "38bbcfc3e16cbea81e6077c2ad3316665a88948247214db44039de4ac47a5da4"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-425.webp",
+    "width": 425,
+    "height": 694,
+    "bytes": 19020,
+    "sha256": "9a90169bae3a6f8266cdd984a3a13942e108115343092774c46e870c18cc3cf7"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-534.webp",
+    "width": 534,
+    "height": 836,
+    "bytes": 27266,
+    "sha256": "02c099695beda1b124c29855f2728e70260a7126d62dac20968e662fa22a6ca5"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-720.webp",
+    "width": 720,
+    "height": 1052,
+    "bytes": 41436,
+    "sha256": "1850bc69cc0c4a51b95faff1b4db49b0e7f02ac522d5d6cb5c15d6f4ac09253c"
+  },
+  {
+    "component": "chirp-ux-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/chirp-ux-hero/viewport-768.webp",
+    "width": 768,
+    "height": 869,
+    "bytes": 37818,
+    "sha256": "b833af13c2f887822e0b19ecd044cb958805ffaeb1022eddd57b2378120753ed"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-pr/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 12814,
+    "sha256": "aae706fdaa16ab5feba382503523455ed71906cfaecd4217e83441d0db12228a"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-pr/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 12814,
+    "sha256": "aae706fdaa16ab5feba382503523455ed71906cfaecd4217e83441d0db12228a"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-pr/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 13456,
+    "sha256": "c42ec01195973357198a2a8c1f7ab31a7aa904166ceb2ac1edc907b168718ba6"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-pr/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 13386,
+    "sha256": "368a565c43077cc655ba7e8620555e1b3a41d230be90fb6696841889d9d2062b"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-pr/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 13306,
+    "sha256": "69686346094e4dc3a40c1d0a47576ab2ac878c5610ae668b56d2242d2eedcca0"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 19748,
+    "sha256": "5d71168a95a2f79e166a417f34a16970b3cc672430138ca9ad4f05b87daa99bf"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 19710,
+    "sha256": "4944d1ee6e7a3afbe7c644d60660f4b5754640c32671577c3d327dc4e71d8cce"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 19764,
+    "sha256": "8b2256e8e14ed69e0a67ad911362697cd1335bdcd0f20f743b6408cd93dd61ef"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 19720,
+    "sha256": "fba2addd80d4451fab98666908fb7a650bebd5731111dbec8b9288acfdbe60a6"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 320,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 12966,
+    "sha256": "ca2ba2923b5d742c3a83f5d640647e0cbc9c5818fda5d3749e7694eabc2b8715"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 370,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 14894,
+    "sha256": "2ab7822c9d1aaca7bd630e35b99415e5ac448fe3ce18d70965d9e502415a2b58"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 410,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 15876,
+    "sha256": "d852dc24842e6b538cec3aab07f492648918a9bca6be7473c6dae64a95041a3d"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 425,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 16824,
+    "sha256": "0d52a36de2293251a2330323d2e900146897a4535008c2dc6a7e8c79995abb7b"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 534,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 20366,
+    "sha256": "8006f2e3e8aaa5ef2d140ac2ac25009d2050206e2dbe9ad7f3c7da41e6b32597"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 720,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 20234,
+    "sha256": "742de3e0ff0de4673057cb01520053681d7e82db51486dbf76e5adc899db0f3e"
+  },
+  {
+    "component": "dc-vendor-app-pr",
+    "viewport": 768,
+    "file": "/layered-fallbacks/dc-vendor-app-pr/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 20498,
+    "sha256": "972715bd63a4c615ac2a5855f1b606c6cc8452fee89f2c3f98bb12612b41f112"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 480,
+    "bytes": 38984,
+    "sha256": "1b2453e63e3fc232c90549b92833f5fcb7859d82f299e74d5f3ee90321f05330"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 600,
+    "bytes": 51674,
+    "sha256": "adf29c0cc033090dc879096ab06b98527f22c2c1c184c5916273c52f91cc3169"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 675,
+    "bytes": 61852,
+    "sha256": "0f44854e1ec1d0547c7b1a4c0afce1e04c0d0cb01831b6d3c5e18d45206ae660"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 829,
+    "bytes": 81824,
+    "sha256": "157061ae6d05fa0ae616ccb99b52a5134b0e3d9d7b72197f4b162de11defdf3c"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-320.webp",
+    "width": 320,
+    "height": 488,
+    "bytes": 16312,
+    "sha256": "c7507e66d3a57a7dc7d386404c39e8c1d87c5c7f24c853a5c88ae314c9006552"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-370.webp",
+    "width": 370,
+    "height": 564,
+    "bytes": 17512,
+    "sha256": "030cbe98b03542fc5cf343b641cff842b51d14c41597d0db1cdf735dc32f15ac"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-410.webp",
+    "width": 410,
+    "height": 625,
+    "bytes": 19942,
+    "sha256": "25eed40d6db5575295f6ab35321203f39dd8f11ff186eb5bcac98c6dc2336393"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-425.webp",
+    "width": 425,
+    "height": 648,
+    "bytes": 20238,
+    "sha256": "2245e078495497722416cb7e84abc4d8c39fe9154500b4bc7df1bbc39e24da5c"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-534.webp",
+    "width": 534,
+    "height": 814,
+    "bytes": 26428,
+    "sha256": "e258a4c9855a57575342ea1256a765dac0532d438803207904768832e29d4a8d"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-720.webp",
+    "width": 720,
+    "height": 1098,
+    "bytes": 37712,
+    "sha256": "d8751534118bc54b184d9edc22338f70d85fb6eb0c6037afc0060813afff1b1f"
+  },
+  {
+    "component": "dc-vendor-app-pr-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/dc-vendor-app-pr-hero/viewport-768.webp",
+    "width": 768,
+    "height": 724,
+    "bytes": 45298,
+    "sha256": "789c32f77db9a3219102953baf8f99bb2d86eb068526a51f48684ef489a193e7"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 370,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-ux/related-viewport-370.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 21406,
+    "sha256": "24029ae6bb05cea9f185afa94ae1699896d09bbc75b76386e68317140317788d"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 410,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-ux/related-viewport-410.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 21406,
+    "sha256": "24029ae6bb05cea9f185afa94ae1699896d09bbc75b76386e68317140317788d"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 425,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-ux/related-viewport-425.webp",
+    "width": 288,
+    "height": 500,
+    "bytes": 21406,
+    "sha256": "24029ae6bb05cea9f185afa94ae1699896d09bbc75b76386e68317140317788d"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 462,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-ux/related-viewport-462.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 21344,
+    "sha256": "6414a3c27a1e0880eea7efba30228f1d193c9e6e40d09e2bb906e6bacbb049f8"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 533,
+    "variant": "related",
+    "file": "/layered-fallbacks/dc-vendor-app-ux/related-viewport-533.webp",
+    "width": 288,
+    "height": 532,
+    "bytes": 21344,
+    "sha256": "6414a3c27a1e0880eea7efba30228f1d193c9e6e40d09e2bb906e6bacbb049f8"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-1024.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29656,
+    "sha256": "3f0ee42e1adbd5c5c097556e0e22366eb934d5ea16c3e0a4c1827123c088bd08"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-1280.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29748,
+    "sha256": "79f5f2c3b2b8bd2242c27b7d5a1237975441f1dd1f89a2c75e0e9ad61b801c03"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-1440.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29804,
+    "sha256": "054966afa4d450b9057b19ed938d38700f2e3562a17aa124b7f4ddac7331f60f"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-1920.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29654,
+    "sha256": "1afa9b256678f1ed6b820c9a9a98849dd4423ebf883746766998164158631b33"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 320,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-320.webp",
+    "width": 288,
+    "height": 501,
+    "bytes": 21800,
+    "sha256": "e68a3b8c4fefcf1e2ca4ee727f5ce2d2828cfbeb254d28fc3069a813e135439a"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 370,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-370.webp",
+    "width": 338,
+    "height": 501,
+    "bytes": 25562,
+    "sha256": "d813f2e1c425bfe45d519a048e045d3935ba74741012a368e6b8f4d50574b978"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 410,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-410.webp",
+    "width": 378,
+    "height": 501,
+    "bytes": 27686,
+    "sha256": "a584c505325bc21fe48d6ef2272c71666c0f41c42de33a296fb7ca1b4b55705d"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 425,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-425.webp",
+    "width": 393,
+    "height": 501,
+    "bytes": 28258,
+    "sha256": "2fe10d33730926367105826e9e6e3302101c49dfd7963fffd84f7f6c91cfc3f3"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 534,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-534.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29560,
+    "sha256": "f5d00526cc703c70e1145e0db8f671f9aaace6ce26029e683d2a4dc2d8e5e3a1"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 720,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-720.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29474,
+    "sha256": "5c1b2a671b628262423eeec754ab059ccc699ce8512b67b82106959eacdc11a8"
+  },
+  {
+    "component": "dc-vendor-app-ux",
+    "viewport": 768,
+    "file": "/layered-fallbacks/dc-vendor-app-ux/viewport-768.webp",
+    "width": 430,
+    "height": 533,
+    "bytes": 29482,
+    "sha256": "e98a7d6cddf9e863e750b10f6cfff1fe129d834447ac366e7dfadff64f92b47b"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 1024,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-1024.webp",
+    "width": 1024,
+    "height": 480,
+    "bytes": 50942,
+    "sha256": "3488a97131abc8d70c9ee77a7ec6389129919ae170dd2245d735aa81ba8df3c3"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 1280,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-1280.webp",
+    "width": 1280,
+    "height": 600,
+    "bytes": 68812,
+    "sha256": "87d8c5e0e4f8876315e14ad3829b6ec4da2d34becbe95d6fa0f294281e8a418f"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 1440,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-1440.webp",
+    "width": 1440,
+    "height": 675,
+    "bytes": 80576,
+    "sha256": "5915020b97051b81e0159879d2d2ccac5e18f98ab3d2261b17cf8bf8a4b02518"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 1920,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-1920.webp",
+    "width": 1920,
+    "height": 900,
+    "bytes": 120688,
+    "sha256": "6b758cf32254850781ce342456e22eb3c17b04f92be7cbd35afe59dd3925a6c9"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 320,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-320.webp",
+    "width": 320,
+    "height": 640,
+    "bytes": 22942,
+    "sha256": "3bb95f8a4be863f6ee77e63a4753e264940003ee3ccc3b3f5a820542fe8bd615"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 370,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-370.webp",
+    "width": 370,
+    "height": 740,
+    "bytes": 29154,
+    "sha256": "b1162caad6512e41fa9d706c46dc954780b8ce2e56136493e92a8fc478e67635"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 410,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-410.webp",
+    "width": 410,
+    "height": 820,
+    "bytes": 33704,
+    "sha256": "6e1c60d84ba3a14d1b3403ec9b9b54fe1b29074e96e86552a9e977e6c9d5be87"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 425,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-425.webp",
+    "width": 425,
+    "height": 850,
+    "bytes": 34102,
+    "sha256": "6c0d90962a32355f0f6c230309bef40a0277aab131c534362eb6d975bde29ee6"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 534,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-534.webp",
+    "width": 534,
+    "height": 1068,
+    "bytes": 47188,
+    "sha256": "ad75f406cbcbabdc2be21ccaca0a1ccf05c8caa544d4a93bad735442df1ab685"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 720,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-720.webp",
+    "width": 720,
+    "height": 1440,
+    "bytes": 72038,
+    "sha256": "3997cc89ab9875588b9dcc0e06bb5fee22ec81020dd2b00c01757c328d796d65"
+  },
+  {
+    "component": "dc-vendor-app-ux-hero",
+    "viewport": 768,
+    "file": "/layered-fallbacks/dc-vendor-app-ux-hero/viewport-768.webp",
+    "width": 768,
+    "height": 1299,
+    "bytes": 66464,
+    "sha256": "bc86daa71ff5d9f2bf28bca2422b187d155410a4275d05e4d03f5a46c8cccb21"
+  }
+]

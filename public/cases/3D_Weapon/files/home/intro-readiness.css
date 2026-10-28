@@ -1,0 +1,28 @@
+﻿/* The iframe stays beneath Axure's artwork, without being reparented by animation. */
+#u105 { z-index: 0; }
+.model-preloading #u105 { opacity: 0; pointer-events: none; }
+/* The white page background comes from body, behind the stable viewer layer. */
+#u102_div { background-color: transparent; }
+#base, #u0, #u0_state2, #u102 { pointer-events: none; }
+#u0_state2 .ax_default { pointer-events: auto; }
+#u0_state2 #u102 { pointer-events: none; }
+.model-loading-status {
+  position: absolute;
+  top: 590px;
+  left: 610px;
+  width: 700px;
+  z-index: 10;
+  text-align: center;
+  color: #333;
+  font: 16px/1.5 Arial, sans-serif;
+}
+.model-loading-status[hidden] { display: none; }
+.model-loading-status button {
+  padding: 10px 18px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: white;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}

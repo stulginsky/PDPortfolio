@@ -4,7 +4,7 @@
  * A generic hierarchy path with an optional parent-navigation control.
  * The Overflow mode composes the canonical BreadcrumbsMenu overlay.
  */
-import { computed } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import DsBtnNav from './DsBtnNav.vue'
 import DsBreadcrumbsItem from './DsBreadcrumbsItem.vue'
 import DsBreadcrumbsMenu from './DsBreadcrumbsMenu.vue'
@@ -18,7 +18,7 @@ const props = withDefaults(
   defineProps<{
     /** Visible child path, including the current item as its final entry; it excludes parent. */
     items?: BreadcrumbItem[]
-    /** Default renders the whole path; Overflow hides all but its final two items. */
+    /** Default renders the whole path; Overflow keeps the final item below 768px, otherwise the final two. */
     mode?: 'Default' | 'Overflow'
     /** Enables the left navigation control and identifies its destination. */
     parent?: BreadcrumbItem
@@ -41,9 +41,19 @@ const pathItems = computed(() => props.parent
   ? props.items.filter(({ id }) => id !== props.parent?.id)
   : props.items,
 )
-const hasOverflow = computed(() => props.mode === 'Overflow' && pathItems.value.length > 2)
-const overflowItems = computed(() => hasOverflow.value ? pathItems.value.slice(0, -2) : [])
-const visibleItems = computed(() => hasOverflow.value ? pathItems.value.slice(-2) : pathItems.value)
+const compact = ref(false)
+let compactQuery: MediaQueryList | undefined
+function updateCompact() { compact.value = Boolean(compactQuery?.matches) }
+onMounted(() => {
+  compactQuery = window.matchMedia('(max-width: 767px)')
+  updateCompact()
+  compactQuery.addEventListener('change', updateCompact)
+})
+onBeforeUnmount(() => compactQuery?.removeEventListener('change', updateCompact))
+const visibleCount = computed(() => compact.value ? 1 : 2)
+const hasOverflow = computed(() => props.mode === 'Overflow' && pathItems.value.length > visibleCount.value)
+const overflowItems = computed(() => hasOverflow.value ? pathItems.value.slice(0, -visibleCount.value) : [])
+const visibleItems = computed(() => hasOverflow.value ? pathItems.value.slice(-visibleCount.value) : pathItems.value)
 const currentId = computed(() => pathItems.value.at(-1)?.id)
 </script>
 

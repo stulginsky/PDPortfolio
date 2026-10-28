@@ -3,3 +3,21 @@ url = "http://127.0.0.1:6006/mcp"
 
 [mcp_servers.pdportfolio_storybook.tools.docs-list]
 approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.stories-preview]
+approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.test-run]
+approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.docs-show]
+approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.stories-changed]
+approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.get-storybook-story-instructions]
+approval_mode = "approve"
+
+[mcp_servers.pdportfolio_storybook.tools.stories-find-by-component]
+approval_mode = "approve"

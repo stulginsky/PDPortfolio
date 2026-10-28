@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed, inject, onMounted, onUnmounted, ref } from 'vue'
+import { computed, inject, onActivated, onDeactivated, onMounted, onUnmounted, ref } from 'vue'
+import { vMediaReady } from './media-readiness'
+import { vLayeredScene } from './layered-scene-readiness'
+import LayeredSceneFallback from './LayeredSceneFallback.vue'
+import { cardInitialStyle } from './chirp-card-initial'
 import DsBadge from './DsBadge.vue'
-import { useChirpCardPresentation } from './chirp-card-presentation'
 import TypoText from './TypoText.vue'
 import cards from '../../content/home-cards.json'
 import ChirpAiDesignSystemScene from './ChirpAiDesignSystemScene.vue'
@@ -21,10 +24,11 @@ const props = withDefaults(defineProps<{
 })
 const root = ref<HTMLElement>()
 const copy = ref<HTMLElement>()
-const presentation = useChirpCardPresentation('ChirpAiDesignSystem')
 const breakpoint = ref<'base' | 'min-768'>('base')
 const width = ref(264)
 const viewportWidth = ref(320)
+const ready = ref(false)
+let readyFrame = 0
 const copyHeight = ref(0)
 const hovered = ref(false)
 const pressed = ref(false)
@@ -50,7 +54,7 @@ const artLayout = computed(() => {
   return { scale, left: leftGap / 3 - pressedSourceLeft * scale }
 })
 const artScale = computed(() => artLayout.value.scale)
-const height = computed(() => presentation.context?.height.value ?? (viewportWidth.value >= 462 ? 532 : 500))
+const height = computed(() => viewportWidth.value >= 462 ? 532 : 500)
 const positionedLayers = computed(() => geometry.value.layers.map(layer => {
   const index = designSystemLayerNames.indexOf(layer.name)
   const draft = (sceneEditor?.draft ?? defaultScenes)[getDesignSystemSceneProfile(viewportWidth.value)][state.value][index]
@@ -61,19 +65,29 @@ const positionedLayers = computed(() => geometry.value.layers.map(layer => {
   } : layer
   return { ...layer, position }
 }))
+
+const initialStyle = cardInitialStyle({base:designSystemGeometry.base.Default,wide:designSystemGeometry.base.Default,web:designSystemGeometry['min-768'].Default},true)
+const initialProfiles=['base','min-768'] as const
+function initialLayers(profile:typeof initialProfiles[number]){
+ const geometry=designSystemGeometry[profile].Default,reference=profile==='base'?264:430
+ return geometry.layers.map(layer=>{
+  const draft=defaultScenes[profile].Default[designSystemLayerNames.indexOf(layer.name)]!
+  return {...layer,position:{...draft,x:draft.x+designSystemLayerXShift(layer.name,reference)-geometry.pict.x,y:draft.y-geometry.pict.y}}
+ })
+}
+
 function rectStyle(rect: { x: number; y: number; width: number; height: number; rotation: number }) {
   return { left: rect.x * scale.value + 'px', top: rect.y * scale.value + 'px', width: rect.width * scale.value + 'px', height: rect.height * scale.value + 'px', transform: `rotate(${-rect.rotation}deg)` }
 }
 const rootStyle = computed(() => ({
   height: height.value + 'px',
   '--card-scale': scale.value,
-  '--chirp-copy-zoom': presentation.copyZoom.value,
   '--card-duration': state.value === 'ActivePressed' ? '150ms' : '300ms',
 }))
 const artLeft = computed(() => artLayout.value.left)
 const artTransform = computed(() => `rotate(${-geometry.value.pict.rotation}deg) scale(${artScale.value})`)
 const pictStyle = computed(() => ({ ...rectStyle(geometry.value.pict), left: artLeft.value + 'px', transform: artTransform.value }))
-const credStyle = computed(() => ({ ...rectStyle(geometry.value.cred), width: width.value + 'px', top: height.value - geometry.value.cred.height * scale.value + 'px' }))
+const credStyle = computed(() => ({ ...rectStyle(geometry.value.cred), width: '100%', top: height.value - geometry.value.cred.height * scale.value + 'px' }))
 const blurSceneStyle = computed(() => ({ ...rectStyle(geometry.value.pict), left: artLeft.value - geometry.value.blur.x + 'px', top: (geometry.value.pict.y - (height.value - geometry.value.cred.height * scale.value) / scale.value - geometry.value.blur.y) * scale.value + 'px', transform: artTransform.value }))
 function canHover(e: PointerEvent) { return e.pointerType === 'mouse' && window.matchMedia('(hover: hover)').matches }
 function enter(e: PointerEvent) { if (canHover(e)) hovered.value = true }
@@ -87,14 +101,20 @@ function scheduleSync() {
   frame = requestAnimationFrame(sync)
 }
 function sync() {
+  if (!root.value?.isConnected) return
   viewportWidth.value = window.innerWidth
   breakpoint.value = window.innerWidth >= 768 ? 'min-768' : 'base'
   width.value = root.value?.clientWidth || referenceWidth.value
   copyHeight.value = copy.value?.getBoundingClientRect().height || 0
-  presentation.reportCopyHeight(copyHeight.value)
 }
+onActivated(sync)
+onDeactivated(() => { leave(); release() })
 onMounted(() => {
   sync()
+  // First settle measured geometry without animating from initial reference values.
+  readyFrame = requestAnimationFrame(() => {
+    readyFrame = requestAnimationFrame(() => { ready.value = true })
+  })
   observer = new ResizeObserver(scheduleSync)
   if (root.value) observer.observe(root.value)
   if (copy.value) observer.observe(copy.value)
@@ -104,6 +124,7 @@ onMounted(() => {
   window.addEventListener('blur', leave)
 })
 onUnmounted(() => {
+  cancelAnimationFrame(readyFrame)
   observer?.disconnect()
   cancelAnimationFrame(frame)
   window.removeEventListener('resize', sync)
@@ -114,16 +135,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <a ref="root" class="chirp-ds-card" :href="props.href" :style="rootStyle" :data-state="state" :data-breakpoint="breakpoint" :data-presentation="presentation.context ? 'related-cases' : undefined"
+  <a v-media-ready v-layered-scene ref="root" class="chirp-ds-card chirp-card showcase-card" :href="props.href" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
     @pointerenter="enter" @pointerleave="leave" @pointerdown="down" @pointerup="release" @pointercancel="release"
-    @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @dragstart.prevent>
+    @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @scene-ready="hovered=false;pressed=false;keyboardPressed=false" @dragstart.prevent>
+    <LayeredSceneFallback name="chirp-ai-design-system" />
     <div class="chirp-ds-card__pict" :style="pictStyle" aria-hidden="true">
-      <ChirpAiDesignSystemScene :layers="positionedLayers" :breakpoint="breakpoint" :state="state" />
+      <ChirpAiDesignSystemScene v-if="ready" :layers="positionedLayers" :breakpoint="breakpoint" :state="state" />
+      <template v-else><div v-for="profile in initialProfiles" :key="profile" :class="profile==='base'?'chirp-card__initial-base':'chirp-card__initial-web'"><ChirpAiDesignSystemScene :layers="initialLayers(profile)" :breakpoint="profile" state="Default" /></div></template>
     </div>
     <div class="chirp-ds-card__cred" :style="credStyle">
-      <div class="chirp-ds-card__blur" :style="{ ...rectStyle(geometry.blur), width: width + 'px' }" aria-hidden="true">
+      <div class="chirp-ds-card__blur" :style="{ ...rectStyle(geometry.blur), width: '100%' }" aria-hidden="true">
         <div class="chirp-ds-card__blur-scene" :style="blurSceneStyle">
-          <ChirpAiDesignSystemScene :layers="positionedLayers" :breakpoint="breakpoint" :state="state" />
+          <ChirpAiDesignSystemScene v-if="ready" :layers="positionedLayers" :breakpoint="breakpoint" :state="state" />
+      <template v-else><div v-for="profile in initialProfiles" :key="profile" :class="profile==='base'?'chirp-card__initial-base':'chirp-card__initial-web'"><ChirpAiDesignSystemScene :layers="initialLayers(profile)" :breakpoint="profile" state="Default" /></div></template>
         </div>
       </div>
       <div class="chirp-ds-card__gradient chirp-ds-card__gradient--default" />
@@ -134,7 +158,7 @@ onUnmounted(() => {
           <TypoText tag="p" class="chirp-ds-card__subtitle" :content="props.subtitle" />
         </div>
         <ul class="chirp-ds-card__badges" aria-label="Специализации">
-          <li v-for="badge in props.badges" :key="badge"><DsBadge :label="badge" :type="!presentation.context && viewportWidth < 410 ? 'CardCompact' : 'Card'" /></li>
+          <li v-for="badge in props.badges" :key="badge"><DsBadge v-if="ready" :label="badge" :type="viewportWidth < 410 ? 'CardCompact' : 'Card'" /><template v-else><span class="chirp-card__badge-small"><DsBadge :label="badge" type="CardCompact" /></span><span class="chirp-card__badge-large"><DsBadge :label="badge" type="Card" /></span></template></li>
         </ul>
       </div>
     </div>
@@ -142,6 +166,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.chirp-ds-card[data-ready='false'] * { transition: none !important; }
 .chirp-ds-card { position: relative; display: block; isolation: isolate; overflow: hidden; width: 100%; max-width: 430px; border-radius: 20px; background: var(--decorative-showcase-chirp-ai-design-system-background-underlay); color: var(--text-inverse); font-family: var(--text-font-sans); text-decoration: none; }
 .chirp-ds-card__pict, .chirp-ds-card__cred, .chirp-ds-card__blur, .chirp-ds-card__blur-scene { position: absolute; transform-origin: 0 0; transition: left var(--card-duration) ease-out, top var(--card-duration) ease-out, width var(--card-duration) ease-out, height var(--card-duration) ease-out, transform var(--card-duration) ease-out; }
 .chirp-ds-card__pict { z-index: 1; pointer-events: none; overflow: visible; }
@@ -156,13 +181,13 @@ onUnmounted(() => {
 .chirp-ds-card__copy { position: absolute; bottom: max(13.333px, calc(13.333px * var(--card-scale))); left: max(13.333px, calc(13.333px * var(--card-scale))); right: max(13.333px, calc(13.333px * var(--card-scale))); display: flex; flex-direction: column; gap: max(10px, calc(10px * var(--card-scale))); }
 .chirp-ds-card__title-block { display: flex; flex-direction: column; gap: max(3.333px, calc(3.333px * var(--card-scale))); }
 .chirp-ds-card__title, .chirp-ds-card__subtitle { margin: 0; font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-md); }
-.chirp-ds-card__title { font-size: max(var(--text-size-card-title-min), calc(18.333333px * var(--card-scale))); line-height: 1.3; letter-spacing: .03em; }
-.chirp-ds-card__subtitle { font-size: max(var(--text-size-card-description-min), calc(13.333333px * var(--card-scale))); line-height: 1.5; white-space: pre-line; }
+.chirp-ds-card__title { font-size: calc(18.333333px * var(--showcase-copy-scale)); line-height: 1.3; letter-spacing: .03em; }
+.chirp-ds-card__subtitle { font-size: calc(13.333333px * var(--showcase-copy-scale)); line-height: 1.5; white-space: pre-line; }
 .chirp-ds-card__badges { display: flex; flex-wrap: wrap; gap: 6.667px; margin: 0; padding: 0; list-style: none; width: 100%; max-width: 100%; }
 .chirp-ds-card__badges li { display: flex; }
 .chirp-ds-card:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 3px; }
 @media (min-width: 410px) {
-  .chirp-ds-card__title { font-size: 22px; }
+  .chirp-ds-card__title { font-size: calc(22px * var(--showcase-copy-scale)); }
 }
 @media (min-width: 768px) {
   .chirp-ds-card__pict, .chirp-ds-card__blur-scene { overflow: hidden; }
@@ -170,8 +195,8 @@ onUnmounted(() => {
   .chirp-ds-card__blur-scene { filter: blur(calc(30px * var(--card-scale))); }
   .chirp-ds-card__copy { bottom: max(13.333px, calc(16px * var(--card-scale))); left: max(13.333px, calc(16px * var(--card-scale))); right: max(13.333px, calc(16px * var(--card-scale))); gap: max(10px, calc(12px * var(--card-scale))); }
   .chirp-ds-card__title-block { gap: max(3.333px, calc(4px * var(--card-scale))); }
-  .chirp-ds-card__title { font-size: max(var(--text-size-card-title-min), calc(22px * var(--card-scale))); }
-  .chirp-ds-card__subtitle { font-size: max(var(--text-size-card-description-min), calc(16px * var(--card-scale))); }
+  .chirp-ds-card__title { font-size: calc(22px * var(--showcase-copy-scale)); }
+  .chirp-ds-card__subtitle { font-size: calc(16px * var(--showcase-copy-scale)); }
   .chirp-ds-card__badges { gap: 8px; }
 }
 .chirp-ds-card[data-breakpoint='min-768']:not([data-state='Default']) { background: linear-gradient(var(--decorative-showcase-chirp-ai-design-system-background-underlay), var(--decorative-showcase-chirp-ai-design-system-background-underlay)), var(--decorative-showcase-chirp-ai-design-system-background); }

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 /**
  * DsDropdownSelect — DS component 1015:4517 (DropdownSelect-web)
  * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517
@@ -6,7 +7,7 @@
  * Compact universal web dropdown. States: Default / Hover / Opened.
  * ActivePressed is a Figma reference only: this local toggle switches directly to Opened.
  * Default/Hover → closed Button with ChevronDown.
- * Opened → Button in Toggled state with ChevronUp + list of up to 4 ListItem/Sm.
+ * Opened → Button in Toggled state with ChevronUp + the supplied ListItem/Sm rows.
  * Select new item → apply + close. Select current item / re-click / click outside / Escape → close only.
  */
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
@@ -57,6 +58,11 @@ const currentLabel = computed(() => {
   return found?.label ?? props.placeholder
 })
 
+const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(() => {
+  isOpen.value = false
+  triggerRef.value?.querySelector("button")?.focus({ preventScroll: true })
+})
+
 function toggle() {
   isOpen.value = !isOpen.value
   if (isOpen.value) {
@@ -96,7 +102,8 @@ function handleClickOutside(e: MouseEvent) {
 }
 
 function handleKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') {
+  if (e.key === 'Escape' && isOpen.value) {
+    e.preventDefault()
     isOpen.value = false
     // Focus trigger
     triggerRef.value?.querySelector('button')?.focus()
@@ -133,6 +140,10 @@ onUnmounted(() => {
       v-if="isOpen"
       ref="listRef"
       class="ds-dropdown-select__list-position"
+      @touchstart.passive="beginSwipe"
+      @touchmove="moveSwipe"
+      @touchend="endSwipe"
+      @touchcancel="cancelSwipe"
       :style="{ marginLeft: `${listOffset}px` }"
     >
       <DsDropdownListSelector
@@ -142,7 +153,7 @@ onUnmounted(() => {
         aria-label="Select options"
       >
         <li
-          v-for="item in items.slice(0, 4)"
+          v-for="item in items"
           :key="item.value"
         >
           <DsDropdownListItem
@@ -150,6 +161,7 @@ onUnmounted(() => {
             :icon="item.icon"
             :show-icon="item.showIcon"
             :href="item.href"
+            :aria-current="item.value === modelValue ? 'true' : undefined"
             appearance="Sm"
             @click="select(item)"
           />

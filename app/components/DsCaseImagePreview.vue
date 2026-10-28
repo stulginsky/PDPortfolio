@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { vMediaReady } from './media-readiness'
 import DsImgTitle from './DsImgTitle.vue'
 import DsImgTitleToolbar from './DsImgTitleToolbar.vue'
 
@@ -7,13 +8,15 @@ type DocumentValue = 'overview' | 'foundation' | 'tokens'
 const props = withDefaults(defineProps<{
   /** Image heading; wraps when it exceeds the available panel width. */
   title?: string
+  /** Existing heading panel (v1) or centered image-only zoom overlay (v2). */
+  type?: 'v1' | 'v2'
   /** Figma Instance swap: use exactly one of the two accepted panels. */
   instance?: 'ImgTitle' | 'ImgTitleToolbar'
   /** Toolbar-only zoom visibility. ImgTitle always includes zoom. */
   showZoom?: boolean
   /** Selected toolbar document; undefined allows the panel's internal state. */
   modelValue?: DocumentValue | null
-}>(), { title: 'Value', instance: 'ImgTitle', showZoom: true, modelValue: undefined })
+}>(), { title: 'Value', type: 'v1', instance: 'ImgTitle', showZoom: true, modelValue: undefined })
 
 const emit = defineEmits<{
   /** Request opening the viewer. The media itself is not a trigger. */
@@ -29,8 +32,8 @@ defineSlots<{
 </script>
 
 <template>
-  <section class="ds-case-image-preview" :aria-label="props.title">
-    <div class="ds-case-image-preview__panel">
+  <section class="ds-case-image-preview" :class="{ 'ds-case-image-preview--v2': props.type === 'v2' }" :aria-label="props.title">
+    <div v-if="props.type === 'v1'" class="ds-case-image-preview__panel">
       <DsImgTitle
         v-if="props.instance === 'ImgTitle'"
         :title="props.title"
@@ -46,9 +49,10 @@ defineSlots<{
         @update:model-value="emit('update:modelValue', $event)"
       />
     </div>
-    <div class="ds-case-image-preview__media">
+    <div v-media-ready class="ds-case-image-preview__media media-skeleton">
       <slot />
     </div>
+    <DsImgTitle v-if="props.type === 'v2'" class="ds-case-image-preview__overlay" :title="props.title" btn-only @zoom="emit('zoom', $event)" />
   </section>
 </template>
 
@@ -61,7 +65,6 @@ defineSlots<{
   width: 100%;
   padding: var(--space-4) var(--space-4) var(--space-8);
   gap: var(--space-6);
-  background: var(--case-image-preview-mob);
 }
 
 .ds-case-image-preview__panel,
@@ -96,7 +99,20 @@ defineSlots<{
   .ds-case-image-preview {
     padding: var(--space-8) 0 var(--space-12);
     gap: var(--space-8);
-    background: var(--case-image-preview-web);
   }
+}
+.ds-case-image-preview.ds-case-image-preview--v2 {
+  position: relative;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+.ds-case-image-preview--v2 .ds-case-image-preview__media { max-width: none; }
+.ds-case-image-preview__overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 </style>

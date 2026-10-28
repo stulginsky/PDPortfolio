@@ -1,0 +1,18 @@
+{
+  "pageTitle": "Chirp — Design System",
+  "hero": {
+    "title": "Chirp design system",
+    "role": "Design System Designer · Product Designer",
+    "focus": "Design System Architecture · Design Tokens · UI Foundations · Component Architecture · Figma Library"
+  },
+  "page": {
+    "toolbarTitle": "Mobile & Web",
+    "backLabel": "К проектам",
+    "relatedTitle": "Связанные кейсы",
+    "relatedBody": "Product Discovery → UX Deep Dive → Brand → Design system\nПочему продукт должен существовать → как он должен работать → как он должен ощущаться → как он должен выглядеть",
+    "documents": {
+      "foundation": "Foundation.md",
+      "tokens": "Tokens.json"
+    }
+  }
+}

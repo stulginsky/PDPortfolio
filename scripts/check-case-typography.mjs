@@ -2,7 +2,8 @@
  * Проверяет обязательный текстовый контракт Figma-кейса.
  * Запускается после typograf:apply перед build/generate.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { normalizeCaseEditorial } from "./lib/case-editorial.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -60,6 +61,14 @@ for (const slug of cases) {
     if (/>[^<\n]*\p{L}[^<\n]*</u.test(template)) {
       errors.push(`${slug}: найден видимый текст напрямую в ${templatePath}`);
     }
+  }
+}
+
+// Every present/future generated case must satisfy the editorial rule.
+for (const file of readdirSync(join(root, "content", "cases")).filter(file => file.endsWith(".json"))) {
+  const generated = readJson(join(root, "content", "cases", file));
+  if (JSON.stringify(generated) !== JSON.stringify(normalizeCaseEditorial(generated))) {
+    errors.push(`${file}: точка в конце повествовательного абзаца; запустите typograf:apply`);
   }
 }
 

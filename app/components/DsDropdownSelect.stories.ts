@@ -4,7 +4,7 @@ import DsDropdownSelect from './DsDropdownSelect.vue'
 
 /**
  * DropdownSelect-web — DS component 1015:4517
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517
  */
 const meta = {
   title: 'Components/DropdownSelect',
@@ -21,7 +21,7 @@ const meta = {
       {
         label: 'Figma',
         value: 'figma',
-        href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517',
+        href: 'https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517',
         icon: 'ExternalLink',
         showIcon: true,
       },
@@ -37,7 +37,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 1015:4517](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownSelect-web 1015:4517. Compact universal web dropdown.\n\n| State | Trigger |\n|---|---|\n| Default | Closed Button + ChevronDown |\n| Hover | Closed Button + ChevronDown :hover |\n| ActivePressed | Figma reference; not rendered for this local toggle |\n| Opened | Button Toggled + ChevronUp + list of ≤4 ListItem/Sm |\n\n</details>",
+        component: "[Figma 1015:4517](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownSelect-web 1015:4517. Compact universal web dropdown.\n\n| State | Trigger |\n|---|---|\n| Default | Closed Button + ChevronDown |\n| Hover | Closed Button + ChevronDown :hover |\n| ActivePressed | Figma reference; not rendered for this local toggle |\n| Opened | Button Toggled + ChevronUp + supplied ListItem/Sm rows |\n\n</details>",
       },
     },
   },
@@ -80,7 +80,7 @@ export const Sandbox: Story = {
           {
             label: 'Figma',
             value: 'figma',
-            href: 'https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1015-4517',
+            href: 'https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517',
             icon: 'ExternalLink',
             showIcon: true,
           },

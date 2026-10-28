@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, provide, reactive, ref, watch } from 'vue'
 import ChirpPrHero from './ChirpPrHero.vue'
-import { createHeroDraft, getHeroBreakpoint, heroBreakpoints, heroReferences, heroSceneEditorKey, validHeroDraft, type HeroBreakpoint, type HeroLayer } from './chirp-pr-hero.scene-context'
+import { createHeroDraft, getHeroBreakpoint, heroBreakpoints, heroReferences, heroSceneEditorKey, validHeroDraft, migrateHeroLayer, type HeroBreakpoint, type HeroLayer } from './chirp-pr-hero.scene-context'
 
 const props = defineProps<{ heroArgs: { title?: string; badge?: string } }>()
 const draft = reactive(createHeroDraft())
@@ -11,14 +11,15 @@ const hero = ref<InstanceType<typeof ChirpPrHero>>()
 const breakpoint = ref<HeroBreakpoint>('base')
 const layerIndex = ref(0)
 const selected = computed(() => draft[breakpoint.value][layerIndex.value]!)
+const motionLocked = computed(() => false)
 const status = ref('')
 const showExport = ref(false)
 const storageKey = 'pdportfolio:chirp-pr-hero:scene:v1'
 const baseline = createHeroDraft()
-const numericFields = ['x', 'y', 'speed'] as const
+const numericFields = ['x', 'y', 'viscosity', 'returnSpeed', 'amplitude', 'baseOffset'] as const
 const payload = computed(() => JSON.stringify({
-  version: 1, component: 'ChirpPrHero',
-  coordinateSpace: 'Figma reference pixels per breakpoint; preview scales geometry to container width',
+  version: 2, component: 'ChirpPrHero',
+  coordinateSpace: 'Geometry: Figma reference pixels; baseOffset: physical CSS pixels; viscosity/returnSpeed: shared hero-motion time scale',
   preview: { breakpoint: breakpoint.value, mode: mode.value },
   references: Object.fromEntries(heroBreakpoints.map(bp => [bp, { width: heroReferences[bp].width, height: heroReferences[bp].height }])),
   scenes: draft,
@@ -27,7 +28,7 @@ function edit(field: typeof numericFields[number], event: Event) {
   const input = event.target as HTMLInputElement
   if (!input.value.trim()) return
   const value = Number(input.value)
-  if (!Number.isFinite(value) || (field === 'speed' && (value < .25 || value > 4))) return
+  if (!Number.isFinite(value) || (['viscosity','returnSpeed'].includes(field) && (value < .1 || value > 20)) || (field === 'amplitude' && (value < 0 || value > 4)) || (field === 'baseOffset' && value < 0)) return
   selected.value[field] = value
   status.value = 'Черновик изменён'
 }
@@ -63,15 +64,13 @@ onMounted(() => {
   sync()
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || 'null')
-    if (saved?.version === 1 && validHeroDraft(saved.scenes)) {
-      for (const bp of heroBreakpoints) draft[bp] = saved.scenes[bp]
-      // Source changes update untouched fields without discarding user edits.
+    if ([1,2].includes(saved?.version) && validHeroDraft(saved.scenes)) {
+      for (const bp of heroBreakpoints) draft[bp] = saved.scenes[bp].map((layer: typeof selected.value, index: number) => migrateHeroLayer(layer,index,bp))
       if (validHeroDraft(saved.baseline)) {
-        for (const bp of heroBreakpoints) for (let index = 0; index < 4; index++) {
-          for (const key of ['x', 'y', 'width', 'height', 'speed', 'introDirection', 'animationEnabled'] as const) {
-            if (saved.scenes[bp][index][key] === saved.baseline[bp][index][key]) {
-              Object.assign(draft[bp][index]!, { [key]: baseline[bp][index]![key] })
-            }
+        for (const bp of heroBreakpoints) for(let index=0;index<draft[bp].length;index++) {
+          const old=migrateHeroLayer(saved.scenes[bp][index],index,bp), previous=migrateHeroLayer(saved.baseline[bp][index],index,bp)
+          for(const key of ['x','y','width','height','viscosity','returnSpeed','amplitude','baseOffset','pointerDirection','introDirection','animationEnabled'] as const) {
+            if(old[key]===previous[key]) Object.assign(draft[bp][index]!,{[key]:baseline[bp][index]![key]})
           }
         }
       }
@@ -79,7 +78,7 @@ onMounted(() => {
     }
   } catch { status.value = 'Локальное сохранение недоступно; используйте JSON' }
   stopSaving = watch(draft, () => {
-    try { localStorage.setItem(storageKey, JSON.stringify({ version: 1, scenes: draft, baseline })) }
+    try { localStorage.setItem(storageKey, JSON.stringify({ version: 2, scenes: draft, baseline })) }
     catch { status.value = 'Локальное сохранение недоступно; используйте JSON' }
   }, { deep: true })
   window.addEventListener('resize', sync)
@@ -108,15 +107,16 @@ onUnmounted(() => { stopSaving?.(); window.removeEventListener('resize', sync) }
       </fieldset>
       <fieldset>
         <legend>Движение слоя</legend>
-        <label class="hero-sandbox__toggle"><input v-model="selected.animationEnabled" type="checkbox" /> Анимация слоя</label>
-        <label>Скорость ×<input type="number" step="0.25" min="0.25" max="4" :disabled="!selected.animationEnabled" :value="selected.speed" @input="edit('speed', $event)" /></label>
-        <label>Направление вступления
-          <select v-model="selected.introDirection" :disabled="!selected.animationEnabled">
-            <option :value="-1">Влево</option><option :value="1">Вправо</option>
-          </select>
-        </label>
+        <p v-if="motionLocked">Этот слой неподвижен по контракту; доступны координаты.</p>
+        <label class="hero-sandbox__toggle"><input v-model="selected.animationEnabled" :disabled="motionLocked" type="checkbox" /> Анимация слоя</label>
+        <label>Вязкость ×<input type="number" step="0.1" min="0.1" max="20" :disabled="!selected.animationEnabled || motionLocked" :value="selected.viscosity" @input="edit('viscosity', $event)" /></label>
+        <label>Скорость возврата ×<input type="number" step="0.1" min="0.1" max="20" :disabled="!selected.animationEnabled || motionLocked" :value="selected.returnSpeed" @input="edit('returnSpeed', $event)" /></label>
+        <label>Амплитуда ×<input type="number" step="0.1" min="0" max="4" :disabled="!selected.animationEnabled || motionLocked" :value="selected.amplitude" @input="edit('amplitude', $event)" /></label>
+        <label>Базовое смещение, px<input type="number" step="0.1" min="0" :disabled="!selected.animationEnabled || motionLocked" :value="selected.baseOffset" @input="edit('baseOffset', $event)" /></label>
+        <label>Направление движения<select v-model="selected.pointerDirection" :disabled="!selected.animationEnabled || motionLocked"><option :value="1">По движению</option><option :value="-1">Против движения</option></select></label>
+        <label>Направление вступления<select v-model="selected.introDirection" :disabled="!selected.animationEnabled || motionLocked"><option :value="-1">Влево</option><option :value="1">Вправо</option></select></label>
       </fieldset>
-      <p>X/Y — пиксели указанного reference, не текущего viewport. Скорость 1×: отклонение 300ms, возврат 600ms, пауза 300ms. Выключенный слой неподвижен. Черновик сохраняется в этом браузере.</p>
+      <p>X/Y — пиксели reference. Размах в реальных px = базовое смещение × амплитуда. Больше вязкость — медленнее отклик; больше скорость возврата — быстрее откат. Через80ms без движения слой возвращается к старту, даже при удержании пальца. Одинаковые значения во всех hero означают одинаковую механику. Шаг0,1. Вступление:25% размаха, пауза300ms. Черновик сохраняется в браузере.</p>
       <div class="hero-sandbox__actions">
         <button type="button" @click="resetLayer">Сбросить слой</button>
         <button type="button" @click="resetProfile">Сбросить профиль</button>
@@ -133,7 +133,7 @@ onUnmounted(() => { stopSaving?.(); window.removeEventListener('resize', sync) }
 
 <style scoped>
 .hero-sandbox { width: 100%; }
-.hero-sandbox__editor { margin: var(--space-6) var(--space-4); max-width: 924px; font-family: var(--text-font-sans); font-size: var(--text-size-base); color: var(--text-default); }
+.hero-sandbox__editor { margin: var(--space-6) var(--space-4); max-width: 924px; font-family: var(--text-font-sans); font-size: var(--text-size-16); color: var(--text-default); }
 .hero-sandbox__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block: var(--space-3); }
 .hero-sandbox__editor button { min-height: 32px; }
 .hero-sandbox__select { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-block: var(--space-3); }

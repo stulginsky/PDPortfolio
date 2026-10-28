@@ -4,29 +4,41 @@
 
 # Responsive Breakpoints
 
+Layout guide styles описаны отдельно в Foundation/Layout guide styles.1920 - 2cols — стандартный DS-layout;1920/720 в именах направляющих сами по себе не вводят CSS-breakpoint.
+
 DS использует `min-width` breakpoints. Свойство `Breakpoint` в Component Sets: `base` — ниже первого порога, `min-N` — начиная с N px.
 
-| Viewport preset | Ширина | Роль |
-|---|---|---|
-| Mobile 320 | 320px | Минимальный поддерживаемый |
-| Mobile 370 | 370px | Средний мобильный |
-| Mobile 410 | 410px | Крупный мобильный |
-| Mobile 425 | 425px | Граница Footer `min-410` |
-| Phablet 534 | 534px | — |
-| Tablet 720 | 720px | — |
-| Tablet 768 | 768px | `min-768`: case layout changes |
-| Desktop 1024 | 1024px | `min-1024`: dropdown вместо fullscreen menu |
-| Desktop 1280 | 1280px | `min-1280`: case body style changes |
-| Desktop 1440 | 1440px | Reference desktop |
-| Desktop 1920 | 1920px | Wide desktop |
+<table>
+  <thead>
+    <tr><th scope="col">Viewport preset</th><th scope="col">Ширина</th><th scope="col">Роль</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Mobile 320</td><td>320px</td><td>Минимальный поддерживаемый</td></tr>
+    <tr><td>Mobile 370</td><td>370px</td><td>Средний мобильный</td></tr>
+    <tr><td>Mobile 410</td><td>410px</td><td>Крупный мобильный</td></tr>
+    <tr><td>Mobile 425</td><td>425px</td><td>Граница Footer <code>min-410</code></td></tr>
+    <tr><td>Phablet 534</td><td>534px</td><td>—</td></tr>
+    <tr><td>Tablet 720</td><td>720px</td><td>—</td></tr>
+    <tr><td>Tablet 768</td><td>768px</td><td><code>min-768</code>: case layout changes</td></tr>
+    <tr><td>Desktop 1024</td><td>1024px</td><td><code>min-1024</code>: dropdown вместо fullscreen menu</td></tr>
+    <tr><td>Desktop 1280</td><td>1280px</td><td><code>min-1280</code>: case body style changes</td></tr>
+    <tr><td>Desktop 1440</td><td>1440px</td><td>Reference desktop</td></tr>
+    <tr><td>Desktop 1920</td><td>1920px</td><td>Wide desktop</td></tr>
+  </tbody>
+</table>
 
 ## Компонентные breakpoints
 
-| Компонент | Threshold | Поведение |
-|---|---|---|
-| Footer | `min-410` | vertical → horizontal layout |
-| Filters | `min-1024` | FullscreenMenu/Mob → DropdownFilter-web |
-| Case layout | `min-768` | `--case-flow-gap`, `--case-heading-size` |
-| Case layout | `min-1280` | `--case-body-size`, `--case-body-weight`, `--case-subheading-size` |
+<table>
+  <thead>
+    <tr><th scope="col">Компонент</th><th scope="col">Threshold</th><th scope="col">Поведение</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Footer</td><td><code>min-410</code></td><td>vertical → horizontal layout</td></tr>
+    <tr><td>Filters</td><td><code>min-1024</code></td><td>FullscreenMenu/Mob → DropdownFilter-web</td></tr>
+    <tr><td>Case layout</td><td><code>min-768</code></td><td><code>--case-flow-gap</code>, <code>--case-heading-size</code></td></tr>
+    <tr><td>Case layout</td><td><code>min-1280</code></td><td><code>--case-body-size</code>, <code>--case-body-weight</code>, <code>--case-subheading-size</code></td></tr>
+  </tbody>
+</table>
 
 > Storybook viewport presets настроены в `.storybook/preview.ts` и доступны в тулбаре Storybook.

@@ -14,7 +14,7 @@ import { expect, waitFor } from 'storybook/test'
 
 /**
  * Badge — DS component 312:1991
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=312-1991
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991
  * DS docs: ds/components.md § Badge
  *
  * Non-interactive label component. Three variants:
@@ -49,7 +49,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[312:1991](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=312-1991)\n\n<details>\n<summary>Техническое описание</summary>\n\nNon-interactive informational label with Hug content sizing.\nThree variants from Figma Component Set [312:1991](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=312-1991).\n\n| Type | Size | Typography | Background |\n|---|---|---|---|\n| Card | 94×29 | DS/Body/xs strong (12px, w600), radius 32px | surface/default |\n| HeroChirp | 123×40 | DS/Body/base strong (16px, w600), radius 32px | surface/badge-chirp (accent/mint) |\n| CardCompact | 79×24 | DS/Badge/Card/min (10px, w600) | surface/default |\n\n</details>",
+        component: "[312:1991](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991)\n\n<details>\n<summary>Техническое описание</summary>\n\nNon-interactive informational label with Hug content sizing.\nThree variants from Figma Component Set [312:1991](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991).\n\n| Type | Size | Typography | Background |\n|---|---|---|---|\n| Card | 94×29 | DS/Body/xs strong (12px, w600), radius 32px | surface/default |\n| HeroChirp | 123×40 | DS/Body/base strong (16px, w600), radius 32px | surface/badge-chirp (accent/mint) |\n| CardCompact | 79×24 | DS/Badge/Card/min (10px, w600) | surface/default |\n\n</details>",
       },
     },
   },

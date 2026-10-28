@@ -1,17 +1,26 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, provide, reactive, ref } from 'vue'
-import { chirpCardPresentationKey } from './chirp-card-presentation'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import cardContent from '../../content/home-cards.json'
 import DsBtnNav from './DsBtnNav.vue'
 import ChirpAiHealthAssistant from './ChirpAiHealthAssistant.vue'
 import ChirpExplainableAiUx from './ChirpExplainableAiUx.vue'
 import ChirpAiMedicalBrand from './ChirpAiMedicalBrand.vue'
 import ChirpAiDesignSystem from './ChirpAiDesignSystem.vue'
+import DCVendorAppPr from './DCVendorAppPr.vue'
+import DCVendorAppUx from './DCVendorAppUx.vue'
+import DCPickerAppUx from './DCPickerAppUx.vue'
+
+type RelatedCaseName = 'ChirpAiHealthAssistant' | 'ChirpExplainableAiUx' | 'ChirpAiMedicalBrand' | 'ChirpAiDesignSystem' | 'DCVendorAppPr' | 'DCVendorAppUx' | 'DCPickerAppUx'
 
 const props = withDefaults(defineProps<{
+  /** Ordered explicit selection; omitted preserves the original Chirp catalog. */
+  cardNames?: RelatedCaseName[]
+  currentCaseHref?: string
   ariaLabel?: string
   previousLabel?: string
   nextLabel?: string
 }>(), {
+  currentCaseHref: '',
   ariaLabel: 'Другие кейсы',
   previousLabel: 'Предыдущие кейсы',
   nextLabel: 'Следующие кейсы',
@@ -20,39 +29,45 @@ type Position = 'Start' | 'Middle' | 'End'
 const emit = defineEmits<{
   positionChange: [value: { position: Position; index: number; offset: number }]
 }>()
-const cards = [
+const chirpCatalog = [
   { name: 'ChirpAiHealthAssistant', component: ChirpAiHealthAssistant },
   { name: 'ChirpExplainableAiUx', component: ChirpExplainableAiUx },
   { name: 'ChirpAiMedicalBrand', component: ChirpAiMedicalBrand },
   { name: 'ChirpAiDesignSystem', component: ChirpAiDesignSystem },
+].map((card, index) => ({ ...card, name: card.name as RelatedCaseName, href: cardContent[index]!.href, kind: 'chirp', props: {} }))
+const catalog = [
+  ...chirpCatalog,
+  { name: 'DCVendorAppPr' as const, component: DCVendorAppPr, href: '/cases/dc-vendor-app-pr', kind: 'dc', props: { href: '/cases/dc-vendor-app-pr' } },
+  { name: 'DCVendorAppUx' as const, component: DCVendorAppUx, href: '/cases/dc-vendor-app-ux', kind: 'dc', props: { href: '/cases/dc-vendor-app-ux' } },
+  { name: 'DCPickerAppUx' as const, component: DCPickerAppUx, href: '', kind: 'dc', props: {} },
 ]
+const cards = computed(() => {
+  const selection = props.cardNames ?? chirpCatalog.map(card => card.name)
+  return [...new Set(selection)].flatMap(name => {
+    const card = catalog.find(item => item.name === name)
+    return card && (!card.href || card.href !== props.currentCaseHref) ? [card] : []
+  })
+})
+const hasDCCards = computed(() => cards.value.some(card => card.kind === 'dc'))
 const root = ref<HTMLElement>()
 const rail = ref<HTMLElement>()
 const viewportWidth = ref(320)
 const railWidth = ref(288)
 const offset = ref(0)
 const breakpoint = computed(() => viewportWidth.value >= 768 ? 'min-768' : 'base')
-const referenceCardWidth = 430 * 16 / 21
-const cardWidth = computed(() => breakpoint.value === 'min-768'
-  ? referenceCardWidth * Math.min(1, railWidth.value / 924)
-  : Math.min(referenceCardWidth, Math.max(1, railWidth.value - 24)))
-const scale = computed(() => cardWidth.value / 430)
-const copyHeights = reactive<Record<string, number>>({})
-const stageHeight = computed(() => Math.max(532, ...Object.values(copyHeights).map(height => height * 3)))
-const cardHeight = computed(() => stageHeight.value * scale.value)
-provide(chirpCardPresentationKey, {
-  scale, height: stageHeight,
-  reportCopyHeight: (name, height) => { if (Number.isFinite(height) && Math.abs((copyHeights[name] ?? 0) - height) > .05) copyHeights[name] = height },
-})
+// Fixed heights shared with the showcase; narrow multi-card rails expose the next card.
+const nominalCardWidth = computed(() => Math.min(430, Math.max(1, viewportWidth.value - 32)))
+const narrowMultiCardRail = computed(() => cards.value.length > 1 && viewportWidth.value < 534)
+const cardWidth = computed(() => narrowMultiCardRail.value ? 288 : Math.min(nominalCardWidth.value, Math.max(1, railWidth.value)))
+const cardHeight = computed(() => viewportWidth.value >= 462 ? 532 : 500)
+const scale = computed(() => Math.min(1, cardWidth.value / nominalCardWidth.value))
 const step = computed(() => cardWidth.value + 8)
-const maxOffset = computed(() => Math.max(0, cards.length * cardWidth.value + (cards.length - 1) * 8 - railWidth.value))
+const maxOffset = computed(() => Math.max(0, cards.value.length * cardWidth.value + (cards.value.length - 1) * 8 - railWidth.value))
 const position = computed<Position>(() => offset.value <= 0.5 ? 'Start' : offset.value >= maxOffset.value - 0.5 ? 'End' : 'Middle')
-const index = computed(() => Math.min(cards.length - 1, Math.round(offset.value / step.value)))
+const index = computed(() => Math.max(0, Math.min(cards.value.length - 1, Math.round(offset.value / step.value))))
 const layoutStyle = computed(() => ({
   '--related-card-width': `${cardWidth.value}px`,
   '--related-card-height': `${cardHeight.value}px`,
-  '--related-stage-width': '430px',
-  '--related-scale': scale.value,
 }))
 let observer: ResizeObserver | undefined
 let animation = 0
@@ -159,6 +174,13 @@ function reveal(event: FocusEvent) {
   if (left < rail.value.scrollLeft - .5) scrollToOffset(left)
   else if (right > rail.value.scrollLeft + railWidth.value + .5) scrollToOffset(right - railWidth.value)
 }
+watch(() => [props.currentCaseHref, ...(props.cardNames ?? [])].join('|'), async () => {
+  cancelMotion()
+  focusDirection = undefined
+  await nextTick()
+  rail.value?.scrollTo(0, 0)
+  readScroll()
+})
 onMounted(() => {
   sync().then(readScroll)
   observer = new ResizeObserver(sync)
@@ -173,17 +195,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="root" class="related-cases" :style="layoutStyle" :aria-label="props.ariaLabel"
-    :data-breakpoint="breakpoint" :data-position="position" :data-scale="scale" @keydown="keyboard">
+  <section ref="root" v-show="cards.length" class="related-cases" :style="layoutStyle" :aria-label="props.ariaLabel"
+    :data-multiple="cards.length > 1" :data-selection-kind="hasDCCards ? 'dc' : 'chirp'" :data-breakpoint="breakpoint" :data-position="position" :data-scale="scale" @keydown="keyboard">
     <div ref="rail" class="related-cases__rail" @scroll.passive="readScroll" @wheel.passive="cancelMotion"
       @pointerdown="cancelMotion" @focusin="reveal">
-      <ul class="related-cases__track">
-        <li v-for="card in cards" :key="card.name" class="related-cases__card">
-          <div class="related-cases__stage"><component :is="card.component" /></div>
+      <ul class="related-cases__track" :class="{ 'related-cases__track--single': cards.length === 1 }">
+        <li v-for="card in cards" :key="card.name" :data-card-name="card.name" class="related-cases__card">
+          <div class="related-cases__stage"><component :is="card.component" v-bind="card.props" /></div>
         </li>
       </ul>
     </div>
-    <template v-if="breakpoint === 'min-768'">
+    <template v-if="breakpoint === 'min-768' && maxOffset > .5">
       <DsBtnNav class="related-cases__nav related-cases__previous" direction="Left" :aria-label="props.previousLabel"
         :aria-hidden="position === 'Start'" :tabindex="position === 'Start' ? -1 : 0"
         :style="{ visibility: position === 'Start' ? 'hidden' : 'visible' }" @click="move(-1, true)" />
@@ -200,9 +222,10 @@ onUnmounted(() => {
 .related-cases__rail { position: relative; width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; scroll-snap-type: x proximity; }
 .related-cases__rail::-webkit-scrollbar { display: none; }
 .related-cases__track { display: flex; gap: var(--space-2); width: max-content; padding: 0; margin: 0; list-style: none; }
+.related-cases__track--single { margin-inline: auto; }
 .related-cases__card { position: relative; flex: 0 0 var(--related-card-width); width: var(--related-card-width); height: var(--related-card-height); overflow: hidden; border-radius: 20px; scroll-snap-align: start; }
 .related-cases__card:has(a:focus-visible)::after { content: ''; position: absolute; inset: 0; z-index: 4; border: 2px solid var(--border-focus); border-radius: inherit; pointer-events: none; }
-.related-cases__stage { width: var(--related-stage-width); transform: scale(var(--related-scale)); transform-origin: top left; }
+.related-cases__stage { width:100%; }
 .related-cases__nav { position: absolute; top: calc(var(--related-card-height) / 2 - 25px); z-index: 3; }
 .related-cases__previous { left: -25px; }
 .related-cases__next { right: -23px; }
@@ -210,6 +233,9 @@ onUnmounted(() => {
 @media (min-width: 768px) {
   .related-cases { max-width: 924px; margin-inline: auto; padding-inline: 0; }
   .related-cases__rail { scroll-snap-type: none; }
-  .related-cases__card { border-radius: calc(var(--radius-xlg) * var(--related-scale)); }
+  .related-cases__card { border-radius: var(--radius-xlg); }
 }
+/* Below352, full-width rail =288px card+8px gap+at least24px next-card cue. */
+@media(max-width:533px){.related-cases[data-multiple="true"] .related-cases__card{flex-basis:288px;width:288px;}}
+@media(max-width:351px){.related-cases[data-multiple="true"]{padding-inline:0;}}
 </style>

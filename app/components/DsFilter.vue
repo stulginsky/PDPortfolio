@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * DsFilter — DS component 43:867 (Filter, Design=2nd)
+ * DsFilter — DS component 43:867 (Filter)
  * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=43-867
  *
  * Portfolio filter chip. 90×50, radius=24. DS/Control/base.
@@ -40,7 +40,7 @@ defineEmits<{
 </template>
 
 <style scoped>
-/* Filter — DS 43:867, Design=2nd */
+/* Filter — DS 43:867 */
 .ds-filter {
   display: inline-flex;
   align-items: center;
@@ -51,7 +51,7 @@ defineEmits<{
   border-radius: var(--radius-xlg); /* 24px */
   background: transparent;
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base); /* DS/Control/base */
+  font-size: var(--text-size-16); /* DS/Control/base */
   font-weight: var(--text-weight-medium);
   font-variation-settings: "wght" 500, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

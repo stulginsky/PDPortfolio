@@ -1,0 +1,26 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as LayoutGuides from '../../app/assets/LayoutGuideStyles.stories'
+import packet from '../../app/assets/layout-guide-styles.json'
+
+<Meta of={LayoutGuides} />
+
+# Layout guide styles
+
+Источник: [PDPortfolio-DS](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1). Таблица и примеры читают один расширяемый реестр, имена сохраняются из Figma.
+
+<table>
+<thead><tr><th scope="col">Figma style</th><th scope="col">Reference width</th><th scope="col">Columns</th><th scope="col">Offset</th><th scope="col">Gutter</th><th scope="col">Column width</th><th scope="col">Alignment</th></tr></thead>
+<tbody>{packet.styles.map(style => { const grid=style.layoutGrids[0]; return <tr key={style.key}><th scope="row">{style.name}</th><td>{style.referenceWidth}px</td><td>{grid.count}</td><td>{grid.offset}px</td><td>{grid.gutterSize}px</td><td>{(style.referenceWidth-2*grid.offset-(grid.count-1)*grid.gutterSize)/grid.count}px</td><td>{grid.alignment}</td></tr> })}</tbody>
+</table>
+
+## Применение
+
+1920 - 2cols — штатный вариант DS: при ширине1920 поля72, промежуток72, колонки852px. DC Product использует его без кастомного исключения. Отступ72 использует space/20 → var(--space-20).
+
+Названия стилей — опорные ширины, а не новые CSS-breakpoint. Сетка не определяет типографику, вертикальный ритм и адаптив автоматически. Красный overlay — только направляющие.
+
+## Наглядные направляющие
+
+Натуральная ширина примера сохраняется; на узком экране используется горизонтальная прокрутка внутри примера.
+
+<Canvas of={LayoutGuides.Catalog} />

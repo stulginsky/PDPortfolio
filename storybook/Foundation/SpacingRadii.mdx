@@ -6,21 +6,29 @@
 
 Примитивные токены из Figma Variables (`tokens.css`).
 
+Обновление2026-10-24: space/20 =72px, включая padding и gap. Каноническое имя20 не означает20×4.
+
 ## Spacing
 
-| Токен | CSS var | Value |
-|---|---|---|
-| `space/0` | `var(--space-0)` | 0px |
-| `space/1` | `var(--space-1)` | 4px |
-| `space/2` | `var(--space-2)` | 8px |
-| `space/2-5` | `var(--space-2-5)` | 10px |
-| `space/3` | `var(--space-3)` | 12px |
-| `space/4` | `var(--space-4)` | 16px |
-| `space/5` | `var(--space-5)` | 20px |
-| `space/6` | `var(--space-6)` | 24px |
-| `space/8` | `var(--space-8)` | 32px |
-| `space/12` | `var(--space-12)` | 48px |
-| `space/16` | `var(--space-16)` | 64px |
+<table>
+  <thead>
+    <tr><th scope="col">Токен</th><th scope="col">CSS var</th><th scope="col">Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>space/0</code></td><td><code>var(--space-0)</code></td><td>0px</td></tr>
+    <tr><td><code>space/1</code></td><td><code>var(--space-1)</code></td><td>4px</td></tr>
+    <tr><td><code>space/2</code></td><td><code>var(--space-2)</code></td><td>8px</td></tr>
+    <tr><td><code>space/2-5</code></td><td><code>var(--space-2-5)</code></td><td>10px</td></tr>
+    <tr><td><code>space/3</code></td><td><code>var(--space-3)</code></td><td>12px</td></tr>
+    <tr><td><code>space/4</code></td><td><code>var(--space-4)</code></td><td>16px</td></tr>
+    <tr><td><code>space/5</code></td><td><code>var(--space-5)</code></td><td>20px</td></tr>
+    <tr><td><code>space/6</code></td><td><code>var(--space-6)</code></td><td>24px</td></tr>
+    <tr><td><code>space/8</code></td><td><code>var(--space-8)</code></td><td>32px</td></tr>
+    <tr><td><code>space/12</code></td><td><code>var(--space-12)</code></td><td>48px</td></tr>
+    <tr><td><code>space/16</code></td><td><code>var(--space-16)</code></td><td>64px</td></tr>
+    <tr><td><code>space/20</code></td><td><code>var(--space-20)</code></td><td>72px</td></tr>
+  </tbody>
+</table>
 
 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px 0' }}>
   {[
@@ -44,15 +52,21 @@
 
 ## Radii
 
-| Токен | CSS var | Value |
-|---|---|---|
-| `radius/none` | `var(--radius-none)` | 0px |
-| `radius/sm` | `var(--radius-sm)` | 4px |
-| `radius/md` | `var(--radius-md)` | 8px |
-| `radius/lg` | `var(--radius-lg)` | 16px |
-| `radius/xlg` | `var(--radius-xlg)` | 24px |
-| `radius/xxlg` | `var(--radius-xxlg)` | 32px |
-| `radius/xxxlg` | `var(--radius-xxxlg)` | 48px |
+<table>
+  <thead>
+    <tr><th scope="col">Токен</th><th scope="col">CSS var</th><th scope="col">Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>radius/none</code></td><td><code>var(--radius-none)</code></td><td>0px</td></tr>
+    <tr><td><code>radius/sm</code></td><td><code>var(--radius-sm)</code></td><td>4px</td></tr>
+    <tr><td><code>radius/md</code></td><td><code>var(--radius-md)</code></td><td>8px</td></tr>
+    <tr><td><code>radius/lg</code></td><td><code>var(--radius-lg)</code></td><td>16px</td></tr>
+    <tr><td><code>radius/xlg</code></td><td><code>var(--radius-xlg)</code></td><td>24px</td></tr>
+    <tr><td><code>radius/xxlg</code></td><td><code>var(--radius-xxlg)</code></td><td>32px</td></tr>
+    <tr><td><code>radius/xxxlg</code></td><td><code>var(--radius-xxxlg)</code></td><td>48px</td></tr>
+    <tr><td><code>radius/xxxxlg</code></td><td><code>var(--radius-xxxxlg)</code></td><td>64px</td></tr>
+  </tbody>
+</table>
 
 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '24px 0' }}>
   {[
@@ -63,6 +77,7 @@
     ['xlg', 'var(--radius-xlg)', '24px'],
     ['xxlg', 'var(--radius-xxlg)', '32px'],
     ['xxxlg', 'var(--radius-xxxlg)', '48px'],
+    ['xxxxlg', 'var(--radius-xxxxlg)', '64px'],
   ].map(([name, cssVar, value]) => (
     <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
       <div style={{ width: '80px', height: '80px', background: 'var(--surface-action-hover)', border: '2px solid var(--accent-violet)', borderRadius: cssVar }} />
@@ -73,22 +88,42 @@
 
 ## Effects (Shadows)
 
-| Стиль | CSS var | Параметры |
-|---|---|---|
-| Shadow/1st | `var(--effect-shadow-1st)` | `#2C1F39` 30% · 3px 6px 29px |
-| Shadow/2nd | `var(--effect-shadow-2nd)` | `#2C1F39` 10% · 3px 6px 20px |
+<table>
+  <thead>
+    <tr><th scope="col">Стиль</th><th scope="col">CSS var</th><th scope="col">Параметры</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Shadow/1st</td><td><code>var(--shadow-1st)</code></td><td><code>#2C1F39</code> 30% · 3px 6px 29px</td></tr>
+    <tr><td>Shadow/2nd</td><td><code>var(--shadow-2nd)</code></td><td><code>#2C1F39</code> 10% · 3px 6px 20px</td></tr>
+  </tbody>
+</table>
 
 <div style={{ display: 'flex', gap: '48px', padding: '32px 0' }}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-1st)' }} />
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-1st)' }} />
     <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Shadow/1st</code>
   </div>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-2nd)' }} />
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-2nd)' }} />
     <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Shadow/2nd</code>
   </div>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--effect-shadow-1st), var(--effect-shadow-2nd)' }} />
+    <div style={{ width: '120px', height: '80px', background: 'var(--surface-default)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-1st), var(--shadow-2nd)' }} />
     <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>1st + 2nd</code>
   </div>
 </div>
+
+
+## Background blur
+
+Цвета теней: `--effect-shadow-1st/2nd`; полные тени: `--shadow-1st/2nd`. Figma BACKGROUND_BLUR radius соответствует удвоенному CSS blur.
+
+<table>
+  <thead>
+    <tr><th>Figma Effect Style</th><th>CSS</th><th>Figma radius</th></tr>
+  </thead>
+  <tbody>
+<tr><td>Image preview/Header blur</td><td><code>--image-preview-header-blur: blur(15px)</code></td><td>30</td></tr>
+<tr><td>Image preview/Magnifying-img-preview</td><td><code>--image-preview-magnifying-img-preview: blur(2px)</code></td><td>4</td></tr>
+  </tbody>
+</table>

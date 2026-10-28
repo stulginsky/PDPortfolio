@@ -3,13 +3,14 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } fro
 import DsTopStickyBar from './DsTopStickyBar.vue'
 import DsScroll from './DsScroll.vue'
 
-const props = withDefaults(defineProps<{ open?: boolean; title?: string }>(), { open: false, title: 'Value' })
+const props = withDefaults(defineProps<{ open?: boolean; title?: string; type?: 'v1' | 'v2'; contentSize?: { width: number; height: number } }>(), { open: false, title: 'Value', type: 'v1' })
 const emit = defineEmits<{ 'update:open': [value: boolean]; close: []; zoom: [value: number]; loaded: [] }>()
 const dialog = ref<HTMLElement | null>(null)
 const viewport = ref<HTMLElement | null>(null)
 const media = ref<HTMLElement | null>(null)
 const scrollId = `case-viewer-${useId()}`
-const ready = ref(false), web = ref(false), fit = ref(false), scale = ref(1)
+const ready = ref(false), web = ref(false), scale = ref(1)
+const fitMode = ref<'width' | 'height' | 'screen' | null>(null)
 const size = ref({ width: 1, height: 1 }), headerHeight = ref(144)
 const gutter = computed(() => web.value ? 64 : 16)
 const bottom = computed(() => web.value ? 24 : 32)
@@ -28,16 +29,18 @@ function dimensions() {
   const header = dialog.value?.querySelector('header')
   if (header) headerHeight.value = header.getBoundingClientRect().height
 }
-async function fitScreen() {
+async function fitImage(mode: 'width' | 'height' | 'screen' = fitMode.value ?? 'width') {
   if (!ready.value || !viewport.value) return
   dimensions()
-  fit.value = true
+  fitMode.value = mode
   const el = viewport.value
   const currentSession = session
-  scale.value = Math.max(.01, Math.min((el.clientWidth - gutter.value * 2) / size.value.width,
-    (el.clientHeight - top.value - bottom.value) / size.value.height))
+  const seq = ++zoomSequence
+  const widthScale = (el.clientWidth - gutter.value * 2) / size.value.width
+  const heightScale = (el.clientHeight - top.value - bottom.value) / size.value.height
+  scale.value = Math.max(.01, mode === 'width' ? widthScale : mode === 'height' ? heightScale : Math.min(widthScale, heightScale))
   await nextTick()
-  if (!props.open || currentSession !== session) return
+  if (!props.open || currentSession !== session || seq !== zoomSequence) return
   renderedScale = scale.value
   el.scrollTo(0, 0)
   refreshScroll()
@@ -52,7 +55,7 @@ async function setScale(value: number, anchor = center(), fixedPoint?: { x: numb
   const seq = ++zoomSequence
   const rect = media.value.getBoundingClientRect()
   const point = fixedPoint ?? { x: (anchor.x - rect.left) / renderedScale, y: (anchor.y - rect.top) / renderedScale }
-  fit.value = false
+  fitMode.value = null
   scale.value = Math.max(.01, Math.min(16, value))
   await nextTick()
   if (seq !== zoomSequence || !media.value || !viewport.value) return
@@ -70,22 +73,34 @@ function wheel(event: WheelEvent) {
   void setScale(scale.value * Math.exp(-event.deltaY * .002), { x: event.clientX, y: event.clientY })
 }
 function measure() {
+  if (!props.open || !media.value) return
   const image = media.value?.querySelector('img')
   const svg = media.value?.querySelector('svg')
   let width = 0, height = 0
-  if (image) { width = image.naturalWidth; height = image.naturalHeight }
+  if (props.contentSize) {
+    width = props.contentSize.width; height = props.contentSize.height
+    if ([...media.value!.querySelectorAll('img')].some(img => !img.complete || !img.naturalWidth)) return
+  }
+  else if (image) { width = image.naturalWidth; height = image.naturalHeight }
   else if (svg) {
     width = svg.width.baseVal.value || svg.viewBox.baseVal.width
     height = svg.height.baseVal.value || svg.viewBox.baseVal.height
   }
-  if (!width || !height || ready.value) return
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return
+  if (ready.value) {
+    if (size.value.width === width && size.value.height === height) return
+    size.value = { width, height }
+    if (fitMode.value) void nextTick(() => fitImage())
+    else void nextTick(refreshScroll)
+    return
+  }
   size.value = { width, height }
   ready.value = true
   const currentSession = session
   void nextTick(async () => {
     if (!props.open || currentSession !== session) return
     dimensions()
-    if (web.value) await fitScreen()
+    if (web.value) await fitImage('width')
     else { scale.value = 1; renderedScale = 1; await nextTick(); viewport.value?.scrollTo(0, 0); refreshScroll() }
     if (props.open && currentSession === session) emit('loaded')
   })
@@ -126,7 +141,7 @@ function pointerEnd(event: PointerEvent) {
 }
 function close() { ready.value = false; emit('update:open', false); emit('close') }
 function keydown(event: KeyboardEvent) {
-  if (!props.open) return
+  if (!props.open || event.defaultPrevented) return
   if ((event.target as HTMLElement)?.closest('.ds-fs-menu__overlay')) return
   if (event.key === 'Escape') {
     if (dialog.value?.querySelector('[aria-expanded="true"]')) return
@@ -149,7 +164,7 @@ function teardown() {
   if (inertElements.length) document.body.style.overflow = savedOverflow
   inertElements = []
   ready.value = false; pointers.clear(); drag = undefined; pinch = undefined
-  scale.value = 1; renderedScale = 1; fit.value = false
+  scale.value = 1; renderedScale = 1; fitMode.value = null
   if (savedFocus?.isConnected) savedFocus.focus()
   savedFocus = null
 }
@@ -157,7 +172,7 @@ async function openSession() {
   const current = ++session
   savedFocus = document.activeElement as HTMLElement | null
   savedOverflow = document.body.style.overflow
-  ready.value = false; scale.value = 1; fit.value = web.value
+  ready.value = false; scale.value = 1; fitMode.value = web.value ? 'width' : null
   await nextTick()
   if (current !== session || !props.open || !dialog.value) return
   inertElements = [...document.body.children].filter(el => el instanceof HTMLElement && el !== dialog.value)
@@ -168,7 +183,7 @@ async function openSession() {
   viewport.value?.addEventListener('wheel', wheel, { passive: false })
   observer = new ResizeObserver(() => {
     dimensions()
-    if (fit.value && ready.value) void fitScreen()
+    if (fitMode.value && ready.value) void fitImage()
     else void nextTick(refreshScroll)
   })
   observer.observe(dialog.value)
@@ -179,8 +194,9 @@ async function openSession() {
 }
 function updateViewport() {
   web.value = Boolean(query?.matches)
-  if (ready.value && fit.value) void nextTick(fitScreen)
+  if (ready.value && fitMode.value) void nextTick(() => fitImage())
 }
+watch(() => [props.contentSize?.width, props.contentSize?.height], () => { if (mounted && props.open) void nextTick(measure) })
 watch(() => props.open, open => { if (mounted) { if (open) void openSession(); else teardown() } })
 onMounted(() => {
   mounted = true
@@ -196,7 +212,7 @@ onBeforeUnmount(() => { teardown(); query?.removeEventListener('change', updateV
     <section v-if="open" ref="dialog" class="ds-case-image-viewer" :class="{ 'ds-case-image-viewer--web': web }"
       role="dialog" aria-modal="true" :aria-label="title" tabindex="-1" :aria-busy="!ready"
       :style="{ '--viewer-header-height': `${headerHeight}px` }">
-      <div :id="scrollId" ref="viewport" class="ds-case-image-viewer__viewport"
+      <div :id="scrollId" ref="viewport" class="ds-case-image-viewer__viewport" tabindex="0"
         @dragstart.prevent @pointerdown="pointerDown" @pointermove="pointerMove" @pointerup="pointerEnd" @pointercancel="pointerEnd">
         <div class="ds-case-image-viewer__stage" :style="{ width: `max(100%, ${size.width * scale + gutter * 2}px)`, minHeight: `max(100%, ${top + size.height * scale + bottom}px)`, paddingTop: `${top}px` }">
           <div class="ds-case-image-viewer__scaled" :style="{ width: `${size.width * scale}px`, height: `${size.height * scale}px` }">
@@ -204,7 +220,7 @@ onBeforeUnmount(() => { teardown(); query?.removeEventListener('change', updateV
           </div>
         </div>
       </div>
-      <DsTopStickyBar class="ds-case-image-viewer__header" :text="title" :zoom="zoom" :fit-to-screen="fit" :viewer-ready="ready" @update:zoom="preset" @fit="fitScreen" @close="close" />
+      <DsTopStickyBar class="ds-case-image-viewer__header" :controls-only="props.type === 'v2'" :text="title" :zoom="zoom" :fit-mode="fitMode" :viewer-ready="ready" @update:zoom="preset" @fit="fitImage" @close="close" />
       <DsScroll class="ds-case-image-viewer__scroll-x" axis="X" :scroll-id="scrollId" />
       <DsScroll class="ds-case-image-viewer__scroll-y" axis="Y" :scroll-id="scrollId" />
     </section>

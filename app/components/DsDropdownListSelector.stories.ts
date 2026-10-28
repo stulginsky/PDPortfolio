@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { expect } from 'storybook/test'
 import DsDropdownListSelector from './DsDropdownListSelector.vue'
 import DsDropdownListItem from './DsDropdownListItem.vue'
 
 /**
  * DropdownListSelector — DS component 1282:6724
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1282-6724
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1282-6724
  */
 const meta = {
   title: 'Components/DropdownListSelector',
@@ -20,7 +20,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 1282:6724](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1282-6724)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownListSelector 1282:6724. Shared web surface for dropdown rows.\n\nFigma references Items = 3 | 4 and Type = General | Filter with Shadow/2nd in every variant.\nIn production, the default slot can contain any number of DsDropdownListItem rows.\nGeneral web menus hug the widest row and keep every option on one line. The Sandbox exposes\nthe nested row data without turning it into public Selector props.\n\n</details>",
+        component: "[Figma 1282:6724](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1282-6724)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownListSelector 1282:6724. Shared web surface for dropdown rows.\n\nFigma references Items = 3 | 4 and Type = General | Filter with Shadow/2nd in every variant.\nIn production, the default slot can contain any number of DsDropdownListItem rows.\nGeneral web menus hug the widest row and keep every option on one line. The Sandbox exposes\nthe nested row data without turning it into public Selector props.\n\n</details>",
       },
     },
   },
@@ -82,6 +82,7 @@ const iconOptions = [
   'ExternalLink',
   'ChevronDown',
   'ChevronUp',
+  'Check',
 ]
 
 export const Sandbox: StoryObj = {
@@ -105,16 +106,16 @@ export const Sandbox: StoryObj = {
     itemsCount: { name: 'Items', control: 'inline-radio', options: [3, 4] },
     item1Label: { name: 'Item 1 / TextListItem', control: 'text' },
     item1Icon: { name: 'Item 1 / Icon', control: 'select', options: iconOptions },
-    item1ShowIcon: { name: 'Item 1 / Show Icon', control: 'boolean' },
+    item1ShowIcon: { name: 'Item 1 / ShowIcon', control: 'boolean' },
     item2Label: { name: 'Item 2 / TextListItem', control: 'text' },
     item2Icon: { name: 'Item 2 / Icon', control: 'select', options: iconOptions },
-    item2ShowIcon: { name: 'Item 2 / Show Icon', control: 'boolean' },
+    item2ShowIcon: { name: 'Item 2 / ShowIcon', control: 'boolean' },
     item3Label: { name: 'Item 3 / TextListItem', control: 'text' },
     item3Icon: { name: 'Item 3 / Icon', control: 'select', options: iconOptions },
-    item3ShowIcon: { name: 'Item 3 / Show Icon', control: 'boolean' },
+    item3ShowIcon: { name: 'Item 3 / ShowIcon', control: 'boolean' },
     item4Label: { name: 'Item 4 / TextListItem', control: 'text' },
     item4Icon: { name: 'Item 4 / Icon', control: 'select', options: iconOptions },
-    item4ShowIcon: { name: 'Item 4 / Show Icon', control: 'boolean' },
+    item4ShowIcon: { name: 'Item 4 / ShowIcon', control: 'boolean' },
   },
   render: (args) => ({
     components: { DsDropdownListSelector, DsDropdownListItem },
@@ -144,4 +145,47 @@ export const Sandbox: StoryObj = {
     `,
   }),
   parameters: { layout: 'centered' },
+}
+
+/** Six-row composition from Figma 1650:3549; zoom calculations are deliberately separate. */
+export const ViewerZoomMenu: Story = {
+  parameters: { docs: { description: { story: 'Figma 1650:3549. Current selection only; image scaling is handled in the next integration step.' } } },
+  render: () => ({
+    components: { DsDropdownListSelector, DsDropdownListItem },
+    setup() {
+      const selected = ref('Fit to width')
+      const options = ['Zoom 50%', 'Zoom 100%', 'Zoom 150%', 'Fit to width', 'Fit to height', 'Fit to screen']
+      return { selected, options }
+    },
+    template: `
+      <DsDropdownListSelector type="General" aria-label="Image scale" style="width:184px">
+        <li v-for="option in options" :key="option">
+          <DsDropdownListItem
+            :label="option" appearance="Sm" icon="Check"
+            :show-icon="selected === option"
+            :aria-current="selected === option ? 'true' : undefined"
+            @click="selected = option"
+          />
+        </li>
+      </DsDropdownListSelector>
+    `,
+  }),
+  play: async ({ canvas, userEvent }) => {
+    const list = canvas.getByRole('list', { name: 'Image scale' })
+    const rows = canvas.getAllByRole('button')
+    await expect(rows).toHaveLength(6)
+    await expect(list.getBoundingClientRect().width).toBeCloseTo(184, 0)
+    await expect(list.getBoundingClientRect().height).toBeCloseTo(264, 0)
+    await expect(rows[3]).toHaveAttribute('aria-current', 'true')
+    for (const row of rows) {
+      await userEvent.click(row)
+      await expect(row).toHaveAttribute('aria-current', 'true')
+      await expect(list.querySelectorAll('[aria-current="true"]')).toHaveLength(1)
+      await expect(list.querySelectorAll('.ds-dropdown-list-item__icon:not([style*="hidden"])')).toHaveLength(1)
+      await expect(list.getBoundingClientRect().width).toBeCloseTo(184, 0)
+    }
+    rows[3].focus()
+    await userEvent.keyboard('{Enter}')
+    await expect(rows[3]).toHaveAttribute('aria-current', 'true')
+  },
 }

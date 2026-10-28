@@ -1,0 +1,941 @@
+{
+  "reference": [
+    {
+      "id": "3024:4768",
+      "name": "05-landform_city-1st",
+      "kind": "image",
+      "x": 0,
+      "y": 15.87060546875,
+      "width": 611.7362670898438,
+      "height": 184.25115966796875,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/05-landform-city-1st.png",
+      "exportRect": null
+    },
+    {
+      "id": "3024:4769",
+      "name": "Group 480",
+      "kind": "decoration",
+      "x": 350.775390625,
+      "y": 0,
+      "width": 199.60586547851562,
+      "height": 90.15975189208984,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/group-480.svg",
+      "exportRect": {
+        "x": -1.125,
+        "y": -1.067138671875,
+        "width": 202,
+        "height": 92
+      }
+    },
+    {
+      "id": "3024:5020",
+      "name": "steps/Group 478/Group 475/Line 6",
+      "kind": "line",
+      "x": 461.61059617996216,
+      "y": -18.67578125,
+      "width": 0.6225576400756836,
+      "height": 54.785072326660156,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-478/group-475/line-6.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 55
+      }
+    },
+    {
+      "id": "3024:5021",
+      "name": "steps/Group 478/Group 475/Ellipse 323",
+      "kind": "dot",
+      "x": 460.67578125,
+      "y": 34.863037109375,
+      "width": 2.4902305603027344,
+      "height": 2.4902305603027344,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-478/group-475/ellipse-323.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 3
+      }
+    },
+    {
+      "id": "3024:5022",
+      "name": "steps/Group 478/Leverage",
+      "kind": "label",
+      "x": 465.69921875,
+      "y": -16.938232421875,
+      "width": 65.630859375,
+      "height": 14.96142578125,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-478/leverage.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 66,
+        "height": 15
+      }
+    },
+    {
+      "id": "3024:5025",
+      "name": "steps/Group 479/Group 475/Line 6",
+      "kind": "line",
+      "x": 366.97973680496216,
+      "y": -23.6572265625,
+      "width": 0.6225576400756836,
+      "height": 72.21790313720703,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-479/group-475/line-6.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 73
+      }
+    },
+    {
+      "id": "3024:5026",
+      "name": "steps/Group 479/Group 475/Ellipse 323",
+      "kind": "dot",
+      "x": 366.046875,
+      "y": 47.314208984375,
+      "width": 2.4902305603027344,
+      "height": 2.4902305603027344,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-479/group-475/ellipse-323.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 3
+      }
+    },
+    {
+      "id": "3024:5027",
+      "name": "steps/Group 479/Plateau",
+      "kind": "label",
+      "x": 371.0703125,
+      "y": -21.74169921875,
+      "width": 53.673828125,
+      "height": 12.321533203125,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-479/plateau.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 54,
+        "height": 13
+      }
+    },
+    {
+      "id": "3024:5030",
+      "name": "steps/Group 480/Group 475/Line 6",
+      "kind": "line",
+      "x": 281.06762742996216,
+      "y": 31.1279296875,
+      "width": 0.6225576400756836,
+      "height": 67.23744201660156,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-480/group-475/line-6.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 68
+      }
+    },
+    {
+      "id": "3024:5031",
+      "name": "steps/Group 480/Group 475/Ellipse 323",
+      "kind": "dot",
+      "x": 280.134765625,
+      "y": 97.118896484375,
+      "width": 2.4902305603027344,
+      "height": 2.4902305603027344,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-480/group-475/ellipse-323.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 3
+      }
+    },
+    {
+      "id": "3024:5032",
+      "name": "steps/Group 480/Growth",
+      "kind": "label",
+      "x": 284.732421875,
+      "y": 32.28955078125,
+      "width": 51.95703125,
+      "height": 12.321533203125,
+      "rotation": 0,
+      "opacity": 1,
+      "file": "05-landform-city-1st/steps/group-480/growth.svg",
+      "exportRect": {
+        "x": 0,
+        "y": 0,
+        "width": 52,
+        "height": 13
+      }
+    }
+  ],
+  "scenes": {
+    "base": {
+      "Default": [
+        {
+          "id": "3024:4453",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 9.8768310546875,
+          "width": 380.707275390625,
+          "height": 114.6666488647461,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4454",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 218.298828125,
+          "y": -0.0001220703125,
+          "width": 124.22254943847656,
+          "height": 56.10979461669922,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4705",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 287.2789353132248,
+          "y": -11.6226806640625,
+          "width": 0.38744187355041504,
+          "height": 34.094879150390625,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4706",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 286.697265625,
+          "y": 21.696533203125,
+          "width": 1.5497673749923706,
+          "height": 1.5497673749923706,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4707",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 289.8671875,
+          "y": -11.25439453125,
+          "width": 42.806640625,
+          "height": 9.30615234375,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4710",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 228.3844040632248,
+          "y": -14.722900390625,
+          "width": 0.38744187355041504,
+          "height": 44.94401168823242,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4711",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 227.8046875,
+          "y": 29.4454345703125,
+          "width": 1.5497673749923706,
+          "height": 1.5497673749923706,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4444",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 230.9765625,
+          "y": -14.2730712890625,
+          "width": 34.962890625,
+          "height": 7.69775390625,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4714",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 174.9195603132248,
+          "y": 19.372314453125,
+          "width": 0.38744187355041504,
+          "height": 41.84447479248047,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4715",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 174.33984375,
+          "y": 60.4407958984375,
+          "width": 1.5497673749923706,
+          "height": 1.5497673749923706,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4716",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 177.240234375,
+          "y": 19.3526611328125,
+          "width": 33.623046875,
+          "height": 7.69775390625,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ],
+      "Hover": [
+        {
+          "id": "3061:6016",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 14.767578125,
+          "width": 569.2262573242188,
+          "height": 171.4473876953125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6017",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 326.396484375,
+          "y": 0,
+          "width": 185.7342529296875,
+          "height": 83.8945083618164,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6268",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 429.5345709323883,
+          "y": -57.378173828125,
+          "width": 0.5792956352233887,
+          "height": 90.97801208496094,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6269",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 428.6640625,
+          "y": 32.440185546875,
+          "width": 2.3171825408935547,
+          "height": 2.3171825408935547,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6270",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 433.353515625,
+          "y": -55.78857421875,
+          "width": 61.23828125,
+          "height": 13.921875,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6273",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 341.4759771823883,
+          "y": -52.013427734375,
+          "width": 0.5792956352233887,
+          "height": 97.19942474365234,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6274",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 340.609375,
+          "y": 44.02587890625,
+          "width": 2.3171825408935547,
+          "height": 2.3171825408935547,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6275",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 345.30078125,
+          "y": -50.27294921875,
+          "width": 50.044921875,
+          "height": 11.480224609375,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6278",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 261.52617186307907,
+          "y": -1.03515625,
+          "width": 0.6000000238418579,
+          "height": 92.5650634765625,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6279",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 260.669921875,
+          "y": 90.36962890625,
+          "width": 2.3171825408935547,
+          "height": 2.3171825408935547,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:6280",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 264.953125,
+          "y": 0.003662109375,
+          "width": 48.45703125,
+          "height": 11.480224609375,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ],
+      "ActivePressed": [
+        {
+          "id": "3063:2899",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 12.224609375,
+          "width": 471.2044372558594,
+          "height": 141.923828125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2900",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 270.185546875,
+          "y": 0,
+          "width": 153.753662109375,
+          "height": 69.44791412353516,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3151",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 355.56882378458977,
+          "y": -55.775634765625,
+          "width": 0.4795399308204651,
+          "height": 83.58942413330078,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3152",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 354.84765625,
+          "y": 26.85400390625,
+          "width": 1.9181596040725708,
+          "height": 1.9181596040725708,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3153",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 358.74609375,
+          "y": -55.220703125,
+          "width": 51.630859375,
+          "height": 11.518310546875,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3156",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 282.67233940958977,
+          "y": -43.056396484375,
+          "width": 0.4795399308204651,
+          "height": 80.46150970458984,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3157",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 281.955078125,
+          "y": 36.444580078125,
+          "width": 1.9181596040725708,
+          "height": 1.9181596040725708,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3158",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 285.857421875,
+          "y": -42.395263671875,
+          "width": 42.212890625,
+          "height": 9.521484375,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3161",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 216.48994176089764,
+          "y": -0.85693359375,
+          "width": 0.4966789782047272,
+          "height": 76.62519836425781,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3162",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 215.78125,
+          "y": 74.807861328125,
+          "width": 1.9181596040725708,
+          "height": 1.9181596040725708,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:3163",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 219.345703125,
+          "y": -0.7763671875,
+          "width": 40.7578125,
+          "height": 9.521484375,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ]
+    },
+    "min-768": {
+      "Default": [
+        {
+          "id": "3024:4768",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 15.87060546875,
+          "width": 611.7362670898438,
+          "height": 184.25115966796875,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:4769",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 350.775390625,
+          "y": 0,
+          "width": 199.60586547851562,
+          "height": 90.15975189208984,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5020",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 461.61059617996216,
+          "y": -18.67578125,
+          "width": 0.6225576400756836,
+          "height": 54.785072326660156,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5021",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 460.67578125,
+          "y": 34.863037109375,
+          "width": 2.4902305603027344,
+          "height": 2.4902305603027344,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5022",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 465.69921875,
+          "y": -16.938232421875,
+          "width": 65.630859375,
+          "height": 14.96142578125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5025",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 366.97973680496216,
+          "y": -23.6572265625,
+          "width": 0.6225576400756836,
+          "height": 72.21790313720703,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5026",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 366.046875,
+          "y": 47.314208984375,
+          "width": 2.4902305603027344,
+          "height": 2.4902305603027344,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5027",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 371.0703125,
+          "y": -21.74169921875,
+          "width": 53.673828125,
+          "height": 12.321533203125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5030",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 281.06762742996216,
+          "y": 31.1279296875,
+          "width": 0.6225576400756836,
+          "height": 67.23744201660156,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5031",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 280.134765625,
+          "y": 97.118896484375,
+          "width": 2.4902305603027344,
+          "height": 2.4902305603027344,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3024:5032",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 284.732421875,
+          "y": 32.28955078125,
+          "width": 51.95703125,
+          "height": 12.321533203125,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ],
+      "Hover": [
+        {
+          "id": "3061:5424",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 23.373291015625,
+          "width": 900.9246215820312,
+          "height": 271.3528747558594,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5425",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 516.595703125,
+          "y": 0,
+          "width": 293.966552734375,
+          "height": 132.7813262939453,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5676",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 679.828678548336,
+          "y": -87.50439453125,
+          "width": 0.9168616533279419,
+          "height": 140.68382263183594,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5677",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 678.453125,
+          "y": 51.34375,
+          "width": 3.6674466133117676,
+          "height": 3.6674466133117676,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5678",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 685.734375,
+          "y": -85.563720703125,
+          "width": 94.947265625,
+          "height": 22.0341796875,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5681",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 540.463444173336,
+          "y": -44.8408203125,
+          "width": 0.9168616533279419,
+          "height": 116.35774230957031,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5682",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 539.08984375,
+          "y": 69.68115234375,
+          "width": 3.6674466133117676,
+          "height": 3.6674466133117676,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5683",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 546.37109375,
+          "y": -42.48681640625,
+          "width": 77.615234375,
+          "height": 17.983642578125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5686",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 413.93805354833603,
+          "y": 25.84326171875,
+          "width": 0.9168616533279419,
+          "height": 119.0228500366211,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5687",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 412.564453125,
+          "y": 143.0302734375,
+          "width": 3.6674466133117676,
+          "height": 3.6674466133117676,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3061:5688",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 419.251953125,
+          "y": 27.0869140625,
+          "width": 75.263671875,
+          "height": 17.971923828125,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ],
+      "ActivePressed": [
+        {
+          "id": "3063:2603",
+          "name": "05-landform_city-1st",
+          "kind": "image",
+          "x": 0,
+          "y": 19.45458984375,
+          "width": 749.876708984375,
+          "height": 225.85818481445312,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2604",
+          "name": "Group 480",
+          "kind": "decoration",
+          "x": 429.982421875,
+          "y": 0,
+          "width": 244.68226623535156,
+          "height": 110.51941680908203,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2855",
+          "name": "steps/Group 478/Group 475/Line 6",
+          "kind": "line",
+          "x": 565.8488978743553,
+          "y": -62.83349609375,
+          "width": 0.7631417512893677,
+          "height": 107.0969467163086,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2856",
+          "name": "steps/Group 478/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 564.705078125,
+          "y": 42.73583984375,
+          "width": 3.0525670051574707,
+          "height": 3.0525670051574707,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2857",
+          "name": "steps/Group 478/Leverage",
+          "kind": "label",
+          "x": 570.814453125,
+          "y": -60.86474609375,
+          "width": 79.79296875,
+          "height": 18.33984375,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2860",
+          "name": "steps/Group 479/Group 475/Line 6",
+          "kind": "line",
+          "x": 449.8508509993553,
+          "y": -37.32275390625,
+          "width": 0.7631417512893677,
+          "height": 96.84934997558594,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2861",
+          "name": "steps/Group 479/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 448.70703125,
+          "y": 57.99853515625,
+          "width": 3.0525670051574707,
+          "height": 3.0525670051574707,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2862",
+          "name": "steps/Group 479/Plateau",
+          "kind": "label",
+          "x": 454.81640625,
+          "y": -35.078125,
+          "width": 65.22265625,
+          "height": 15.0361328125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2865",
+          "name": "steps/Group 480/Group 475/Line 6",
+          "kind": "line",
+          "x": 344.5383509993553,
+          "y": 21.5107421875,
+          "width": 0.7631417512893677,
+          "height": 99.067626953125,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2866",
+          "name": "steps/Group 480/Group 475/Ellipse 323",
+          "kind": "dot",
+          "x": 343.39453125,
+          "y": 119.05029296875,
+          "width": 3.0525670051574707,
+          "height": 3.0525670051574707,
+          "rotation": 0,
+          "opacity": 1
+        },
+        {
+          "id": "3063:2867",
+          "name": "steps/Group 480/Growth",
+          "kind": "label",
+          "x": 349,
+          "y": 22.8310546875,
+          "width": 63.216796875,
+          "height": 15.0361328125,
+          "rotation": 0,
+          "opacity": 1
+        }
+      ]
+    }
+  }
+}

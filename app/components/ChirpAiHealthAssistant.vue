@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed, inject, onMounted, onUnmounted, ref } from 'vue'
+import { computed, inject, onActivated, onDeactivated, onMounted, onUnmounted, ref } from 'vue'
+import { vMediaReady } from './media-readiness'
+import { vLayeredScene } from './layered-scene-readiness'
+import LayeredSceneFallback from './LayeredSceneFallback.vue'
+import { cardInitialStyle } from './chirp-card-initial'
 import DsBadge from './DsBadge.vue'
-import { useChirpCardPresentation } from './chirp-card-presentation'
 import TypoText from './TypoText.vue'
 import cards from '../../content/home-cards.json'
 import { getHealthGeometry } from './chirp-ai-health-assistant.geometry'
@@ -20,10 +23,11 @@ const props = withDefaults(defineProps<{
 })
 const root = ref<HTMLElement>()
 const copy = ref<HTMLElement>()
-const presentation = useChirpCardPresentation('ChirpAiHealthAssistant')
 const breakpoint = ref<'base' | 'min-768'>('base')
 const width = ref(264)
 const viewportWidth = ref(320)
+const ready = ref(false)
+let readyFrame = 0
 const copyHeight = ref(0)
 const hovered = ref(false)
 const pressed = ref(false)
@@ -38,23 +42,25 @@ function phoneStyle(index: number) {
   if (!draft) return rectStyle(geometry.value.phones[index]!)
   return rectStyle({ ...draft, x: draft.x + (width.value - 430) / 2 - geometry.value.pict.x - (width.value - referenceWidth.value) / 2, y: draft.y - geometry.value.pict.y })
 }
-const height = computed(() => presentation.context?.height.value ?? (viewportWidth.value >= 462 ? 532 : 500))
+const height = computed(() => viewportWidth.value >= 462 ? 532 : 500)
 const sources = [
   '/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png',
   '/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png',
   '/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png',
 ]
+
+const initialStyle = cardInitialStyle({base:getHealthGeometry('base','Default',320),wide:getHealthGeometry('base','Default',426),web:getHealthGeometry('min-768','Default',768)})
+
 function rectStyle(rect: { x: number; y: number; width: number; height: number; rotation: number }) {
   return { left: rect.x * scale.value + 'px', top: rect.y * scale.value + 'px', width: rect.width * scale.value + 'px', height: rect.height * scale.value + 'px', transform: `rotate(${-rect.rotation}deg)` }
 }
 const rootStyle = computed(() => ({
   height: height.value + 'px',
   '--card-scale': scale.value,
-  '--chirp-copy-zoom': presentation.copyZoom.value,
   '--card-duration': state.value === 'ActivePressed' ? '150ms' : '300ms',
 }))
 const pictStyle = computed(() => ({ ...rectStyle(geometry.value.pict), left: geometry.value.pict.x + (width.value - referenceWidth.value) / 2 + 'px' }))
-const credStyle = computed(() => ({ ...rectStyle(geometry.value.cred), width: width.value + 'px', top: height.value - geometry.value.cred.height * scale.value + 'px' }))
+const credStyle = computed(() => ({ ...rectStyle(geometry.value.cred), width: '100%', top: height.value - geometry.value.cred.height * scale.value + 'px' }))
 const blurSceneStyle = computed(() => ({ ...rectStyle(geometry.value.pict), left: geometry.value.pict.x - geometry.value.blur.x + (width.value - referenceWidth.value) / 2 + 'px', top: (geometry.value.pict.y - (height.value - geometry.value.cred.height * scale.value) / scale.value - geometry.value.blur.y) * scale.value + 'px' }))
 function canHover(e: PointerEvent) { return e.pointerType === 'mouse' && window.matchMedia('(hover: hover)').matches }
 function enter(e: PointerEvent) { if (canHover(e)) hovered.value = true }
@@ -68,14 +74,20 @@ function scheduleSync() {
   frame = requestAnimationFrame(sync)
 }
 function sync() {
+  if (!root.value?.isConnected) return
   viewportWidth.value = window.innerWidth
   breakpoint.value = window.innerWidth >= 768 ? 'min-768' : 'base'
   width.value = root.value?.clientWidth || referenceWidth.value
   copyHeight.value = copy.value?.getBoundingClientRect().height || 0
-  presentation.reportCopyHeight(copyHeight.value)
 }
+onActivated(sync)
+onDeactivated(() => { leave(); release() })
 onMounted(() => {
   sync()
+  // First settle measured geometry without animating from initial reference values.
+  readyFrame = requestAnimationFrame(() => {
+    readyFrame = requestAnimationFrame(() => { ready.value = true })
+  })
   observer = new ResizeObserver(scheduleSync)
   if (root.value) observer.observe(root.value)
   if (copy.value) observer.observe(copy.value)
@@ -85,6 +97,7 @@ onMounted(() => {
   window.addEventListener('blur', leave)
 })
 onUnmounted(() => {
+  cancelAnimationFrame(readyFrame)
   observer?.disconnect()
   cancelAnimationFrame(frame)
   window.removeEventListener('resize', sync)
@@ -95,14 +108,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <a ref="root" class="chirp-health" :href="props.href" :style="rootStyle" :data-state="state" :data-breakpoint="breakpoint" :data-presentation="presentation.context ? 'related-cases' : undefined"
+  <a v-media-ready v-layered-scene ref="root" class="chirp-health chirp-card showcase-card" :href="props.href" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
     @pointerenter="enter" @pointerleave="leave" @pointerdown="down" @pointerup="release" @pointercancel="release"
-    @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @dragstart.prevent>
+    @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @scene-ready="hovered=false;pressed=false;keyboardPressed=false" @dragstart.prevent>
+    <LayeredSceneFallback name="chirp-ai-health-assistant" />
     <div class="chirp-health__pict" :style="pictStyle" aria-hidden="true">
       <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="src" :style="phoneStyle(i)" alt="" draggable="false" />
     </div>
     <div class="chirp-health__cred" :style="credStyle">
-      <div class="chirp-health__blur" :style="{ ...rectStyle(geometry.blur), width: width + 'px' }" aria-hidden="true">
+      <div class="chirp-health__blur" :style="{ ...rectStyle(geometry.blur), width: '100%' }" aria-hidden="true">
         <div class="chirp-health__blur-scene" :style="blurSceneStyle">
           <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="src" :style="phoneStyle(i)" alt="" draggable="false" />
         </div>
@@ -115,7 +129,7 @@ onUnmounted(() => {
           <TypoText tag="p" class="chirp-health__subtitle" :content="props.subtitle" />
         </div>
         <ul class="chirp-health__badges" aria-label="Специализации">
-          <li v-for="badge in props.badges" :key="badge"><DsBadge :label="badge" :type="!presentation.context && viewportWidth < 410 ? 'CardCompact' : 'Card'" /></li>
+          <li v-for="badge in props.badges" :key="badge"><DsBadge v-if="ready" :label="badge" :type="viewportWidth < 410 ? 'CardCompact' : 'Card'" /><template v-else><span class="chirp-card__badge-small"><DsBadge :label="badge" type="CardCompact" /></span><span class="chirp-card__badge-large"><DsBadge :label="badge" type="Card" /></span></template></li>
         </ul>
       </div>
     </div>
@@ -123,6 +137,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.chirp-health[data-ready='false'] * { transition: none !important; }
 .chirp-health { position: relative; display: block; isolation: isolate; overflow: hidden; width: 100%; max-width: 430px; border-radius: 20px; background: var(--decorative-showcase-chirp-ai-health-assistant-background); color: var(--text-inverse); font-family: var(--text-font-sans); text-decoration: none; }
 .chirp-health__pict, .chirp-health__phone, .chirp-health__cred, .chirp-health__blur, .chirp-health__blur-scene { position: absolute; transform-origin: 0 0; transition: left var(--card-duration) ease-out, top var(--card-duration) ease-out, width var(--card-duration) ease-out, height var(--card-duration) ease-out, transform var(--card-duration) ease-out; }
 .chirp-health__pict { z-index: 1; pointer-events: none; }
@@ -138,21 +153,21 @@ onUnmounted(() => {
 .chirp-health__copy { position: absolute; bottom: max(13.333px, calc(13.333px * var(--card-scale))); left: max(13.333px, calc(13.333px * var(--card-scale))); right: max(13.333px, calc(13.333px * var(--card-scale))); display: flex; flex-direction: column; gap: max(10px, calc(10px * var(--card-scale))); }
 .chirp-health__title-block { display: flex; flex-direction: column; gap: max(3.333px, calc(3.333px * var(--card-scale))); }
 .chirp-health__title, .chirp-health__subtitle { margin: 0; font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-md); }
-.chirp-health__title { font-size: max(var(--text-size-card-title-min), calc(18.333333px * var(--card-scale))); line-height: 1.3; letter-spacing: .03em; }
-.chirp-health__subtitle { font-size: max(var(--text-size-card-description-min), calc(13.333333px * var(--card-scale))); line-height: 1.5; white-space: pre-line; }
+.chirp-health__title { font-size: calc(18.333333px * var(--showcase-copy-scale)); line-height: 1.3; letter-spacing: .03em; }
+.chirp-health__subtitle { font-size: calc(13.333333px * var(--showcase-copy-scale)); line-height: 1.5; white-space: pre-line; }
 .chirp-health__badges { display: flex; flex-wrap: wrap; gap: 6.667px; margin: 0; padding: 0; list-style: none; width: 100%; max-width: 100%; }
 .chirp-health__badges li { display: flex; }
 .chirp-health:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 3px; }
 @media (min-width: 410px) {
-  .chirp-health__title { font-size: 22px; }
+  .chirp-health__title { font-size: calc(22px * var(--showcase-copy-scale)); }
 }
 @media (min-width: 768px) {
   .chirp-health { max-width: 430px; border-radius: var(--radius-xlg); }
   .chirp-health__blur-scene { filter: blur(calc(30px * var(--card-scale))); }
   .chirp-health__copy { bottom: max(13.333px, calc(16px * var(--card-scale))); left: max(13.333px, calc(16px * var(--card-scale))); right: max(13.333px, calc(16px * var(--card-scale))); gap: max(10px, calc(12px * var(--card-scale))); }
   .chirp-health__title-block { gap: max(3.333px, calc(4px * var(--card-scale))); }
-  .chirp-health__title { font-size: max(var(--text-size-card-title-min), calc(22px * var(--card-scale))); }
-  .chirp-health__subtitle { font-size: max(var(--text-size-card-description-min), calc(16px * var(--card-scale))); }
+  .chirp-health__title { font-size: calc(22px * var(--showcase-copy-scale)); }
+  .chirp-health__subtitle { font-size: calc(16px * var(--showcase-copy-scale)); }
   .chirp-health__badges { gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { .chirp-health * { transition: none; } }

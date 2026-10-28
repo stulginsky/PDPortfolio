@@ -43,3 +43,13 @@ export function typografText(text) {
     .replace(/\b(AI|B2B|B2C|UX|UI|MVP)-(?=\p{L})/gu, "$1‑")
     .trimEnd());
 }
+
+/** Role-Focus: whole semantic items; each separator stays with its preceding item. */
+export function typografRoleFocusItems(text) {
+  const items = String(text ?? "")
+    .split("·")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => typografText(part).replace(/&nbsp;|&#160;|&#xA0;/gi, "\u00a0").replace(/\s+/gu, "\u00a0"));
+  return items.map((item, index) => index < items.length - 1 ? item + "\u00a0·" : item);
+}

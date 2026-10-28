@@ -6,9 +6,9 @@ const props = withDefaults(
   defineProps<{
     /** Figma Text#968:17. */
     text?: string
-    /** Figma Instance#968:0. Used only while Icon right=On. */
+    /** Figma Icon#968:0. Used only while IconRight=On. */
     icon?: ButtonIconName
-    /** Figma Icon right=Off / On. */
+    /** Figma IconRight=Off / On. */
     iconRight?: boolean
     /** Figma Raised=Off / On; raised is an initial Default surface only. */
     raised?: boolean
@@ -68,7 +68,7 @@ defineEmits<{
   gap: 0;
   padding: 0 var(--space-4);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-medium);
   font-variation-settings: "wght" 500, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

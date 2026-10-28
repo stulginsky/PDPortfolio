@@ -1,0 +1,79 @@
+{
+  "fileKey": "TPjPitung1VP3oQg42f56O",
+  "page": "0:1",
+  "capturedAt": "2026-10-24",
+  "styles": [
+    {
+      "id": "S:5b6a3f17d2b45aae36736ebcb260679de4b10888,",
+      "key": "5b6a3f17d2b45aae36736ebcb260679de4b10888",
+      "name": "1920  - 12cols",
+      "description": "",
+      "layoutGrids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 0.05000000074505806
+          },
+          "gutterSize": 24,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 24,
+          "boundVariables": {}
+        }
+      ],
+      "referenceWidth": 1920
+    },
+    {
+      "id": "S:b883c47646741143e6e5ca17654c0c750d752177,",
+      "key": "b883c47646741143e6e5ca17654c0c750d752177",
+      "name": "1920 - 2cols",
+      "description": "",
+      "layoutGrids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 0.10000000149011612
+          },
+          "gutterSize": 72,
+          "alignment": "STRETCH",
+          "count": 2,
+          "offset": 72,
+          "boundVariables": {}
+        }
+      ],
+      "referenceWidth": 1920
+    },
+    {
+      "id": "S:0cae97426a14cf322215d1e9e0c752de1a1d9ad9,",
+      "key": "0cae97426a14cf322215d1e9e0c752de1a1d9ad9",
+      "name": "720 - 1col",
+      "description": "",
+      "layoutGrids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 0.05000000074505806
+          },
+          "gutterSize": 8,
+          "alignment": "STRETCH",
+          "count": 1,
+          "offset": 24,
+          "boundVariables": {}
+        }
+      ],
+      "referenceWidth": 720
+    }
+  ]
+}

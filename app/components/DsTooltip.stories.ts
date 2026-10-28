@@ -3,7 +3,7 @@ import DsTooltip from './DsTooltip.vue'
 
 /**
  * Tooltip — DS component 324:2111
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=324-2111
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=324-2111
  * DS docs: ds/components.md § Tooltip
  *
  * Static tooltip with 4 pointer directions. DS/Body/sm, text/inverse.
@@ -18,6 +18,7 @@ const meta = {
     pointer: 'Top',
   },
   argTypes: {
+    visible: { control: 'boolean', description: 'Плавное появление и скрытие за 300 мс. Компонент остаётся смонтированным.' },
     label: { control: 'text', description: 'Tooltip text (Text#324:8)' },
     pointer: {
       control: 'inline-radio',
@@ -29,7 +30,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 324:2111](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=324-2111)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.\nNon-interactive — parent controls visibility.\n\n</details>",
+        component: "[Figma 324:2111](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=324-2111)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.\nNon-interactive — parent controls visibility.\n\n</details>",
       },
     },
   },

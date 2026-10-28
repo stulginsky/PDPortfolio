@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+defineOptions({ inheritAttrs: false })
 import tooltipPointerTop from '../assets/icons/tooltip-pointer-top.svg'
 import tooltipPointerBottom from '../assets/icons/tooltip-pointer-bottom.svg'
 import tooltipPointerLeft from '../assets/icons/tooltip-pointer-left.svg'
@@ -13,10 +14,13 @@ import tooltipPointerRight from '../assets/icons/tooltip-pointer-right.svg'
  * Non-interactive; shown/hidden by parent.
  */
 const props = withDefaults(defineProps<{
+  /** Keep mounted; the shared transition owns show/hide. */
+  visible?: boolean
   label?: string
   /** Pointer position relative to tooltip body */
   pointer?: 'Top' | 'Bottom' | 'Left' | 'Right'
 }>(), {
+  visible: true,
   label: 'Tooltip',
   pointer: 'Top',
 })
@@ -32,7 +36,10 @@ const pointerAsset = computed(() => pointerAssets[props.pointer])
 </script>
 
 <template>
+  <Transition name="ds-tooltip-fade" appear>
   <div
+    v-if="visible"
+    v-bind="$attrs"
     class="ds-tooltip"
     :class="`ds-tooltip--${pointer.toLowerCase()}`"
     role="tooltip"
@@ -44,9 +51,19 @@ const pointerAsset = computed(() => pointerAssets[props.pointer])
     </span>
     <div class="ds-tooltip__body">{{ label }}</div>
   </div>
+  </Transition>
 </template>
 
 <style scoped>
+.ds-tooltip-fade-enter-active,
+.ds-tooltip-fade-leave-active { transition: opacity 300ms ease-out; }
+.ds-tooltip-fade-enter-active { transition-delay: 100ms; }
+.ds-tooltip-fade-enter-from,
+.ds-tooltip-fade-leave-to { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .ds-tooltip-fade-enter-active,
+  .ds-tooltip-fade-leave-active { transition: none; }
+}
 /* Tooltip — DS 324:2111 */
 .ds-tooltip {
   position: relative;
@@ -54,7 +71,7 @@ const pointerAsset = computed(() => pointerAssets[props.pointer])
   flex-direction: column;
   align-items: center;
   pointer-events: none;
-  filter: drop-shadow(var(--effect-shadow-2nd));
+  filter: drop-shadow(var(--shadow-2nd));
 }
 
 .ds-tooltip__body {
@@ -63,7 +80,7 @@ const pointerAsset = computed(() => pointerAssets[props.pointer])
   background: var(--accent-plum);
   color: var(--text-inverse);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-sm); /* DS/Body/sm — 14px */
+  font-size: var(--text-size-14); /* DS/Body/sm — 14px */
   font-weight: var(--text-weight-regular);
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

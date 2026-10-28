@@ -123,7 +123,7 @@ function clearPressedFilter() {
   color: var(--text-action);
   background: transparent;
   font: inherit;
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-medium);
   font-variation-settings: var(--font-variation-body-accent-medium);
   line-height: 1.35;
@@ -188,7 +188,7 @@ function clearPressedFilter() {
 
 .showcase-header__compact-tabs,
 .showcase-header__compact-filters {
-  box-shadow: var(--effect-shadow-1st);
+  box-shadow: var(--shadow-1st);
   background: var(--surface-default);
 }
 

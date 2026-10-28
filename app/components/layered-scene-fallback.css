@@ -1,0 +1,32 @@
+.layered-scene-fallback{position:absolute;inset:0;display:block;z-index:1;overflow:hidden;pointer-events:none}
+.layered-scene-fallback--related{display:none}
+@media(max-width:533px){.related-cases[data-multiple="true"] .layered-scene-fallback--default{display:none}.related-cases[data-multiple="true"] .layered-scene-fallback--related{display:block}}
+.layered-scene-fallback img{display:block;width:100%;height:100%;object-fit:fill;max-width:none}
+.media-skeleton[data-media-state="loading"]>.layered-scene-fallback,
+.media-skeleton[data-media-state="loading"]>.layered-scene-fallback img{visibility:visible!important}
+[data-scene-state="ready"]>.layered-scene-fallback{visibility:hidden}
+[data-scene-state="loading"]>.layered-scene-fallback::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgb(255 255 255 / .35) 50%,transparent 80%);background-size:220% 100%;animation:media-shimmer 1.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){[data-scene-state="loading"]>.layered-scene-fallback::after{animation:none;opacity:.18}}
+
+/* Live titles and editorial copy remain independent of the artwork gate. */
+.chirp-br-hero:not([data-scene-state="ready"]) .chirp-br-hero__stage,
+.chirp-br-hero:not([data-scene-state="ready"]) .chirp-br-hero__initial{z-index:2}
+.chirp-br-hero:not([data-scene-state="ready"]) .chirp-br-hero__stage img,
+.chirp-br-hero:not([data-scene-state="ready"]) .chirp-br-hero__initial img{visibility:hidden!important}
+.chirp-br-hero:not([data-scene-state="ready"]) .chirp-br-hero__title-svg img{visibility:visible!important}
+.chirp-ds-hero:not([data-scene-state="ready"]) .chirp-ds-hero__stage,
+.chirp-pr-hero:not([data-scene-state="ready"]) .chirp-pr-hero__stage{z-index:2}
+.chirp-ds-hero:not([data-scene-state="ready"]) .chirp-ds-hero__clip{background:transparent!important}
+.chirp-ds-hero:not([data-scene-state="ready"]) .chirp-ds-hero__bird{visibility:hidden!important}
+.chirp-ds-hero:not([data-scene-state="ready"]) .chirp-ds-hero__title img{visibility:visible!important}
+.chirp-pr-hero:not([data-scene-state="ready"]) .chirp-pr-hero__layer:not(.chirp-pr-hero__title),
+.chirp-ux-hero:not([data-scene-state="ready"]) .chirp-ux-hero__layer:not(.chirp-ux-hero__title):not(.chirp-ux-hero__role){visibility:hidden!important}
+.chirp-pr-hero:not([data-scene-state="ready"]) .chirp-pr-hero__title,
+.chirp-ux-hero:not([data-scene-state="ready"]) .chirp-ux-hero__title,
+.chirp-ux-hero:not([data-scene-state="ready"]) .chirp-ux-hero__role{z-index:2}
+.dc-vendor-app-pr-hero:not([data-scene-state="ready"]) .dc-vendor-app-pr-hero__art,
+.dc-vendor-app-ux-hero:not([data-scene-state="ready"]) .dc-vendor-app-ux-hero__art{visibility:visible!important}
+.dc-vendor-app-pr-hero:not([data-scene-state="ready"]) .dc-vendor-app-pr-hero__layer:not([data-layer="Title"]){visibility:hidden!important}
+.dc-vendor-app-ux-hero:not([data-scene-state="ready"]) .dc-vendor-app-ux-hero__layer:not(:has(.dc-vendor-app-ux-hero__media--title)):not([data-layer="Title-shadow"]){visibility:hidden!important}
+.dc-vendor-app-pr-hero:not([data-scene-state="ready"]) .dc-vendor-app-pr-hero__layer[data-layer="Title"] img,
+.dc-vendor-app-ux-hero:not([data-scene-state="ready"]) .dc-vendor-app-ux-hero__media--title img{visibility:visible!important}

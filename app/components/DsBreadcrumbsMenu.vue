@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 /**
  * DsBreadcrumbsMenu — DS component 1262:2524 (BreadcrumbsMenu).
  * The overflow trigger owns keyboard disclosure and positions its list at 26 px.
  */
-import { nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import dotIcon from '../assets/icons/dot.svg'
 import DsDropdownListItem from './DsDropdownListItem.vue'
 import DsDropdownListSelector from './DsDropdownListSelector.vue'
+import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 
 interface MenuItem {
   id: string
@@ -24,11 +26,25 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const mobile = ref(false)
+let query: MediaQueryList | undefined
+function updateMobile() { mobile.value = Boolean(query?.matches); isOpen.value = false }
+const mobileItems = computed(() => props.items.map(item => ({ label: item.label, value: item.id })))
+function mobileSelect(item: { value: string }) {
+  const selected = props.items.find(entry => entry.id === item.value)
+  if (selected) emit('select', selected)
+}
 const isOpen = ref(false)
 const rootRef = ref<HTMLElement | null>(null)
 const triggerRef = ref<HTMLButtonElement | null>(null)
 const listRef = ref<HTMLElement | null>(null)
 const alignEnd = ref(false)
+
+const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(() => {
+  isOpen.value = false
+  triggerRef.value?.focus({ preventScroll: true })
+  emit("close")
+})
 
 function toggle() {
   isOpen.value = !isOpen.value
@@ -70,12 +86,16 @@ function handleClickOutside(event: MouseEvent) {
 }
 
 onMounted(() => {
+  query = window.matchMedia('(max-width: 767px)')
+  updateMobile()
+  query.addEventListener('change', updateMobile)
   document.addEventListener('mousedown', handleClickOutside)
   document.addEventListener('keydown', handleKeydown)
   window.addEventListener('resize', updateListAlignment)
 })
 
 onUnmounted(() => {
+  query?.removeEventListener('change', updateMobile)
   document.removeEventListener('mousedown', handleClickOutside)
   document.removeEventListener('keydown', handleKeydown)
   window.removeEventListener('resize', updateListAlignment)
@@ -84,7 +104,13 @@ onUnmounted(() => {
 
 <template>
   <div ref="rootRef" class="ds-breadcrumbs-menu" :class="{ 'ds-breadcrumbs-menu--open': isOpen }">
-    <button
+    <DsFullscreenMenuMob v-if="mobile" :items="mobileItems" aria-label="История переходов" @select="mobileSelect" @close="emit('close')">
+      <template #trigger="{ open, isOpen: opened, menuId: controlledId }">
+        <button ref="triggerRef" class="ds-breadcrumbs-menu__trigger" type="button"
+          :aria-expanded="opened" :aria-controls="controlledId" aria-haspopup="dialog" @click="open">...</button>
+      </template>
+    </DsFullscreenMenuMob>
+    <button v-else
       ref="triggerRef"
       class="ds-breadcrumbs-menu__trigger"
       type="button"
@@ -100,10 +126,14 @@ onUnmounted(() => {
     />
 
     <div
-      v-if="isOpen"
+      v-if="isOpen && !mobile"
       ref="listRef"
       class="ds-breadcrumbs-menu__list-position"
       :class="{ 'ds-breadcrumbs-menu__list-position--end': alignEnd }"
+      @touchstart.passive="beginSwipe"
+      @touchmove="moveSwipe"
+      @touchend="endSwipe"
+      @touchcancel="cancelSwipe"
     >
       <DsDropdownListSelector
         :id="menuId || 'ds-breadcrumbs-menu-list'"
@@ -151,7 +181,7 @@ onUnmounted(() => {
   color: inherit;
   cursor: pointer;
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-regular);
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

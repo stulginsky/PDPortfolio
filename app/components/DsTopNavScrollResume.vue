@@ -63,7 +63,7 @@ function selectPlace(place: 'Vitrina' | 'Resume', event: MouseEvent) {
   padding: var(--space-4);
   background: var(--surface-default);
   border-radius: 0 0 var(--radius-xxlg) var(--radius-xxlg);
-  box-shadow: var(--effect-shadow-1st);
+  box-shadow: var(--shadow-1st);
 }
 .ds-top-nav-scroll-resume__navigation {
   display: flex;

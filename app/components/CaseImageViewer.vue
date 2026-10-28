@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DsCrossButton from './DsCrossButton.vue'
+import DsBtnCross from './DsBtnCross.vue'
 
 const props = defineProps<{
   open: boolean;
@@ -191,7 +191,7 @@ onBeforeUnmount(() => {
               <button type="button" role="menuitem" @click="setPreset('fit')"><TypoText :content="labels.zoomToFit" tag="span" /></button>
             </div>
           </div>
-          <DsCrossButton :aria-label="labels.closeViewer" @click="close" />
+          <DsBtnCross :aria-label="labels.closeViewer" @click="close" />
         </div>
       </header>
 
@@ -220,13 +220,13 @@ onBeforeUnmount(() => {
 <style scoped>
 .case-image-viewer { position: fixed; inset: 0; z-index: 100; display: grid; grid-template-rows: 138px minmax(0, 1fr); background: var(--surface-default); }
 .case-image-viewer__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-6); background: linear-gradient(90deg, var(--surface-fullscreen-header-start), var(--surface-fullscreen-header-end)); backdrop-filter: blur(12px); }
-.case-image-viewer__title { margin: 0; min-width: 0; overflow: hidden; color: var(--text-default); font-size: var(--text-size-xl); font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-xl-semibold); line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.case-image-viewer__title { margin: 0; min-width: 0; overflow: hidden; color: var(--text-default); font-size: var(--text-size-22); font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-xl-semibold); line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
 .case-image-viewer__actions { display: flex; align-items: center; gap: var(--space-3); }
 .case-image-viewer__scale-control { position: relative; }
 .case-image-viewer__scale-button { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 50px; padding: 0 var(--space-4); border: 0; border-radius: var(--radius-xlg); color: var(--text-inverse); background: var(--surface-action-toggled); font: inherit; cursor: pointer; }
 .case-image-viewer__scale-button img { width: 16px; height: 16px; }
 .case-image-viewer__menu { position: absolute; top: calc(100% + var(--space-2)); right: 0; z-index: 1; display: grid; width: 148px; padding: var(--space-2) 0; border-radius: var(--radius-xlg) 0 var(--radius-xlg) var(--radius-xlg); background: var(--surface-menu-item-default); overflow: hidden; }
-.case-image-viewer__menu button { min-height: 40px; padding: 0 var(--space-3); border: 0; color: var(--text-inverse); background: transparent; font: inherit; font-size: var(--text-size-sm); text-align: left; cursor: pointer; }
+.case-image-viewer__menu button { min-height: 40px; padding: 0 var(--space-3); border: 0; color: var(--text-inverse); background: transparent; font: inherit; font-size: var(--text-size-14); text-align: left; cursor: pointer; }
 .case-image-viewer__menu button:hover { background: var(--surface-menu-item-hover); }
 .case-image-viewer__menu button:active { background: var(--surface-menu-item-pressed); }
 .case-image-viewer__viewport { min-width: 0; min-height: 0; overflow: auto; cursor: grab; touch-action: none; }
@@ -234,5 +234,5 @@ onBeforeUnmount(() => {
 .case-image-viewer__stage { display: grid; place-items: center; min-width: 100%; min-height: 100%; }
 .case-image-viewer__canvas { display: grid; place-items: center; }
 .case-image-viewer__canvas img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
-@media (max-width: 720px) { .case-image-viewer { grid-template-rows: 138px minmax(0, 1fr); } .case-image-viewer__header { padding: var(--space-4); } .case-image-viewer__title { font-size: var(--text-size-base); } .case-image-viewer__scale-button { min-width: 80px; padding: 0 var(--space-3); font-size: var(--text-size-sm); } }
+@media (max-width: 720px) { .case-image-viewer { grid-template-rows: 138px minmax(0, 1fr); } .case-image-viewer__header { padding: var(--space-4); } .case-image-viewer__title { font-size: var(--text-size-16); } .case-image-viewer__scale-button { min-width: 80px; padding: 0 var(--space-3); font-size: var(--text-size-14); } }
 </style>

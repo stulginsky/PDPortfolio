@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 import { computed, nextTick, ref, useId } from 'vue'
 import DsButton from './DsButton.vue'
 import type { ButtonIconName } from './button-icons'
-import DsCrossButton from './DsCrossButton.vue'
+import DsBtnCross from './DsBtnCross.vue'
 import DsDropdownListItem from './DsDropdownListItem.vue'
 import DsScroll from './DsScroll.vue'
 
@@ -51,13 +52,13 @@ const emit = defineEmits<{
   close: []
 }>()
 
+let openingTrigger: HTMLElement | null = null
 const isOpen = ref(false)
 const isActive = ref(false)
 const listRef = ref<HTMLElement | null>(null)
 const triggerRef = ref<{ $el: HTMLElement } | null>(null)
 const menuId = `ds-fullscreen-menu-mob-${useId()}`
 const listId = `${menuId}-list`
-const swipeStart = ref<{ pointerId: number; y: number } | null>(null)
 
 const triggerLabel = computed(() => {
   if (props.modelValue) {
@@ -71,6 +72,7 @@ const triggerLabel = computed(() => {
 function open() {
   if (isOpen.value) return
 
+  openingTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
   isActive.value = false
   isOpen.value = true
   emit('open')
@@ -80,12 +82,12 @@ function close() {
   if (!isOpen.value) return
 
   isOpen.value = false
-  swipeStart.value = null
+  cancelSwipe()
   emit('close')
 
   // Keyboard focus may exist when the mobile story is reviewed on desktop.
   // This has no persistent visual state: the DS Button returns to Default.
-  void nextTick(() => triggerRef.value?.$el.focus())
+  void nextTick(() => (triggerRef.value?.$el ?? openingTrigger)?.focus())
 }
 
 function selectItem(item: MenuItem) {
@@ -104,29 +106,12 @@ function endPress() {
   isActive.value = false
 }
 
-function beginSwipe(event: PointerEvent) {
-  if (event.pointerType !== 'touch' || (listRef.value?.scrollTop ?? 0) > 1) return
-
-  swipeStart.value = { pointerId: event.pointerId, y: event.clientY }
-  const target = event.currentTarget
-  if (target instanceof HTMLElement && target.setPointerCapture) {
-    target.setPointerCapture(event.pointerId)
-  }
-}
-
-function finishSwipe(event: PointerEvent) {
-  const gesture = swipeStart.value
-  swipeStart.value = null
-
-  if (!gesture || gesture.pointerId !== event.pointerId) return
-
-  const movedDown = event.clientY - gesture.y
-  if (movedDown >= 72 && (listRef.value?.scrollTop ?? 0) <= 1) close()
-}
+const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(close, { enabled: () => true, scrollTop: () => listRef.value?.scrollTop ?? 0 })
 </script>
 
 <template>
   <div class="ds-fs-menu">
+    <slot name="trigger" :open="open" :is-open="isOpen" :menu-id="menuId">
     <DsButton
       ref="triggerRef"
       class="ds-fs-menu__trigger"
@@ -150,6 +135,7 @@ function finishSwipe(event: PointerEvent) {
       @click="open"
     />
 
+    </slot>
     <Teleport to="body">
       <section
         v-if="isOpen"
@@ -158,9 +144,10 @@ function finishSwipe(event: PointerEvent) {
         role="dialog"
         aria-modal="true"
         :aria-label="ariaLabel"
-        @pointerdown="beginSwipe"
-        @pointerup="finishSwipe"
-        @pointercancel="swipeStart = null"
+        @touchstart.passive="beginSwipe"
+      @touchmove="moveSwipe"
+      @touchend="endSwipe"
+      @touchcancel="cancelSwipe"
       >
         <div class="ds-fs-menu__handle-area" aria-hidden="true">
           <span class="ds-fs-menu__handle" />
@@ -183,7 +170,8 @@ function finishSwipe(event: PointerEvent) {
                   :icon="item.icon"
                   :show-icon="item.showIcon ?? false"
                   :href="item.href"
-                  appearance="Lr"
+                  :aria-current="item.value === modelValue ? 'true' : undefined"
+                  appearance="Lg"
                   type="Filter"
                   @click="selectItem(item)"
                 />
@@ -197,7 +185,7 @@ function finishSwipe(event: PointerEvent) {
             />
           </div>
 
-          <DsCrossButton
+          <DsBtnCross
             class="ds-fs-menu__close"
             aria-label="Закрыть меню"
             pressed-appearance="Toggled"
@@ -331,5 +319,23 @@ function finishSwipe(event: PointerEvent) {
   .ds-fs-menu__overlay {
     scroll-behavior: auto;
   }
+}
+
+/* Center the label itself; symmetric side tracks keep optional icons out of its alignment. */
+.ds-fs-menu__list .ds-dropdown-list-item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, max-content) 28px;
+  justify-content: center;
+  column-gap: 0;
+}
+.ds-fs-menu__overlay .ds-fs-menu__list .ds-dropdown-list-item.ds-dropdown-list-item--filter .ds-dropdown-list-item__label {
+  grid-column: 2;
+  grid-row: 1;
+  max-width: 100%;
+}
+.ds-fs-menu__list .ds-dropdown-list-item__icon {
+  grid-column: 3;
+  grid-row: 1;
+  margin-left: 12px;
 }
 </style>

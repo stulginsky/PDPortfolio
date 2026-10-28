@@ -20,7 +20,7 @@ const meta = {
       options: [
         'Download', 'Print', 'ArrowNavLeft', 'ArrowNavRight', 'ArrowNavUp',
         'Cross', 'MagnifyingGlass', 'Sun', 'Moon', 'GitHub', 'Figma', 'ExternalLink',
-        'Favicon', 'ChevronDown', 'ChevronUp',
+        'Favicon', 'ChevronDown', 'ChevronUp', 'Check',
       ],
       description: 'Figma Instance#1258:11; a canonical Foundation icon.',
     },
@@ -43,7 +43,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[ButtonIcon 1258:6254](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1258-6254)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [ButtonIcon 1258:6254](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1258-6254).\n\nThe component uses original Foundation SVGs as monochrome masks so the glyph follows the semantic color of each state. Hover and ActivePressed are real pointer states; toggled is the persistent state.\n\n</details>",
+        component: "[ButtonIcon 1258:6254](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1258-6254)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [ButtonIcon 1258:6254](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1258-6254).\n\nThe component uses original Foundation SVGs as monochrome masks so the glyph follows the semantic color of each state. Hover and ActivePressed are real pointer states; toggled is the persistent state.\n\n</details>",
       },
     },
   },

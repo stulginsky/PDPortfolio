@@ -43,7 +43,7 @@ defineEmits<{
   padding-right: var(--space-2);
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-regular);
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

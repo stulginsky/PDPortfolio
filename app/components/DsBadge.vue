@@ -48,7 +48,7 @@ const props = withDefaults(
 
 .ds-badge--card .ds-badge__text {
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-xs); /* 12px */
+  font-size: var(--text-size-12); /* 12px */
   font-weight: var(--text-weight-semibold); /* 600 */
   font-variation-settings: "wght" 600, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
@@ -66,7 +66,7 @@ const props = withDefaults(
 
 .ds-badge--herochirp .ds-badge__text {
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base); /* 16px */
+  font-size: var(--text-size-16); /* 16px */
   font-weight: var(--text-weight-semibold); /* 600 */
   font-variation-settings: "wght" 600, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

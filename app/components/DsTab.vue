@@ -5,7 +5,7 @@ withDefaults(
   defineProps<{
     /** Figma property TabLabel. */
     tabLabel?: string
-    /** Figma property Icon right=On. */
+    /** Figma property IconRight=On. */
     iconRight?: boolean
     /** Figma property Toolbar. */
     toolbar?: 'Main' | 'Image'
@@ -36,7 +36,7 @@ defineEmits<{
     :aria-current="toggled ? 'page' : undefined"
     @click="$emit('click', $event)"
   >
-    <span class="ds-tab__label">{{ tabLabel }}</span>
+    <span class="ds-tab__label"><span class="ds-tab__glyphs">{{ tabLabel }}</span></span>
     <span
       v-if="iconRight"
       class="ds-tab__icon"
@@ -59,7 +59,7 @@ defineEmits<{
   background: transparent;
   color: var(--text-default);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-base);
+  font-size: var(--text-size-16);
   font-weight: var(--text-weight-medium);
   font-variation-settings: var(--font-variation-body-accent-medium);
   line-height: 1.35;
@@ -95,6 +95,14 @@ defineEmits<{
 
 .ds-tab__label {
   line-height: inherit;
+  display: inline-flex;
+  align-items: center;
+  height: 1lh;
+}
+
+.ds-tab__glyphs {
+  display: block;
+  text-box: trim-both cap alphabetic;
 }
 
 .ds-tab__icon {

@@ -4,8 +4,25 @@
 
 # Colors
 
-Цвета PDPortfolio DS. Источник правды — [Figma PDPortfolio-Prod](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=0-1).
+Обновление2026-10-24: gray-500 ≈#777E8D, gray-700 ≈#4C5A70. Точные RGB floats читаются из tokens.css. text/muted и text/secondary сохраняют алиасы; независимые gray-700-alpha-20/35/50 в Figma остались прежними.
+
+Цвета PDPortfolio DS. Источник правды — [Figma PDPortfolio-DS](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1).
 Все значения читаются из `tokens.css` — CSS custom properties, отображённые из Figma Variables.
+
+## Confirmed decorative tokens
+
+<table>
+<thead><tr><th scope="col">Token</th><th scope="col">CSS</th><th scope="col">Value / alias</th></tr></thead>
+<tbody>
+<tr><td><code>decorative/deep-water</code></td><td><code>var(--decorative-deep-water)</code></td><td>#3B729D</td></tr>
+<tr><td><code>decorative/showcase/dc/background-green</code></td><td><code>var(--decorative-showcase-dc-background-green)</code></td><td>decorative/ostrich</td></tr>
+</tbody>
+</table>
+
+<ColorPalette>
+<ColorItem title="decorative/deep-water" subtitle="var(--decorative-deep-water)" colors={{value:"var(--decorative-deep-water)"}} />
+<ColorItem title="decorative/showcase/dc/background-green" subtitle="var(--decorative-showcase-dc-background-green)" colors={{value:"var(--decorative-showcase-dc-background-green)"}} />
+</ColorPalette>
 
 ## Decorative — декоративные фоны
 
@@ -14,9 +31,9 @@
 ### Палитра (Primitive)
 
 <ColorPalette>
-  <ColorItem title="decorative/turquoise" subtitle="var(--decorative-turquoise)" colors={{ turquoise: 'var(--decorative-turquoise)' }} />
-  <ColorItem title="decorative/mint" subtitle="var(--decorative-mint)" colors={{ mint: 'var(--decorative-mint)' }} />
-  <ColorItem title="decorative/cyan" subtitle="var(--decorative-cyan)" colors={{ cyan: 'var(--decorative-cyan)' }} />
+  <ColorItem title="decorative/sparrow" subtitle="var(--decorative-sparrow)" colors={{ turquoise: 'var(--decorative-sparrow)' }} />
+  <ColorItem title="decorative/jackdaw" subtitle="var(--decorative-jackdaw)" colors={{ mint: 'var(--decorative-jackdaw)' }} />
+  <ColorItem title="decorative/robin" subtitle="var(--decorative-robin)" colors={{ cyan: 'var(--decorative-robin)' }} />
   <ColorItem title="decorative/teal" subtitle="var(--decorative-teal)" colors={{ teal: 'var(--decorative-teal)' }} />
 </ColorPalette>
 
@@ -25,12 +42,12 @@
 Префикс всех ролей — `decorative/showcase/`. Значения являются aliases на декоративную палитру.
 
 <table>
-  <thead><tr><th>Роль</th><th>Primitive</th></tr></thead>
+  <thead><tr><th scope="col">Роль</th><th scope="col">Primitive</th></tr></thead>
   <tbody>
-    <tr><td><code>chirp-ai-health-assistant/background</code></td><td><code>decorative/turquoise</code></td></tr>
-    <tr><td><code>chirp-explainable-ai-ux/background</code></td><td><code>decorative/mint</code></td></tr>
-    <tr><td><code>chirp-ai-medical-brand/background</code></td><td><code>decorative/cyan</code></td></tr>
-    <tr><td><code>chirp-ai-design-system/background</code></td><td><code>decorative/cyan</code></td></tr>
+    <tr><td><code>chirp-ai-health-assistant/background</code></td><td><code>decorative/sparrow</code></td></tr>
+    <tr><td><code>chirp-explainable-ai-ux/background</code></td><td><code>decorative/jackdaw</code></td></tr>
+    <tr><td><code>chirp-ai-medical-brand/background</code></td><td><code>decorative/robin</code></td></tr>
+    <tr><td><code>chirp-ai-design-system/background</code></td><td><code>decorative/robin</code></td></tr>
     <tr><td><code>chirp-ai-design-system/background-underlay</code></td><td><code>decorative/teal</code></td></tr>
   </tbody>
 </table>
@@ -100,20 +117,25 @@
 
 ## Surface (Semantic)
 
-| Токен | Alias | Роль |
-|---|---|---|
-| `--surface-default` | `gray-00` | Фон страницы |
-| `--surface-subtle` | `gray-100` | Приподнятые панели |
-| `--surface-raised` | `gray-200` | Бордеры, разделители |
-| `--surface-action-primary` | `accent/violet` | CTA-кнопка (default) |
-| `--surface-action-primary-hover` | `accent/plum` | CTA hover + Avatar border hover |
-| `--surface-action-hover` | `accent/lavender` | Hover интерактивных элементов |
-| `--surface-action-pressed` | `accent/plum` | ActivePressed состояние |
-| `--surface-action-toggled` | `accent/aubergine` | Toggled/Selected состояние |
-| `--surface-badge-chirp` | `accent/mint` | Badge Type=HeroChirp фон |
-| `--surface-menu-item-default` | `accent/plum` | Пункт меню (default) |
-| `--surface-menu-item-hover` | `accent/violet` | Пункт меню (hover) |
-| `--surface-menu-item-pressed` | `accent/aubergine` | Пункт меню (pressed) |
+<table>
+  <thead>
+    <tr><th scope="col">Токен</th><th scope="col">Alias</th><th scope="col">Роль</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--surface-default</code></td><td><code>gray-00</code></td><td>Фон страницы</td></tr>
+    <tr><td><code>--surface-subtle</code></td><td><code>gray-100</code></td><td>Приподнятые панели</td></tr>
+    <tr><td><code>--surface-raised</code></td><td><code>gray-200</code></td><td>Бордеры, разделители</td></tr>
+    <tr><td><code>--surface-action-primary</code></td><td><code>accent/violet</code></td><td>CTA-кнопка (default)</td></tr>
+    <tr><td><code>--surface-action-primary-hover</code></td><td><code>accent/plum</code></td><td>CTA hover + Avatar border hover</td></tr>
+    <tr><td><code>--surface-action-hover</code></td><td><code>accent/lavender</code></td><td>Hover интерактивных элементов</td></tr>
+    <tr><td><code>--surface-action-pressed</code></td><td><code>accent/plum</code></td><td>ActivePressed состояние</td></tr>
+    <tr><td><code>--surface-action-toggled</code></td><td><code>accent/aubergine</code></td><td>Toggled/Selected состояние</td></tr>
+    <tr><td><code>--surface-badge-chirp</code></td><td><code>accent/mint</code></td><td>Badge Type=HeroChirp фон</td></tr>
+    <tr><td><code>--surface-menu-item-default</code></td><td><code>accent/plum</code></td><td>Пункт меню (default)</td></tr>
+    <tr><td><code>--surface-menu-item-hover</code></td><td><code>accent/violet</code></td><td>Пункт меню (hover)</td></tr>
+    <tr><td><code>--surface-menu-item-pressed</code></td><td><code>accent/aubergine</code></td><td>Пункт меню (pressed)</td></tr>
+  </tbody>
+</table>
 
 <ColorPalette>
   <ColorItem title="surface/default" subtitle="var(--surface-default)" colors={{ default: 'var(--surface-default)' }} />
@@ -132,20 +154,25 @@
 
 ## Text (Semantic)
 
-| Токен | Alias | Роль |
-|---|---|---|
-| `--text-default` | `gray-900` | Основной текст |
-| `--text-secondary` | `gray-700` | Вторичный текст |
-| `--text-muted` | `gray-500` | Приглушённый текст |
-| `--text-subtle` | `gray-300` | Очень приглушённый |
-| `--text-inverse` | `gray-00` | Инверсный (на тёмном фоне) |
-| `--text-accent-general` | `accent/violet` | Акцентный (общий) |
-| `--text-accent-chirp` | `blue-600` | Акцентный (Chirp) |
-| `--text-body-accent` | `accent/aubergine` | Body акцент |
-| `--text-action` | `accent/aubergine` | Action-текст |
-| `--text-link-hover` | `accent/violet` | Ссылка hover |
-| `--text-link-pressed` | `accent/plum` | Ссылка pressed |
-| `--text-error` | `error-500` | Ошибка |
+<table>
+  <thead>
+    <tr><th scope="col">Токен</th><th scope="col">Alias</th><th scope="col">Роль</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--text-default</code></td><td><code>gray-900</code></td><td>Основной текст</td></tr>
+    <tr><td><code>--text-secondary</code></td><td><code>gray-700</code></td><td>Вторичный текст</td></tr>
+    <tr><td><code>--text-muted</code></td><td><code>gray-500</code></td><td>Приглушённый текст</td></tr>
+    <tr><td><code>--text-subtle</code></td><td><code>gray-300</code></td><td>Очень приглушённый</td></tr>
+    <tr><td><code>--text-inverse</code></td><td><code>gray-00</code></td><td>Инверсный (на тёмном фоне)</td></tr>
+    <tr><td><code>--text-accent-general</code></td><td><code>accent/violet</code></td><td>Акцентный (общий)</td></tr>
+    <tr><td><code>--text-accent-chirp</code></td><td><code>blue-600</code></td><td>Акцентный (Chirp)</td></tr>
+    <tr><td><code>--text-body-accent</code></td><td><code>accent/aubergine</code></td><td>Body акцент</td></tr>
+    <tr><td><code>--text-action</code></td><td><code>accent/aubergine</code></td><td>Action-текст</td></tr>
+    <tr><td><code>--text-link-hover</code></td><td><code>accent/violet</code></td><td>Ссылка hover</td></tr>
+    <tr><td><code>--text-link-pressed</code></td><td><code>accent/plum</code></td><td>Ссылка pressed</td></tr>
+    <tr><td><code>--text-error</code></td><td><code>error-500</code></td><td>Ошибка</td></tr>
+  </tbody>
+</table>
 
 <ColorPalette>
   <ColorItem title="text/default" subtitle="var(--text-default)" colors={{ default: 'var(--text-default)' }} />
@@ -166,4 +193,27 @@
   <ColorItem title="border/error" subtitle="var(--border-error)" colors={{ borderError: 'var(--border-error)' }} />
   <ColorItem title="border/action-hover" subtitle="var(--border-action-hover)" colors={{ borderActionHover: 'var(--border-action-hover)' }} />
   <ColorItem title="border/action-pressed" subtitle="var(--border-action-pressed)" colors={{ borderActionPressed: 'var(--border-action-pressed)' }} />
+  <ColorItem title="border/case-card" subtitle="var(--border-case-card) → card/color-border · #B0D9C1" colors={{ caseCard: 'var(--border-case-card)' }} />
 </ColorPalette>
+
+
+## Variables · 2026-10-25
+
+`accent/lavender` синхронизирован с Figma: #F0E0FF. Значения цветов и альфа-каналы сохраняются без округления в коде.
+
+<table>
+  <thead>
+    <tr><th>Semantic</th><th>Primitive</th><th>CSS</th></tr>
+  </thead>
+  <tbody>
+<tr><td>text/success</td><td>success-500</td><td><code>--text-success</code></td></tr>
+<tr><td>surface/magnifying-img-preview</td><td>gray-700-alpha-20</td><td><code>--surface-magnifying-img-preview</code></td></tr>
+  </tbody>
+</table>
+
+<ColorPalette>
+<ColorItem title="text/success" subtitle="var(--text-success)" colors={{ success: 'var(--text-success)' }} />
+<ColorItem title="surface/magnifying-img-preview" subtitle="var(--surface-magnifying-img-preview)" colors={{ preview: 'var(--surface-magnifying-img-preview)' }} />
+</ColorPalette>
+
+Контраст text/success на светлых поверхностях требует отдельного согласования; цвет автоматически не изменён.

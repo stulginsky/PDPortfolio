@@ -19,11 +19,12 @@ const iconOptions = [
   'ExternalLink',
   'ChevronDown',
   'ChevronUp',
+  'Check',
 ]
 
 /**
  * DropdownListItem — DS component 325:1613
- * Figma: https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=325-1613
+ * Figma: https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=325-1613
  */
 const meta = {
   title: 'Components/DropdownListItem',
@@ -38,9 +39,9 @@ const meta = {
   },
   argTypes: {
     label: { control: 'text', description: 'Figma TextListItem#1295:0' },
-    appearance: { control: 'inline-radio', options: ['Sm', 'Lr'] },
+    appearance: { control: 'inline-radio', options: ['Sm', 'Lg'] },
     icon: { control: 'select', options: iconOptions },
-    showIcon: { control: 'boolean', description: 'Figma Show Icon#1295:39' },
+    showIcon: { control: 'boolean', description: 'Figma ShowIcon#1295:39' },
     type: { control: 'inline-radio', options: ['General', 'Filter'] },
   },
   parameters: {
@@ -65,8 +66,8 @@ export const AppearanceSm: Story = {
   },
 }
 
-export const AppearanceLr: Story = {
-  args: { appearance: 'Lr', label: 'UX research', type: 'Filter', showIcon: false },
+export const AppearanceLg: Story = {
+  args: { appearance: 'Lg', label: 'UX research', type: 'Filter', showIcon: false },
 }
 
 export const FilterType: Story = {
@@ -105,8 +106,8 @@ export const AllVariants: Story = {
           <DsDropdownListItem label="Long menu text wraps instead of being truncated" appearance="Sm" type="Filter" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;width:286px;">
-          <div style="font:12px var(--text-font-sans);color:var(--text-muted);">Filter / Lr / no icon</div>
-          <DsDropdownListItem label="List item" appearance="Lr" type="Filter" :show-icon="false" />
+          <div style="font:12px var(--text-font-sans);color:var(--text-muted);">Filter / Lg / no icon</div>
+          <DsDropdownListItem label="List item" appearance="Lg" type="Filter" :show-icon="false" />
         </div>
       </div>
     `,

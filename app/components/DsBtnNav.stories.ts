@@ -30,7 +30,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: "[BtnNav 281:506](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=281-506)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [BtnNav 281:506](https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=281-506). It composes `DsButtonIcon` with `raised` and the original `ArrowNavLeft`, `ArrowNavRight`, or `ArrowNavUp` Foundation asset. Hover and ActivePressed are native pointer states.\n\n</details>",
+        component: "[BtnNav 281:506](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=281-506)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [BtnNav 281:506](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=281-506). It composes `DsButtonIcon` with `raised` and the original `ArrowNavLeft`, `ArrowNavRight`, or `ArrowNavUp` Foundation asset. Hover and ActivePressed are native pointer states.\n\n</details>",
       },
     },
   },

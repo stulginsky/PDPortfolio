@@ -1,4 +1,29 @@
-/* Self-hosted Roboto Flex subsets. The source files are versioned in this repo. */
+/* Self-hosted fonts. Brand families are opt-in; DS typography remains Roboto Flex. */
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("../fonts/pt-sans-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("../fonts/pt-sans-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Playfair";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  src: url("../fonts/playfair-variable-normal.ttf") format("truetype");
+}
+
 @font-face {
   font-family: "Roboto Flex Variable";
   font-style: normal;

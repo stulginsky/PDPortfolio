@@ -5,9 +5,12 @@ const props = withDefaults(
   defineProps<{
     /** Figma TEXT property Title#1016:1. */
     title?: string
+    /** Figma Btn only=On: centered 128px magnifying control. */
+    btnOnly?: boolean
   }>(),
   {
     title: 'Value',
+    btnOnly: false,
   },
 )
 
@@ -18,9 +21,9 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <section class="ds-img-title" aria-label="Заголовок изображения">
+  <section class="ds-img-title" :class="{ 'ds-img-title--btn-only': props.btnOnly }" :aria-label="props.btnOnly ? undefined : 'Заголовок изображения'">
     <div class="ds-img-title__row">
-      <div class="ds-img-title__title-wrap">
+      <div v-if="!props.btnOnly" class="ds-img-title__title-wrap">
         <h2 class="ds-img-title__title">{{ props.title }}</h2>
       </div>
       <DsButtonIcon
@@ -68,7 +71,7 @@ const emit = defineEmits<{
   margin: 0;
   color: var(--text-muted);
   font-family: var(--text-font-sans);
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-weight: var(--text-weight-semibold);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
@@ -115,7 +118,7 @@ const emit = defineEmits<{
   }
 
   .ds-img-title:not([data-storybook-breakpoint='base']) .ds-img-title__title {
-    font-size: var(--text-size-xl);
+    font-size: var(--text-size-22);
     font-variation-settings: var(--font-variation-heading-md);
     line-height: 1.3;
     letter-spacing: 0.03em;
@@ -137,7 +140,7 @@ const emit = defineEmits<{
 }
 
 .ds-img-title[data-storybook-breakpoint='base'] .ds-img-title__title {
-  font-size: var(--text-size-lg);
+  font-size: var(--text-size-18);
   font-variation-settings: var(--font-variation-heading-base);
   line-height: 1.45;
   letter-spacing: 0.01em;
@@ -158,7 +161,7 @@ const emit = defineEmits<{
 }
 
 .ds-img-title[data-storybook-breakpoint='min-768'] .ds-img-title__title {
-  font-size: var(--text-size-xl);
+  font-size: var(--text-size-22);
   font-variation-settings: var(--font-variation-heading-md);
   line-height: 1.3;
   letter-spacing: 0.03em;
@@ -169,5 +172,24 @@ const emit = defineEmits<{
   .ds-img-title:not([data-storybook-breakpoint='base']) {
     width: fit-content;
   }
+}
+/* Source Btn only=On has identical geometry in both breakpoint variants. */
+.ds-img-title.ds-img-title--btn-only {
+  flex: none;
+  width: 128px;
+  height: 128px;
+  min-height: 128px;
+  padding: var(--space-3);
+  justify-content: center;
+  border-radius: var(--radius-xxxxlg);
+  background: var(--surface-scroll-thumb);
+  backdrop-filter: var(--image-preview-magnifying-img-preview);
+}
+.ds-img-title.ds-img-title--btn-only .ds-img-title__row {
+  flex: none;
+  width: auto;
+  padding: var(--space-2);
+  border-radius: var(--radius-xxxlg);
+  background: var(--surface-subtle);
 }
 </style>
