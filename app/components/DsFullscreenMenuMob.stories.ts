@@ -98,6 +98,7 @@ export const Sandbox: Story = {
         { label: 'Брендинг', value: 'branding' },
         { label: 'Креатив', value: 'creative' },
         { label: 'Jewelry', value: 'jewelry' },
+        { label: 'Лэндинг', value: 'landing' },
         { label: 'Gamedev', value: 'gamedev' },
         { label: 'Видео', value: 'video' },
         { label: 'Упаковка', value: 'packaging' },
@@ -163,6 +164,7 @@ export const Sandbox: Story = {
     const navigationTrigger = canvas.getByRole('button', { name: 'Выбрать раздел' })
     await expect(navigationTrigger).toHaveTextContent('Overview')
     await userEvent.click(navigationTrigger)
+    await expect(document.querySelector('.ds-fs-menu__handle')).toBeNull()
 
     const overlay = within(document.body)
     const figma = overlay.getByRole('link', { name: 'Figma' })

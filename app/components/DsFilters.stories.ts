@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
+import { expect, within } from 'storybook/test'
 import DsFilters from './DsFilters.vue'
 
 const meta = {
@@ -13,7 +14,7 @@ const meta = {
   argTypes: {
     modelValue: {
       control: 'select',
-      options: ['all', 'product', 'ux', 'design-system', 'branding', 'creative', 'jewelry', 'gamedev', 'video', 'packaging'],
+      options: ['all', 'product', 'ux', 'design-system', 'branding', 'creative', 'jewelry', 'landing', 'gamedev', 'video', 'packaging'],
       description: 'Единственная выбранная категория. `all` соответствует «Все кейсы».',
     },
     ariaLabel: {
@@ -25,7 +26,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477)\n\n<details>\n<summary>Техническое описание</summary>\n\nResponsive portfolio filters — DS [1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477).\n\n| Breakpoint | Composition |\n|---|---|\n| base (<1024px) | FullscreenMenu/Mob with all ten categories |\n| min-1024 (1024–1279px) | Seven priority filters + Gamedev & more overflow |\n| min-1280 (≥1280px) | All ten filters in one row |\n\n</details>",
+        component: "[1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477)\n\n<details>\n<summary>Техническое описание</summary>\n\nResponsive portfolio filters — DS [1021:3477](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3477).\n\n| Breakpoint | Composition |\n|---|---|\n| base (<1024px) | FullscreenMenu/Mob with all eleven categories |\n| min-1024 (1024–1279px) | Seven priority filters + Gamedev & more overflow |\n| min-1280 (≥1280px) | All eleven filters in one row |\n\n</details>",
       },
     },
   },
@@ -36,6 +37,15 @@ type Story = StoryObj<typeof meta>
 
 /** One interactive canvas for the three Figma breakpoint variants. */
 export const Sandbox: Story = {
+  play: async ({ canvas, userEvent }) => {
+    await userEvent.click(canvas.getByRole('button', { name: 'Выбрать категорию' }))
+    const dialog = within(document.body).getByRole('dialog')
+    const buttons = within(dialog).getAllByRole('button')
+    const labels = buttons.map(button => button.textContent?.trim())
+    expect(labels.indexOf('Лэндинг')).toBe(labels.indexOf('Jewelry') + 1)
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Лэндинг', exact: true }))
+    await expect(canvas.getByRole('button', { name: 'Выбрать категорию' })).toHaveTextContent('Лэндинг')
+  },
   render: (args) => ({
     components: { DsFilters },
     setup() {

@@ -1,0 +1,2377 @@
+{
+  "version": 1,
+  "algorithm": "sha256",
+  "scope": "Standalone PNG files reachable from production pages and Storybook, including responsive profiles and interaction states. Embedded PNG data inside SVG and non-PNG formats are excluded.",
+  "files": [
+    {
+      "path": "public/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png",
+      "bytes": 18220,
+      "width": 340,
+      "height": 643,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "313c36c02cc123684fa00c6580966e7a68cbb55dd664e9b54b2c670af46ca3bc",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiHealthAssistant.vue",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 22199,
+      "originalSha256": "34a8be405bfaeaeaeb4aa8568d8e946f15594ab964e0b1c776d5d3762146d948",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png",
+      "bytes": 22382,
+      "width": 452,
+      "height": 577,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "06fe111f2e45a6d2ca4a66848e6cee663c9ecba4d56b74e0af74a00ff1fb6062",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiHealthAssistant.vue",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 28629,
+      "originalSha256": "e50f447cda6f5f61dd551d27fa21bd034b2e4b853a6ba54ce8f5b51ed7edd6f0",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png",
+      "bytes": 35614,
+      "width": 513,
+      "height": 603,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e0edc068737f683354059588b174fff836e5cb7df282636ec34be601800151f1",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiHealthAssistant.vue",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 42897,
+      "originalSha256": "3a87b3474be30655d10a360c43f3772b3aed02839fd3ddd0f193e9654d45fd3a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-brand/hero-layers/frame-3464590-1.png",
+      "bytes": 83417,
+      "width": 842,
+      "height": 1420,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "11479d1b9e44b1b404fd8f8c6916c1d98aef32d47db54de3178e65c1029d58e6",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-br-hero-layout/base.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-768.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1024.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1280.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1440.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1920.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 333210,
+      "originalSha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-brand/hero-layers/group-4215-1-1.png",
+      "bytes": 66179,
+      "width": 686,
+      "height": 1282,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7870492c1f1142c755f10470794d09802b7078e0320c882af82cc98c29f50d2a",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-br-hero-layout/base.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-768.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1024.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1280.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1440.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1920.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 243255,
+      "originalSha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-brand/hero-layers/image-35.png",
+      "bytes": 23440,
+      "width": 532,
+      "height": 512,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e3220b4f7e43f8970bdc613d756d50b3d3b855c5f2f077e547307ce8b471b221",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-br-hero-layout/base.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-768.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1024.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1280.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1440.json",
+          "rule": "reachable asset URL"
+        },
+        {
+          "file": "app/components/chirp-br-hero-layout/min-1920.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 121093,
+      "originalSha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/button.png",
+      "bytes": 16098,
+      "width": 603,
+      "height": 1260,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "a20e26d125c9fe00fc0d9e9fee04265b617665837e9c7997e7b84cbdd89f3f76",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 59284,
+      "originalSha256": "c24248ac1a50fadfbff24e88d145997c420bcd95e04ecf4c1bf4ea6aacb7a996",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/chat-bubble.png",
+      "bytes": 24796,
+      "width": 603,
+      "height": 1540,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "b84f0c7b358b364beec26f6a6b71dccfbaf079f26994320c3bf3221b056fbce7",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 71929,
+      "originalSha256": "ac3782849904579d5f0a865f99ff261fd222b537efe57132832ddf4d4832ff94",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/code/image.png",
+      "bytes": 336361,
+      "width": 583,
+      "height": 4096,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "1217ea82bbc648f9d76f5d006d68ece838f7dc769fcdeff27d571b9e5f67b522",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 1236439,
+      "originalSha256": "a7656108e059b33320eb448d6a93133e96fbf4a8db8766dd3c2fd784a224a20b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/color-brand.png",
+      "bytes": 9271,
+      "width": 603,
+      "height": 560,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "3426debf3a478a109ebcda71fced9349feef0e4826a9404865159e14e3711e80",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 30113,
+      "originalSha256": "bb8057b90227f1c3966a7e09cd53bf1ad9adc98b8dfc4eff98eb34b4466e978c",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/date-picker-boundary.png",
+      "bytes": 9057,
+      "width": 603,
+      "height": 596,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "0a76adb752e9bc9a1b149a0b10c4b7d697b7d5875770376d95c18af3bd30c29b",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 26538,
+      "originalSha256": "43eafd36f7c0e6d4e6d7724b9af95857e21b02c63f3753c4982d98590dca7d50",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/images.png",
+      "bytes": 55909,
+      "width": 603,
+      "height": 771,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "0a1c30d3e25e83b9ab112b74b2557d95ecbeac4f7aa729a452cc9ee29e104453",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 217073,
+      "originalSha256": "0c677fd11be801907b65fcd43d6bc066e1799c4ab6e07df6673fe60893058eb6",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/input-gender-select.png",
+      "bytes": 12384,
+      "width": 603,
+      "height": 988,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "432c8f4ed3eff8da8ea91eb4bb9b492921e243ce2f86ba7da35f4e64e0f10e22",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 38124,
+      "originalSha256": "d4477128e1460465a6a2ee20f2a323804342ac7d1b81c0b8e47a61510c842565",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/input-text.png",
+      "bytes": 2110,
+      "width": 603,
+      "height": 360,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "5106870f2796f1500b7b188656121f8571b8ac14e392a80d1129692e9740c472",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 7268,
+      "originalSha256": "fe3b370058d954d742853c21738a225515223ccdbff6c26bbb0519b13e73b553",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/logotype.png",
+      "bytes": 11407,
+      "width": 603,
+      "height": 852,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "e4015338f134963c1572cca1939c1a595294ba06629939bd25a8db41d16a8ece",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 31658,
+      "originalSha256": "dc84d8ee1e986fd9f816742bf8fdce060b1a9dea3e09cd65aa156e2847b8bb3b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/row-diagnosis-item.png",
+      "bytes": 4292,
+      "width": 603,
+      "height": 350,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "d24580c6be2ba71c3c28af3f17468988b350ec77240412f9d61152c03932f041",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 16086,
+      "originalSha256": "82e105edbf8c47d9a74443b09d514d3a3692ffdfd2e79284c9d0ba923d220213",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/row-list-item-short.png",
+      "bytes": 2263,
+      "width": 603,
+      "height": 196,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "ca5091d54236fd85375a765c37d2904471f7620f321fea96d79456765d0e09b5",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 6285,
+      "originalSha256": "b2f234a1535055f04abf1de3510d8d6d159c886ecd426c454988d1d1e2495058",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/row-list-item-tall.png",
+      "bytes": 10689,
+      "width": 603,
+      "height": 792,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "f406d5552373f90ac1328e62fd8ba6374eedbda5b7f537b8e232cc46f93390e7",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 29480,
+      "originalSha256": "8c2db30d245158d7c30f8f067453941a23bae9005b18644983945659bb663957",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/card-layers/row-query-result-item.png",
+      "bytes": 3739,
+      "width": 603,
+      "height": 200,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "6517e5495174b65992ac4fe6be95d47c76180780a131960680324cf32d14138b",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiDesignSystemScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 9366,
+      "originalSha256": "c9356cb995a82bbbddba22d2f03d41ff12de4a50f3ada463524983d94771dca7",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-design-system/hero-layers/b05-metaphor-songbird-v1-1.png",
+      "bytes": 94954,
+      "width": 1024,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7ee001fa8cebac074c12cbecb30f01513d17c1fd3b36f79a26abf46ce4dceee5",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpDsHero.vue",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 423372,
+      "originalSha256": "ae9260847b3dc0e12d77b5dff3293e920930898e43eb77e6de7a9bee429444bb",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-product/hero-layers/back-pr01-m.png",
+      "bytes": 147761,
+      "width": 1057,
+      "height": 740,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "c13273d70e7a3debade7fb5b97ab2caaccf7eb5a76d746a112d9b595fcf2688b",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-pr-hero.scene-context.ts",
+          "rule": "scene layer name lowercased + .png (ChirpPrHero raster resolver)"
+        }
+      ],
+      "originalBytes": 929365,
+      "originalSha256": "b01cc3ea3bcf9ebcf3ecf67ab05f154ac1f5c610ee9704b0fb2dadcfee356d70",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-product/hero-layers/back-pr01-w.png",
+      "bytes": 291717,
+      "width": 2045,
+      "height": 600,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7c0c3ce49aecfe9a9a91ebb78804d8e0df0253f2116ed3986d1506c413737e89",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-pr-hero.scene-context.ts",
+          "rule": "scene layer name lowercased + .png (ChirpPrHero raster resolver)"
+        }
+      ],
+      "originalBytes": 1600338,
+      "originalSha256": "33cb249601c5d37daf8f22da14f27053faf285cbc6e9c37c4b00c9b073edc116",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-product/hero-layers/laptop-p01-w.png",
+      "bytes": 62394,
+      "width": 1136,
+      "height": 614,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "9085f12fcff1006f73c118151ba02a14c971c0f0b8a70f0b55259eeab2973114",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-pr-hero.scene-context.ts",
+          "rule": "scene layer name lowercased + .png (ChirpPrHero raster resolver)"
+        }
+      ],
+      "originalBytes": 236585,
+      "originalSha256": "b6d13c812736584ddce466b96e64d50767c4d14543b3b6103ee99de8b1812b9c",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-product/hero-layers/phones-p01-w.png",
+      "bytes": 73135,
+      "width": 759,
+      "height": 546,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e556eb17e077635f98ae57f3f43675c935cbad4e3cd874c1531560aeaddcc0a3",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-pr-hero.scene-context.ts",
+          "rule": "scene layer name lowercased + .png (ChirpPrHero raster resolver)"
+        }
+      ],
+      "originalBytes": 81257,
+      "originalSha256": "e1ecda8aeb0eeae27894837a2f9c461352648f9a3c3caa5ebd7a96f16fe05f1e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/base/back-for-all.png",
+      "bytes": 146983,
+      "width": 1459,
+      "height": 852,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "97e7a50eb6b8a522ac3cb566aa6a739f9e9448e27a229690ff47213209ce9bd8",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 1141316,
+      "originalSha256": "d8300ba30801028b90ea7ee6f8c7a1ef35dda59f62fa29ab7b7e42385014a195",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/base/green.png",
+      "bytes": 77905,
+      "width": 1019,
+      "height": 795,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "5e33b5522efc3bb54812fa194db1f6a91471dd48cd69c89deb73711358dacb08",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 730972,
+      "originalSha256": "a126f4e8ecc64b8e6639815ffeebf6c5e48dae071b3079a5655071a431f96bb8",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1024/background.png",
+      "bytes": 171549,
+      "width": 1624,
+      "height": 1008,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "411c6670113018e57f3970c1258ea53d508872106260af16525e888e45394512",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 1849774,
+      "originalSha256": "31fcae0ba3e56366e9a8d5a6cf6eb7c2d6b83e65dfeb711612365724d4377a72",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1024/green.png",
+      "bytes": 57168,
+      "width": 1303,
+      "height": 607,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "4d7aca82495b5f88e77706d4e20988cb14406f548db67c18c02f33ef980c5585",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 816335,
+      "originalSha256": "ac2ab88555bd99af2843a6bf078d5a04677d9ad8364e7f4420ae61a1caf9901f",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1280/background.png",
+      "bytes": 225402,
+      "width": 1880,
+      "height": 1092,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "3c3bf30b8bd93dcfa398bd54728e1b3cc1bffef5d91508bca0da462cb09bfe36",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 2413891,
+      "originalSha256": "d410935f2dddadf21d6753da4dc60f37a62e7f708309f203ad6d1811f43c2529",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1280/green.png",
+      "bytes": 91234,
+      "width": 1598,
+      "height": 740,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "05d3471edc3ab7adf7e96054af15fbf9c3cd0bd05debc6fdaa22b3710deb1ba4",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 1194080,
+      "originalSha256": "4e7954310d38d1b8a8dccab46b0affd1dd113bf78fb78a19eb395037c968bd7a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1440/background.png",
+      "bytes": 272585,
+      "width": 2040,
+      "height": 1112,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "0cf9b2992bb3020522c94116d8c4a06744584eb198fff6645786e177acfbe25e",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 2768374,
+      "originalSha256": "97a7df743f5fff4bc3461bbe4bb52b5e8eb06173efef00c984c545fe6b719663",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1440/green.png",
+      "bytes": 121597,
+      "width": 1793,
+      "height": 806,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "73c8feaaa9cbc005acff03c783da8317d2e48d41e6752d0f0eb1586cac3f1e97",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 1647330,
+      "originalSha256": "5e5e41d1ddce5b8c0bae0caba9cb786e969abbcf6e4721e175c5918d2b9d9bf5",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1920/background.png",
+      "bytes": 588638,
+      "width": 2520,
+      "height": 1267,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "53718a6fa4daf15c109cb8c8087a80b0b8073e659e31460bfe87cd158d56a7fc",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 3773187,
+      "originalSha256": "9da18c39ade16ff61618548259f8e83c87aead22ac8219d3332065f64cd0f404",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-1920/green.png",
+      "bytes": 182803,
+      "width": 2373,
+      "height": 1000,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "4bc683f4bc3b99f827d035f293010a6316c655eb8ec32b7af5b64a86bbd322cb",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 2373024,
+      "originalSha256": "7adcc02565d049cfa35f1bb0e2dd151d342c323e22298f1fae2bb26f0a71d1a9",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-768/back-for-all.png",
+      "bytes": 580747,
+      "width": 2297,
+      "height": 1098,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7b92d793b067e6ff0971d317c0e0ca09b8f1e67c897c815525984b6473befe8e",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 2328354,
+      "originalSha256": "b773c1878752b09db7dbce2e683457f1a493602557fb3c52cc254a901693ca8c",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/min-768/green.png",
+      "bytes": 277775,
+      "width": 2124,
+      "height": 1596,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "e4f32ab3b89a08326e10b41b525f8a8a0ba70d7e9d677f4cffeaf7acd1e45eb2",
+      "usedBy": [
+        {
+          "file": "app/components/chirp-ux-hero.raster-assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 2502078,
+      "originalSha256": "4cb2debd821ccf83c9bb45e14d46e40739d53fc3b61b75e1bfe8595c994d8d58",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/chirp-ux/hero-layers/phones-ux.png",
+      "bytes": 81538,
+      "width": 961,
+      "height": 832,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "027ec6db1a522f67cea16331b6c225c0777d75014d069dc12926b15b4b7d99d1",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpUxHero.vue",
+          "rule": "component base URL + PNG filename"
+        }
+      ],
+      "originalBytes": 96929,
+      "originalSha256": "8e61648e3c566dcc312d8f03b3004b0b254a7f5ac936b60412ff91f5adeb0e60",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/00-sky.png",
+      "bytes": 236141,
+      "width": 2048,
+      "height": 1149,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "2a5be3bd2e66ecc3f990992bbc143211a60dd4629dfae5e65f7a3e747a74e00d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 424379,
+      "originalSha256": "74b8723dcde87df56b6e9234d5d316a39b46308b061fd023fde812e337bbf16e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/01-cloud.png",
+      "bytes": 27909,
+      "width": 959,
+      "height": 498,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "59d48d735b15dde6c88aa3b9a566201107b9bcffc550ca248d39c361b188e425",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 168622,
+      "originalSha256": "d84ef9d23746862f5123b2b0bbed7e24c0ffea272e082e8809d8cb93f44e5ab8",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/05-landform-city-1st/05-landform-city-1st.png",
+      "bytes": 304322,
+      "width": 2178,
+      "height": 656,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "2bf20bb02f7a4953b4a719dbe9bd56315f31a1dc94d4c24f0ffd229e27fc5138",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 1278119,
+      "originalSha256": "cb7dc9d7f85f5016155ee6aa1d2fd69cfd18ab9c32a9223e4a28e08e77ee213f",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/06-landform-city-2nd.png",
+      "bytes": 109327,
+      "width": 2178,
+      "height": 656,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "b31d28ea8ef0bfdff3536254445e3cdfc83efe28e9ec22c844e1880d060dc588",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 725140,
+      "originalSha256": "784ae5d25fccc3f10fd7d213cf32d07652f0acb3336ce1ed00dc6e10dbd41325",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/07-tussock-1.png",
+      "bytes": 14690,
+      "width": 281,
+      "height": 156,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "eb7d2122c371dc17462187f00bb24570595d4bebe6704b5d30c13431309dfc18",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 64484,
+      "originalSha256": "5aa2acd7e94eb899a39c27a627dc27509fa49560da227a8d5f36f301716b6408",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/base/default/03-mountains.png",
+      "bytes": 11384,
+      "width": 336,
+      "height": 77,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "3cd6ed44371030b9d7b5723167039acb72c7d63f6c3b819c5c086a78b7188fca",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 46197,
+      "originalSha256": "9e372e1400a0c35ba4e21ea6661fd753efd8aed8a6d486fcaf4bfba78a80c3cb",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/card-layers/min-768/default/03-mountains.png",
+      "bytes": 24293,
+      "width": 540,
+      "height": 123,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "96e6e1a65f231c5a15f380118451cf47f42a3efbded42e6169dc1d9d64ff04ee",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr.assets.ts",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 106056,
+      "originalSha256": "5d1b864cffd10cc5ed7dffdbb36b8b8b9cb71599ed72b246874d8dd4237084ad",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/01-sky.png",
+      "bytes": 44986,
+      "width": 921,
+      "height": 464,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "a80bec323fd9ca2d719ec6f2c6df3c0e6080f757f30e7beb70144f4ef6bff8c8",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 73698,
+      "originalSha256": "e0c031e6264fe82c20376713eb77345ba22adff2ff6452305d2e11ff90b4b42a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/02-cloud.png",
+      "bytes": 24748,
+      "width": 937,
+      "height": 570,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "848ae94a4cce8aa0399191f2c2806263483ab65b7ea93f7dbb1c479f11bd7de6",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 175283,
+      "originalSha256": "d0bba829cb7793d4168c1c4bb7bf8dfef6cd3907ab134c0f2417dc26246b9a98",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/05-landform-city-1st.png",
+      "bytes": 23116,
+      "width": 492,
+      "height": 180,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "8c1e7818279c21a59c1a7063052a90fb3b05242651ae44121d2af9bfa177df3d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 101262,
+      "originalSha256": "f3ba17c938451cd301d6ec3f1284423d5bc7fe26718f8bf9331e77ed8bcaacb0",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/06-landform-city-2nd.png",
+      "bytes": 7724,
+      "width": 337,
+      "height": 59,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "ba99b814fc7b37a9583f16568d47504bdebd606c301d03c9ac870de11bd72374",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 37002,
+      "originalSha256": "99d966402b6fbca0113b5d863a630a06481e3e94dabfe4445cc85f0f64b75e92",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/07-tussock.png",
+      "bytes": 2346,
+      "width": 64,
+      "height": 36,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "73961149f1950a41cbbe2e9170c1d3c5edcd101d6bd23cb9446f5d095d868e2d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 4788,
+      "originalSha256": "9b0be7669b3b658dce28c1d4a3a42ef866c5ceb52a8f961730bcfa9c7189ee52",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/base/08-dimmer.png",
+      "bytes": 11361,
+      "width": 320,
+      "height": 488,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "63aac3dbb1ac6cdfdb3782d1da1e3e0dfad4e7ea51a2f0ff8d67c115c2408cf0",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: base"
+        }
+      ],
+      "originalBytes": 116782,
+      "originalSha256": "8895a0fc0cdac6bb595434280d5db9078d412de708776111bfb1eff8431ce3c9",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/01-sky.png",
+      "bytes": 50909,
+      "width": 1331,
+      "height": 376,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e542b16ddc95f3f8461a86bd493c574cfb4c32cdac3166dc7831d352d57470d8",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 115250,
+      "originalSha256": "7a90e39c482c432fc80e7c67ba682b21917ef3a916bae79e8f643e4be15bb5aa",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/02-cloud.png",
+      "bytes": 39098,
+      "width": 1324,
+      "height": 663,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7b41d9a5fc351087207229d964d7c8c3d0d129a0e7fee45b9fcbe91d30ab179a",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 290045,
+      "originalSha256": "c87f6086d4a721893ed7e3ee8bee983f84d750a0cf636cbc00c406142ebb6ac1",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/05-landform-city-1st.png",
+      "bytes": 128783,
+      "width": 1331,
+      "height": 438,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "cec54540b1942a596b2abf7725dda131b4677ccc80d9ae7ef289554ee6d88258",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 593921,
+      "originalSha256": "90ed7a07aee7789d3fdb7a1dce43cc0356a9c2529ce76c72d55be4472f95f78b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/06-landform-city-2nd.png",
+      "bytes": 40037,
+      "width": 911,
+      "height": 159,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "4b140a3f51ea0e3204642dfd4b500fc5bf796447b12a1520f582ab00694f2ccb",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 212618,
+      "originalSha256": "924d4064b03cae40e5a8c6c3ef752805621b66b861e2ca8540ad5b652af205ca",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/07-tussock.png",
+      "bytes": 6885,
+      "width": 172,
+      "height": 96,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "a6a17f6378a0e7c29fcc4911d66e5348291090afc40e9a5c3854badb9d46504c",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 27560,
+      "originalSha256": "f2c454e1ebb162810d7080fdb8b4c1cbefd5f264efc9395621facea92a7a88e6",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1024/08-dimmer.png",
+      "bytes": 26497,
+      "width": 1024,
+      "height": 480,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "833b3ddb42ca753b6b47ae96ab717a8f673fbdb31657d8197efd8e8c08eb3229",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        }
+      ],
+      "originalBytes": 312728,
+      "originalSha256": "9bfc5b39bcf30be50cda47f3be7bc2a5f25c145131552ab179a843293269155e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/01-sky.png",
+      "bytes": 78504,
+      "width": 1605,
+      "height": 453,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "d98e37685651d7f33ee9c486859107027641530367884d444debf4f51bbace8b",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 97455,
+      "originalSha256": "a2bc6d4e8d223ee182bd24ad3dcccd231de19d2966b376000be872362ea9328f",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/02-cloud.png",
+      "bytes": 52440,
+      "width": 1597,
+      "height": 800,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "2c46d14128fd28c868af8f8beb82988e7ee335ba3595d9e3258c990af9fb0788",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 406403,
+      "originalSha256": "bdcfee38cc79de64235eaeec041985da795f2de03f924986081b8671faa537b4",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/05-landform-city-1st.png",
+      "bytes": 177437,
+      "width": 1607,
+      "height": 529,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "148028b6c71dbc3747ee134c16d3cc109a2e7745e3a445ed7ead7d8693df31c5",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 822818,
+      "originalSha256": "48ae7970540054da44ae4c6b9db3a4b4dc77bce2974b8e188743056af011f7c4",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/06-landform-city-2nd.png",
+      "bytes": 56512,
+      "width": 1099,
+      "height": 192,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "323896506d9d20c69c194ad1f891512a6f8d668f08e9a885b52a2e7a116a5d94",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 296465,
+      "originalSha256": "f01e261611ff7793f6623b98b61659ca688ba6ae22977530897f36bc22dd0bab",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/07-tussock.png",
+      "bytes": 9015,
+      "width": 208,
+      "height": 116,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "ae7747a58b18fd15865e9a2e49b5af05a1c80c5a2e7d9db91a414029f5b205d7",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 38219,
+      "originalSha256": "44416906f2921b4902b9711686a60b7cee71e1c9ba30db18aa393687f5f48d87",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1280/08-dimmer.png",
+      "bytes": 43249,
+      "width": 1280,
+      "height": 600,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "35f26342d3d9358f572429f4d3fb16c4035082ca05a12290ed4dac74f679ac88",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        }
+      ],
+      "originalBytes": 457576,
+      "originalSha256": "c40f2969c8fce44776a8952b2b2382234a1038ba6d1a1fe3fce3c657e881f16b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/01-sky.png",
+      "bytes": 93071,
+      "width": 1783,
+      "height": 503,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "25d0bf8f109713e059c22c674ca521a982c844b5e52a2c9e4c92f339769e4062",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 136551,
+      "originalSha256": "95ee64f36771e4a1682a35da0f3c02466926ef0fd00ad3f3de758e97571ec273",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/02-cloud.png",
+      "bytes": 63094,
+      "width": 1774,
+      "height": 889,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "324ea58ff6c94b89024354881001ed05d6f55b267129b7108140e554898a38d6",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 487446,
+      "originalSha256": "ea2ebbbf81659ea4e1c2cd00a7a22d4457edc5bf893b359fa23d2d947364fe41",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/05-landform-city-1st.png",
+      "bytes": 212623,
+      "width": 1784,
+      "height": 587,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "9946ece9c1f306cc77fb0f08011c2390186c51c207d3f650ac7af996eb9dfb9f",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 982653,
+      "originalSha256": "b9fef3f0868cf6385b79db2c6d500172b4f53e27c43b2f3e538a1d2ee3a86138",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/06-landform-city-2nd.png",
+      "bytes": 67430,
+      "width": 1221,
+      "height": 213,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "20f755af0d9427ab0d41a9dd7c70d060039ec2baba3f41c10792ca42927489e1",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 354087,
+      "originalSha256": "8cd91c4c232f9a57d5b6fe438aac8f3857569b2b82a8e16d5ce584ff740ee1ee",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/07-tussock.png",
+      "bytes": 10434,
+      "width": 231,
+      "height": 128,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "5cac6a2c174f1a86cda311496a7b9bb03590eb2f6ae4412b5f33e6eb4f67fe6b",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 45731,
+      "originalSha256": "63365fdfc07c98c462ba097160778c0860eb027538bcf1a60a381c01af1c932e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1440/08-dimmer.png",
+      "bytes": 54003,
+      "width": 1440,
+      "height": 675,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "334fd1ed54016a8c2d242f9b1931456128365183e75f7278a701f0f5e8d79141",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        }
+      ],
+      "originalBytes": 548094,
+      "originalSha256": "263d16ea869f702ce6bd6ef2531228099fc46df8d158c5f387c7468345cb1b94",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/01-sky.png",
+      "bytes": 147444,
+      "width": 2177,
+      "height": 614,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "eb6fe44655d9ec4751718902513d3817e7dd452075092d51459dfb357b5f28b3",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 164218,
+      "originalSha256": "fb648b55583bee9bf7873ed7f2d808d46def156b82d75b0bcef009e9b462eb65",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/02-cloud.png",
+      "bytes": 86918,
+      "width": 2165,
+      "height": 1085,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "3a82ed9d2680cf76a4c457b66f7fc2d5c8082b0c96451fae8a67e7b70d383d6e",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 686177,
+      "originalSha256": "386a1f2c53e4389a262740d7a585501cdad776224fc302654b0921577a0d5111",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/05-landform-city-1st.png",
+      "bytes": 308050,
+      "width": 2178,
+      "height": 717,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "054b7f3a28ad8fa8d6bed9f4c7388320309ada4a69ebd509d9cbd9302118a0f5",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 1396506,
+      "originalSha256": "ac75345ddb77cb5a6c765f64392480625abb887af88409d2725fe854cc8c4151",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/06-landform-city-2nd.png",
+      "bytes": 93969,
+      "width": 1490,
+      "height": 260,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "682e00a37628625b80125d54e507afed025ce5657eaa17a60d8df12a4dbd56b1",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 492804,
+      "originalSha256": "0432de0e4a807273e3c1f5567c682b9939b663cfcc1faa999228fedfef4e4de3",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/07-tussock.png",
+      "bytes": 14846,
+      "width": 281,
+      "height": 156,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "5473fb96a04dbb769873963e8e759e3d61866991eeaf343d76761a165b79fce4",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 64087,
+      "originalSha256": "73d76e457e56254bc42b2438a043a81d69a954d8b07247ac278c2d930f9d33a0",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-1920/08-dimmer.png",
+      "bytes": 85026,
+      "width": 1920,
+      "height": 830,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "630d3519227f062a8bc01b1e549db20363499af14802585d988e47f7fadde541",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 800592,
+      "originalSha256": "f75fd0baa402175fd33a2ad0297a976daf7eb00f7b83a8023d38308167e4a191",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/01-sky.png",
+      "bytes": 55223,
+      "width": 951,
+      "height": 611,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "5c1a93e63aec82e182933c80180bb77b9f43fb226ba8a2f6aff86eced9b2f833",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 104473,
+      "originalSha256": "d91c60961ba69da69a77d3244dfb568faa3ab7aec6fea6c1a25ff8c32f15c76b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/02-cloud.png",
+      "bytes": 33825,
+      "width": 1139,
+      "height": 668,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "075584611610fdf100c2702a0c3d5b2e6eca2184bd0507e2d70a9d6ab0a5fc90",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 246713,
+      "originalSha256": "9e49473bb9f1e1ceb0ab279680121030a2979c822e4831f895aace09fd7a23e7",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/03-mountains.png",
+      "bytes": 364086,
+      "width": 2392,
+      "height": 544,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "78594377c885dbb9cbacb347be446c7463dd52f7ced09b8d049d9548db9fb59d",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "provenance": "User high-resolution replacement2026-10-26",
+      "originalBytes": 1591729,
+      "originalSha256": "9557e55a0979a8687a339ac3550850e984a4d17f291d6bd2653fd67f36a1c607",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/05-landform-city-1st.png",
+      "bytes": 112681,
+      "width": 1232,
+      "height": 406,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "b59722dbd621569a29affdf1f0e74bb245e4111b3b85c7b7662b222e4154cfc2",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 522049,
+      "originalSha256": "3253cbf110bdd497d790b924dcf041f08abaae8b6d6c68d8a75dd7291d96bc89",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/06-landform-city-2nd.png",
+      "bytes": 34992,
+      "width": 843,
+      "height": 147,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "76dbeb2bb10121d048d13ca303ed414790d5a0dfd9ded1da62f4c58e3c37681e",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 186169,
+      "originalSha256": "b3f7cc1bbd1702370573a3e443afef3296e8b4cf7b71917c1b2640c092a2ce5d",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/07-tussock.png",
+      "bytes": 6296,
+      "width": 159,
+      "height": 89,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e4c8e5cbdda3302dbd5e3976125325439b36faea9b66f218b5d25336fbd3950b",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 24151,
+      "originalSha256": "64ad83b19eae99fa96cb014562a82da3443638d5a71b987d90f0854964f6da8b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/hero-layers/min-768/08-dimmer.png",
+      "bytes": 46613,
+      "width": 768,
+      "height": 722,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "62f84bd2563d498c40629c1c97b0da9dacd37223224b4257a9f076f4dc266c84",
+      "usedBy": [
+        {
+          "file": "app/components/dc-vendor-app-pr-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        }
+      ],
+      "originalBytes": 477804,
+      "originalSha256": "f4bf59953f6a9d59f4df2eaee799dfc2819f70c765b47aa7dec39a7ac67e51de",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4673/reswrch-3.png",
+      "bytes": 544086,
+      "width": 2000,
+      "height": 1453,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "6a47119a98f375c8c9bb7f43073b76d183ff4eea710a209b9b157fa957efbd71",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 712247,
+      "originalSha256": "0a251f9f845f1f3929ddb0b58edac85cadf66a90fc5323aa685f1138df6619d6",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4674/reswrch-1.png",
+      "bytes": 294642,
+      "width": 1784,
+      "height": 1296,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "82e23ae9adec75b07c5da6de12bd92c113794d79dd74af7d3dba49e21719c0aa",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1601389,
+      "originalSha256": "ecfab5546b2ec6aea3cde2b969e8285c36744a6fd97eb2cc809ed1dc8da50cd5",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4688/reswrch-5.png",
+      "bytes": 970791,
+      "width": 1508,
+      "height": 1153,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "cf0e643dc26742d7d4cb0d4141f3785dc38b897498d108b23bab4cac701a9ce9",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 3816226,
+      "originalSha256": "c84ca2fda3ec49cf4f1abf5267213684f6020509014aacd2f05ee89b7bd3e9b7",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4689/reswrch-7.png",
+      "bytes": 457359,
+      "width": 1280,
+      "height": 960,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "ec5bf21b4233596a267ca35988d49a74e119304f2ab0d8328f8e9feeddff9e98",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1721815,
+      "originalSha256": "be6c8e5ff5e380979daad92e6db8a678529cd9a11ae039b494e0e17677492fa7",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4690/reswrch-4.png",
+      "bytes": 900980,
+      "width": 1508,
+      "height": 1141,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "5a5e6ede02b3d704a5d3753d5aaa1e6bcac045432a0262b941a43c716252d0cd",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 3390188,
+      "originalSha256": "0a2ed28f578eb0e9f3342fec10e9bed980580518e842b0dfe19a0e8d19259d5c",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4691/reswrch-6.png",
+      "bytes": 656540,
+      "width": 1334,
+      "height": 1179,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e837f9f890ef86119ed7c3924e3ac540ddfd72b27b1571f565b3e18475fb792f",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 2526467,
+      "originalSha256": "1d375af9c6d82c5c31c8b2fc67f068b1556ecca10a4208ae83a48caa662f8589",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4700/va-pr-02.png",
+      "bytes": 560645,
+      "width": 1281,
+      "height": 1227,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7f2b7a313f5fefd994f911f949f42f52aef20d74d868c5b36a132b416c377eb4",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 2515275,
+      "originalSha256": "b478da81d964bf9b48b671a61ccf1e5b6f70ab43c4600e7ae38feb4140cc51a0",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4705/va-pr-02.png",
+      "bytes": 246808,
+      "width": 1000,
+      "height": 921,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "3ce033d676b7b5519fa9876f628694aa915ff14827273f61016f4a46bf278e1e",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1170307,
+      "originalSha256": "473a40196e5036379f8524fca8c55df806185cde29872d9c272bf3ccc7efbf16",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/249-4706/img-map.png",
+      "bytes": 931384,
+      "width": 2808,
+      "height": 1648,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "a314319c27a2add5f260a9efb0d7e999cef1b13161ab359bd34d276938be5b83",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1872634,
+      "originalSha256": "603fe8a4bb875c92fe05df7de2634b561e2077c38da7471a0d65f8a881fc7e9e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-pr/media/261-23399/reswrch-2.png",
+      "bytes": 129174,
+      "width": 1000,
+      "height": 726,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "f957a31a1ef5fc26ca9c2234fcabca17588c2eced9b04cb614955bc92662845c",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-pr.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 449172,
+      "originalSha256": "3b23751b5fc8092b7e5462893e3e0931883f97dbdbd70494f3438b572d9f2583",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/01-background.png",
+      "bytes": 1102387,
+      "width": 2320,
+      "height": 1380,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "8b1c34d4557768f10049908c1ab36e949d036fcc1d515f3b9611faa6c2990ebf",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 3515557,
+      "originalSha256": "a6d94e8fe6551cb4578c3c1ba2c5202153ced5fd2dec5ee4d73e1c4a1a977942",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/02-chef.png",
+      "bytes": 75397,
+      "width": 1671,
+      "height": 941,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "e676e41f0d5152d5e3ca7fd16b073f9fe5a6c0d3612ef59e47b333e75fab0838",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 338485,
+      "originalSha256": "0808a38257cd7f2abcd9206ccc5f0e78d967c68a9fb0f32d8ac9c0817760ffe6",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/03-countertop.png",
+      "bytes": 356883,
+      "width": 2320,
+      "height": 680,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "aafff271ee14efb3ba01a0a61af34c9c05a844da909dbca5d108899e3387ad9a",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 1462019,
+      "originalSha256": "b0e396bba288b86a213d9a52bcf3fe25b086eb794ef7b6852ded904d1878887a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/04-05-shadow.png",
+      "bytes": 29096,
+      "width": 1469,
+      "height": 418,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "67fb52bf646e74c78f3ed1b28729b7ceb27ee0c949f6c6e513546431dd142b5d",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 58738,
+      "originalSha256": "ebc0e4bda9d4ae790dc9a88f7b366f25105db19cce68b5714a90311ef8d24a2a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/04-delivery-bag-reflection.png",
+      "bytes": 27016,
+      "width": 1080,
+      "height": 176,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "00011074f75c2d45d7fbeead4184ff244c0b1478a5c14ebdf834c385840b2d75",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 201829,
+      "originalSha256": "dd35e53149da194ae0911795e92b4fe66a8ed08e517c9e0eec308f52fa9e7081",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/04-delivery-bag.png",
+      "bytes": 389800,
+      "width": 1084,
+      "height": 1317,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "2093dc5b2b6d0de2937e5715b61a6ac8f26a82777b12f4e7b3a36340429d9bd0",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 1659974,
+      "originalSha256": "0ee6489715200cbdd6bc8d9a61189a5a0c4e2071a32b7197d3563e03f0b7a121",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/05-phone-reflection.png",
+      "bytes": 13624,
+      "width": 530,
+      "height": 154,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "b97a4120361d22e5da3435992d8105a0b9cdc0606835dced1e7b2abbe2c9339d",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 92390,
+      "originalSha256": "3c6f1c6ff0d9980c7df901d15e88c74eff8182a7e237c065c60631efd0ec6fb4",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/05-phone.png",
+      "bytes": 88760,
+      "width": 520,
+      "height": 1036,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "45625a10f30087c65c81229686fa822085ce77bf1b6631ca6343d34be1109ee9",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 343484,
+      "originalSha256": "68d9ed367ac23f38a2d74beb1f21588b1288756477025080c505299f5573a807",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/hero-layers/06-foreground.png",
+      "bytes": 1822712,
+      "width": 4096,
+      "height": 1924,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "c2e90ecbabab0b76ff89f666ce75b3ea3dd38839875f82d2584407a102bb1cac",
+      "usedBy": [
+        {
+          "file": "app/components/DCVendorAppUxScene.vue",
+          "rule": "reachable module import"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: base"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-768"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1024"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1280"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1440"
+        },
+        {
+          "file": "app/components/dc-vendor-app-ux-hero.assets.ts",
+          "rule": "responsive registry: min-1920"
+        }
+      ],
+      "originalBytes": 6009153,
+      "originalSha256": "699844910f7ffa5cc5129ba1dc2cc0cf92e5a6c4b6db625c2f73c62441fd02d6",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/media/225-3543/dcux03.png",
+      "bytes": 651212,
+      "width": 1971,
+      "height": 798,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "8bab30b99828784216b245447ea1d7bac5d37e044aabd0409192c710a3a9b1ed",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-ux.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1846309,
+      "originalSha256": "d6e5efd3d2731f2fc40b526d3061e92bcbdb9a10064f79681de004e527fe213b",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/media/303-9637/dcux08.png",
+      "bytes": 111788,
+      "width": 1417,
+      "height": 727,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "1049354a49942e8b64f75ec0d6b3c5ed91871f9b8df4119a0515e68a57fb0e33",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-ux.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 740811,
+      "originalSha256": "04fde46691381a2e4d23a4faf489a1d6d944661fc964998c3f7f4c85a4d04206",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/media/307-9042/dcux10-3.png",
+      "bytes": 243011,
+      "width": 1448,
+      "height": 1086,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "115889fb2d5445419fe812b6b1053a167a68533469f9adc2283d3c7ac4486723",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-ux.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1537298,
+      "originalSha256": "6e75a0e42e40f3d7bcbaf72a98110e8a6629a0c3d3c7c578198faa6b023465ae",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/media/307-9043/dcux10-1.png",
+      "bytes": 252781,
+      "width": 1448,
+      "height": 1086,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "0eab3c72013ce0d1692a15a976ee0e38f62091a8e4b0fedbde51314c4c9302d7",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-ux.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1555327,
+      "originalSha256": "b187e8e2390544592012be97476a013b3504b7b54a29cc06f57f5ce515296dbc",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/dc-vendor-app-ux/media/307-9044/dcux10-2.png",
+      "bytes": 217985,
+      "width": 1448,
+      "height": 1086,
+      "bitDepth": 4,
+      "colorType": 3,
+      "sha256": "b28648d7e2f82e735fc99071fe8ff13e81b64312aa0e79929f111eed6b0ef9a0",
+      "usedBy": [
+        {
+          "file": "content/cases/dc-vendor-app-ux.json",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 1507967,
+      "originalSha256": "a68e6d50f3c878f98d5dc430a40fb448a03267c6b8c0fefd9f0323fc04ad205a",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/nested-chirp-ai-check/layers/phones-ux-v2.png",
+      "bytes": 81538,
+      "width": 961,
+      "height": 832,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "027ec6db1a522f67cea16331b6c225c0777d75014d069dc12926b15b4b7d99d1",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpExplainableAiUx.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 96929,
+      "originalSha256": "8e61648e3c566dcc312d8f03b3004b0b254a7f5ac936b60412ff91f5adeb0e60",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/nested-chirp-brand/layers/multiply/songbird-main.png",
+      "bytes": 70841,
+      "width": 1024,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "71b7fdb1d046e84656703f3afccb87ee556e8b3b6057ca3aafa305159f16650f",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiMedicalBrandScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 412295,
+      "originalSha256": "9a1a73f9d3be3a7cd0f484f6162d4bd6b972bc6e98c9bf8fa1e5e0413cf3a712",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/nested-chirp-brand/layers/songbird-decor-left.png",
+      "bytes": 11330,
+      "width": 266,
+      "height": 176,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "8419ad30e0e02ec05a775f7069e430d9dd5365fbf47de993987b65827469d30b",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiMedicalBrandScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 54056,
+      "originalSha256": "14c005b1d200d2864d9c850a808c3e6868851e68b915d5618f6d62be1151a78e",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/nested-chirp-brand/layers/songbird-decor-right.png",
+      "bytes": 161081,
+      "width": 1024,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "aef12edf49bc488d044bec84bb9bfe7783bf76d84a0fe1d49389cfc8c7cd53c1",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiMedicalBrandScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 415824,
+      "originalSha256": "e52038a96a06e940a396c9662ae2343a3b274ca0b58bb17ca5e4d5cb77237de1",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/cases/nested-chirp-brand/layers/songbird-main.png",
+      "bytes": 91124,
+      "width": 1024,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7df6658028c8ad847aee851946d32432a1da1d422425ee89856eed35318aeb31",
+      "usedBy": [
+        {
+          "file": "app/components/ChirpAiMedicalBrandScene.vue",
+          "rule": "reachable module import"
+        }
+      ],
+      "originalBytes": 414597,
+      "originalSha256": "eb7f26570909ad3794bd2994029c9fdff1a37348ff31cf91c40f5dd2635c6ede",
+      "optimizedOn": "2026-10-30"
+    },
+    {
+      "path": "public/showcase/dc-picker-app-ux/coming-soon.png",
+      "bytes": 3092,
+      "width": 98,
+      "height": 98,
+      "bitDepth": 8,
+      "colorType": 3,
+      "sha256": "7a5e68567718f37fd736ed549c214c6c1f55627d6128eb2fc162fd2955781276",
+      "usedBy": [
+        {
+          "file": "app/components/DsComingSoon.vue",
+          "rule": "reachable asset URL"
+        }
+      ],
+      "originalBytes": 12103,
+      "originalSha256": "ac1051a38054d4da57a1d3c1ace5bbede657622c89ff6106eff51c17f2635915",
+      "optimizedOn": "2026-10-30"
+    }
+  ]
+}

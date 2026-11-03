@@ -28,7 +28,7 @@ try {
     const titleBox = await titleImage.boundingBox()
     const nominal=Math.min(430,width-32),scale=Math.min(1,box.width/nominal)
     assert(Math.abs(titleBox.x-box.x-(box.width/2-(width>=462?84.419921875:84.03125)*scale))<.1)
-    assert(Math.abs(titleBox.y-box.y-(width>=462?194.35546875:146.35546875))<.1)
+    assert(Math.abs(titleBox.y-box.y-(width>=462?194.35546875:166.35546875))<.1)
     assert(Math.abs(titleBox.width-173*scale)<.1)
     const b = await button.boundingBox()
     assert.equal(box.height,width>=462?532:500)

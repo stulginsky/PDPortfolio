@@ -1,0 +1,147 @@
+// Original exported pupil and glow frames; no authored replacement paths.
+export const foxJwGazeTextures = [
+  {
+    "profile": "base",
+    "name": "Ellipse 330",
+    "state": "hover",
+    "src": "base/hover/ellipse-330.svg",
+    "w": 143.0122833251953,
+    "h": 58.683345794677734,
+    "dx": 101.80887603759766,
+    "dy": 27.621856689453125,
+    "intrinsicW": 17,
+    "intrinsicH": 17
+  },
+  {
+    "profile": "base",
+    "name": "Ellipse 331",
+    "state": "hover",
+    "src": "base/hover/ellipse-331.svg",
+    "w": 143.0122833251953,
+    "h": 58.683345794677734,
+    "dx": 21.947547912597656,
+    "dy": 23.700958251953125,
+    "intrinsicW": 17,
+    "intrinsicH": 17
+  },
+  {
+    "profile": "base",
+    "name": "eyes02",
+    "state": "hover",
+    "src": "base/hover/eyes02.svg",
+    "w": 143.0122833251953,
+    "h": 58.683101654052734,
+    "dx": -7.444465637207031,
+    "dy": -7.516998291015625,
+    "intrinsicW": 158,
+    "intrinsicH": 74
+  },
+  {
+    "profile": "base",
+    "name": "Ellipse 330",
+    "state": "active-pressed",
+    "src": "base/active-pressed/ellipse-330.svg",
+    "w": 126.30888366699219,
+    "h": 51.828758239746094,
+    "dx": 89.919921875,
+    "dy": 24.395263671875,
+    "intrinsicW": 15,
+    "intrinsicH": 15
+  },
+  {
+    "profile": "base",
+    "name": "Ellipse 331",
+    "state": "active-pressed",
+    "src": "base/active-pressed/ellipse-331.svg",
+    "w": 126.30888366699219,
+    "h": 51.828758239746094,
+    "dx": 19.384765625,
+    "dy": 20.9326171875,
+    "intrinsicW": 15,
+    "intrinsicH": 15
+  },
+  {
+    "profile": "base",
+    "name": "eyes02",
+    "state": "active-pressed",
+    "src": "base/active-pressed/eyes02.svg",
+    "w": 126.30888366699219,
+    "h": 51.828758239746094,
+    "dx": -8.318359375,
+    "dy": -8.38134765625,
+    "intrinsicW": 143,
+    "intrinsicH": 69
+  },
+  {
+    "profile": "min-768",
+    "name": "Ellipse 330",
+    "state": "hover",
+    "src": "min-768/hover/ellipse-330.svg",
+    "w": 152.6805419921875,
+    "h": 62.65033721923828,
+    "dx": 108.69085693359375,
+    "dy": 29.489501953125,
+    "intrinsicW": 18,
+    "intrinsicH": 18
+  },
+  {
+    "profile": "min-768",
+    "name": "Ellipse 331",
+    "state": "hover",
+    "src": "min-768/hover/ellipse-331.svg",
+    "w": 152.6805419921875,
+    "h": 62.65033721923828,
+    "dx": 23.43109130859375,
+    "dy": 25.303466796875,
+    "intrinsicW": 18,
+    "intrinsicH": 18
+  },
+  {
+    "profile": "min-768",
+    "name": "eyes02",
+    "state": "hover",
+    "src": "min-768/hover/eyes02.svg",
+    "w": 152.6824951171875,
+    "h": 62.65033721923828,
+    "dx": -6.93914794921875,
+    "dy": -7.016357421875,
+    "intrinsicW": 167,
+    "intrinsicH": 77
+  },
+  {
+    "profile": "min-768",
+    "name": "Ellipse 330",
+    "state": "active-pressed",
+    "src": "min-768/active-pressed/ellipse-330.svg",
+    "w": 136.3179168701172,
+    "h": 55.93550491333008,
+    "dx": 97.04452514648438,
+    "dy": 26.32830810546875,
+    "intrinsicW": 16,
+    "intrinsicH": 16
+  },
+  {
+    "profile": "min-768",
+    "name": "Ellipse 331",
+    "state": "active-pressed",
+    "src": "min-768/active-pressed/ellipse-331.svg",
+    "w": 136.3179168701172,
+    "h": 55.93550491333008,
+    "dx": 20.921478271484375,
+    "dy": 22.59100341796875,
+    "intrinsicW": 16,
+    "intrinsicH": 16
+  },
+  {
+    "profile": "min-768",
+    "name": "eyes02",
+    "state": "active-pressed",
+    "src": "min-768/active-pressed/eyes02.svg",
+    "w": 136.3179168701172,
+    "h": 55.93550491333008,
+    "dx": -7.795318603515625,
+    "dy": -7.86358642578125,
+    "intrinsicW": 152,
+    "intrinsicH": 72
+  }
+] as const

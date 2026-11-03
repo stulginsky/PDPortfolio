@@ -14,7 +14,7 @@ const meta = {
   },
   parameters: {
     layout: 'fullscreen',
-    docs: { description: { component: "[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060)\n\n<details>\n<summary>Техническое описание</summary>\n\n[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060).\n\n| Breakpoint | Раскладка |\n|---|---|\n| base <534px | Полный viewport без внешних отступов; reference 320×164; действия второй строкой через 32px |\n| min-534 534–767px | По центру: 394px без действий, 534px с действиями; высота 82px |\n| min-768 ≥768px | 394px без действий, 534px с действиями; высота 90px, верхний отступ 8px, radius 48px |\n\nAvatar-Sm 50×50; табы переключают Toggled без ActivePressed. До min-768 Hover табов отключён.\nDownload/Print: общий entrance из SiteNavResumeActions — fade + translateX(-8px), 300ms, delays 100/200ms; reduced motion отключает анимацию.\nEvents: update:place, avatar-click, projects, download, print. Слотов нет.\n\n</details>" } },
+    docs: { description: { component: "[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060)\n\n<details>\n<summary>Техническое описание</summary>\n\n[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060).\n\n| Breakpoint | Раскладка |\n|---|---|\n| base <534px | Полный viewport без внешних отступов; reference 320×140; действия второй строкой через 16px; табы Fill равными долями |\n| min-534 534–767px | Полная ширина viewport; высота 82px; navigation Fill, actions Hug |\n| min-768 ≥768px | 394px без действий, 534px с действиями; высота 90px, верхний отступ 8px, radius 48px |\n\nAvatar-Sm 50×50; табы переключают Toggled без ActivePressed. До min-768 Hover табов отключён.\nDownload/Print: общий entrance из SiteNavResumeActions — fade + translateX(-8px), 300ms, delays 100/200ms; reduced motion отключает анимацию.\nEvents: update:place, avatar-click, projects, download, print. Слотов нет.\n\n</details>" } },
   },
 } satisfies Meta<typeof DsTopNavScrollResume>
 export default meta
@@ -44,7 +44,7 @@ export const Sandbox: Story = {
           <button type="button" @click="width = 768">min-768</button>
           <label>Ширина примера
             <select v-model.number="width" aria-label="Ширина примера">
-              <option v-for="w in [320, 533, 534, 767, 768, 1024]" :key="w" :value="w">{{ w }}px</option>
+              <option v-for="w in [320, 375, 393, 425, 533, 534, 767, 768, 1024]" :key="w" :value="w">{{ w }}px</option>
             </select>
           </label>
         </div>
@@ -79,14 +79,30 @@ export const Sandbox: Story = {
     await userEvent.click(print)
     await expect(canvas.getByRole('status')).toHaveTextContent('Скачивание: 1 · Печать: 1')
     const nav = canvas.getByRole('navigation', { name: 'Навигация резюме' })
-    await expect(Math.round(nav.getBoundingClientRect().height)).toBe(164)
+    await expect(Math.round(nav.getBoundingClientRect().height)).toBe(140)
+    const assertFill = async () => {
+      const a = projects.getBoundingClientRect()
+      const b = resume.getBoundingClientRect()
+      await expect(Math.abs(a.width - b.width)).toBeLessThan(0.1)
+      await expect(b.left - a.right).toBeCloseTo(16, 1)
+      await expect(nav.getBoundingClientRect().right - b.right).toBeCloseTo(16, 1)
+    }
+    await assertFill()
+    for (const width of ['375', '393', '425', '533']) {
+      await userEvent.selectOptions(canvas.getByRole('combobox'), width)
+      await assertFill()
+      await expect(Math.round(nav.getBoundingClientRect().height)).toBe(140)
+    }
     await userEvent.click(canvas.getByRole('button', { name: 'min-534', exact: true }))
     await expect(Math.round(nav.getBoundingClientRect().width)).toBe(534)
     await userEvent.click(projects)
-    await expect(Math.round(nav.getBoundingClientRect().width)).toBe(394)
+    await expect(Math.round(nav.getBoundingClientRect().width)).toBe(534)
     await userEvent.click(resume)
     await expect(Math.round(nav.getBoundingClientRect().width)).toBe(534)
     await expect(Math.round(nav.getBoundingClientRect().height)).toBe(82)
+    await userEvent.selectOptions(canvas.getByRole('combobox'), '767')
+    await expect(Math.round(nav.getBoundingClientRect().width)).toBe(767)
+    await expect(Math.abs(projects.getBoundingClientRect().width - resume.getBoundingClientRect().width)).toBeLessThan(0.1)
     await userEvent.click(canvas.getByRole('button', { name: 'min-768', exact: true }))
     await expect(Math.round(nav.getBoundingClientRect().height)).toBe(90)
     await userEvent.click(canvas.getByRole('button', { name: 'Base', exact: true }))

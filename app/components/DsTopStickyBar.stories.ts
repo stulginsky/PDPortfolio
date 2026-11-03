@@ -7,7 +7,7 @@ const meta = {
   title: 'Components/TopStickyBar', component: DsTopStickyBar, tags: ['autodocs'],
   args: { text: 'От контекста к основанию для действия', zoom: 100, controlsOnly: false },
   argTypes: { controlsOnly: { control: 'boolean', description: 'Figma ControlsOnly: hide title and gradient; raised controls in one row.' } },
-  parameters: { layout: 'fullscreen', docs: { description: { component: "[Figma 1019:11604](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1019-11604)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma 1019:11604. controlsOnly=false сохраняет полную шапку; controlsOnly=true скрывает заголовок и градиент, выставляет Raised для обеих кнопок и располагает их в одну строку (base по центру, web Hug справа). Непрозрачность градиентной заливки полного режима 45%, контент не затрагивается. Base <768: FullscreenMenu/Mob, полный заголовок, Hug. Min-768: DropdownSelect-web, высота 100px. Presets Zoom 50% / Zoom 100% / Zoom 150% / Fit to width / Fit to height / Fit to screen. fitMode (width / height / screen / null) управляет подписью Fit, иначе Zoom N%. viewerReady запускает mobile tooltip: общий Tooltip fade 300ms, 5s показ, 300ms скрытие; reduced motion без анимации. Web tooltip на hover/focus. Меню и close запускают общее плавное скрытие подсказки. Шапка сообщает zoom/fit/close; сама не масштабирует медиа. Reload viewer имитирует загрузку.\n\n</details>" } } },
+  parameters: { layout: 'fullscreen', docs: { description: { component: "[Figma 1019:11604](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1019-11604)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma 1019:11604. controlsOnly=false сохраняет полную шапку; controlsOnly=true скрывает заголовок и градиент, выставляет Raised для обеих кнопок и располагает их в одну строку (base по центру, нижние углы 24px; web Hug справа, padding24, высота98px, нижний левый угол32px; заливка black1% сохраняет blur). Непрозрачность градиентной заливки полного режима 45%, контент не затрагивается. Base <768: FullscreenMenu/Mob, полный заголовок, Hug; кнопка масштаба Hug по центру второй строки. Min-768: DropdownSelect-web, высота 100px. Presets Zoom 50% / Zoom 100% / Zoom 150% / Fit to width / Fit to height / Fit to screen. fitMode (width / height / screen / null) управляет подписью Fit, иначе Zoom N%. viewerReady запускает mobile tooltip: общий Tooltip fade 300ms, 5s показ, 300ms скрытие; reduced motion без анимации. Web tooltip на hover/focus. Меню и close запускают общее плавное скрытие подсказки. Шапка сообщает zoom/fit/close; сама не масштабирует медиа. Reload viewer имитирует загрузку.\n\n</details>" } } },
 } satisfies Meta<typeof DsTopStickyBar>
 export default meta
 type Story = StoryObj<typeof meta>
@@ -76,12 +76,18 @@ export const Sandbox: Story = {
     const header = canvasElement.querySelector('header')!
     expect(getComputedStyle(header).backgroundImage).toBe('none')
     expect(header.getBoundingClientRect().height).toBe(82)
+    expect(getComputedStyle(header).borderBottomLeftRadius).toBe('24px')
+    expect(getComputedStyle(header).borderBottomRightRadius).toBe('24px')
+    expect(getComputedStyle(header).backgroundColor).toBe('rgba(0, 0, 0, 0.01)')
     expect(getComputedStyle(header.querySelector('.ds-btn-cross')!).backgroundColor).not.toBe('rgba(0, 0, 0, 0)')
     await userEvent.click(c.getByRole('button', { name: 'Выбрать масштаб' }))
     await userEvent.click(within(document.body).getByRole('button', { name: 'Zoom 150%', exact: true }))
     await expect(c.getByRole('status')).toHaveTextContent('Zoom: 150')
     await userEvent.click(c.getByRole('button', { name: 'min-768', exact: true }))
-    await waitFor(() => expect(header.getBoundingClientRect().height).toBe(100))
+    await waitFor(() => expect(header.getBoundingClientRect().height).toBe(98))
+    expect(getComputedStyle(header).paddingTop).toBe('24px')
+    expect(getComputedStyle(header).borderBottomLeftRadius).toBe('32px')
+    expect(getComputedStyle(header).borderBottomRightRadius).toBe('0px')
     await expect(c.queryByRole('heading')).not.toBeInTheDocument()
     expect(getComputedStyle(header).backgroundImage).toBe('none')
     await userEvent.click(c.getByRole('button', { name: 'Fit to width', exact: true }))

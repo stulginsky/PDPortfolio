@@ -168,13 +168,13 @@ export const DCProductRelated: Story = {
  },
 }
 
-const allCardNames=['ChirpAiHealthAssistant','ChirpExplainableAiUx','ChirpAiMedicalBrand','ChirpAiDesignSystem','DCVendorAppPr','DCVendorAppUx','DCPickerAppUx'] as const
+const allCardNames=['ChirpAiHealthAssistant','ChirpExplainableAiUx','ChirpAiMedicalBrand','ChirpAiDesignSystem','DCVendorAppPr','DCVendorAppUx','DCPickerAppUx','4Real3Dweapon'] as const
 const checkSizing=async (canvasElement:HTMLElement)=>{
  const rail=canvasElement.querySelector<HTMLElement>('.related-cases__rail')!
  const width=window.innerWidth<534?288:Math.min(430,window.innerWidth-32,rail.clientWidth),height=window.innerWidth>=462?532:500
  await waitFor(()=>{
   const cards=canvasElement.querySelectorAll<HTMLElement>('.related-cases__card')
-  expect(cards).toHaveLength(7)
+  expect(cards).toHaveLength(allCardNames.length)
   cards.forEach(card=>{
    expect(card.getBoundingClientRect().width).toBeCloseTo(width,0)
    expect(card.getBoundingClientRect().height).toBe(height)
@@ -183,7 +183,7 @@ const checkSizing=async (canvasElement:HTMLElement)=>{
    expect(inner.getBoundingClientRect().width).toBeCloseTo(width,0)
    const heading=inner.querySelector<HTMLElement>('[class$="__title"]')
    if(heading&&heading.tagName!=='IMG')expect(parseFloat(getComputedStyle(heading).fontSize)).toBeCloseTo((window.innerWidth>=410?22:18.333333)*Math.min(1,width/Math.min(430,window.innerWidth-32)),1)
-   const badge=inner.querySelector<HTMLElement>('.ds-badge__text')
+   const badge=[...inner.querySelectorAll<HTMLElement>('.ds-badge__text')].find(item=>item.getClientRects().length>0)
    if(badge)expect(parseFloat(getComputedStyle(badge).fontSize)).toBeCloseTo((window.innerWidth<410?10:12)*Math.min(1,width/Math.min(430,window.innerWidth-32)),1)
   })
  })
@@ -197,4 +197,18 @@ export const NarrowContainer: Story={
  args:{cardNames:[...allCardNames]},
  render:args=>({components:{RelatedCases},setup:()=>({args,blockNavigation}),template:'<div style="width:260px;max-width:100%"><RelatedCases v-bind="args" @click.capture="blockNavigation" /></div>'}),
  play:async({canvasElement})=>checkSizing(canvasElement),
+}
+
+export const WeaponCase: Story={
+ args:{cardNames:['4Real3Dweapon']},
+ render:args=>({components:{RelatedCases},setup:()=>({args,blockNavigation}),template:'<RelatedCases v-bind="args" @click.capture="event => event.preventDefault()" />'}),
+ play:async({canvasElement,canvas})=>{
+  await waitFor(()=>expect(canvasElement.querySelectorAll('[data-card-name]')).toHaveLength(1))
+  await expect(canvasElement.querySelector('[data-card-name="4Real3Dweapon"]')).not.toBeNull()
+  const card=canvas.getByRole('button',{name:/CS2 on/})
+  const before=window.location.href
+  await userEvent.click(card)
+  await expect(card).toBeVisible()
+  await expect(window.location.href).toBe(before)
+ },
 }

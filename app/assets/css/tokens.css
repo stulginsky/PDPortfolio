@@ -1,5 +1,24 @@
 /* Canonical Web syntax is defined on the matching Figma Variables. */
 :root {
+  --decorative-cobalt: rgb(29.999998212 68.000026345 119.000008106);
+  --decorative-showcase-fox-jw-background: var(--decorative-cobalt);
+  --decorative-slate: #282e3a;
+  --decorative-night: rgb(2.999999821 9.000000413 19.000000283);
+  --decorative-bronze-glow: rgb(47.06984885 33.00076559 6.872459427);
+  --decorative-showcase-dragon-heart-jw-background: var(--decorative-slate);
+  --decorative-showcase-dragon-heart-jw-shader: var(--decorative-night);
+  --decorative-showcase-dragon-heart-jw-glow: var(--decorative-bronze-glow);
+  --decorative-sand: #ccba7c;
+  --decorative-steel-blue: #5d79ae;
+  --decorative-showcase-4real-3dweapon-background: var(--decorative-sand);
+  --decorative-showcase-4real-3dweapon-stripe: var(--decorative-steel-blue);
+  --decorative-showcase-pd-portfolio-ds-background: var(--accent-aubergine);
+  --decorative-wine: #873d41;
+  --decorative-showcase-sapsan-cr-background: var(--decorative-wine);
+  --decorative-amber: rgb(254.00000006 203.0000031 0);
+  --decorative-showcase-absolut-background: var(--decorative-amber);
+  --decorative-aqua: rgb(173.0000047 241.0000008 255);
+  --decorative-showcase-aqua-maris-background: var(--decorative-aqua);
   /* Normalized Figma text styles */
   --heading-72-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 500;
   --heading-48-font-variation: "GRAD" 0, "XOPQ" 96, "XTRA" 468, "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712, "slnt" 0, "wdth" 100, "wght" 600;
@@ -268,7 +287,7 @@ body {
   line-height: 1.5;
   color: var(--text-default);
   background: var(--surface-default);
-  font-optical-sizing: none;
+  font-optical-sizing: auto;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }

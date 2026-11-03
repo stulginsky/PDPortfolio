@@ -1,0 +1,8 @@
+{
+  "title": "LIDPORT\nUI",
+  "badges": ["B2B", "Design Systems", "UI Components", "Figma"],
+  "tooltip": "Подписаться на обновления",
+  "subscribeLabel": "Скоро — сообщить о публикации кейса LIDPORT UI",
+  "emailSubject": "Сообщите о новом кейсе",
+  "emailBody": "Привет, Константин! Очень хочу посмотреть новый кейс {Название кейса}. Сообщите о публикации. Спасибо."
+}

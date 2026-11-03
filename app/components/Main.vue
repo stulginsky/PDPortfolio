@@ -13,9 +13,17 @@ import ChirpAiDesignSystem from './ChirpAiDesignSystem.vue'
 import DCVendorAppPr from './DCVendorAppPr.vue'
 import DCVendorAppUx from './DCVendorAppUx.vue'
 import DCPickerAppUx from './DCPickerAppUx.vue'
+import Component4Real3Dweapon from './4Real3Dweapon.vue'
+import Skins4Real from './Skins4Real.vue'
+import BlackGold from './BlackGold.vue'
+import Absolut from './Absolut.vue'
+import AquaMaris from './AquaMaris.vue'
+import SapsanCr from './SapsanCr.vue'
+import DragonHeartJw from './DragonHeartJw.vue'
+import FoxJw from './FoxJw.vue'
 
 const emit = defineEmits<{ resume: [] }>()
-type Category = 'all' | 'product' | 'ux' | 'design-system' | 'branding' | 'creative' | 'jewelry' | 'gamedev' | 'video' | 'packaging'
+type Category = 'all' | 'product' | 'ux' | 'design-system' | 'branding' | 'creative' | 'jewelry' | 'landing' | 'gamedev' | 'video' | 'packaging'
 const category = ref<Category>('all')
 const fullHeader = ref<HTMLElement>()
 const compact = ref(false)
@@ -32,8 +40,21 @@ const cases = [
   { id: 'DCVendorAppPr', category: 'product', component: DCVendorAppPr, href: '/cases/dc-vendor-app-pr' },
   { id: 'DCVendorAppUx', category: 'ux', component: DCVendorAppUx, href: '/cases/dc-vendor-app-ux' },
   { id: 'DCPickerAppUx', category: 'ux', component: DCPickerAppUx },
+  { id: '4Real3Dweapon', category: 'landing', component: Component4Real3Dweapon, activateHref: '/cases/4real-3dweapon' },
+  { id: 'Skins4Real', category: 'landing', component: Skins4Real },
+  { id: 'BlackGold', category: 'landing', component: BlackGold },
+  { id: 'Absolut', category: 'creative', component: Absolut, activateHref: '/cases/absolut' },
+  { id: 'AquaMaris', category: 'creative', component: AquaMaris, activateHref: '/cases/aqua-maris' },
+  { id: 'SapsanCr', category: 'creative', component: SapsanCr, activateHref: '/cases/sapsan-cr' },
+  { id: 'DragonHeartJw', category: 'jewelry', component: DragonHeartJw, activateHref: '/cases/dragon-heart-jw' },
+  { id: 'FoxJw', category: 'jewelry', component: FoxJw, activateHref: '/cases/fox-jw' },
 ] as const
 const visibleCases = computed(() => cases.filter(item => category.value === 'all' || item.category === category.value))
+function activateCase(item: typeof cases[number], event: MouseEvent | KeyboardEvent) {
+  if (!('activateHref' in item) || (event.type === 'click' && event.defaultPrevented)) return
+  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(item.activateHref, '_blank', 'noopener')
+  else window.location.assign(item.activateHref)
+}
 
 function scrollToHeader() {
   const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
@@ -62,8 +83,8 @@ onUnmounted(() => observer?.disconnect())
       </div>
       <DsFilters v-model="category" class="main-page__filters" />
       <div class="main-page__cases" :data-category="category">
-        <div v-for="item in visibleCases" :key="item.id" class="main-page__case">
-          <component :is="item.component" v-bind="'href' in item ? { href: item.href } : {}" />
+        <div v-for="item in visibleCases" :key="item.id" class="main-page__case" :data-case-href="'activateHref' in item ? item.activateHref : undefined">
+          <component :is="item.component" v-bind="'href' in item ? { href: item.href } : {}" @activate="event => activateCase(item, event)" />
         </div>
       </div>
     </main>

@@ -127,13 +127,15 @@ onUnmounted(() => observer?.disconnect())
   .about-page__experience { flex: 734 1 0; }
   .about-page__sidebar { order: 0; flex: 594 1 0; }
 }
+@media (min-width: 768px) {
+  .about-page__quote-open { display: block; }
+}
 @media (min-width: 1464px) {
   .about-page { padding-inline: var(--space-8); }
   .about-page__body { flex-direction: row; gap: 72px; }
   .about-page__experience { width: 734px; flex: 1 1 734px; }
   .about-page__sidebar { order: 0; flex: 0 0 594px; }
   .about-page__summary { display: block; padding: 48px 64px 134px 48px; }
-  .about-page__quote-open { display: block; }
   .about-page__quote-close { position: absolute; right: 43.5810547px; top: 506.2841797px; margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .about-page__quote-open { animation: none; } }

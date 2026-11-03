@@ -25,7 +25,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059)\n\n<details>\n<summary>Техническое описание</summary>\n\nTopNavScroll/Vitrina — [Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059).\n\nSticky navigation витрины, собранная из Avatar-Sm и Tab. Выбранный tab получает Toggled. До min-768 Hover отключён. Sandbox демонстрирует переключение в обе стороны; смена страницы/композиции принадлежит потребителю.\n\n| Breakpoint | Геометрия |\n|---|---|\n| base (<394px) | 320px — reference; panel на всю ширину viewport без внешних отступов, 82px, нижние radius 32px |\n| min-394 (394–767px) | 394×82 по центру |\n| min-768 (≥768px) | 394×82 с верхним отступом 8px и radius 48px |\n\n**Events:** avatar-click — прокрутить к полной шапке; resume — перейти к резюме. Слотов нет.\n\n</details>",
+        component: "[Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059)\n\n<details>\n<summary>Техническое описание</summary>\n\nTopNavScroll/Vitrina — [Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059).\n\nSticky navigation витрины, собранная из Avatar-Sm и Tab. Выбранный tab получает Toggled. До min-768 Hover отключён. Sandbox демонстрирует переключение в обе стороны; смена страницы/композиции принадлежит потребителю.\n\n| Breakpoint | Геометрия |\n|---|---|\n| base (<394px) | 320px — reference; panel на всю ширину viewport без внешних отступов, 82px, нижние radius 32px |\n| min-394 (394–767px) | полная ширина viewport × 82px; табы Fill |\n| min-768 (≥768px) | 394×82 с верхним отступом 8px и radius 48px |\n\n**Events:** avatar-click — прокрутить к полной шапке; resume — перейти к резюме. Слотов нет.\n\n</details>",
       },
     },
   },
@@ -109,8 +109,18 @@ export const Sandbox: Story = {
     await userEvent.click(canvas.getByRole('button', { name: 'min-394' }))
     await expect(nav).toHaveAttribute('data-storybook-breakpoint', 'min-394')
     await expect(Math.round(nav.getBoundingClientRect().width)).toBe(394)
+    for (const width of ['320', '393', '394', '767']) {
+      await userEvent.selectOptions(canvas.getByRole('combobox'), width)
+      await expect(Math.round(nav.getBoundingClientRect().width)).toBe(Number(width))
+      await expect(Math.abs(projects.getBoundingClientRect().width - resume.getBoundingClientRect().width)).toBeLessThan(0.1)
+      const gap = Number(width) < 394 ? 16 : 24
+      await expect(projects.getBoundingClientRect().left - avatar.getBoundingClientRect().right).toBeCloseTo(gap, 1)
+      await expect(resume.getBoundingClientRect().left - projects.getBoundingClientRect().right).toBeCloseTo(gap, 1)
+    }
     await userEvent.click(canvas.getByRole('button', { name: 'min-768' }))
     await expect(nav).toHaveAttribute('data-storybook-breakpoint', 'min-768')
     await expect(Math.round(nav.getBoundingClientRect().height)).toBe(90)
+    await expect(projects.getBoundingClientRect().left - avatar.getBoundingClientRect().right).toBeCloseTo(24, 1)
+    await expect(resume.getBoundingClientRect().left - projects.getBoundingClientRect().right).toBeCloseTo(24, 1)
   },
 }

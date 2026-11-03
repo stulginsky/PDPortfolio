@@ -36,7 +36,15 @@ export const Sandbox: Story = {
     const presets = createHeroDraft()
     expect(presets.base[1]!.introDirection).toBe(1)
     expect(presets.base[3]!.introDirection).toBe(-1)
+    expect(presets['min-1920'][1]!.viscosity).toBe(10)
+    expect(presets['min-1920'][1]!.returnSpeed).toBe(.3)
+    expect(presets['min-1920'][2]!.viscosity).toBe(6)
+    expect(presets['min-1920'][2]!.returnSpeed).toBe(.5)
     for (const [bp, layers] of Object.entries(presets)) {
+      expect(layers[1]!.viscosity).toBe(10)
+      expect(layers[1]!.returnSpeed).toBe(.3)
+      expect(layers[2]!.viscosity).toBe(6)
+      expect(layers[2]!.returnSpeed).toBe(.5)
       const mobile = bp === 'base' || bp === 'min-768'
       expect(layers[3]!.viscosity).toBe(mobile ? .5 : 1)
       expect(layers[3]!.animationEnabled).toBe(mobile)
@@ -53,6 +61,13 @@ export const Sandbox: Story = {
     await expect(canvas.getByRole('heading', { level: 1 })).toHaveTextContent(content.hero.title.replace(/\s/g, ' '))
     const roleBlock = root.querySelector<HTMLElement>('.ds-role-focus')!
     await expect(roleBlock).toBeVisible()
+    if (window.innerWidth >= 768) {
+      const label = roleBlock.querySelectorAll('.ds-role-focus__label')[1]!
+      const range = document.createRange()
+      range.selectNodeContents(label)
+      const expectedLeft = root.getBoundingClientRect().left + (root.clientWidth - roleBlock.getBoundingClientRect().width) / 2
+      expect(Math.abs(range.getBoundingClientRect().left - expectedLeft)).toBeLessThan(.2)
+    }
     await expect(roleBlock).toHaveTextContent(content.hero.role.replace(/\s/g, ' '))
     const focusItems = roleBlock.querySelectorAll('.ds-role-focus__row')[1]!.querySelectorAll('.ds-role-focus__item')
     expect(focusItems).toHaveLength(5)

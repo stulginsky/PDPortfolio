@@ -120,8 +120,8 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
 }
 .ds-top-sticky-bar__close { grid-column: 2; grid-row: 1; }
 .ds-top-sticky-bar__menu { position: relative; grid-column: 1 / -1; grid-row: 2; width: 100%; }
-.ds-top-sticky-bar__menu :deep(.ds-fs-menu) { width: 100%; }
-.ds-top-sticky-bar__menu :deep(.ds-fs-menu__trigger) { width: 100%; max-width: none; }
+.ds-top-sticky-bar__menu :deep(.ds-fs-menu) { display: flex; justify-content: center; width: 100%; }
+.ds-top-sticky-bar__menu :deep(.ds-fs-menu__trigger) { width: auto; max-width: none; }
 .ds-top-sticky-bar--web {
   display: flex;
   justify-content: flex-end;
@@ -144,13 +144,18 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  min-height: 78px;
-  background: none;
+  min-height: 82px;
+  /* Source technical helper paint for the retained backdrop blur. */
+  background: rgb(0 0 0 / .01);
+  border-radius: 0 0 var(--radius-xlg) var(--radius-xlg);
 }
 .ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu { flex: none; width: auto; }
 .ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu),
 .ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu__trigger) { width: auto; }
 .ds-top-sticky-bar--controls-only.ds-top-sticky-bar--web {
+  height: 98px;
+  padding: var(--space-6);
+  border-radius: 0 0 0 var(--radius-xxlg);
   justify-content: flex-end;
   width: max-content;
   max-width: 100%;

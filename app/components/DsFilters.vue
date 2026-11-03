@@ -12,6 +12,7 @@ const filterItems = [
   { label: 'Брендинг', value: 'branding' },
   { label: 'Креатив', value: 'creative' },
   { label: 'Jewelry', value: 'jewelry' },
+  { label: 'Лэндинг', value: 'landing' },
   { label: 'Gamedev', value: 'gamedev' },
   { label: 'Видео', value: 'video' },
   { label: 'Упаковка', value: 'packaging' },

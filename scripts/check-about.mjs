@@ -7,7 +7,7 @@ const normalize = text => text.replace(/\s+/gu,' ').trim()
 const browser = await chromium.launch({ headless: true })
 const results = []
 try {
-  for (const width of [320, 370, 410, 534, 570, 767, 768, 1024, 1280, 1440, 1464, 1920]) {
+  for (const width of [320, 370, 410, 534, 570, 767, 768, 1023, 1024, 1280, 1440, 1464, 1920]) {
     const context = await browser.newContext({ viewport: { width, height: 1080 }, reducedMotion: 'reduce' })
     const page = await context.newPage()
     const errors = []
@@ -39,7 +39,7 @@ try {
       assert.equal(geometry.sidebar.y,geometry.experience.y)
       assert.ok(geometry.sidebar.x > geometry.experience.x)
       assert.ok(Math.abs(geometry.experience.width / geometry.sidebar.width - 734 / 594) < 0.01)
-      assert.equal(geometry.quoteOpenVisible,false)
+      assert.equal(geometry.quoteOpenVisible,true)
     } else {
       assert.ok(geometry.sidebar.y < geometry.experience.y)
       assert.equal(geometry.quoteOpenVisible,false)
@@ -49,7 +49,7 @@ try {
     await page.evaluate(() => window.scrollTo(0,document.querySelector('.about-page__header').getBoundingClientRect().bottom+1))
     await page.waitForFunction(() => document.querySelector('.about-page').dataset.compact==='true')
     const nav=await page.locator('.ds-top-nav-scroll-resume').boundingBox()
-    assert.equal(nav.width,Math.min(width,534))
+    assert.equal(nav.width,width < 768 ? width : 534)
     await page.locator('.ds-avatar-sm').click()
     await page.waitForFunction(() => scrollY===0 && document.querySelector('.about-page').dataset.compact==='false')
     const download=page.waitForEvent('download')

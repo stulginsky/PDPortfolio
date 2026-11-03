@@ -9,8 +9,9 @@ import ChirpAiDesignSystem from './ChirpAiDesignSystem.vue'
 import DCVendorAppPr from './DCVendorAppPr.vue'
 import DCVendorAppUx from './DCVendorAppUx.vue'
 import DCPickerAppUx from './DCPickerAppUx.vue'
+import Component4Real3Dweapon from './4Real3Dweapon.vue'
 
-type RelatedCaseName = 'ChirpAiHealthAssistant' | 'ChirpExplainableAiUx' | 'ChirpAiMedicalBrand' | 'ChirpAiDesignSystem' | 'DCVendorAppPr' | 'DCVendorAppUx' | 'DCPickerAppUx'
+type RelatedCaseName = 'ChirpAiHealthAssistant' | 'ChirpExplainableAiUx' | 'ChirpAiMedicalBrand' | 'ChirpAiDesignSystem' | 'DCVendorAppPr' | 'DCVendorAppUx' | 'DCPickerAppUx' | '4Real3Dweapon'
 
 const props = withDefaults(defineProps<{
   /** Ordered explicit selection; omitted preserves the original Chirp catalog. */
@@ -40,6 +41,7 @@ const catalog = [
   { name: 'DCVendorAppPr' as const, component: DCVendorAppPr, href: '/cases/dc-vendor-app-pr', kind: 'dc', props: { href: '/cases/dc-vendor-app-pr' } },
   { name: 'DCVendorAppUx' as const, component: DCVendorAppUx, href: '/cases/dc-vendor-app-ux', kind: 'dc', props: { href: '/cases/dc-vendor-app-ux' } },
   { name: 'DCPickerAppUx' as const, component: DCPickerAppUx, href: '', kind: 'dc', props: {} },
+  { name: '4Real3Dweapon' as const, component: Component4Real3Dweapon, href: '/cases/4real-3dweapon', kind: '4real', props: {} },
 ]
 const cards = computed(() => {
   const selection = props.cardNames ?? chirpCatalog.map(card => card.name)
@@ -49,6 +51,12 @@ const cards = computed(() => {
   })
 })
 const hasDCCards = computed(() => cards.value.some(card => card.kind === 'dc'))
+const selectionKind = computed(() => hasDCCards.value ? 'dc' : cards.value.some(card => card.kind === '4real') ? '4real' : 'chirp')
+function activateCase(card: { name: string; href: string }, event: MouseEvent | KeyboardEvent) {
+  if (card.name !== '4Real3Dweapon' || (event.type === 'click' && event.defaultPrevented)) return
+  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(card.href, '_blank', 'noopener')
+  else window.location.assign(card.href)
+}
 const root = ref<HTMLElement>()
 const rail = ref<HTMLElement>()
 const viewportWidth = ref(320)
@@ -196,12 +204,12 @@ onUnmounted(() => {
 
 <template>
   <section ref="root" v-show="cards.length" class="related-cases" :style="layoutStyle" :aria-label="props.ariaLabel"
-    :data-multiple="cards.length > 1" :data-selection-kind="hasDCCards ? 'dc' : 'chirp'" :data-breakpoint="breakpoint" :data-position="position" :data-scale="scale" @keydown="keyboard">
+    :data-multiple="cards.length > 1" :data-selection-kind="selectionKind" :data-breakpoint="breakpoint" :data-position="position" :data-scale="scale" @keydown="keyboard">
     <div ref="rail" class="related-cases__rail" @scroll.passive="readScroll" @wheel.passive="cancelMotion"
       @pointerdown="cancelMotion" @focusin="reveal">
       <ul class="related-cases__track" :class="{ 'related-cases__track--single': cards.length === 1 }">
         <li v-for="card in cards" :key="card.name" :data-card-name="card.name" class="related-cases__card">
-          <div class="related-cases__stage"><component :is="card.component" v-bind="card.props" /></div>
+          <div class="related-cases__stage"><component :is="card.component" v-bind="card.props" @activate="event => activateCase(card, event)" /></div>
         </li>
       </ul>
     </div>

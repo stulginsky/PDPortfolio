@@ -169,6 +169,26 @@ function typografCase(src) {
 }
 
 const jobs = [
+  {source:"cases/fox-jw.json",out:"cases/fox-jw.json",transform:typografTree},
+  {source:"cases/dragon-heart-jw.json",out:"cases/dragon-heart-jw.json",transform:typografTree},
+  {source:"cases/aqua-maris.json",out:"cases/aqua-maris.json",transform:typografTree},
+  {source:"cases/absolut.json",out:"cases/absolut.json",transform:typografTree},
+  {source:"cases/sapsan-cr.json",out:"cases/sapsan-cr.json",transform:typografTree},
+  {source:"cases/4real-3dweapon.json",out:"cases/4real-3dweapon.json",transform:typografTree},
+  {source:"skins4-real.json",out:"skins4-real.json",transform:typografTree},
+  {source:"black-gold.json",out:"black-gold.json",transform:typografTree},
+  {source:"fox-jw.json",out:"fox-jw.json",transform:typografTree},
+  {source:"dragon-heart-jw.json",out:"dragon-heart-jw.json",transform:typografTree},
+  {source:"4real-3dweapon.json",out:"4real-3dweapon.json",transform:typografTree},
+  {source:"pd-portfolio-ds.json",out:"pd-portfolio-ds.json",transform:typografTree},
+  {source:"sapsan-cr.json",out:"sapsan-cr.json",transform:typografTree},
+  {source:"absolut.json",out:"absolut.json",transform:typografTree},
+  {source:"aqua-maris.json",out:"aqua-maris.json",transform:typografTree},
+  {
+    source: "li-design-system.json",
+    out: "li-design-system.json",
+    transform: typografTree,
+  },
   {
     source: "dc-picker-app-ux.json",
     out: "dc-picker-app-ux.json",

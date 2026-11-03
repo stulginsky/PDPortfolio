@@ -1,0 +1,19 @@
+{
+  "pageTitle": "Absolut — Национальный характер на глобальном языке",
+  "page": {
+    "source": "https://www.figma.com/design/yhTO1PexBbfoHQyh4bYcLL/Absolut-case?node-id=14-6723",
+    "backLabel": "Вернуться к проектам",
+    "role": "Art Director · Designer · Illustrator",
+    "focus": "Визуальные метафоры · Национальный характер · Глобальный язык",
+    "paragraphs": [
+      "Серия постеров для ежегодного международного челенджа агентств Absolut — поиска идей для локальных и глобальных кампаний бренда. Мы участвовали в основной программе и номинации «Национальная идея»",
+      "2003 год, TBWA\\Russia. Моя первая самостоятельная работа в крупном агентстве: возможность придумать и воплотить идеи для всемирно известного бренда. Серия вошла в число призёров конкурса"
+    ],
+    "media": [
+      { "id": "14:6739", "src": "/cases/absolut/message.png", "title": "Absolut Message", "width": 1715, "height": 2250 },
+      { "id": "14:11429", "src": "/cases/absolut/vigilance.png", "title": "Absolut Vigilance", "width": 1720, "height": 2256 },
+      { "id": "14:11453", "src": "/cases/absolut/dacha.png", "title": "Absolut Dacha", "width": 1715, "height": 2250 },
+      { "id": "14:11472", "src": "/cases/absolut/russua.png", "title": "Absolut Russia", "width": 1715, "height": 2250 }
+    ]
+  }
+}

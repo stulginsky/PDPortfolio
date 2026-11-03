@@ -1,0 +1,19 @@
+{
+  "pageTitle": "Сердце дракона — Ювелирный дизайн",
+  "page": {
+    "source": "https://www.figma.com/design/D9IVc2fwegZwL7yvUH2Neb/Jewelry-TheDragon-sHeart?node-id=7-191",
+    "backLabel": "Вернуться к проектам",
+    "role": "Art Director · 3D Designer",
+    "focus": "Jewelry design · Digital sculpting · 3D visualization",
+    "paragraphs": [
+      "В глубине чёрного опала живёт огонь: вспыхивает алым, уходит в зелень, замирает в ночной синеве. Будто у камня есть сердце, которое бьётся свету в ответ",
+      "Мне представляются два дракона, у которых одно сердце на двоих. Они обвивают камень золотыми телами, бережно удерживая его в лапах. Каждый доверил другому свой огонь — и теперь оба хранят его, немного настороженные, всё ещё не привыкшие быть уязвимыми. Так появилось «Сердце дракона»: история о любви и доверии, которые однажды оказываются сильнее страха"
+    ],
+    "video": { "src": "/cases/dragon-heart-jw/dragons_pendant_v1 (540p).mp4", "title": "Сердце дракона — кулон с чёрным опалом", "fallback": "Скачать видео" },
+    "media": [
+      { "id": "7:350", "assetId": "7:296", "src": "/cases/dragon-heart-jw/dragon01.png", "title": "dragon01", "width": 2436, "height": 1566 },
+      { "id": "7:200", "assetId": "7:297", "src": "/cases/dragon-heart-jw/dragon02.png", "title": "dragon02", "width": 2436, "height": 1566 },
+      { "id": "7:372", "assetId": "7:298", "src": "/cases/dragon-heart-jw/dragon03.png", "title": "dragon03", "width": 3840, "height": 2560 }
+    ]
+  }
+}

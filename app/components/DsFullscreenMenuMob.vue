@@ -149,9 +149,7 @@ const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(close,
       @touchend="endSwipe"
       @touchcancel="cancelSwipe"
       >
-        <div class="ds-fs-menu__handle-area" aria-hidden="true">
-          <span class="ds-fs-menu__handle" />
-        </div>
+        <div class="ds-fs-menu__handle-area" aria-hidden="true" />
 
         <div class="ds-fs-menu__content">
           <div class="ds-fs-menu__list-wrap">
@@ -256,14 +254,6 @@ const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(close,
   align-items: center;
   justify-content: center;
   min-height: 64px;
-}
-
-.ds-fs-menu__handle {
-  display: block;
-  width: 64px;
-  height: 4px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-violet);
 }
 
 .ds-fs-menu__content {

@@ -1,0 +1,166 @@
+{
+  "sourceFile": "yAd1dV4ImBUXJUsD0gQcHu",
+  "sourceNode": "7:86",
+  "assets": [
+    {
+      "nodeId": "1:37",
+      "canonicalGroup": "default-active-pressed-main",
+      "canonicalName": "default-active-pressed-left",
+      "file": "images/buttons/default-active-pressed-main/default-active-pressed-left.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 5212,
+      "sha256": "14cc787a48719b5db31611fae5cfb34e7f2ce1d080ec19ad4e5e192d9ae20ced"
+    },
+    {
+      "nodeId": "1:41",
+      "canonicalGroup": "default-active-pressed-main",
+      "canonicalName": "default-active-pressed-filler",
+      "file": "images/buttons/default-active-pressed-main/default-active-pressed-filler.png",
+      "width": 1,
+      "height": 128,
+      "bytes": 311,
+      "sha256": "87950eba2049c2931800ff8ac0f31fc8d3b9f7ffcf9780d04631a2a4e4db2d1f"
+    },
+    {
+      "nodeId": "1:48",
+      "canonicalGroup": "default-active-pressed-main",
+      "canonicalName": "default-active-pressed-right",
+      "file": "images/buttons/default-active-pressed-main/default-active-pressed-right.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 5203,
+      "sha256": "48c62c37e679af95d0daf5b00642126c4b22ab8bb51bcc3a66293953acf3e9a4"
+    },
+    {
+      "nodeId": "1:112",
+      "canonicalGroup": "default-active-pressed-main",
+      "canonicalName": "default-active-pressed-text",
+      "file": "images/buttons/default-active-pressed-main/default-active-pressed-text.png",
+      "width": 211,
+      "height": 128,
+      "bytes": 14872,
+      "sha256": "5516dd99f18ccee337d7e676f43d0909993b435badecb4e143f428ff6d6785c2"
+    },
+    {
+      "nodeId": "1:102",
+      "canonicalGroup": "hover-main",
+      "canonicalName": "hover-left",
+      "file": "images/buttons/hover-main/hover-left.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 6732,
+      "sha256": "7fd21454d85070b32092c67259930a9687c9a9184a864b6b0465229539838dd2"
+    },
+    {
+      "nodeId": "1:104",
+      "canonicalGroup": "hover-main",
+      "canonicalName": "hover-filler",
+      "file": "images/buttons/hover-main/hover-filler.png",
+      "width": 1,
+      "height": 128,
+      "bytes": 359,
+      "sha256": "8d6cf92bec970a1717fecd6f1921aefede17acab2fb9891b85c1cd7c0323dde0"
+    },
+    {
+      "nodeId": "1:36",
+      "canonicalGroup": "hover-main",
+      "canonicalName": "hover-right",
+      "file": "images/buttons/hover-main/hover-right.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 6666,
+      "sha256": "5d9ec3f32d77c7486902d0c772df5be70aa463f4f1702733da6785b8d1eaf44c"
+    },
+    {
+      "nodeId": "1:115",
+      "canonicalGroup": "hover-main",
+      "canonicalName": "hover-text",
+      "file": "images/buttons/hover-main/hover-text.png",
+      "width": 211,
+      "height": 128,
+      "bytes": 16965,
+      "sha256": "a0aafa31e46cd9770631ce146366948deed645cfa55f153c427596670f433a3c"
+    },
+    {
+      "nodeId": "7:11",
+      "canonicalGroup": "default-active-pressed-steam",
+      "canonicalName": "default-active-pressed-steam-left",
+      "file": "images/buttons/default-active-pressed-steam/default-active-pressed-steam-left.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 4223,
+      "sha256": "5ab4f439db95f22458a55bc720a4f2c661affceb87c7c4f02943ba9040b8963b"
+    },
+    {
+      "nodeId": "7:13",
+      "canonicalGroup": "default-active-pressed-steam",
+      "canonicalName": "default-active-pressed-steam-filler",
+      "file": "images/buttons/default-active-pressed-steam/default-active-pressed-steam-filler.png",
+      "width": 1,
+      "height": 128,
+      "bytes": 244,
+      "sha256": "2bc2d0a208fb9da78b4a6960161abea70ba873a6cbe8fb365a6f4a8aa75efc0e"
+    },
+    {
+      "nodeId": "7:9",
+      "canonicalGroup": "default-active-pressed-steam",
+      "canonicalName": "default-active-pressed-steam-right",
+      "file": "images/buttons/default-active-pressed-steam/default-active-pressed-steam-right.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 4405,
+      "sha256": "e3c8c100ce74d5098df097d951db664888d7bd2828857b522fd2c2c4d8f8eef5"
+    },
+    {
+      "nodeId": "7:15",
+      "canonicalGroup": "default-active-pressed-steam",
+      "canonicalName": "default-active-pressed-steam-text",
+      "file": "images/buttons/default-active-pressed-steam/default-active-pressed-steam-text.png",
+      "width": 268,
+      "height": 128,
+      "bytes": 16969,
+      "sha256": "f8608eb5e0841b020e6468e6b0e80f21ffa8faafffc414d25d206b49ea8efcd6"
+    },
+    {
+      "nodeId": "7:68",
+      "canonicalGroup": "hover-steam",
+      "canonicalName": "hover-left",
+      "file": "images/buttons/hover-steam/hover-left.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 5538,
+      "sha256": "6419ffa4361d10c29bd9b6bc947a6d2ee5def6dedddcce43a3e609ee297cb47d"
+    },
+    {
+      "nodeId": "7:70",
+      "canonicalGroup": "hover-steam",
+      "canonicalName": "hover-filler",
+      "file": "images/buttons/hover-steam/hover-filler.png",
+      "width": 1,
+      "height": 128,
+      "bytes": 302,
+      "sha256": "c0e57b98e7c73cd387fcbc0dc035f5bdcd7c6dd6c71de461b5a3380b6e03e3bb"
+    },
+    {
+      "nodeId": "7:66",
+      "canonicalGroup": "hover-steam",
+      "canonicalName": "hover-right",
+      "file": "images/buttons/hover-steam/hover-right.png",
+      "width": 42,
+      "height": 128,
+      "bytes": 5721,
+      "sha256": "64a905b41b9244965a1c22f48053c36ab4d73451c8f6257c17ef2519e63537da"
+    },
+    {
+      "nodeId": "7:72",
+      "canonicalGroup": "hover-steam",
+      "canonicalName": "hover-text",
+      "file": "images/buttons/hover-steam/hover-text.png",
+      "width": 268,
+      "height": 128,
+      "bytes": 21458,
+      "sha256": "91fc33e747a116fec8d315f297a9dfcbcf51fd7636a5708e40f8d6aedceca1ea"
+    }
+  ]
+}

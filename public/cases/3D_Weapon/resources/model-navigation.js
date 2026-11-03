@@ -4,6 +4,9 @@
   var pageName = location.pathname.split('/').pop().replace('.html', '');
   var baseUrl = new URL('.', location.href);
   var embedded = !!(window.frameElement && window.frameElement.classList.contains('weapon-page'));
+  if (embedded) document.documentElement.classList.add('weapon-cached-page');
+  var portfolioEmbed = !!(window.frameElement && window.frameElement.classList.contains('weapon-case-landing')) || (embedded && parent.weaponPortfolioEmbed);
+  window.weaponPortfolioEmbed = portfolioEmbed;
   var modelUrl;
   var frameId;
   var links = {};
@@ -36,6 +39,7 @@
     }
     collectPaths(data.objectPaths);
     walk(data, function (node) {
+      if (node.label === '3D' && node.interactionMap) delete node.interactionMap.onClick;
       if (node.type === 'inlineFrame' && node.target && node.target.urlLiteral) {
         var url = node.target.urlLiteral.value;
         if (url.indexOf('https://sketchfab.com/models/') === 0) {
@@ -52,13 +56,15 @@
           }
         });
       }
-      if (embedded && node.interactionMap) {
-        // The host owns the original countdown; cached pages must not reset or multiply it.
+      if (node.interactionMap) {
+        // Replace Axure's recursive per-field timers in every page, including the host.
         if (node.type === 'Axure:Master' && node.interactionMap.onLoad &&
             JSON.stringify(node.interactionMap.onLoad).indexOf('SecVar') !== -1) {
           delete node.interactionMap.onLoad;
         }
         if (node.label === 'sec' || node.label === 'min') delete node.interactionMap.onMove;
+      }
+      if (embedded && node.interactionMap) {
         // Re-entering Home uses the cached model without replaying the opening intro.
         if (pageName === 'home' && node.label === 'main' && node.interactionMap.onLoad) {
           var actions = node.interactionMap.onLoad.cases[0].actions;
@@ -90,11 +96,13 @@
     var notice;
     var message;
     var retry;
+    var countdownEndsAt;
     entries[pageName] = { view: window, title: document.title, ready: false };
 
     function status(text, failed) {
       if (!notice) return;
       notice.hidden = !text;
+      notice.dataset.loading = text && !failed ? 'true' : 'false';
       message.textContent = text || '';
       retry.hidden = !failed;
     }
@@ -119,12 +127,23 @@
       return entry;
     }
 
-    function syncCountdown(entry) {
-      if (!entry || !entry.view || entry.view === window) return;
-      ['hour', 'min', 'sec'].forEach(function (label) {
-        var source = document.querySelector('[data-label="' + label + '"] .text');
-        var target = entry.view.document.querySelector('[data-label="' + label + '"] .text');
-        if (source && target && source.textContent !== target.textContent) target.textContent = source.textContent;
+    function countdownFields() {
+      var remaining = Math.max(0, Math.ceil((countdownEndsAt - Date.now()) / 1000));
+      return {
+        hour: String(Math.floor(remaining / 3600)).padStart(2, '0'),
+        min: String(Math.floor(remaining / 60) % 60).padStart(2, '0'),
+        sec: String(remaining % 60).padStart(2, '0')
+      };
+    }
+
+    function syncCountdown(entry, fields) {
+      if (!entry || !entry.view || !countdownEndsAt) return;
+      fields = fields || countdownFields();
+      Object.keys(fields).forEach(function (label) {
+        entry.view.document.querySelectorAll('[data-label="' + label + '"] .text').forEach(function (target) {
+          var value = target.querySelector('span') || target;
+          if (value.textContent !== fields[label]) value.textContent = fields[label];
+        });
       });
     }
 
@@ -170,6 +189,7 @@
     }
 
     function select(name, fromHistory) {
+      document.documentElement.dataset.selectedPage = name;
       if (name === active) {
         pending = null;
         document.documentElement.dataset.pendingPage = '';
@@ -212,7 +232,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+      // Preserve the prototype's initial 16 hours 12 minutes as one shared deadline.
+      countdownEndsAt = Date.now() + (16 * 3600 + 12 * 60) * 1000;
+      syncCountdown(entries[pageName]);
       document.documentElement.dataset.activePage = active;
+      document.documentElement.dataset.selectedPage = active;
       history.scrollRestoration = 'manual';
       history.replaceState({ weaponPage: active }, '', location.href);
       notice = document.createElement('div');
@@ -237,8 +261,13 @@
       notice.appendChild(message);
       notice.appendChild(retry);
       document.body.appendChild(notice);
+      if (window.weaponLayout) window.weaponLayout.decorateLoadingStatus(notice);
       if (pageName !== 'home') status('Загружаем 3D…', false);
-      setInterval(function () { syncCountdown(entries[active]); }, 250);
+      setInterval(function () {
+        var fields = countdownFields();
+        syncCountdown(entries[pageName], fields);
+        if (active !== pageName) syncCountdown(entries[active], fields);
+      }, 250);
     });
     addEventListener('popstate', function (event) {
       var name = event.state && event.state.weaponPage || targetPage(location.href);
@@ -264,13 +293,20 @@
         var client = new Sketchfab('1.12.1', document.getElementById(frameId));
         client.init(url.pathname.split('/')[2], {
           autostart: 1,
+          camera: 0,
+          ui_hint: 0,
+          scrollwheel: portfolioEmbed ? 0 : 1,
           autospin: Number(url.searchParams.get('autospin')),
           success: function (api) {
             window.weaponModelApi = api;
             api.addEventListener('viewerready', function () {
-              clearTimeout(timer);
-              document.documentElement.classList.remove('model-preloading');
-              document.documentElement.dataset.modelState = 'ready';
+              function finishModel() {
+                clearTimeout(timer);
+                document.documentElement.classList.remove('model-preloading');
+                document.documentElement.dataset.modelState = 'ready';
+              }
+              if (window.weaponLayout) window.weaponLayout.prepareModel(api, finishModel);
+              else finishModel();
             });
             api.start();
           },

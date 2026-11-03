@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="102.085" height="32.2438" viewBox="0 0 102.085 32.2438" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Ellipse 3" filter="url(#filter0_f_0_70)">
+<path d="M89.0846 14.7162C74.1589 16.819 56.3282 19.2438 42.0542 19.2438C27.7801 19.2438 32.963 16.2666 13 14.791C13 11.8515 35.5482 13.5045 49.8222 13.5045C64.0963 13.5045 89.0846 11.7767 89.0846 14.7162Z" fill="#580016" fill-opacity="0.5"/>
+</g>
+<defs>
+<filter id="filter0_f_0_70" x="0" y="-7.90269e-10" width="102.085" height="32.2438" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="6.5" result="effect1_foregroundBlur_0_70"/>
+</filter>
+</defs>
+</svg>

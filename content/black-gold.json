@@ -1,0 +1,12 @@
+{
+  "title": "Black Gold\nONLINE",
+  "badges": [
+    "Art Direction",
+    "Motion design",
+    "Promo design"
+  ],
+  "tooltip": "Подписаться на обновления",
+  "subscribeLabel": "Скоро — сообщить о публикации кейса Black Gold ONLINE",
+  "emailSubject": "Сообщите о новом кейсе",
+  "emailBody": "Привет, Константин! Очень хочу посмотреть новый кейс {Название кейса}. Сообщите о публикации. Спасибо."
+}

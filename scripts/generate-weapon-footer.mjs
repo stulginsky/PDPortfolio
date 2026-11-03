@@ -1,0 +1,124 @@
+/** Generate standalone HTML/CSS from the production DsFooter. No browser Vue runtime. */
+import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { dirname, resolve, relative, basename } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { parse, compileScript, compileStyle } from '@vue/compiler-sfc';
+import ts from 'typescript';
+import { createSSRApp } from 'vue';
+import { renderToString } from '@vue/server-renderer';
+import postcss from 'postcss';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const landing = resolve(root, 'public/cases/3D_Weapon');
+const destination = resolve(landing, 'resources/portfolio-footer');
+const componentPath = resolve(root, 'app/components/DsFooter.vue');
+const tokensPath = resolve(root, 'app/assets/css/tokens.css');
+const fontsPath = resolve(root, 'app/assets/css/fonts.css');
+const iconPath = resolve(root, 'app/assets/icons/favicon.svg');
+const source = await readFile(componentPath, 'utf8');
+const descriptor = parse(source, { filename: componentPath }).descriptor;
+const scopeId = 'data-v-' + createHash('sha256').update('app/components/DsFooter.vue').digest('hex').slice(0,8);
+const compiled = compileScript(descriptor, { id: scopeId, inlineTemplate: true,
+  templateOptions: { ssr: true, compilerOptions: { scopeId } } });
+let moduleSource = compiled.content.replace(/import favicon from ['"]\.\.\/assets\/icons\/favicon\.svg['"]/, 'const favicon = "resources/portfolio-footer/favicon.svg"');
+if (moduleSource === compiled.content) throw new Error('Canonical Footer favicon import changed');
+moduleSource = ts.transpileModule(moduleSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+moduleSource = moduleSource.replace(/from (["'])(vue(?:\/server-renderer)?)\1/g, (_, quote, specifier) => 'from ' + JSON.stringify(import.meta.resolve(specifier)));
+const { default: component } = await import('data:text/javascript;base64,' + Buffer.from(moduleSource).toString('base64'));
+const html = await renderToString(createSSRApp(component));
+const componentCss = descriptor.styles.map(style => {
+  const result = compileStyle({ source: style.content, filename: componentPath, id: scopeId, scoped: style.scoped });
+  if (result.errors.length) throw new Error(result.errors.join('\n'));
+  return result.code;
+}).join('\n');
+
+const tokensSource = await readFile(tokensPath, 'utf8');
+const tokenDefinitions = new Map();
+postcss.parse(tokensSource).walkRules(rule => {
+  if (rule.selector === ':root' && rule.parent.type === 'root') {
+    rule.walkDecls(decl => { if (decl.prop.startsWith('--')) tokenDefinitions.set(decl.prop, decl.value); });
+  }
+});
+const requiredTokens = new Map();
+function collectTokens(css) {
+  for (const [, name] of css.matchAll(/var\((--[\w-]+)/g)) {
+    if (requiredTokens.has(name)) continue;
+    const value = tokenDefinitions.get(name);
+    if (!value) throw new Error(`Missing canonical token ${name}`);
+    requiredTokens.set(name, value);
+    collectTokens(value);
+  }
+}
+collectTokens(componentCss);
+const fontFamily = requiredTokens.get('--text-font-sans');
+if (!fontFamily) throw new Error('Footer font token not found');
+const fontsSource = await readFile(fontsPath, 'utf8');
+const fontFaces = [];
+const fontFiles = [];
+postcss.parse(fontsSource).walkAtRules('font-face', rule => {
+  const family = rule.nodes.find(node => node.prop === 'font-family')?.value;
+  if (!family || !fontFamily.includes(family)) return;
+  const copy = rule.clone();
+  copy.walkDecls('src', decl => {
+    decl.value = decl.value.replace(/url\(["']?([^"')]+)["']?\)/g, (_, url) => {
+      const file = resolve(dirname(fontsPath), url);
+      fontFiles.push(file);
+      return `url("./fonts/${basename(file)}")`;
+    });
+  });
+  fontFaces.push(copy.toString());
+});
+if (!fontFaces.length) throw new Error('Canonical Footer font-face not found');
+
+const tokenCss = `.weapon-responsive, .weapon-footer-slot {\n${[...requiredTokens].map(([name,value])=>`  ${name}: ${value};`).join('\n')}\n}`;
+// Page placement belongs to this consumer; the component CSS above remains untouched.
+const placementCss = `
+.weapon-responsive {
+  --weapon-footer-height: calc(var(--space-4) * 4 + var(--space-16) * 2 + var(--text-size-16) * 4.5);
+}
+.weapon-footer-slot { visibility: hidden; position: relative; width: 100%; padding-top: var(--weapon-scene-height); pointer-events: none; }
+.weapon-responsive .weapon-footer-slot { visibility: visible; }
+.weapon-footer-slot[hidden], .weapon-home:not([data-landing-revealed="true"]) .weapon-footer-slot { display: none; }
+@media (min-width: 410px) {
+  .weapon-responsive { --weapon-footer-height: calc(var(--space-4) * 2 + var(--space-16) * 2 + var(--text-size-16) * 1.5); }
+}
+@media (min-width: 1280px) {
+  .weapon-responsive { --weapon-scene-height: max(769px, calc(100svh - var(--weapon-footer-height))); }
+}
+`;
+const css = '/* Generated by scripts/generate-weapon-footer.mjs. Edit production DsFooter.vue, not this file. */\n'
+  + fontFaces.join('\n\n') + '\n\n' + tokenCss + '\n\n' + componentCss + '\n' + placementCss;
+
+await mkdir(resolve(destination, 'fonts'), { recursive: true });
+async function save(path, value) {
+  let previous;
+  try { previous = await readFile(path, 'utf8'); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  if (previous !== value) await writeFile(path, value);
+}
+await save(resolve(destination, 'footer.css'), css);
+await copyFile(iconPath, resolve(destination, 'favicon.svg'));
+for (const file of fontFiles) await copyFile(file, resolve(destination, 'fonts', basename(file)));
+
+const head = '<!-- generated:portfolio-footer:head -->\n    <link href="resources/portfolio-footer/footer.css" rel="stylesheet"/>\n    <!-- /generated:portfolio-footer:head -->';
+const body = '<!-- generated:portfolio-footer:body -->\n    <div class="weapon-footer-slot">' + html + '</div>\n    <!-- /generated:portfolio-footer:body -->';
+for (const page of ['home', 'ak', 'm4a1', 'awp', 'knife']) {
+  const path = resolve(landing, page + '.html');
+  let document = await readFile(path, 'utf8');
+  for (const [section, generated] of [['head', head], ['body', body]]) {
+    const pattern = new RegExp(`<!-- generated:portfolio-footer:${section} -->[\\s\\S]*?<!-- /generated:portfolio-footer:${section} -->`);
+    document = pattern.test(document) ? document.replace(pattern, () => generated) : document.replace(`</${section}>`, generated + `\n  </${section}>`);
+  }
+  await save(path, document);
+}
+const manifest = {
+  generator: 'scripts/generate-weapon-footer.mjs',
+  component: 'app/components/DsFooter.vue',
+  breakpoints: { base: 'column below410px', 'min-410': 'row from410px' },
+  sources: [],
+};
+for (const path of [componentPath, tokensPath, fontsPath, iconPath, ...fontFiles]) {
+  manifest.sources.push({ file: relative(root,path).replaceAll('\\','/'), sha256: createHash('sha256').update(await readFile(path)).digest('hex') });
+}
+await save(resolve(destination,'manifest.json'), JSON.stringify(manifest,null,2)+'\n');
+console.log('Generated production DsFooter HTML/CSS for5 standalone pages; no browser Vue runtime.');

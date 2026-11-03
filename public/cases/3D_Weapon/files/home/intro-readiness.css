@@ -1,5 +1,5 @@
 ﻿/* The iframe stays beneath Axure's artwork, without being reparented by animation. */
-#u105 { z-index: 0; }
+#u105 { z-index: 0; transition: opacity 1200ms cubic-bezier(0.45, 0, 0.25, 1); }
 .model-preloading #u105 { opacity: 0; pointer-events: none; }
 /* The white page background comes from body, behind the stable viewer layer. */
 #u102_div { background-color: transparent; }
@@ -25,4 +25,19 @@
   color: inherit;
   font: inherit;
   cursor: pointer;
+}
+
+/* The phrase stays invisible during its initial positioning and pause. */
+[data-label="choose 1920"] { opacity: 0; transition: opacity 180ms ease-out; }
+.intro-phrase-moving [data-label="choose 1920"] { opacity: 1; }
+/* Follow the final letter through the shared cruise, then keep growing while the words brake. */
+#u65 {
+  opacity: 0;
+  transform-origin: left center;
+  transform: translateZ(0) scaleX(0);
+  will-change: transform;
+  transition: opacity 180ms ease-out;
+}
+.intro-phrase-moving #u65 {
+  opacity: 1;
 }

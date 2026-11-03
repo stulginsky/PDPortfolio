@@ -1,0 +1,34 @@
+{
+  "generator": "scripts/generate-weapon-footer.mjs",
+  "component": "app/components/DsFooter.vue",
+  "breakpoints": {
+    "base": "column below410px",
+    "min-410": "row from410px"
+  },
+  "sources": [
+    {
+      "file": "app/components/DsFooter.vue",
+      "sha256": "c487b85fb2d2341151701c8b1d40ee284700b887b2e91b4234354eae6c9df8a9"
+    },
+    {
+      "file": "app/assets/css/tokens.css",
+      "sha256": "a61cd3641bd9047208187466210be84af96ff3deee5f8ef088b7bebfde1a8405"
+    },
+    {
+      "file": "app/assets/css/fonts.css",
+      "sha256": "ca1ef29976e77a8cc199a1a9b4022e57a448cc5b089fba489e2f8014e0983742"
+    },
+    {
+      "file": "app/assets/icons/favicon.svg",
+      "sha256": "9007828ccb32f7690336b6dc7cecd8c296bc2a8ac2c5a03932cfad80ab89dd99"
+    },
+    {
+      "file": "app/assets/fonts/roboto-flex-cyrillic-full-normal.woff2",
+      "sha256": "b751f1c1b11848f40b73bdff91da72d24ee56ae7f909e69b01a1a94df23a6967"
+    },
+    {
+      "file": "app/assets/fonts/roboto-flex-latin-full-normal.woff2",
+      "sha256": "173b23c08b26e4f98d1f00fd52b030aba61d56131a218655bcac0fd38b6a228b"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "pageTitle": "Лиса — Ювелирный дизайн",
+  "page": {
+    "source": "https://www.figma.com/design/giYzWzp18FSfJIssptuaGa/Jewelry-Fox?node-id=2-204",
+    "backLabel": "Вернуться к проектам",
+    "role": "Art Director · 3D Designer",
+    "focus": "Jewelry design · Digital sculpting · 3D visualization",
+    "paragraphs": [
+      "Всё началось с петерсита — камня с глубокими переливами, который меняет настроение вместе со светом. В этой изменчивости мне увиделся характер девятихвостой лисы: загадочной, грациозной и неуловимой",
+      "Её образ подсказал форму подвески. Золото очертило лисий силуэт, а камень стал его живой сердцевиной — словно мифическое существо на мгновение позволило себя увидеть"
+    ],
+    "player": {
+      "src": "https://sketchfab.com/models/3458df8232034dd48c3348c426c8c202/embed",
+      "title": "Fox"
+    },
+    "media": [
+      {
+        "id": "2:212",
+        "assetId": "2:429",
+        "src": "/cases/fox-jw/fox01.png",
+        "title": "fox01",
+        "width": 2068,
+        "height": 1600
+      },
+      {
+        "id": "2:216",
+        "assetId": "2:430",
+        "src": "/cases/fox-jw/fox02.png",
+        "title": "fox02",
+        "width": 2068,
+        "height": 1600
+      }
+    ]
+  }
+}

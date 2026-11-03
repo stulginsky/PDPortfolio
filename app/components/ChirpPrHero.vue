@@ -63,7 +63,7 @@ function initialValues(profile: HeroBreakpoint) {
     'slot-x': length(slot.x), 'slot-y': length(slot.y),
     'role-padding': ({ base: 'var(--space-6)', 'min-768': 'var(--space-12)', 'min-1024': 'var(--space-8)' } as Record<string, string>)[profile] ?? 'var(--space-16)',
     'role-margin': profile === 'base' ? '26px' : '0px',
-    'role-width': mobile ? 'calc(100% - 2 * var(--space-4))' : 'min(924px, calc(100% - 2 * var(--space-4)))',
+    'role-width': 'min(924px, calc(100% - 2 * var(--space-4)))',
     'base-display': profile === 'base' ? 'block' : 'none', 'web-display': profile === 'base' ? 'none' : 'block',
     'crop-width': profile === 'min-1280' ? '105%' : '100%', 'crop-height': profile === 'min-1280' ? '102.93%' : '100%', 'crop-left': profile === 'min-1280' ? '-2.5%' : '0px',
   }
@@ -190,10 +190,13 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-pr-hero__stage { position: relative; }
 .chirp-pr-hero__role { display: flex; justify-content: center; padding: var(--space-16) 0; }
 .chirp-pr-hero__role > * { width: min(924px, calc(100% - 2 * var(--space-4))); }
+/* Align the visible Case focus start; retain the shared 116px/right-aligned label column. */
+.chirp-pr-hero__role > .ds-role-focus--min-425,
+.chirp-pr-hero__initial-role-web { transform: translateX(-6.125px); }
 .chirp-pr-hero[data-breakpoint="base"] .chirp-pr-hero__role { margin-top: 26px; padding: var(--space-6) 0; }
 .chirp-pr-hero[data-breakpoint="min-768"] .chirp-pr-hero__role { padding: var(--space-12) 0; }
 .chirp-pr-hero[data-breakpoint="min-1024"] .chirp-pr-hero__role { padding: var(--space-8) 0; }
-.chirp-pr-hero[data-breakpoint="base"] .chirp-pr-hero__role > *, .chirp-pr-hero[data-breakpoint="min-768"] .chirp-pr-hero__role > * { width: calc(100% - 2 * var(--space-4)); }
+.chirp-pr-hero[data-breakpoint="base"] .chirp-pr-hero__role > * { width: calc(100% - 2 * var(--space-4)); }
 .chirp-pr-hero__layer { position: absolute; transform: translate3d(var(--parallax-x, 0px), 0, 0); will-change: transform; }
 .chirp-pr-hero__raster { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
 .chirp-pr-hero__crop { overflow: hidden; }

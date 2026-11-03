@@ -1,4 +1,6 @@
 ﻿/* Cached pages stay attached and renderable; only the ready selected page is exposed. */
+/* The host owns scrolling; cropped viewers cannot create a nested scroller. */
+html.weapon-cached-page, .weapon-cached-page body { overflow: clip; }
 .weapon-page {
   position: absolute;
   top: 0;
@@ -27,3 +29,6 @@
 }
 .weapon-navigation-status[hidden], .weapon-navigation-status button[hidden] { display: none; }
 .weapon-navigation-status button { margin-left: 12px; font: inherit; cursor: pointer; }
+
+/* The 3D gesture pictogram is an illustration, not a control. */
+[data-label="3D"], [data-label="3D"] img { cursor: default; }

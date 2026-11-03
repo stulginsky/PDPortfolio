@@ -24,6 +24,7 @@ defineEmits<{ subscribe: [event: MouseEvent] }>()
 <template>
   <article class="dc-picker-app-ux showcase-card" :aria-label="content.title.replace(/\s+/g, ' ')">
     <div class="dc-picker-app-ux__scene">
+      <img class="dc-picker-app-ux__logo" src="/showcase/dc-picker-app-ux/09-ostrich.svg" width="51.5657" height="55.3042" alt="" aria-hidden="true" />
       <TypoText tag="h2" class="dc-picker-app-ux__accessible-title" :content="content.title" />
       <img class="dc-picker-app-ux__title" src="/showcase/dc-picker-app-ux/picker-app.svg" width="173" height="157" alt="" aria-hidden="true" />
       <DsComingSoon class="dc-picker-app-ux__subscribe" :href="href" :aria-label="content.subscribeLabel"
@@ -52,11 +53,12 @@ defineEmits<{ subscribe: [event: MouseEvent] }>()
 .dc-picker-app-ux__title {
   position: absolute;
   left: calc(50% - 84.03125px * var(--showcase-copy-scale));
-  top: 146.35546875px;
+  top: 166.35546875px;
   width: calc(173px * var(--showcase-copy-scale));
   height: auto;
   display: block;
 }
+.dc-picker-app-ux__logo {position:absolute;left:50%;top:96.090576171875px;width:51.5656967163px;height:55.3042068481px;transform:translateX(-50%);pointer-events:none;}
 .dc-picker-app-ux__accessible-title {
   position: absolute;
   width: 1px;
@@ -92,6 +94,7 @@ defineEmits<{ subscribe: [event: MouseEvent] }>()
 .dc-picker-app-ux__badges { position:absolute; inset:auto var(--space-4) var(--space-4); display:flex; flex-wrap:wrap; gap:var(--space-2); margin:0; padding:0; list-style:none; }
 .dc-picker-app-ux__badges li { display:flex; }
 @media(min-width:462px) {
+ .dc-picker-app-ux__logo {top:106.090576171875px;}
  .dc-picker-app-ux__title { left:calc(50% - 84.419921875px * var(--showcase-copy-scale)); top:194.35546875px; }
 }
 </style>

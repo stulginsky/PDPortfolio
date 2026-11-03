@@ -68,5 +68,11 @@ export function migrateHeroLayer(layer:HeroLayer,index:number,bp:HeroBreakpoint=
 export function createHeroDraft():HeroDraft {
  const draft=createLegacyHeroDraft()
  for(const bp of heroBreakpoints)draft[bp]=draft[bp].map((layer,index)=>migrateHeroLayer(layer,index,bp))
+ for(const bp of heroBreakpoints){
+  draft[bp][1]!.viscosity=10
+  draft[bp][1]!.returnSpeed=.3
+  draft[bp][2]!.viscosity=6
+  draft[bp][2]!.returnSpeed=.5
+ }
  return draft
 }

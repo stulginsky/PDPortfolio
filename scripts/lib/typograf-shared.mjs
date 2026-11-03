@@ -21,6 +21,8 @@ export function getTypograf() {
       locale: ["ru", "en-US"],
       htmlEntity: { type: "default", only: ["nbsp"] },
     });
+    // Canonical game name: the colon is part of the brand, not sentence punctuation.
+    instance.addSafeTag(/\bCS:GO\b/g);
     instance.enableRule("common/nbsp/*");
     instance.enableRule("ru/nbsp/*");
     instance.enableRule("ru/punctuation/*");
