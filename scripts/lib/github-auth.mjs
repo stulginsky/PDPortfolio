@@ -4,11 +4,17 @@ import { git } from './release-policy.mjs'
 export function githubApi() {
   let token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN
   if (!token) {
-    const credential = git(['credential', 'fill'], {
-      input: 'protocol=https\nhost=github.com\n\n',
-      env: { ...process.env, GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'never' },
-      stdio: ['pipe', 'pipe', 'pipe'],
-    })
+    let credential
+    try {
+      credential = git(['credential', 'fill'], {
+        input: 'protocol=https\nhost=github.com\n\n',
+        env: { ...process.env, GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'never' },
+        stdio: ['pipe', 'pipe', 'pipe'],
+      })
+    } catch {
+      // Do not propagate child-process output: it may contain partial credentials.
+      throw new Error('Git HTTPS authentication unavailable. Configure credentials or GITHUB_TOKEN and retry.')
+    }
     token = credential.split('\n').find(line => line.startsWith('password='))?.slice(9)
   }
   if (!token) throw new Error('GitHub authentication unavailable. Configure Git HTTPS credentials or GITHUB_TOKEN.')
