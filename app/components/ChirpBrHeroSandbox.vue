@@ -15,6 +15,7 @@ const motionLocked = computed(() => ['title','Logo','Role-Focus'].includes(selec
 const status = ref('')
 const showExport = ref(false)
 const storageKey = 'pdportfolio:chirp-br-hero:scene:v1'
+const geometryRevision = 'figma-2026-11-03'
 const baseline = createHeroDraft()
 const numericFields = ['x', 'y', 'viscosity', 'returnSpeed', 'amplitude', 'baseOffset'] as const
 const payload = computed(() => JSON.stringify({
@@ -65,20 +66,25 @@ onMounted(() => {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || 'null')
     if ([1,2].includes(saved?.version) && validHeroDraft(saved.scenes)) {
-      for (const bp of heroBreakpoints) draft[bp] = saved.scenes[bp].map((layer: typeof selected.value, index: number) => migrateHeroLayer(layer,index,bp))
+      const findLayer = (layers: HeroLayer[], current: HeroLayer) => layers.find(layer => layer.id === current.id || (current.name === 'Role-Focus' && layer.name === current.name))!
+      for (const bp of heroBreakpoints) draft[bp] = baseline[bp].map((current, index) => ({ ...migrateHeroLayer(findLayer(saved.scenes[bp], current),index,bp), id: current.id }))
       if (validHeroDraft(saved.baseline)) {
+        const refreshGeometry = saved.geometryRevision !== geometryRevision
+        if (refreshGeometry && !localStorage.getItem(`${storageKey}:before-${geometryRevision}`)) localStorage.setItem(`${storageKey}:before-${geometryRevision}`, JSON.stringify(saved))
         for (const bp of heroBreakpoints) for(let index=0;index<draft[bp].length;index++) {
-          const old=migrateHeroLayer(saved.scenes[bp][index],index,bp), previous=migrateHeroLayer(saved.baseline[bp][index],index,bp)
+          const current=baseline[bp][index]!
+          const old=migrateHeroLayer(findLayer(saved.scenes[bp],current),index,bp), previous=migrateHeroLayer(findLayer(saved.baseline[bp],current),index,bp)
           for(const key of ['x','y','width','height','viscosity','returnSpeed','amplitude','baseOffset','pointerDirection','introDirection','animationEnabled'] as const) {
-            if(old[key]===previous[key]) Object.assign(draft[bp][index]!,{[key]:baseline[bp][index]![key]})
+            if(old[key]===previous[key]||(refreshGeometry&&['x','y','width','height'].includes(key))) Object.assign(draft[bp][index]!,{[key]:baseline[bp][index]![key]})
           }
         }
       }
       status.value = 'Локальный черновик восстановлен'
+      localStorage.setItem(storageKey, JSON.stringify({ version: 2, geometryRevision, scenes: draft, baseline }))
     }
   } catch { status.value = 'Локальное сохранение недоступно; используйте JSON' }
   stopSaving = watch(draft, () => {
-    try { localStorage.setItem(storageKey, JSON.stringify({ version: 2, scenes: draft, baseline })) }
+    try { localStorage.setItem(storageKey, JSON.stringify({ version: 2, geometryRevision, scenes: draft, baseline })) }
     catch { status.value = 'Локальное сохранение недоступно; используйте JSON' }
   }, { deep: true })
   window.addEventListener('resize', sync)

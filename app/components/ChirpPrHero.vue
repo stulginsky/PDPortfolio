@@ -176,10 +176,10 @@ defineExpose({ replayIntro, resetMotion })
     </div>
     </div>
     <div class="chirp-pr-hero__role">
-      <DsRoleFocus v-if="ready" :role="caseContent.hero.role" :focus="caseContent.hero.focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-425'" />
+      <DsRoleFocus v-if="ready" :role="caseContent.hero.role" :focus="caseContent.hero.focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-768'" />
       <template v-else>
         <div class="chirp-pr-hero__initial-role-base"><DsRoleFocus :role="caseContent.hero.role" :focus="caseContent.hero.focus" breakpoint="base" /></div>
-        <div class="chirp-pr-hero__initial-role-web"><DsRoleFocus :role="caseContent.hero.role" :focus="caseContent.hero.focus" breakpoint="min-425" /></div>
+        <div class="chirp-pr-hero__initial-role-web"><DsRoleFocus :role="caseContent.hero.role" :focus="caseContent.hero.focus" breakpoint="min-768" /></div>
       </template>
     </div>
   </section>
@@ -191,7 +191,7 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-pr-hero__role { display: flex; justify-content: center; padding: var(--space-16) 0; }
 .chirp-pr-hero__role > * { width: min(924px, calc(100% - 2 * var(--space-4))); }
 /* Align the visible Case focus start; retain the shared 116px/right-aligned label column. */
-.chirp-pr-hero__role > .ds-role-focus--min-425,
+.chirp-pr-hero__role > .ds-role-focus--min-768,
 .chirp-pr-hero__initial-role-web { transform: translateX(-6.125px); }
 .chirp-pr-hero[data-breakpoint="base"] .chirp-pr-hero__role { margin-top: 26px; padding: var(--space-6) 0; }
 .chirp-pr-hero[data-breakpoint="min-768"] .chirp-pr-hero__role { padding: var(--space-12) 0; }

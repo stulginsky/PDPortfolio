@@ -228,6 +228,7 @@
           autospin: Number(url.searchParams.get('autospin')),
           success: function (api) {
             window.weaponModelApi = api;
+            if (window.weaponLayout) window.weaponLayout.trackModel(api);
             api.addEventListener('viewerready', function () {
               function finishModel() {
                 ready = true;

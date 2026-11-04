@@ -28,7 +28,9 @@ export const Sandbox: Story = {
     template: `<div>
       <button @click="open=true">Открыть просмотрщик</button>
       <p role="status" style="padding:16px">Zoom: {{ Math.round(zoom) }}%</p>
-      <DsCaseImageViewer v-model:open="open" :type="args.type" :title="args.title" @zoom="zoom=$event"><img src="/cases/chirp-product/media/P02.svg" alt="Схема сценариев Chirp" /></DsCaseImageViewer>
+      <DsCaseImageViewer v-model:open="open" :type="args.type" :title="args.title"
+        :initial-scale="args.initialScale" :align-x="args.alignX" :align-y="args.alignY" :fit-area="args.fitArea"
+        @zoom="zoom=$event"><img src="/cases/chirp-product/media/P02.svg" alt="Схема сценариев Chirp" /></DsCaseImageViewer>
     </div>`,
   }),
   play: async ({ canvasElement }) => {
@@ -108,6 +110,132 @@ export const ControlsOnly: Story = {
     await expect(dialog.querySelector('header')).toHaveClass('ds-top-sticky-bar--controls-only')
     await expect(dialog.querySelector('header h2')).toBeNull()
     await Sandbox.play?.(context)
+  },
+}
+
+export const ResponsiveSettings: Story = {
+  ...Sandbox,
+  args: {
+    type: 'v2', initialScale: { base: '100%', 'min-768': 'fit-screen' },
+    alignX: { base: 'left', 'min-768': 'center' },
+    alignY: { base: 'top', 'min-768': 'center' },
+    fitArea: { base: 'content', 'min-768': 'viewport' },
+  },
+  play: async ({ canvasElement }) => {
+    const body = within(document.body)
+    const dialog = await body.findByRole('dialog', { name: 'Когда включается Chirp', exact: true })
+    await waitFor(() => expect(dialog).toHaveAttribute('aria-busy', 'false'))
+    const image = dialog.querySelector('img')!
+    const media = dialog.querySelector('.ds-case-image-viewer__media')!
+    const viewport = dialog.querySelector('.ds-case-image-viewer__viewport')!
+    await waitFor(() => {
+      const box = media.getBoundingClientRect(), bounds = viewport.getBoundingClientRect()
+      if (window.innerWidth >= 768) {
+        const ratio = Math.min(viewport.clientWidth / image.naturalWidth, viewport.clientHeight / image.naturalHeight)
+        expect(box.width / image.naturalWidth).toBeCloseTo(ratio, 4)
+        expect(box.left + box.width / 2).toBeCloseTo(bounds.left + viewport.clientWidth / 2, 0)
+        expect(box.top + box.height / 2).toBeCloseTo(bounds.top + viewport.clientHeight / 2, 0)
+      } else {
+        expect(box.width).toBe(image.naturalWidth)
+        expect(box.left).toBeCloseTo(bounds.left + 16, 0)
+        expect(box.top).toBeCloseTo(bounds.top + dialog.querySelector('header')!.getBoundingClientRect().height + 24, 0)
+      }
+    })
+    await userEvent.click(body.getByRole('button', { name: 'Закрыть просмотрщик' }))
+    await userEvent.click(within(canvasElement).getByRole('button', { name: 'Открыть просмотрщик' }))
+    await waitFor(() => expect(body.getByRole('dialog')).toHaveAttribute('aria-busy', 'false'))
+  },
+}
+
+/** Scalar controls are useful when tuning one image; ResponsiveSettings shows independent profiles. */
+export const FitSettings: Story = {
+  ...Sandbox,
+  args: { initialScale: 'fit-screen', alignX: 'center', alignY: 'center', fitArea: 'viewport' },
+  play: async () => {
+    const dialog = await within(document.body).findByRole('dialog')
+    await waitFor(() => expect(dialog).toHaveAttribute('aria-busy', 'false'))
+  },
+}
+
+export const NaturalSize: Story = {
+  ...FitSettings,
+  args: { ...FitSettings.args, initialScale: '100%' },
+}
+
+export const Cover: Story = {
+  ...FitSettings,
+  args: { initialScale: 'cover', alignX: 'center', alignY: 'viewport-center', fitArea: 'viewport' },
+  play: async () => {
+    const dialog = await within(document.body).findByRole('dialog')
+    await waitFor(() => expect(dialog).toHaveAttribute('aria-busy', 'false'))
+    await waitFor(() => {
+      const image = dialog.querySelector('img')!
+      const box = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect()
+      const scale = Math.max(innerWidth / image.naturalWidth, (innerHeight + 5) / image.naturalHeight)
+      expect(Math.abs(box.width - image.naturalWidth * scale)).toBeLessThan(.6)
+      expect(Math.abs(box.height - image.naturalHeight * scale)).toBeLessThan(.6)
+      expect(Math.abs(box.x + box.width / 2 - innerWidth / 2)).toBeLessThan(.6)
+      expect(Math.abs(box.y + box.height / 2 - innerHeight / 2)).toBeLessThan(.6)
+      expect(dialog.textContent).toContain('Cover')
+    })
+    const viewport = dialog.querySelector('.ds-case-image-viewer__viewport')!
+    viewport.scrollTo(0, 0)
+    await waitFor(() => {
+      const box = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect()
+      expect(Math.abs(box.x)).toBeLessThan(.6)
+      expect(box.y).toBeGreaterThanOrEqual(dialog.querySelector('header')!.getBoundingClientRect().bottom + 23.5)
+    })
+    viewport.scrollTo(viewport.scrollWidth, viewport.scrollHeight)
+    await waitFor(() => {
+      const box = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect()
+      expect(box.right).toBeLessThanOrEqual(innerWidth + .6)
+      expect(box.bottom).toBeLessThanOrEqual(innerHeight + .6)
+    })
+  },
+}
+
+export const PercentageScale: Story = {
+  ...FitSettings,
+  args: { initialScale: '75%', alignX: 'left', alignY: 'top', fitArea: 'content' },
+  play: async ({ canvasElement }) => {
+    const body = within(document.body)
+    const check = async () => {
+      const dialog = await body.findByRole('dialog')
+      await waitFor(() => expect(dialog).toHaveAttribute('aria-busy', 'false'))
+      await waitFor(() => {
+        const image = dialog.querySelector('img')!
+        const box = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect()
+        expect(Math.abs(box.width - image.naturalWidth * .75)).toBeLessThan(.6)
+        expect(dialog.textContent).toContain('75%')
+      })
+    }
+    await check()
+    await userEvent.keyboard('{Escape}')
+    await userEvent.click(within(canvasElement).getByRole('button', { name: 'Открыть просмотрщик' }))
+    await check()
+  },
+}
+
+export const ViewportCentered: Story = {
+  ...NaturalSize,
+  args: { initialScale: '100%', alignX: 'left', alignY: 'viewport-center', fitArea: 'content' },
+  play: async () => {
+    const dialog = await within(document.body).findByRole('dialog')
+    await waitFor(() => expect(dialog).toHaveAttribute('aria-busy', 'false'))
+    const image = dialog.querySelector('img')!
+    await waitFor(() => {
+      const box = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect()
+      expect(box.width).toBe(image.naturalWidth)
+      expect(box.left).toBe(window.innerWidth >= 768 ? 64 : 16)
+      expect(Math.abs(box.top + box.height / 2 - window.innerHeight / 2)).toBeLessThan(.6)
+    })
+    const viewport = dialog.querySelector('.ds-case-image-viewer__viewport')!
+    viewport.scrollTop = 0
+    await waitFor(() => {
+      const mediaTop = dialog.querySelector('.ds-case-image-viewer__media')!.getBoundingClientRect().top
+      const headerBottom = dialog.querySelector('header')!.getBoundingClientRect().bottom
+      expect(mediaTop).toBeGreaterThanOrEqual(headerBottom + 23.5)
+    })
   },
 }
 

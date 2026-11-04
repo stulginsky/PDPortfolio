@@ -20,6 +20,8 @@ const DEFAULT_LABEL = 'Gamedev & more'
 const props = withDefaults(
   defineProps<{
     items?: string[]
+    disabledItems?: string[]
+    disabledTooltip?: string
     /** Currently selected value from outside (external filter active) */
     externalValue?: string | null
     modelValue?: string | null
@@ -29,6 +31,8 @@ const props = withDefaults(
     lockInitialWidth?: boolean
   }>(),
   {
+    disabledItems: () => [],
+    disabledTooltip: '',
     items: () => ['Gamedev', 'Видео', 'Упаковка'],
     externalValue: null,
     modelValue: null,
@@ -84,6 +88,7 @@ function restoreHover() {
 }
 
 function select(label: string) {
+  if (props.disabledItems.includes(label)) return
   emit('update:modelValue', label)
   emit('select', label)
   isOpen.value = false
@@ -167,6 +172,8 @@ onUnmounted(() => {
         <li v-for="item in items" :key="item">
           <DsDropdownListItem
             :label="item"
+            :disabled="disabledItems.includes(item)"
+            :tooltip="disabledTooltip"
             :show-icon="showIcons"
             appearance="Sm"
             @click="select(item)"

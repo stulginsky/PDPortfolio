@@ -5,11 +5,11 @@ import LIDesignSystem from './LIDesignSystem.vue'
 
 const meta={
  title:'Compositions/Showcase cards/LIDesignSystem',component:LIDesignSystem,tags:['autodocs'],
- parameters:{layout:'padded',docs:{description:{component:`Анонс кейса LIDPORT UI. Карточка не ведёт на страницу; «Скоро» открывает черновик письма. [Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3355-3103).
+ parameters:{layout:'padded',docs:{description:{component:`Анонс кейса LIDPORT DS. Карточка не ведёт на страницу; «Скоро» открывает черновик письма. [Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3355-3103).
 
 Получатель: **stulginsky@gmail.com**. Тема: **Сообщите о новом кейсе**.
 
-> Привет, Константин! Очень хочу посмотреть новый кейс LIDPORT UI. Сообщите о публикации. Спасибо.
+> Привет, Константин! Очень хочу посмотреть новый кейс LIDPORT DS. Сообщите о публикации. Спасибо.
 
 Название автоматически подставляется из карточки. Tooltip: задержка100мс, переход300мс. В Preview запуск почты перехвачен. В Sandbox переключатель разрешает системный mailto; по умолчанию выключен. Размеры по общему контракту: до430px, высота500/532px.`}}},
  args:{onSubscribe:fn()},
@@ -19,14 +19,14 @@ type Story=StoryObj<typeof meta>
 export const Preview:Story={
  args:{onSubscribe:fn((event:MouseEvent)=>event.preventDefault())},
  play:async({canvas,args})=>{
-  const card=canvas.getByRole('article',{name:'LIDPORT UI'}),link=canvas.getByRole('link',{name:/Скоро/})
+  const card=canvas.getByRole('article',{name:'LIDPORT DS'}),link=canvas.getByRole('link',{name:/Скоро/})
   await expect(canvas.getAllByRole('listitem')).toHaveLength(4)
   await expect(canvas.getAllByRole('link')).toHaveLength(1)
   await expect(card).not.toHaveAttribute('tabindex')
   const uri=new URL(link.getAttribute('href')!)
   await expect(uri.protocol).toBe('mailto:')
   await expect(uri.pathname).toBe('stulginsky@gmail.com')
-  await expect(uri.searchParams.get('body')).toBe('Привет, Константин! Очень хочу посмотреть новый кейс LIDPORT UI. Сообщите о публикации. Спасибо.')
+  await expect(uri.searchParams.get('body')).toBe('Привет, Константин! Очень хочу посмотреть новый кейс LIDPORT DS. Сообщите о публикации. Спасибо.')
   await expect(link).toHaveAttribute('target','_blank')
   await expect(link).toHaveAttribute('rel','noopener noreferrer')
   await userEvent.click(card)

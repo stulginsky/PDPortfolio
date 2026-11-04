@@ -107,7 +107,8 @@ const documentLines = computed(() => {
       <div class="ds-case__end" aria-hidden="true" />
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-    <DsCaseImageViewer v-model:open="viewerOpen" :title="page.toolbarTitle" :content-size="galleryNativeSize">
+    <DsCaseImageViewer v-model:open="viewerOpen" :title="page.toolbarTitle" :content-size="galleryNativeSize"
+      :initial-scale="{ base: '60%', 'min-768': 'fit-width' }">
       <DSOverview mode="viewer" />
     </DsCaseImageViewer>
   </main>

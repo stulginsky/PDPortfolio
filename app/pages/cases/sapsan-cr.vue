@@ -42,7 +42,8 @@ function scrollToStart() {
       <div class="sapsan-case__page-up-slot" aria-hidden="true" data-figma-frame="1:252" />
     </div>
     <DsPageUp @click="scrollToStart" />
-    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title">
+    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title"
+      initial-scale="fit-width" fit-area="viewport">
       <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>

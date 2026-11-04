@@ -2,19 +2,52 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
 import DsTopStickyBar from './DsTopStickyBar.vue'
 import DsScroll from './DsScroll.vue'
+import type { ResponsiveViewerSetting, ViewerInitialScale, ViewerAlignX, ViewerAlignY, ViewerFitArea } from './case-image-viewer-settings'
 
-const props = withDefaults(defineProps<{ open?: boolean; title?: string; type?: 'v1' | 'v2'; contentSize?: { width: number; height: number } }>(), { open: false, title: 'Value', type: 'v1' })
+const props = withDefaults(defineProps<{
+  open?: boolean; title?: string; type?: 'v1' | 'v2'; contentSize?: { width: number; height: number }
+  initialScale?: ResponsiveViewerSetting<ViewerInitialScale>
+  alignX?: ResponsiveViewerSetting<ViewerAlignX>
+  alignY?: ResponsiveViewerSetting<ViewerAlignY>
+  fitArea?: ResponsiveViewerSetting<ViewerFitArea>
+}>(), { open: false, title: 'Value', type: 'v1' })
 const emit = defineEmits<{ 'update:open': [value: boolean]; close: []; zoom: [value: number]; loaded: [] }>()
 const dialog = ref<HTMLElement | null>(null)
 const viewport = ref<HTMLElement | null>(null)
 const media = ref<HTMLElement | null>(null)
 const scrollId = `case-viewer-${useId()}`
 const ready = ref(false), web = ref(false), scale = ref(1)
-const fitMode = ref<'width' | 'height' | 'screen' | null>(null)
+const fitMode = ref<'width' | 'height' | 'screen' | 'cover' | null>(null)
 const size = ref({ width: 1, height: 1 }), headerHeight = ref(144)
-const gutter = computed(() => web.value ? 64 : 16)
-const bottom = computed(() => web.value ? 24 : 32)
-const top = computed(() => headerHeight.value + 24)
+function resolve<T extends string>(value: ResponsiveViewerSetting<T> | undefined, fallback: T): T {
+  if (value === undefined) return fallback
+  if (typeof value === 'object' && value !== null) return (web.value ? value['min-768'] ?? value.base : value.base) ?? fallback
+  return value as T
+}
+const initialScale = computed(() => resolve(props.initialScale, web.value ? 'fit-width' : '100%'))
+const alignX = computed(() => resolve(props.alignX, 'center'))
+const alignY = computed(() => resolve(props.alignY, 'top'))
+const fitArea = computed(() => resolve(props.fitArea, 'content'))
+const gutter = computed(() => fitArea.value === 'viewport' ? 0 : web.value ? 64 : 16)
+const bottom = computed(() => fitArea.value === 'viewport' ? 0 : web.value ? 24 : 32)
+const top = computed(() => fitArea.value === 'viewport' ? 0 : headerHeight.value + 24)
+const viewportSize = ref({ width: 0, height: 0 })
+const placement = computed(() => {
+  const width = size.value.width * scale.value, height = size.value.height * scale.value
+  const y = alignY.value === 'viewport-center'
+    ? Math.max(0, (viewportSize.value.height - height) / 2)
+    : top.value + (alignY.value === 'center' ? Math.max(0, (viewportSize.value.height - top.value - bottom.value - height) / 2) : 0)
+  // Keep the initial viewport centering, but allow dragging obscured media below the header.
+  const panTop = alignY.value === 'viewport-center' || (fitArea.value === 'viewport' && alignY.value === 'top')
+    ? Math.max(0, headerHeight.value + 24 - y) : 0
+  return {
+    width: Math.max(viewportSize.value.width, width + gutter.value * 2),
+    height: Math.max(viewportSize.value.height, y + height + (alignY.value === 'viewport-center' ? 0 : bottom.value)) + panTop,
+    x: gutter.value + (alignX.value === 'center' ? Math.max(0, (viewportSize.value.width - gutter.value * 2 - width) / 2) : 0),
+    y: y + panTop,
+    panTop,
+  }
+})
 const zoom = computed(() => scale.value * 100)
 let mounted = false, savedOverflow = '', savedFocus: HTMLElement | null = null
 let query: MediaQueryList | undefined, observer: ResizeObserver | undefined
@@ -26,10 +59,35 @@ let pinch: { distance: number; scale: number; point: { x: number; y: number } } 
 
 function refreshScroll() { viewport.value?.dispatchEvent(new Event('scroll')) }
 function dimensions() {
+  if (viewport.value) viewportSize.value = { width: viewport.value.clientWidth, height: viewport.value.clientHeight }
   const header = dialog.value?.querySelector('header')
   if (header) headerHeight.value = header.getBoundingClientRect().height
 }
-async function fitImage(mode: 'width' | 'height' | 'screen' = fitMode.value ?? 'width') {
+function resetPosition() {
+  const el = viewport.value
+  if (!el) return
+  const scrollY = alignY.value === 'viewport-center'
+    ? placement.value.panTop + Math.max(0, (size.value.height * scale.value - el.clientHeight) / 2)
+    : alignY.value === 'center' ? Math.max(0, (el.scrollHeight - el.clientHeight) / 2) : placement.value.panTop
+  el.scrollTo(resolve(props.alignX, '') === 'center' ? Math.max(0, (placement.value.width - el.clientWidth) / 2) : 0, scrollY)
+  refreshScroll()
+}
+async function applyInitialSettings() {
+  if (!ready.value || !props.open) return
+  dimensions()
+  if (initialScale.value === 'cover') await fitImage('cover')
+  else if (initialScale.value.startsWith('fit-')) await fitImage(initialScale.value.slice(4) as 'width' | 'height' | 'screen')
+  else {
+    const current = session, seq = ++zoomSequence
+    const percent = Number(initialScale.value.slice(0, -1))
+    const initial = Number.isFinite(percent) && percent > 0 ? Math.max(.01, Math.min(16, percent / 100)) : 1
+    fitMode.value = null; scale.value = initial
+    await nextTick()
+    if (!props.open || current !== session || seq !== zoomSequence) return
+    renderedScale = initial; resetPosition(); emit('zoom', zoom.value)
+  }
+}
+async function fitImage(mode: 'width' | 'height' | 'screen' | 'cover' = fitMode.value ?? 'width') {
   if (!ready.value || !viewport.value) return
   dimensions()
   fitMode.value = mode
@@ -38,12 +96,16 @@ async function fitImage(mode: 'width' | 'height' | 'screen' = fitMode.value ?? '
   const seq = ++zoomSequence
   const widthScale = (el.clientWidth - gutter.value * 2) / size.value.width
   const heightScale = (el.clientHeight - top.value - bottom.value) / size.value.height
-  scale.value = Math.max(.01, mode === 'width' ? widthScale : mode === 'height' ? heightScale : Math.min(widthScale, heightScale))
+  // User-approved 5px height reserve prevents the viewer background showing at the edge.
+  const coverScale = Math.max(
+    widthScale,
+    (el.clientHeight - top.value - bottom.value + 5) / size.value.height,
+  )
+  scale.value = Math.max(.01, mode === 'width' ? widthScale : mode === 'height' ? heightScale : mode === 'cover' ? coverScale : Math.min(widthScale, heightScale))
   await nextTick()
   if (!props.open || currentSession !== session || seq !== zoomSequence) return
   renderedScale = scale.value
-  el.scrollTo(0, 0)
-  refreshScroll()
+  resetPosition()
   emit('zoom', zoom.value)
 }
 function center() {
@@ -100,8 +162,7 @@ function measure() {
   void nextTick(async () => {
     if (!props.open || currentSession !== session) return
     dimensions()
-    if (web.value) await fitImage('width')
-    else { scale.value = 1; renderedScale = 1; await nextTick(); viewport.value?.scrollTo(0, 0); refreshScroll() }
+    await applyInitialSettings()
     if (props.open && currentSession === session) emit('loaded')
   })
 }
@@ -193,9 +254,13 @@ async function openSession() {
   measure()
 }
 function updateViewport() {
+  const previous = web.value
   web.value = Boolean(query?.matches)
-  if (ready.value && fitMode.value) void nextTick(() => fitImage())
+  if (previous !== web.value && ready.value) void nextTick(applyInitialSettings)
 }
+watch(() => [props.initialScale, props.alignX, props.alignY, props.fitArea], () => {
+  if (mounted && ready.value && props.open) void nextTick(applyInitialSettings)
+}, { deep: true })
 watch(() => [props.contentSize?.width, props.contentSize?.height], () => { if (mounted && props.open) void nextTick(measure) })
 watch(() => props.open, open => { if (mounted) { if (open) void openSession(); else teardown() } })
 onMounted(() => {
@@ -214,8 +279,8 @@ onBeforeUnmount(() => { teardown(); query?.removeEventListener('change', updateV
       :style="{ '--viewer-header-height': `${headerHeight}px` }">
       <div :id="scrollId" ref="viewport" class="ds-case-image-viewer__viewport" tabindex="0"
         @dragstart.prevent @pointerdown="pointerDown" @pointermove="pointerMove" @pointerup="pointerEnd" @pointercancel="pointerEnd">
-        <div class="ds-case-image-viewer__stage" :style="{ width: `max(100%, ${size.width * scale + gutter * 2}px)`, minHeight: `max(100%, ${top + size.height * scale + bottom}px)`, paddingTop: `${top}px` }">
-          <div class="ds-case-image-viewer__scaled" :style="{ width: `${size.width * scale}px`, height: `${size.height * scale}px` }">
+        <div class="ds-case-image-viewer__stage" :style="{ width: `${placement.width}px`, height: `${placement.height}px` }">
+          <div class="ds-case-image-viewer__scaled" :style="{ left: `${placement.x}px`, top: `${placement.y}px`, width: `${size.width * scale}px`, height: `${size.height * scale}px` }">
             <div ref="media" class="ds-case-image-viewer__media" :style="{ width: `${size.width}px`, height: `${size.height}px`, transform: `scale(${scale})` }" @load.capture="measure"><slot /></div>
           </div>
         </div>
@@ -234,9 +299,8 @@ onBeforeUnmount(() => { teardown(); query?.removeEventListener('change', updateV
 .ds-case-image-viewer__viewport { position: absolute; inset: 0; overflow: auto; scrollbar-width: none; touch-action: none; overscroll-behavior: contain; cursor: grab; }
 .ds-case-image-viewer__viewport::-webkit-scrollbar { display: none; }
 .ds-case-image-viewer__viewport:active { cursor: grabbing; }
-.ds-case-image-viewer__stage { box-sizing: border-box; padding: 0 16px 32px; }
-.ds-case-image-viewer--web .ds-case-image-viewer__stage { padding-right: 64px; padding-left: 64px; padding-bottom: 24px; }
-.ds-case-image-viewer__scaled { position: relative; margin: 0 auto; }
+.ds-case-image-viewer__stage { position: relative; box-sizing: border-box; min-width: 100%; min-height: 100%; }
+.ds-case-image-viewer__scaled { position: absolute; overflow: clip; }
 .ds-case-image-viewer__media { position: absolute; left: 0; top: 0; transform-origin: top left; }
 .ds-case-image-viewer__media :deep(img), .ds-case-image-viewer__media :deep(svg) { display: block; max-width: none; user-select: none; -webkit-user-drag: none; }
 .ds-case-image-viewer__header { position: absolute; inset: 0 0 auto; z-index: 10; }

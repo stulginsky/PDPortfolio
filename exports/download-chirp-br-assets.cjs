@@ -1,0 +1,11 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto')
+const https=require('https')
+function download(url){return new Promise((resolve,reject)=>{const u=new URL(url);const request=https.get({hostname:'figma.com',path:u.pathname,headers:{Host:'www.figma.com'},timeout:30000},r=>{if(r.statusCode!==200){r.resume();reject(Error('HTTP'+r.statusCode));return}const chunks=[];r.on('data',c=>chunks.push(c));r.on('end',()=>resolve(Buffer.concat(chunks)));r.on('error',reject)});request.on('timeout',()=>request.destroy(Error('timeout')));request.on('error',reject)})}
+;(async()=>{
+ const entries=JSON.parse(fs.readFileSync('exports/chirp-br-asset-downloads.json','utf8'))
+ const byPath=new Map();for(const e of entries){const prior=byPath.get(e.path);if(prior&&prior.url!==e.url)throw Error('Conflicting export '+e.path);byPath.set(e.path,e)}
+ const downloaded=[];let index=0;const tasks=[...byPath.values()]
+ await Promise.all(Array.from({length:5},async()=>{while(index<tasks.length){const e=tasks[index++];const data=fs.existsSync(e.path)?fs.readFileSync(e.path):await download(e.url);fs.mkdirSync(path.dirname(e.path),{recursive:true});fs.writeFileSync(e.path,data);let width,height;if(e.path.endsWith('.svg')){const svg=data.toString().match(/<svg\b[^>]*>/)?.[0];width=Number(svg?.match(/\bwidth="([\d.]+)"/)?.[1]);height=Number(svg?.match(/\bheight="([\d.]+)"/)?.[1]);if(!(width>0&&height>0))throw Error('SVG dimensions '+e.path)}downloaded.push({...e,width,height,bytes:data.length,sha256:crypto.createHash('sha256').update(data).digest('hex')})}}))
+ for(const profile of ['base','min-768','min-1024','min-1280','min-1440','min-1920']){const f='exports/chirp-br-layout-'+profile+'.json',layout=JSON.parse(fs.readFileSync(f,'utf8'));function update(n){if(n.asset){const e=downloaded.find(e=>e.path==='public'+n.asset.src);if(e?.width){n.asset.width=e.width;n.asset.height=e.height}}n.children?.forEach(update)}layout.forEach(update);fs.writeFileSync(f,JSON.stringify(layout,null,1)+'\n')}
+ fs.writeFileSync('exports/chirp-br-assets-current.json',JSON.stringify(downloaded,null,2));console.log('Downloaded'+downloaded.length+' original assets')
+})().catch(e=>{console.error(e);process.exit(1)})

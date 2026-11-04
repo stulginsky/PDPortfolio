@@ -74,5 +74,10 @@ export function createHeroDraft():HeroDraft {
   draft[bp][2]!.viscosity=6
   draft[bp][2]!.returnSpeed=.5
  }
+ for(const bp of ['base','min-768'] as const){
+  draft[bp][0]!.amplitude=.5
+  draft[bp][3]!.viscosity=3
+  draft[bp][3]!.returnSpeed=.1
+ }
  return draft
 }

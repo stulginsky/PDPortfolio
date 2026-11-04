@@ -3,10 +3,10 @@
   "tag": "div",
   "style": {
    "position": "absolute",
-   "bottom": "3.96%",
+   "bottom": "12.71%",
    "right": "-10px",
    "borderRadius": "54px",
-   "top": "1.64%",
+   "top": "1.49%",
    "width": "646.667px"
   },
   "children": [
@@ -36,7 +36,7 @@
         "asset": {
          "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7509/vector.svg",
          "width": 545.174,
-         "height": 436.615
+         "height": 439.492
         }
        }
       ]
@@ -56,7 +56,7 @@
       "tag": "div",
       "style": {
        "position": "absolute",
-       "inset": "-33.48% -27.86%"
+       "inset": "-33.25% -27.86%"
       },
       "children": [
        {
@@ -71,7 +71,7 @@
         "asset": {
          "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7510/vector.svg",
          "width": 539.862,
-         "height": 481.674
+         "height": 483.611
         }
        }
       ]
@@ -84,14 +84,14 @@
     "tag": "div",
     "style": {
      "position": "absolute",
-     "inset": "18.96% 2.98% -2.36% 0.04%"
+     "inset": "18.96% 2.98% 6.74% 0.04%"
     },
     "children": [
      {
       "tag": "div",
       "style": {
        "position": "absolute",
-       "inset": "14.6% 0 0 0"
+       "inset": "19.52% 0 0 0"
       },
       "children": [
        {
@@ -106,7 +106,7 @@
         "asset": {
          "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7511/vector.svg",
          "width": 627.163,
-         "height": 377.551
+         "height": 319.113
         }
        }
       ]
@@ -120,9 +120,9 @@
     "style": {
      "position": "absolute",
      "display": "flex",
+     "inset": "-17.14% -10.49% -7.25% -11.3%",
      "alignItems": "center",
      "justifyContent": "center",
-     "inset": "-17.14% -10.49% -7.25% -11.3%",
      "containerType": "size"
     },
     "children": [
@@ -132,28 +132,28 @@
        "flex": "none",
        "height": "hypot(-23.4662cqw,79.3353cqh)",
        "width": "hypot(76.5338cqw,20.6647cqh)",
-       "transform": "translate(0,0) rotate(12.74deg) skewX(-6.72deg) scaleX(1)"
+       "transform": "translate(0,0) rotate(12.82deg) skewX(-6.51deg) scaleX(1)"
       },
       "children": [
        {
         "tag": "div",
         "style": {
+         "filter": "blur(11px)",
          "opacity": 0.27,
          "position": "relative",
          "width": "100%",
-         "height": "100%",
-         "filter": "blur(11px)"
+         "height": "100%"
         },
         "children": [
          {
           "tag": "div",
           "style": {
            "position": "absolute",
-           "inset": "0",
+           "backdropFilter": "blur(14px)",
+           "inset": 0,
            "opacity": 0.63,
            "overflow": "hidden",
-           "pointerEvents": "none",
-           "backdropFilter": "blur(14px)"
+           "pointerEvents": "none"
           },
           "children": [
            {
@@ -163,12 +163,12 @@
              "height": "100%",
              "left": "-12.73%",
              "maxWidth": "none",
-             "top": "0",
+             "top": 0,
              "width": "112.73%"
             },
             "children": [],
             "asset": {
-             "src": "/cases/chirp-brand/hero-layers/image-35.png",
+             "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7512/image-35.png",
              "width": 0,
              "height": 0
             }
@@ -188,14 +188,14 @@
     "style": {
      "position": "absolute",
      "inset": "1.73% 37.05% 21.89% 27.58%",
-     "boxShadow": "3.024px 6.047px 20px 0px var(--effect-shadow-2nd,rgba(44,31,57,0.1))"
+     "filter": "drop-shadow(3.024px 6.047px 10px var(--effect-shadow-2nd,rgba(44,31,57,0.1)))"
     },
     "children": [
      {
       "tag": "img",
       "style": {
        "position": "absolute",
-       "inset": "0",
+       "inset": 0,
        "maxWidth": "none",
        "objectFit": "cover",
        "pointerEvents": "none",
@@ -204,7 +204,7 @@
       },
       "children": [],
       "asset": {
-       "src": "/cases/chirp-brand/hero-layers/group-4215-1-1.png",
+       "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7513/group-4215-1-1.png",
        "width": 0,
        "height": 0
       }
@@ -218,14 +218,14 @@
     "style": {
      "position": "absolute",
      "inset": "2.5% 9.11% 14.86% 47.49%",
-     "boxShadow": "3.024px 6.047px 20px 0px var(--effect-shadow-2nd,rgba(44,31,57,0.1))"
+     "filter": "drop-shadow(3.024px 6.047px 10px var(--effect-shadow-2nd,rgba(44,31,57,0.1)))"
     },
     "children": [
      {
       "tag": "img",
       "style": {
        "position": "absolute",
-       "inset": "0",
+       "inset": 0,
        "maxWidth": "none",
        "objectFit": "cover",
        "pointerEvents": "none",
@@ -234,7 +234,7 @@
       },
       "children": [],
       "asset": {
-       "src": "/cases/chirp-brand/hero-layers/frame-3464590-1.png",
+       "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7514/frame-3464590-1.png",
        "width": 0,
        "height": 0
       }
@@ -254,7 +254,7 @@
       "tag": "div",
       "style": {
        "position": "absolute",
-       "inset": "-13.54% -10.13%"
+       "inset": "-13.45% -10.13%"
       },
       "children": [
        {
@@ -269,7 +269,7 @@
         "asset": {
          "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7515/subtract.svg",
          "width": 155.483,
-         "height": 122.968
+         "height": 123.618
         }
        }
       ]
@@ -282,8 +282,8 @@
     "tag": "div",
     "style": {
      "position": "absolute",
-     "inset": "61.45% 82.21% 24.77% 4.72%",
-     "display": "contents"
+     "display": "contents",
+     "inset": "61.45% 82.21% 24.77% 4.72%"
     },
     "children": [
      {
@@ -297,7 +297,7 @@
         "tag": "div",
         "style": {
          "position": "absolute",
-         "inset": "-15.18% -12.14%"
+         "inset": "-15.08% -12.14%"
         },
         "children": [
          {
@@ -312,7 +312,7 @@
           "asset": {
            "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7517/ellipse-10.svg",
            "width": 102.345,
-           "height": 85.8756
+           "height": 86.3177
           }
          }
         ]
@@ -337,7 +337,7 @@
          "flex": "none",
          "height": "hypot(-30.4548cqw,71.422cqh)",
          "width": "hypot(-69.5452cqw,-28.578cqh)",
-         "transform": "translate(0,0) rotate(18.51deg) skewX(9.11deg) scaleX(-1)"
+         "transform": "translate(0,0) rotate(18.63deg) skewX(8.83deg) scaleX(-1)"
         },
         "children": [
          {
@@ -352,7 +352,7 @@
             "tag": "div",
             "style": {
              "position": "absolute",
-             "inset": "-9.17% -8.22%"
+             "inset": "-9.13% -8.21%"
             },
             "children": [
              {
@@ -366,8 +366,8 @@
               "children": [],
               "asset": {
                "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7518/subtract.svg",
-               "width": 69.4342,
-               "height": 63.213
+               "width": 69.4747,
+               "height": 63.4947
               }
              }
             ]
@@ -394,11 +394,11 @@
    "alignContent": "stretch",
    "display": "flex",
    "flexDirection": "column",
+   "gap": "20px",
    "alignItems": "flex-start",
    "left": "6.85%",
    "right": "37.31%",
-   "gap": "20px",
-   "top": "calc(50% + 25.55px)",
+   "top": "calc(50% - 2.65px)",
    "transform": "translate(0,-50%) rotate(0deg) skewX(0deg) scaleX(1)"
   },
   "children": [
@@ -576,7 +576,7 @@
   "tag": "div",
   "style": {
    "position": "absolute",
-   "inset": "45.8% 39.75% 28.28% 34.69%"
+   "inset": "41.63% 39.75% 34.81% 34.69%"
   },
   "children": [
    {
@@ -584,7 +584,7 @@
     "style": {
      "position": "absolute",
      "display": "block",
-     "inset": "0",
+     "inset": 0,
      "maxWidth": "none",
      "width": "100%",
      "height": "100%"
@@ -592,8 +592,8 @@
     "children": [],
     "asset": {
      "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7526/arrow.svg",
-     "width": 261.782,
-     "height": 145.566
+     "width": 261.781,
+     "height": 146.538
     }
    }
   ],
@@ -605,9 +605,9 @@
   "style": {
    "position": "absolute",
    "display": "flex",
+   "inset": "3.63% 40.3% 72.77% 8.39%",
    "alignItems": "center",
    "justifyContent": "center",
-   "inset": "3.97% 40.31% 70.04% 8.4%",
    "containerType": "size"
   },
   "children": [
@@ -615,8 +615,8 @@
     "tag": "div",
     "style": {
      "flex": "none",
-     "height": "hypot(-1.97021cqw,50.2819cqh)",
-     "width": "hypot(98.0298cqw,49.7181cqh)",
+     "height": "hypot(-1.99041cqw,50.5421cqh)",
+     "width": "hypot(98.0096cqw,49.4579cqh)",
      "transform": "translate(0,0) rotate(8.02deg) skewX(0deg) scaleX(1)"
     },
     "children": [
@@ -633,7 +633,7 @@
         "style": {
          "position": "absolute",
          "display": "block",
-         "inset": "0",
+         "inset": 0,
          "maxWidth": "none",
          "width": "100%",
          "height": "100%"
@@ -641,8 +641,8 @@
         "children": [],
         "asset": {
          "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7529/arrow.svg",
-         "width": 520.024,
-         "height": 74.1392
+         "width": 520.103,
+         "height": 74.9261
         }
        }
       ],
@@ -658,7 +658,7 @@
   "tag": "div",
   "style": {
    "position": "absolute",
-   "inset": "-4.28% 1.29% 57.44% 90.63%"
+   "inset": "-3.89% 1.29% 61.31% 90.63%"
   },
   "children": [
    {
@@ -666,7 +666,7 @@
     "style": {
      "position": "absolute",
      "display": "block",
-     "inset": "0",
+     "inset": 0,
      "maxWidth": "none",
      "width": "100%",
      "height": "100%"
@@ -674,8 +674,8 @@
     "children": [],
     "asset": {
      "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7532/arrow.svg",
-     "width": 82.7921,
-     "height": 263.032
+     "width": 82.7922,
+     "height": 264.794
     }
    }
   ],
@@ -686,14 +686,14 @@
   "tag": "div",
   "style": {
    "position": "absolute",
-   "inset": "59.8% 59.63% 24.49% 31.75%"
+   "inset": "54.36% 59.63% 31.36% 31.75%"
   },
   "children": [
    {
     "tag": "div",
     "style": {
      "position": "absolute",
-     "inset": "-47.25% -78.98% -81.25% -49.52%"
+     "inset": "-46.94% -78.98% -80.71% -49.52%"
     },
     "children": [
      {
@@ -708,7 +708,7 @@
       "asset": {
        "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7535/img-sign.svg",
        "width": 201.648,
-       "height": 201.648
+       "height": 202.24
       }
      }
     ]
@@ -735,20 +735,20 @@
     "style": {
      "alignContent": "stretch",
      "display": "flex",
+     "gap": "16px",
      "alignItems": "center",
+     "paddingLeft": "39px",
      "position": "relative",
      "flexShrink": 0,
-     "width": "100%",
-     "gap": "16px",
-     "paddingLeft": "39px"
+     "width": "100%"
     },
     "children": [
      {
       "tag": "div",
       "style": {
+       "height": "25.087px",
        "position": "relative",
        "flexShrink": 0,
-       "height": "25.087px",
        "width": "27.563px"
       },
       "children": [
@@ -757,7 +757,7 @@
         "style": {
          "position": "absolute",
          "display": "block",
-         "inset": "0",
+         "inset": 0,
          "maxWidth": "none",
          "width": "100%",
          "height": "100%"
@@ -784,8 +784,8 @@
        "position": "relative",
        "flexShrink": 0,
        "color": "#5b5d62",
-       "whiteSpace": "nowrap",
-       "fontSize": "20px"
+       "fontSize": "20px",
+       "whiteSpace": "nowrap"
       },
       "children": [
        {
@@ -813,9 +813,9 @@
      {
       "tag": "div",
       "style": {
+       "height": "43.907px",
        "position": "relative",
        "flexShrink": 0,
-       "height": "43.907px",
        "width": "99.939px"
       },
       "children": [
@@ -824,7 +824,7 @@
         "style": {
          "position": "absolute",
          "display": "block",
-         "inset": "0",
+         "inset": 0,
          "maxWidth": "none",
          "width": "100%",
          "height": "100%"
@@ -848,14 +848,14 @@
     "tag": "div",
     "style": {
      "position": "absolute",
+     "bottom": "-8.43px",
      "alignContent": "stretch",
      "display": "flex",
      "gap": "14px",
      "alignItems": "center",
-     "width": "568.258px",
-     "bottom": "-8.43px",
      "left": "-6.54px",
-     "paddingLeft": "56px"
+     "paddingLeft": "56px",
+     "width": "568.258px"
     },
     "children": [
      {
@@ -872,14 +872,14 @@
         "style": {
          "position": "absolute",
          "display": "block",
-         "inset": "0",
+         "inset": 0,
          "maxWidth": "none",
          "width": "100%",
          "height": "100%"
         },
         "children": [],
         "asset": {
-         "src": "/cases/chirp-brand/hero-layers/base/1464-7828/vector.svg",
+         "src": "/cases/chirp-brand/hero-layers/min-1024/1464-7557/vector.svg",
          "width": 8,
          "height": 8
         }
@@ -899,8 +899,8 @@
        "position": "relative",
        "flexShrink": 0,
        "color": "#27afcd",
-       "whiteSpace": "nowrap",
-       "fontSize": "12px"
+       "fontSize": "12px",
+       "whiteSpace": "nowrap"
       },
       "children": [
        {
@@ -927,15 +927,18 @@
    "flexDirection": "column",
    "gap": "var(--space-3,12px)",
    "alignItems": "flex-start",
+   "left": "50.5px",
    "fontStyle": "normal",
-   "color": "var(--text-secondary,#374151)",
-   "bottom": "14px",
-   "right": "0",
-   "width": "797px"
+   "color": "var(--text-secondary,#4c5a70)",
+   "width": "924px",
+   "top": "546.5px",
+   "height": "76px",
+   "boxSizing": "border-box"
   },
   "children": [],
+  "id": "3572:2456",
+  "name": "Role-Focus",
   "roleFocus": true,
-  "id": "1464:7559",
-  "name": "Role-Focus"
+  "roleBreakpoint": "min-768"
  }
 ]

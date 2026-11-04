@@ -46,7 +46,9 @@ export const Sandbox: Story = {
       expect(layers[2]!.viscosity).toBe(6)
       expect(layers[2]!.returnSpeed).toBe(.5)
       const mobile = bp === 'base' || bp === 'min-768'
-      expect(layers[3]!.viscosity).toBe(mobile ? .5 : 1)
+      expect(layers[0]!.amplitude).toBe(mobile ? .5 : 1)
+      expect(layers[3]!.viscosity).toBe(mobile ? 3 : 1)
+      expect(layers[3]!.returnSpeed).toBe(mobile ? .1 : 6)
       expect(layers[3]!.animationEnabled).toBe(mobile)
     }
     const root = canvasElement.querySelector<HTMLElement>('.chirp-pr-hero')!

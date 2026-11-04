@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 const url='http://127.0.0.1:6006/iframe.html?id=compositions-case-heroes-chirp-br-hero--sandbox&viewMode=story&embed=true'
 const widths=[320,370,410,425,534,720,767,768,1023,1024,1279,1280,1439,1440,1919,1920]
-const refs={base:[320,907],'min-768':[768,1362],'min-1024':[1024,561.6],'min-1280':[1280,702],'min-1440':[1440,789.75],'min-1920':[1918,1053]}
+const refs={"base":[320,834],"min-768":[768,1341],"min-1024":[1024,622],"min-1280":[1280,738],"min-1440":[1440.455810546875,790],"min-1920":[1920,1054]}
 const bp=w=>w>=1920?'min-1920':w>=1440?'min-1440':w>=1280?'min-1280':w>=1024?'min-1024':w>=768?'min-768':'base'
 const browser=await chromium.launch({headless:true})
 const errors=[],records=[]
@@ -16,7 +16,7 @@ try {
   await page.setViewportSize({width,height:Math.max(1100,Math.ceil(refs[bp(width)][1]*width/refs[bp(width)][0]+350))})
   await page.goto(url)
   await page.locator('.chirp-br-hero').waitFor()
-  await page.waitForFunction(()=>[...document.querySelectorAll('.chirp-br-hero img')].every(i=>i.complete&&i.naturalWidth>0))
+  await page.waitForFunction(()=>[...document.querySelectorAll('.chirp-br-hero img')].filter(i=>!i.closest('[data-scene-fallback]')).every(i=>i.complete&&i.naturalWidth>0))
   await page.evaluate(()=>document.fonts.ready)
   const state=await page.evaluate(()=>{
    const root=document.querySelector('.chirp-br-hero'),h=root.querySelector('h1'),r=root.getBoundingClientRect()

@@ -72,6 +72,15 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-br-hero{position:relative;width:100%;container-type:inline-size;overflow:clip;background:var(--surface-default);touch-action:pan-y}
 .chirp-br-hero__stage{position:relative;transform-origin:top left}
 .chirp-br-hero__layer{position:absolute;width:100%;height:100%;pointer-events:none}
+/* RoleFocus is fluid UI text, not artwork scaled from the 320px scene. */
+.chirp-br-hero[data-breakpoint="base"] .chirp-br-hero__stage :deep([data-layer="Role-Focus"] > [data-figma-name="Role-Focus"]),
+.chirp-br-hero__initial[data-profile="base"] :deep([data-layer="Role-Focus"] > [data-figma-name="Role-Focus"]) {
+ left:0!important;
+ width:100cqw!important;
+ height:auto!important;
+ transform:scale(calc(320px / 100cqw));
+ transform-origin:top left;
+}
 @media(prefers-reduced-motion:reduce){.chirp-br-hero__layer{will-change:auto}}
 
 .chirp-br-hero[data-ready="false"]{height:auto!important}

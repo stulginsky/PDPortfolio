@@ -42,7 +42,10 @@ function scrollToStart() {
       <div class="aqua-maris-case__page-up-slot" aria-hidden="true" data-figma-frame="31:255" />
     </div>
     <DsPageUp @click="scrollToStart" />
-    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title">
+    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title"
+      :initial-scale="{ base: 'fit-screen', 'min-768': 'fit-height' }"
+      :align-y="{ base: 'viewport-center', 'min-768': 'top' }"
+      fit-area="viewport">
       <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>

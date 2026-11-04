@@ -183,7 +183,8 @@
   .weapon-timer { top: calc(var(--weapon-title-top) + 334px + var(--weapon-discount-size) * 0.982143 + clamp(14px, 3.515625vw, 27px) * 1.111111); }
 }
 @media (max-width: 1279px) {
-  .weapon-gesture { display: none; }
+  .weapon-gesture { display: block; left: auto; right: 24px; top: calc(var(--weapon-viewer-top) + 16px); width: 48px; height: auto; z-index: 2; pointer-events: none; }
+  .weapon-gesture img { display: block; width: 100%; height: auto; }
   .weapon-touch-surface { display: block; }
 }
 .weapon-touch-surface { position: absolute; inset: 0; z-index: 1; touch-action: pan-y; }
@@ -221,6 +222,7 @@
   touch-action: pan-y;
 }
 .weapon-model-pending .weapon-gesture { display: none; }
+.weapon-responsive[data-weapon-interacted="true"] .weapon-gesture { display: none; }
 
 /* One host header, with live text and a continuous five-second shimmer cycle. */
 .weapon-header {

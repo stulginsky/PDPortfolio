@@ -5,14 +5,14 @@ import DsDropdownSelect from './DsDropdownSelect.vue'
 import DsBtnCross from './DsBtnCross.vue'
 import DsTooltip from './DsTooltip.vue'
 
-const props = withDefaults(defineProps<{ text?: string; zoom?: number; fitMode?: 'width' | 'height' | 'screen' | null; viewerReady?: boolean; controlsOnly?: boolean }>(), { text: 'Value', zoom: 100, fitMode: null, viewerReady: false, controlsOnly: false })
+const props = withDefaults(defineProps<{ text?: string; zoom?: number; fitMode?: 'width' | 'height' | 'screen' | 'cover' | null; viewerReady?: boolean; controlsOnly?: boolean }>(), { text: 'Value', zoom: 100, fitMode: null, viewerReady: false, controlsOnly: false })
 const emit = defineEmits<{ 'update:zoom': [value: number]; fit: [mode: 'width' | 'height' | 'screen']; close: [event: MouseEvent] }>()
 const root = ref<HTMLElement | null>(null)
 const web = ref(false)
 let query: MediaQueryList | undefined
 let observer: MutationObserver | undefined
 const selected = computed(() => props.fitMode ? `fit-${props.fitMode}` : [50, 100, 150].includes(props.zoom) ? String(props.zoom) : undefined)
-const label = computed(() => props.fitMode ? `Fit to ${props.fitMode}` : `Zoom ${Math.round(props.zoom)}%`)
+const label = computed(() => props.fitMode === 'cover' ? 'Cover' : props.fitMode ? `Fit to ${props.fitMode}` : `Zoom ${Math.round(props.zoom)}%`)
 const items = computed(() => [
   ...[50, 100, 150].map(value => ({ label: `Zoom ${value}%`, value: String(value) })),
   ...(['width', 'height', 'screen'] as const).map(mode => ({ label: `Fit to ${mode}`, value: `fit-${mode}` })),

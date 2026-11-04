@@ -54,6 +54,9 @@ export const Sandbox: Story = {
     await expect(c.getByRole('link', { name: site.phone })).toHaveAttribute('href', 'tel:+79258493933')
     await expect(c.getByRole('link', { name: site.telegramLabel })).toHaveAttribute('href', site.telegramUrl)
     await expect(c.getByRole('link', { name: site.telegramLabel })).toHaveAttribute('target', '_blank')
+    await expect(c.getByRole('link', { name: site.maxLabel })).toHaveAttribute('href', site.maxUrl)
+    await expect(c.getByRole('link', { name: site.maxLabel })).toHaveAttribute('target', '_blank')
+    await expect(c.getByRole('link', { name: site.maxLabel })).toHaveAttribute('rel', 'noopener noreferrer')
     await expect(header).toHaveAttribute('data-storybook-breakpoint', 'base')
     for (const bp of ['min-768', 'min-1920']) {
       await userEvent.click(c.getByRole('button', { name: bp, exact: true }))

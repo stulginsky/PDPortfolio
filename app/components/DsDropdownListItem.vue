@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, ref, useId } from 'vue'
 import { getButtonIconSource, type ButtonIconName } from './button-icons'
+import DsTooltip from './DsTooltip.vue'
 import { dropdownListTypeKey, type DropdownListType } from './dropdown-list-context'
 
 /**
@@ -13,6 +14,8 @@ import { dropdownListTypeKey, type DropdownListType } from './dropdown-list-cont
 const props = withDefaults(
   defineProps<{
     label: string
+    disabled?: boolean
+    tooltip?: string
     appearance?: 'Sm' | 'Lg'
     icon?: ButtonIconName
     showIcon?: boolean
@@ -35,7 +38,9 @@ const props = withDefaults(
 const inheritedType = inject(dropdownListTypeKey, undefined)
 const resolvedType = computed(() => inheritedType?.value ?? props.type)
 
-defineEmits<{
+const tooltipVisible = ref(false)
+const tooltipId = `disabled-item-${useId()}`
+const emit = defineEmits<{
   click: [event: MouseEvent]
 }>()
 </script>
@@ -49,13 +54,24 @@ defineEmits<{
       `ds-dropdown-list-item--${resolvedType.toLowerCase()}`,
       { 'ds-dropdown-list-item--has-icon': showIcon },
     ]"
-    :href="href"
+    :href="disabled ? undefined : href"
+    :aria-label="disabled && tooltip ? label : undefined"
+    :aria-disabled="disabled || undefined"
+    :aria-describedby="disabled && tooltip ? tooltipId : undefined"
+    :tabindex="href && disabled ? 0 : undefined"
+    @mouseenter="tooltipVisible = true"
+    @mouseleave="tooltipVisible = false"
+    @focus="tooltipVisible = true"
+    @blur="tooltipVisible = false"
+    @keydown.esc="tooltipVisible = false"
     :target="href ? (target ?? '_blank') : undefined"
     :rel="href ? 'noopener noreferrer' : undefined"
     :type="href ? undefined : 'button'"
-    @click="$emit('click', $event)"
+    @click="disabled ? ($event.preventDefault(), tooltipVisible = true) : emit('click', $event)"
   >
-    <span class="ds-dropdown-list-item__label">{{ label }}</span>
+    <span class="ds-dropdown-list-item__label">{{ label }}
+    <DsTooltip v-if="disabled && tooltip" :id="tooltipId" :visible="tooltipVisible" :label="tooltip" pointer="Bottom" class="ds-dropdown-list-item__tooltip" />
+    </span>
     <span
       v-if="showIcon || resolvedType === 'General'"
       class="ds-dropdown-list-item__icon"
@@ -104,6 +120,7 @@ defineEmits<{
 }
 
 .ds-dropdown-list-item__label {
+  position: relative;
   min-width: 0;
   padding: 8px 0;
   overflow-wrap: anywhere;
@@ -150,15 +167,18 @@ defineEmits<{
 }
 
 /* Hover */
-.ds-dropdown-list-item:hover:not(:active) {
+.ds-dropdown-list-item:hover:not(:active):not([aria-disabled='true']) {
   background: var(--surface-menu-item-hover); /* accent/violet */
 }
 
 /* ActivePressed */
-.ds-dropdown-list-item:active {
+.ds-dropdown-list-item:active:not([aria-disabled='true']) {
   background: var(--surface-menu-item-pressed); /* accent/aubergine */
 }
 
+.ds-dropdown-list-item { position:relative; }
+.ds-dropdown-list-item[aria-disabled='true'] { color:var(--text-muted);cursor:not-allowed; }
+.ds-dropdown-list-item .ds-dropdown-list-item__tooltip { position:absolute;bottom:100%;left:50%;transform:translateX(-50%);z-index:2;white-space:nowrap;pointer-events:none; }
 /* Focus visible */
 .ds-dropdown-list-item:focus-visible {
   outline: 2px solid var(--border-focus);

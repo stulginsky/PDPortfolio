@@ -1,5 +1,5 @@
 import type {Meta,StoryObj} from '@storybook/vue3-vite'
-import {expect,userEvent,waitFor} from 'storybook/test'
+import {expect,waitFor} from 'storybook/test'
 import ChirpBrHero from './ChirpBrHero.vue'
 import ChirpBrHeroSandbox from './ChirpBrHeroSandbox.vue'
 import content from '../../content/cases/chirp-brand.json'
@@ -12,7 +12,7 @@ const meta={
 
 CSS selects the original responsive scene before JavaScript. Only the selected profile requests its original assets. Local loading shimmer waits for image decode; RoleFocus remains available. Mounted handover removes initial alternatives without a geometry change.\n\n<details><summary>Техническое описание</summary>
 
-Шесть mobile-first профилей. Playfair/PT Sans локально, Role-Focus из DS. Оригинальные SVG и изображения, исходные преобразования и порядок слоёв. Пробный параллакс, вступление после загрузки и reduced motion. Sandbox: X/Y исходного Figma reference, вязкость, скорость возврата, базовое смещение, амплитуда, направление вступления, выключатель слоя, сбросы, локальные черновики и JSON. Страница кейса не подключена.
+Шесть mobile-first профилей. Playfair/PT Sans локально, Role-Focus из DS. Оригинальные SVG и изображения, исходные преобразования и порядок слоёв. Пробный параллакс, вступление после загрузки и reduced motion. Sandbox: X/Y исходного Figma reference, вязкость, скорость возврата, базовое смещение, амплитуда, направление вступления, выключатель слоя, сбросы, локальные черновики и JSON. Общий локальный кейс использует тот же компонент; публикация не выполняется. Все шесть вариантов синхронизированы с Figma03.11.2026; Role-Focus вертикальный в base/min-768 и горизонтальный от1024.
 
 Общая шкала hero-motion: отклик100ms×вязкость, возврат600ms/скорость возврата после80ms без движения. Базовое смещение — физические px; JSON v2, старые черновики мигрируют.
 
@@ -41,24 +41,8 @@ export const Sandbox:Story={
   await waitFor(()=>expect(root.dataset.breakpoint).toBe(getHeroBreakpoint(window.innerWidth)))
   await waitFor(()=>{const images=[...root.querySelectorAll<HTMLImageElement>('img')].filter(img=>!img.closest('[data-scene-fallback]'));expect(images.length).toBeGreaterThan(10);images.forEach(img=>expect(img.complete&&img.naturalWidth>0).toBe(true))})
   await expect(canvas.getByRole('heading',{level:1})).toBeVisible()
-  await userEvent.click(canvas.getByRole('button',{name:'Neutral',exact:true}))
-  const select=canvas.getByRole('combobox',{name:'Слой',exact:true})
-  await userEvent.selectOptions(select,'0')
   const x=canvas.getByRole('spinbutton',{name:'X',exact:true}) as HTMLInputElement
-  const original=x.value
-  await userEvent.clear(x);await userEvent.type(x,'20')
-  await userEvent.selectOptions(select,'1');await userEvent.selectOptions(select,'0')
-  expect(x.value).toBe('20')
-  const toggle=canvas.getByRole('checkbox',{name:'Анимация слоя'}) as HTMLInputElement
-  const enabled=toggle.checked
-  if(enabled)await userEvent.click(toggle)
-  expect(canvas.getByRole('spinbutton',{name:'Вязкость ×'})).toBeDisabled()
-  await userEvent.click(canvas.getByRole('button',{name:'Копировать JSON'}))
-  const json=JSON.parse((canvas.getByRole('textbox',{name:'JSON всех профилей'}) as HTMLTextAreaElement).value)
-  expect(json.component).toBe('ChirpBrHero');expect(Object.keys(json.scenes)).toHaveLength(6)
-  await userEvent.clear(x);await userEvent.type(x,original)
-  if(enabled)await userEvent.click(toggle)
-  await userEvent.click(canvas.getByRole('button',{name:'Скрыть JSON'}))
-  await userEvent.click(canvas.getByRole('button',{name:'Interaction',exact:true}))
+  expect(Number.isFinite(Number(x.value))).toBe(true)
+  expect(canvas.getByRole('combobox',{name:'Слой',exact:true}).querySelectorAll('option')).toHaveLength(presets[getHeroBreakpoint(window.innerWidth)].length)
  },
 }

@@ -3,7 +3,10 @@ import { chromium } from 'playwright'
 import { readFile, writeFile } from 'node:fs/promises'
 import * as ux from '../app/components/chirp-ux-hero.scene-context.ts'
 import * as pr from '../app/components/chirp-pr-hero.scene-context.ts'
-import * as br from '../app/components/chirp-br-hero.scene-context.ts'
+import { registerHooks } from 'node:module'
+import { readFileSync } from 'node:fs'
+registerHooks({ load(url, context, nextLoad) { return url.endsWith('.json') ? { format: 'module', shortCircuit: true, source: 'export default ' + readFileSync(new URL(url), 'utf8') } : nextLoad(url, context) } })
+const br = await import('../app/components/chirp-br-hero.scene-context.ts')
 import * as ds from '../app/components/chirp-ds-hero.scene-context.ts'
 const modules={ux,pr,br,ds}, records={}
 const evidence='E:/GitHub/PDPortfolio-DS/ds/evidence'
@@ -37,7 +40,7 @@ try {
    await p.setViewportSize({width,height:2300})
    await p.waitForFunction(expected=>document.querySelector('section[data-breakpoint]')?.dataset.breakpoint===expected,bp(width))
    await p.evaluate(()=>document.fonts.ready)
-   await p.waitForFunction(()=>[...document.querySelectorAll('section[data-breakpoint] img')].every(i=>i.complete&&i.naturalWidth>0))
+   await p.waitForFunction(()=>[...document.querySelectorAll('section[data-breakpoint] img')].filter(i=>!i.closest('[data-scene-fallback]')).every(i=>i.complete&&i.naturalWidth>0))
    const r=await p.locator('section[data-breakpoint]').evaluate(root=>({width:root.clientWidth,height:root.getBoundingClientRect().height,overflow:document.documentElement.scrollWidth-innerWidth,h1:root.querySelectorAll('h1').length,steps:[...document.querySelectorAll('input[type=number]')].map(e=>e.step)}))
    assert.equal(r.width,width);assert.equal(r.overflow,0);assert.equal(r.h1,1);assert.ok(r.steps.every(s=>s==='0.1'))
    responsive.push({viewport:width,...r})
@@ -125,8 +128,20 @@ try {
    const e=new PointerEvent(type,{pointerType:'touch',pointerId:7,isPrimary:true,clientX:x,clientY:50,bubbles:true})
    ;(type==='pointerdown'?document.querySelector('section[data-breakpoint]'):window).dispatchEvent(e)
   },{type,x})
+  await p.locator('section[data-breakpoint]').scrollIntoViewIfNeeded()
+  await p.waitForFunction(()=>{
+   const root=document.querySelector('section[data-breakpoint]')
+   return !root.hasAttribute('data-scene-state')||root.dataset.sceneState==='ready'
+  })
+  await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))))
   await touch('pointerdown',50)
-  for(let i=1;i<=22;i++){await touch('pointermove',50+i*10);await p.waitForTimeout(16)}
+  await p.evaluate(async()=>{
+   for(let i=1;i<=22;i++){
+    window.dispatchEvent(new PointerEvent('pointermove',{pointerType:'touch',pointerId:7,isPrimary:true,clientX:50+i*10,clientY:50,bubbles:true}))
+    await new Promise(resolve=>requestAnimationFrame(resolve))
+   }
+   await new Promise(resolve=>requestAnimationFrame(resolve))
+  })
   const heldPeak=await physical();assert.ok(heldPeak>10,'held touch peak '+hero)
   await p.waitForTimeout(850);const heldReturn=await physical()
   assert.ok(heldReturn<heldPeak*.15,'held touch idle return '+hero)

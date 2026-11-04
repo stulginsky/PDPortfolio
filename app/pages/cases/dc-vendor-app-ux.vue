@@ -6,6 +6,7 @@ import DsRoleFocus from '../../components/DsRoleFocus.vue'
 import DsPageUp from '../../components/DsPageUp.vue'
 import DsCaseImagePreview from '../../components/DsCaseImagePreview.vue'
 import DsCaseImageViewer from '../../components/DsCaseImageViewer.vue'
+import type { CaseImageViewerSettings } from '../../components/case-image-viewer-settings'
 import CaseContentCard from '../../components/CaseContentCard.vue'
 import RelatedCases from '../../components/RelatedCases.vue'
 import DsFooter from '../../components/DsFooter.vue'
@@ -38,6 +39,25 @@ onUnmounted(()=>observer?.disconnect())
 function scrollToStart(){start.value?.focus({preventScroll:true});window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}
 const viewerOpen=ref(false),activeMediaName=ref<string>(),viewerTitle=ref('')
 const activeMedia=computed(()=>activeMediaName.value?media(activeMediaName.value):undefined)
+const viewerSettingsByMedia: Record<string, CaseImageViewerSettings> = {
+ 'DCUX08': { initialScale: 'fit-height' },
+ 'DCUX07': { initialScale: 'fit-height' },
+ 'DCUX06': {
+  initialScale: 'fit-height',
+  alignX: { 'min-768': 'center' },
+ },
+ 'DCUX05': { initialScale: 'fit-height' },
+ 'DCUX03-1': { initialScale: 'fit-height' },
+ 'DCUX02': {
+  initialScale: { base: '100%', 'min-768': 'fit-height' },
+  alignY: { base: 'viewport-center', 'min-768': 'top' },
+ },
+ 'DCUX01 1': {
+  initialScale: { base: '90%', 'min-768': 'fit-height' },
+  alignY: { base: 'viewport-center', 'min-768': 'top' },
+ },
+}
+const activeViewerSettings=computed(()=>viewerSettingsByMedia[activeMediaName.value ?? ''] ?? {})
 function openMedia(name:string,title:string){activeMediaName.value=name;viewerTitle.value=title;viewerOpen.value=true}
 useSeoMeta({title:page.pageTitle,description:text('387:31298')})
 </script>
@@ -122,7 +142,7 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
    </section>
   </div>
   <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-  <DsCaseImageViewer v-if="activeMedia" v-model:open="viewerOpen" type="v2" :title="viewerTitle"><img :src="activeMedia.src" :width="activeMedia.width" :height="activeMedia.height" :alt="viewerTitle" /></DsCaseImageViewer>
+  <DsCaseImageViewer v-if="activeMedia" v-model:open="viewerOpen" type="v2" :title="viewerTitle" v-bind="activeViewerSettings"><img :src="activeMedia.src" :width="activeMedia.width" :height="activeMedia.height" :alt="viewerTitle" /></DsCaseImageViewer>
  </main>
 </template>
 

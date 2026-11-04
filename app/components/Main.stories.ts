@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, userEvent, waitFor, within } from 'storybook/test'
 import Main from './Main.vue'
 
-const meta = { title:'Pages/Main', component:Main, parameters:{layout:'fullscreen'}, tags:['autodocs'] } satisfies Meta<typeof Main>
+const meta = { title:'Pages/Main', component:Main, parameters:{layout:'fullscreen'}, tags:['autodocs'], beforeEach: () => { localStorage.removeItem('pdportfolio:showcase:category') } } satisfies Meta<typeof Main>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Showcase: Story = {
@@ -31,10 +31,12 @@ export const Showcase: Story = {
     }
   }
   await selectCategory('Лэндинг', true)
+  await expect(localStorage.getItem('pdportfolio:showcase:category')).toBe('landing')
   await expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(3)
   await expect(canvasElement.querySelector('.skins4-real')).not.toBeNull()
   await expect(canvasElement.querySelector('.black-gold')).not.toBeNull()
   await selectCategory('UX')
+  await expect(localStorage.getItem('pdportfolio:showcase:category')).toBe('ux')
   await waitFor(()=>expect(canvasElement.querySelector('.main-page__cases')?.getAttribute('data-category')).toBe('ux'))
   await expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(3)
   await expect(canvasElement.querySelector('a[href="/cases/dc-vendor-app-ux"]')).not.toBeNull()

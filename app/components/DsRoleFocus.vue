@@ -1,13 +1,13 @@
 <script setup lang="ts">
 /**
  * DsRoleFocus — DS component 1107:7326 (Role-Focus)
- * https://www.figma.com/design/V28Wl8M0ipiH4neDPjxKys/PDPortfolio-Prod?node-id=1107-7326
+ * https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1107-7326
  *
  * Case role/focus info block. Two responsive breakpoints.
  * Non-interactive; Hug height.
  *
- * base (<425px): vertical layout, each pair stacked; DS/Heading/md label + DS/Body/base value
- * min-425 (>=425px): horizontal layout, label column 116px; DS/Heading/lg label + DS/Body/md value
+ * base (<768px): vertical layout, each pair stacked; DS/Heading/md label + DS/Body/base value
+ * min-768 (>=768px): horizontal layout, label column 116px; DS/Heading/lg label + DS/Body/md value
  *
  * All text: text/secondary (gray-700).
  */
@@ -16,7 +16,7 @@ import { typografRoleFocusItems } from '../../scripts/lib/typograf-shared.mjs'
 
 const props = defineProps<{
   /** Explicit Figma variant for constrained compositions; omitted = responsive viewport. */
-  breakpoint?: 'base' | 'min-425'
+  breakpoint?: 'base' | 'min-768'
   role: string
   focus: string
 }>()
@@ -83,13 +83,13 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
   white-space: nowrap;
 }
 
-.ds-role-focus--min-425 .ds-role-focus__row {
+.ds-role-focus--min-768 .ds-role-focus__row {
   flex-direction: row;
   align-items: first baseline;
   gap: var(--space-3);
 }
 
-.ds-role-focus--min-425 .ds-role-focus__label {
+.ds-role-focus--min-768 .ds-role-focus__label {
   text-align: right;
   flex: 0 0 116px;
   width: 116px;
@@ -98,7 +98,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
   line-height: 1.3;
 }
 
-.ds-role-focus--min-425 .ds-role-focus__value {
+.ds-role-focus--min-768 .ds-role-focus__value {
   flex: 1;
   font-size: var(--text-size-20);
   font-weight: var(--text-weight-light);
@@ -107,8 +107,8 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
     "wdth" 100;
 }
 
-/* min-425: horizontal layout */
-@media (min-width: 425px) {
+/* min-768: horizontal layout */
+@media (min-width: 768px) {
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__row {
     flex-direction: row;
     align-items: first baseline;
@@ -120,13 +120,13 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
     flex: 0 0 116px; /* fixed label column */
     width: 116px;
     min-width: 116px;
-    font-size: var(--text-size-22); /* min-425: DS/Heading/lg — 22px */
+    font-size: var(--text-size-22); /* min-768: DS/Heading/lg — 22px */
     line-height: 1.3;
   }
 
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__value {
     flex: 1;
-    font-size: var(--text-size-20); /* min-425: DS/Body/md — 20px */
+    font-size: var(--text-size-20); /* min-768: DS/Body/md — 20px */
     font-weight: var(--text-weight-light); /* 300 */
     font-variation-settings: "wght" 300, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
       "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,

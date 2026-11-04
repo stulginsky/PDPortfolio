@@ -140,10 +140,10 @@ defineExpose({ replayIntro, resetMotion })
       </picture>
       <img v-else-if="index === 2" :src="assets + 'phones-ux.png'" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__raster" />
       <template v-else-if="index === 3">
-        <DsRoleFocus v-if="ready" :role="role" :focus="focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-425'" />
+        <DsRoleFocus v-if="ready" :role="role" :focus="focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-768'" />
         <template v-else>
           <div class="chirp-ux-hero__initial-role-base"><DsRoleFocus :role="role" :focus="focus" breakpoint="base" /></div>
-          <div class="chirp-ux-hero__initial-role-web"><DsRoleFocus :role="role" :focus="focus" breakpoint="min-425" /></div>
+          <div class="chirp-ux-hero__initial-role-web"><DsRoleFocus :role="role" :focus="focus" breakpoint="min-768" /></div>
         </template>
       </template>
       <template v-else>

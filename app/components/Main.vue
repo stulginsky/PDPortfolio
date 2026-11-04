@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import DsHeader from './DsHeader.vue'
 import DsTopNav from './DsTopNav.vue'
 import DsTopNavScrollVitrina from './DsTopNavScrollVitrina.vue'
@@ -13,6 +13,7 @@ import ChirpAiDesignSystem from './ChirpAiDesignSystem.vue'
 import DCVendorAppPr from './DCVendorAppPr.vue'
 import DCVendorAppUx from './DCVendorAppUx.vue'
 import DCPickerAppUx from './DCPickerAppUx.vue'
+import LIDesignSystem from './LIDesignSystem.vue'
 import Component4Real3Dweapon from './4Real3Dweapon.vue'
 import Skins4Real from './Skins4Real.vue'
 import BlackGold from './BlackGold.vue'
@@ -25,6 +26,11 @@ import FoxJw from './FoxJw.vue'
 const emit = defineEmits<{ resume: [] }>()
 type Category = 'all' | 'product' | 'ux' | 'design-system' | 'branding' | 'creative' | 'jewelry' | 'landing' | 'gamedev' | 'video' | 'packaging'
 const category = ref<Category>('all')
+const categoryStorageKey = 'pdportfolio:showcase:category'
+const categoryValues: readonly Category[] = ['all', 'product', 'ux', 'design-system', 'branding', 'creative', 'jewelry', 'landing', 'gamedev', 'video', 'packaging']
+watch(category, value => {
+  try { window.localStorage.setItem(categoryStorageKey, value) } catch { /* Storage may be unavailable. */ }
+}, { flush: 'sync' })
 const fullHeader = ref<HTMLElement>()
 const compact = ref(false)
 const place = computed<'Vitrina' | 'Resume'>({
@@ -39,15 +45,16 @@ const cases = [
   { id: 'ChirpAiDesignSystem', category: 'design-system', component: ChirpAiDesignSystem },
   { id: 'DCVendorAppPr', category: 'product', component: DCVendorAppPr, href: '/cases/dc-vendor-app-pr' },
   { id: 'DCVendorAppUx', category: 'ux', component: DCVendorAppUx, href: '/cases/dc-vendor-app-ux' },
-  { id: 'DCPickerAppUx', category: 'ux', component: DCPickerAppUx },
   { id: '4Real3Dweapon', category: 'landing', component: Component4Real3Dweapon, activateHref: '/cases/4real-3dweapon' },
-  { id: 'Skins4Real', category: 'landing', component: Skins4Real },
-  { id: 'BlackGold', category: 'landing', component: BlackGold },
   { id: 'Absolut', category: 'creative', component: Absolut, activateHref: '/cases/absolut' },
   { id: 'AquaMaris', category: 'creative', component: AquaMaris, activateHref: '/cases/aqua-maris' },
   { id: 'SapsanCr', category: 'creative', component: SapsanCr, activateHref: '/cases/sapsan-cr' },
   { id: 'DragonHeartJw', category: 'jewelry', component: DragonHeartJw, activateHref: '/cases/dragon-heart-jw' },
   { id: 'FoxJw', category: 'jewelry', component: FoxJw, activateHref: '/cases/fox-jw' },
+  { id: 'DCPickerAppUx', category: 'ux', component: DCPickerAppUx },
+  { id: 'LIDesignSystem', category: 'design-system', component: LIDesignSystem },
+  { id: 'Skins4Real', category: 'landing', component: Skins4Real },
+  { id: 'BlackGold', category: 'landing', component: BlackGold },
 ] as const
 const visibleCases = computed(() => cases.filter(item => category.value === 'all' || item.category === category.value))
 function activateCase(item: typeof cases[number], event: MouseEvent | KeyboardEvent) {
@@ -64,6 +71,10 @@ function scrollToHeader() {
 
 let observer: IntersectionObserver | undefined
 onMounted(() => {
+  try {
+    const saved = window.localStorage.getItem(categoryStorageKey)
+    if (saved && !['gamedev', 'video', 'packaging'].includes(saved) && categoryValues.includes(saved as Category)) category.value = saved as Category
+  } catch { /* Keep the default when browser storage is unavailable. */ }
   if (!fullHeader.value) return
   compact.value = fullHeader.value.getBoundingClientRect().bottom <= 0
   observer = new IntersectionObserver(([entry]) => {

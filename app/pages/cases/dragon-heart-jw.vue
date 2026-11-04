@@ -45,7 +45,8 @@ function scrollToStart() {
       <div class="dragon-heart-case__page-up-slot" aria-hidden="true" data-figma-frame="7:207" />
     </div>
     <DsPageUp @click="scrollToStart" />
-    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title">
+    <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title"
+      initial-scale="cover" fit-area="viewport" align-x="center" align-y="viewport-center">
       <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>

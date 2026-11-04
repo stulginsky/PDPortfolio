@@ -159,7 +159,32 @@
       if (!pending) return;
       var name = pending.name;
       var entry = entries[name];
-      if (!entry.ready) return;
+      if (!entry.ready || pending.presenting) return;
+      var request = pending;
+      request.presenting = true;
+      var api = entry.view && entry.view.weaponModelApi;
+      function renderingStarted() {
+        setTimeout(function () {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              if (pending !== request) {
+                if (active !== name && (!pending || pending.name !== name)) setRendering(entry, false);
+                return;
+              }
+              commitActivation(request);
+            });
+          });
+        }, 650);
+      }
+      // Resume while still hidden; starting after exposure flashes Sketchfab's loader.
+      if (api) api.start(renderingStarted);
+      else renderingStarted();
+    }
+
+    function commitActivation(request) {
+      if (pending !== request) return;
+      var name = request.name;
+      var entry = entries[name];
       setRendering(entries[active], false);
       Object.keys(entries).forEach(function (key) {
         var frame = entries[key].frame;
@@ -179,7 +204,6 @@
       document.documentElement.dataset.activePage = name;
       document.documentElement.dataset.pendingPage = '';
       syncCountdown(entry);
-      setRendering(entry, true);
       document.title = entry.title;
       window.scrollTo(0, 0);
       entry.view.scrollTo(0, 0);
@@ -216,7 +240,7 @@
           entry.error = false;
           clearTimeout(entry.timer);
           syncCountdown(entry);
-          if (name !== active) setRendering(entry, false);
+          if (name !== active && (!pending || pending.name !== name)) setRendering(entry, false);
           else if (!pending) status('', false);
           activate();
         } else if (state.modelState === 'error' && !entry.ready) {
@@ -299,6 +323,7 @@
           autospin: Number(url.searchParams.get('autospin')),
           success: function (api) {
             window.weaponModelApi = api;
+            if (window.weaponLayout) window.weaponLayout.trackModel(api);
             api.addEventListener('viewerready', function () {
               function finishModel() {
                 clearTimeout(timer);

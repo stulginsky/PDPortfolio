@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<{
   phone?: string
   telegramLabel?: string
   telegramUrl?: string
+  maxLabel?: string
+  maxUrl?: string
 }>(), {
   name: site.name,
   description: site.role + ' ' + site.experience,
@@ -18,6 +20,8 @@ const props = withDefaults(defineProps<{
   phone: site.phone,
   telegramLabel: site.telegramLabel,
   telegramUrl: site.telegramUrl,
+  maxLabel: site.maxLabel,
+  maxUrl: site.maxUrl,
 })
 const emailHref = computed(() => `mailto:${props.email.trim()}`)
 const phoneHref = computed(() => `tel:${props.phone.replace(/[^+\d]/g, '')}`)
@@ -36,6 +40,8 @@ const phoneHref = computed(() => `tel:${props.phone.replace(/[^+\d]/g, '')}`)
           <TypoText tag="a" :href="phoneHref" :content="phone" />
           <span class="ds-header__separator" aria-hidden="true">·</span>
           <TypoText tag="a" :href="telegramUrl" target="_blank" rel="noopener noreferrer" :content="telegramLabel" />
+          <span class="ds-header__separator" aria-hidden="true">·</span>
+          <TypoText tag="a" :href="maxUrl" target="_blank" rel="noopener noreferrer" :content="maxLabel" />
         </div>
       </div>
     </div>

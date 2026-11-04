@@ -14,7 +14,7 @@ const meta = {
   argTypes: {
     breakpoint: {
       control: 'radio',
-      options: ['base', 'min-425'],
+      options: ['base', 'min-768'],
       description: 'Docs: выбор варианта. Sandbox: вариант автоматически определяется viewport.',
     },
     role: { control: 'text', description: 'Typograf: пункты разделены ·, переносятся целиком; разделитель остаётся с предыдущим пунктом.' },
@@ -25,7 +25,7 @@ const meta = {
     controls: { sort: 'none' },
     docs: {
       description: {
-        component: '[Figma 1107:7326](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1107-7326)\n\n<details>\n<summary>Техническое описание</summary>\n\nDocs показывает один вариант: base по умолчанию; радиокнопки breakpoint переключают production-компонент на min-425. Sandbox показывает один адаптивный компонент: ниже425px base, от425px min-425; используйте родной viewport Storybook. Колонка подписей116px, выключка справа только в min-425. Typograf сохраняет целые пункты и прикрепляет разделитель к предыдущему пункту. API role/focus/breakpoint не изменён.\n\n</details>',
+        component: '[Figma 1107:7326](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1107-7326)\n\n<details>\n<summary>Техническое описание</summary>\n\nDocs показывает один вариант: base по умолчанию; радиокнопки breakpoint переключают production-компонент на min-768. Sandbox показывает один адаптивный компонент: ниже768px base, от768px min-768; используйте родной viewport Storybook. Колонка подписей116px, выключка справа только в min-768. Typograf сохраняет целые пункты и прикрепляет разделитель к предыдущему пункту. API role/focus/breakpoint не изменён.\n\n</details>',
       },
     },
   },
@@ -64,7 +64,7 @@ export const Preview: Story = {
   }),
   play: async ({ canvasElement, args }) => {
     await expect(canvasElement.querySelectorAll('.ds-role-focus')).toHaveLength(1)
-    await checkComponent(canvasElement.querySelector('.ds-role-focus')!, args.breakpoint === 'min-425')
+    await checkComponent(canvasElement.querySelector('.ds-role-focus')!, args.breakpoint === 'min-768')
   },
 }
 
@@ -83,6 +83,6 @@ export const Sandbox: Story = {
     await expect(canvasElement.querySelectorAll('.ds-role-focus')).toHaveLength(1)
     const root = canvasElement.querySelector('.ds-role-focus')!
     await expect(root.className).not.toMatch(/ds-role-focus--/)
-    await checkComponent(root, window.innerWidth >= 425)
+    await checkComponent(root, window.innerWidth >= 768)
   },
 }

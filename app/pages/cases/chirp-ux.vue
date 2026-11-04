@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
+import { computed, defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import ChirpUxHero from '../../components/ChirpUxHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsCaseImagePreview from '../../components/DsCaseImagePreview.vue'
 import '../../assets/css/case-preview-surface.css'
 import DsCaseImageViewer from '../../components/DsCaseImageViewer.vue'
+import type { CaseImageViewerSettings } from '../../components/case-image-viewer-settings'
 import RelatedCases from '../../components/RelatedCases.vue'
 import DsFooter from '../../components/DsFooter.vue'
 import DsPageUp from '../../components/DsPageUp.vue'
@@ -73,6 +74,18 @@ const sequence: { frame?: Frame; media?: typeof page.media[number]; collage?: bo
 ]
 const viewerOpen = ref(false)
 const selectedMedia = ref(page.media[0]!)
+const viewerSettingsByMedia: Record<string, CaseImageViewerSettings> = {
+  '375:1523': {
+    initialScale: { base: '75%', 'min-768': 'fit-width' },
+  },
+  '390:1528': {
+    initialScale: { base: '75%', 'min-768': 'fit-width' },
+  },
+  '492:1464': {
+    alignY: { base: 'viewport-center', 'min-768': 'top' },
+  },
+}
+const selectedViewerSettings = computed(() => viewerSettingsByMedia[selectedMedia.value.node] ?? {})
 function openMedia(media: typeof page.media[number]) { selectedMedia.value = media; viewerOpen.value = true }
 const start = ref<HTMLElement>()
 const showPageUp = ref(false)
@@ -115,7 +128,7 @@ function scrollToStart() {
       <div class="ux-case__end" aria-hidden="true" />
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-    <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title">
+    <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title" v-bind="selectedViewerSettings">
       <img :key="selectedMedia.src" :src="selectedMedia.src" :alt="selectedMedia.alt" />
     </DsCaseImageViewer>
   </main>

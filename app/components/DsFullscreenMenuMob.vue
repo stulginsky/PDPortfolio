@@ -16,6 +16,8 @@ import DsScroll from './DsScroll.vue'
  */
 interface MenuItem {
   label: string
+  disabled?: boolean
+  tooltip?: string
   value: string
   icon?: ButtonIconName
   showIcon?: boolean
@@ -91,6 +93,7 @@ function close() {
 }
 
 function selectItem(item: MenuItem) {
+  if (item.disabled) return
   if (!item.href) {
     emit('update:modelValue', item.value)
     emit('select', item)
@@ -165,6 +168,8 @@ const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(close,
                   class="ds-fs-menu__item"
                   style="width: 100%"
                   :label="item.label"
+                  :disabled="item.disabled"
+                  :tooltip="item.tooltip"
                   :icon="item.icon"
                   :show-icon="item.showIcon ?? false"
                   :href="item.href"

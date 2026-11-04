@@ -9,6 +9,35 @@
   var scene;
   var api;
   var prepared = false;
+  var textureProgress = null;
+  var modelSettled;
+  function interactionHost() {
+    try { if (parent !== window && parent.weaponNavigation) return parent; } catch (error) {}
+    return window;
+  }
+  function syncInteractionHint() {
+    if (interactionHost().document.documentElement.dataset.weaponInteracted === 'true') document.documentElement.dataset.weaponInteracted = 'true';
+  }
+  function markModelInteracted() {
+    var host = interactionHost();
+    var alreadyInteracted = host.document.documentElement.dataset.weaponInteracted === 'true';
+    document.documentElement.dataset.weaponInteracted = 'true';
+    if (alreadyInteracted) return;
+    host.document.documentElement.dataset.weaponInteracted = 'true';
+    host.dispatchEvent(new Event('weapon-model-interacted'));
+  }
+  syncInteractionHint();
+  interactionHost().addEventListener('weapon-model-interacted', syncInteractionHint);
+  function trackModel(viewerApi) {
+    viewerApi.addEventListener('camerastart', function () {
+      var frame = document.querySelector('.weapon-viewer-frame');
+      if (document.documentElement.dataset.modelState === 'ready' && frame && document.activeElement === frame) markModelInteracted();
+    });
+    viewerApi.addEventListener('textureLoadProgress', function (factor) {
+      textureProgress = factor;
+      if (modelSettled) modelSettled();
+    });
+  }
   var originalLoad = $axure.loadCurrentPage;
   function walk(value, callback) {
     if (!value || typeof value !== 'object') return;
@@ -113,15 +142,29 @@
   }
   function prepareModel(viewerApi, done) {
     api = viewerApi;
-    if (prepared || typeof api.getCameraLookAt !== 'function') { done(); return; }
+    if (prepared) { done(); return; }
     prepared = true;
     var finished = false;
-    var timeout = setTimeout(finish, 2000);
-    function finish() { if (finished) return; finished = true; clearTimeout(timeout); done(); }
+    var cameraReady = false;
+    var settleTimer;
+    var timeout = setTimeout(finishCamera, 2000);
+    modelSettled = function () {
+      clearTimeout(settleTimer);
+      if (finished || !cameraReady || (textureProgress !== null && textureProgress < 1)) return;
+      // Sketchfab fades its loading UI after the final resources/camera update.
+      settleTimer = setTimeout(function () {
+        if (finished) return;
+        finished = true;
+        modelSettled = null;
+        requestAnimationFrame(function () { requestAnimationFrame(done); });
+      }, 650);
+    };
+    function finishCamera() { if (finished) return; clearTimeout(timeout); cameraReady = true; modelSettled(); }
+    if (typeof api.getCameraLookAt !== 'function') { finishCamera(); return; }
     api.getCameraLookAt(function (error, camera) {
-      if (error || !camera || !camera.position || !camera.target || typeof api.setCameraLookAt !== 'function') { finish(); return; }
+      if (error || !camera || !camera.position || !camera.target || typeof api.setCameraLookAt !== 'function') { finishCamera(); return; }
       var position = camera.position.map(function (value, index) { return camera.target[index] + (value - camera.target[index]) * 0.6; });
-      api.setCameraLookAt(position, camera.target, 0, finish);
+      api.setCameraLookAt(position, camera.target, 0, finishCamera);
     });
   }
   function decorateLoadingStatus(element) {
@@ -166,7 +209,7 @@
     addEventListener('scroll', schedule, true);
     schedule();
   }
-  window.weaponLayout = { prepareModel: prepareModel, setActive: setActive, decorateLoadingStatus: decorateLoadingStatus };
+  window.weaponLayout = { prepareModel: prepareModel, trackModel: trackModel, setActive: setActive, decorateLoadingStatus: decorateLoadingStatus };
 
   function installMobileGestures(viewer) {
     var surface = div('weapon-touch-surface', viewer);
@@ -194,6 +237,7 @@
       var vector = g.camera.position.map(function (value, i) { return value - target[i]; });
       var radius = Math.hypot.apply(Math, vector);
       if (!radius) return;
+      if (Math.hypot(g.current.x - g.start.x, g.current.y - g.start.y) > 3 || Math.abs(g.current.distance - g.start.distance) > 3) markModelInteracted();
       var yaw = Math.atan2(vector[1], vector[0]) - (g.current.x - g.start.x) / Math.max(1, viewer.clientWidth) * Math.PI * 2;
       var pitch = Math.acos(Math.max(-1, Math.min(1, vector[2] / radius))) - (g.current.y - g.start.y) / Math.max(1, viewer.clientHeight) * Math.PI;
       pitch = Math.max(0.03, Math.min(Math.PI - 0.03, pitch));
@@ -302,7 +346,18 @@
     new MutationObserver(syncPendingScene).observe(menuHost, { attributes: true, attributeFilter: ['data-pending-page', 'data-active-page'] });
     syncPendingScene();
     var gesture = art.find(function (item) { return item.label === '3D'; });
-    if (gesture) { var icon = div('weapon-gesture', scene); icon.appendChild(image(gesture.src)); }
+    if (gesture) {
+      var icon = div('weapon-gesture', scene);
+      var picture = document.createElement('picture');
+      var mobileIcon = document.createElement('source');
+      mobileIcon.media = '(max-width: 1279px)';
+      mobileIcon.srcset = 'images/3Dfinger.png';
+      picture.appendChild(mobileIcon);
+      var gestureImage = image(gesture.src);
+      gestureImage.alt = 'Вращайте 3D-модель';
+      picture.appendChild(gestureImage);
+      icon.appendChild(picture);
+    }
     var title = div('weapon-product-title', scene);
     title.style.setProperty('--art-width', titleArt.width + 'px');
     title.style.setProperty('--art-ratio', titleArt.width + ' / 46');

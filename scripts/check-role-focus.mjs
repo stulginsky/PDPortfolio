@@ -15,7 +15,7 @@ await mkdir(evidence, { recursive: true })
 const browser = await chromium.launch({ headless: true })
 const results = []
 try {
-  for (const width of [320, 370, 410, 424, 425, 534, 720, 768, 1024, 1280, 1440, 1920]) {
+  for (const width of [320, 370, 410, 424, 425, 534, 720, 767, 768, 769, 1024, 1280, 1440, 1920]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } })
     const errors = []
     page.on('pageerror', error => errors.push(error.message))
@@ -51,11 +51,11 @@ try {
         }),
       }
     })
-    assert.equal(check.layout, width < 425 ? 'column' : 'row')
-    if (width >= 425) for (const delta of check.baselineDeltas) assert.ok(Math.abs(delta) < .1, 'first baselines align at ' + width)
+    assert.equal(check.layout, width < 768 ? 'column' : 'row')
+    if (width >= 768) for (const delta of check.baselineDeltas) assert.ok(Math.abs(delta) < .1, 'first baselines align at ' + width)
     for (const label of check.labels) {
-      assert.equal(label.align === 'right', width >= 425)
-      if (width >= 425) assert.equal(label.width, 116)
+      assert.equal(label.align === 'right', width >= 768)
+      if (width >= 768) assert.equal(label.width, 116)
     }
     for (const items of check.values) for (const [index, item] of items.entries()) {
       assert.equal(item.lines, 1, 'whole item on one line at ' + width)
@@ -80,11 +80,11 @@ try {
   const root = docs.locator('.ds-role-focus')
   assert.ok((await root.getAttribute('class')).includes('--base'))
   await docs.screenshot({ path: evidence + '/role-focus-docs-base.png', fullPage: true })
-  await docs.getByRole('radio', { name: 'min-425', exact: true }).check()
-  await docs.waitForFunction(() => document.querySelector('.ds-role-focus')?.classList.contains('ds-role-focus--min-425'))
+  await docs.getByRole('radio', { name: 'min-768', exact: true }).check()
+  await docs.waitForFunction(() => document.querySelector('.ds-role-focus')?.classList.contains('ds-role-focus--min-768'))
   assert.equal(await root.locator('.ds-role-focus__row').first().evaluate(row => getComputedStyle(row).flexDirection), 'row')
-  assert.ok((await root.boundingBox()).width >= 666, 'Docs has enough preview width for min-425')
-  await docs.screenshot({ path: evidence + '/role-focus-docs-min-425.png', fullPage: true })
+  assert.ok((await root.boundingBox()).width >= 666, 'Docs has enough preview width for min-768')
+  await docs.screenshot({ path: evidence + '/role-focus-docs-min-768.png', fullPage: true })
   await docs.getByRole('radio', { name: 'base', exact: true }).check()
   await docs.waitForFunction(() => document.querySelector('.ds-role-focus')?.classList.contains('ds-role-focus--base'))
   const index = await (await docs.request.get('http://127.0.0.1:6006/index.json')).json()

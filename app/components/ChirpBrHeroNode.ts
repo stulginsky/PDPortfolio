@@ -4,7 +4,7 @@ import TypoText from './TypoText.vue'
 import ChirpBrHeroAsset from './ChirpBrHeroAsset.vue'
 import content from '../../content/cases/chirp-brand.json'
 import { applyPointerMotion } from './chirp-br-hero.pointer-motion'
-import { createHeroDraft, type LayoutNode, type HeroBreakpoint } from './chirp-br-hero.scene-context'
+import { createHeroDraft, heroReferences, type LayoutNode, type HeroBreakpoint } from './chirp-br-hero.scene-context'
 const titleSizes: Record<HeroBreakpoint, [number, number]> = {
  base: [320,231], 'min-768': [768,351], 'min-1024': [572,283],
  'min-1280': [715,378], 'min-1440': [805,400], 'min-1920': [1073,468],
@@ -40,7 +40,15 @@ export default defineComponent({
      ]),
     ])
    }
-   if(node.roleFocus) return h(DsRoleFocus,{...attrs,role:props.copy.role,focus:props.copy.focus,breakpoint:props.breakpoint==='base'?'base':'min-425'})
+   if(node.roleFocus) {
+    const roleBreakpoint=node.roleBreakpoint??(props.breakpoint==='base'?'base':'min-768')
+    if(roleBreakpoint==='min-768') Object.assign(style,{
+     left:'50%',right:undefined,width:'min(924px, calc(100cqw - 32px))',height:'auto',
+     transform:`scale(calc(${heroReferences[props.breakpoint].width}px / 100cqw)) translateX(calc(-50% - 6.125px))`,
+     transformOrigin:'top left',
+    })
+    return h(DsRoleFocus,{...attrs,role:props.copy.role,focus:props.copy.focus,breakpoint:roleBreakpoint})
+   }
    if(node.asset) return h(ChirpBrHeroAsset,{...node.asset,boxStyle:style,media:props.initialMedia,onLoaded:()=>emit('loaded')})
    const headline=style.fontFamily==='Playfair'
    if(node.tag==='p'||node.heading||headline) style.margin=0

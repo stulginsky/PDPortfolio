@@ -1,0 +1,906 @@
+[
+  {
+    "profile": "base",
+    "id": "1464:7859",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7859/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/d7b28.svg",
+    "width": 220.126,
+    "height": 122.43,
+    "bytes": 12051,
+    "sha256": "ce55964b72daec3d53bac8b363fd8793a62634f5922e3a3819627ac175188551"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7840",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7840/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/93b71.svg",
+    "width": 249.4,
+    "height": 249.4,
+    "bytes": 7386,
+    "sha256": "5769ec5674260dabd919147b8ca52a1acd1963574c269eb27b5a4d368bd08a61"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7803",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7803/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/a6762.svg",
+    "width": 247.928,
+    "height": 163.723,
+    "bytes": 907,
+    "sha256": "5b1a07665c3b0476e4a073c5a102f28c21497bd1ca121eb91a4be66dc4716cea"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7804",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7804/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/73187.svg",
+    "width": 245.527,
+    "height": 195.616,
+    "bytes": 877,
+    "sha256": "0594f4574c7bb1c7f5a7562ac702f222ef69abd09221d9db3ffed16d51edce44"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7805",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7805/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/aebd8.svg",
+    "width": 285.213,
+    "height": 142.106,
+    "bytes": 572,
+    "sha256": "7f95dd6463e3895d5ebd6e68701aaf5fd998de2f47b90d2929d55089763c74dd"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7806",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7806/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7807",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7807/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7808",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7808/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7809",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7809/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/8e2be.svg",
+    "width": 69.6151,
+    "height": 67.3137,
+    "bytes": 5126,
+    "sha256": "f3a0e22a5d0b19c1b8cebbc68d84996bb8ec6e3651635e47db1536c158956d8c"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7811",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7811/ellipse-10.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/48071.svg",
+    "width": 46.5446,
+    "height": 33.7009,
+    "bytes": 1123,
+    "sha256": "e765ef4966a4265c1bd9ea02c8832d38e1fc1beb5d7076bf286820d16a609d09"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7812",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7812/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/740e1.svg",
+    "width": 31.1284,
+    "height": 25.4159,
+    "bytes": 2516,
+    "sha256": "3a5d969bd84fc37b6eaf24eda36aa17dc1aa313d1fcb9e6b8d526764dc3b4975"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7813",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7813/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/2238c.svg",
+    "width": 53.3042,
+    "height": 138.731,
+    "bytes": 10645,
+    "sha256": "c0144afd14b2d405aae3a6f5a80f7ebded968ba116338aa60ef9017887d1b90f"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7818",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7818/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/ad576.svg",
+    "width": 24.5,
+    "height": 22.2998,
+    "bytes": 2120,
+    "sha256": "7f3f19b3e7fbb0cf5f4d52152edb200713012f3a5b4cae8392c53f718357d838"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7821",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7821/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/5849f.svg",
+    "width": 88.835,
+    "height": 39.0303,
+    "bytes": 4761,
+    "sha256": "561079119e3f6f65b2904b98fc65cf181d78d58f76aef90afb2b3c08c267803b"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7828",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7828/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  },
+  {
+    "profile": "base",
+    "id": "1464:7850",
+    "path": "public/cases/chirp-brand/hero-layers/base/1464-7850/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/00d4400b-1513-4853-b3b3-a529ee004c5d/dc086.svg",
+    "width": 202.206,
+    "height": 33.6516,
+    "bytes": 8751,
+    "sha256": "1a3061a6f5c5abe7bf50dcfdcd86c4a639b24b71b9e9aec5fc7a6078ad36425f"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7638",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7638/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/c0d0d.svg",
+    "width": 566.288,
+    "height": 453.524,
+    "bytes": 904,
+    "sha256": "6f63215c05e6c029cad2b123d55d6bec06e01983b8c7eff12e5c247b6c7ff01a"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7639",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7639/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/84ab2.svg",
+    "width": 560.77,
+    "height": 500.328,
+    "bytes": 872,
+    "sha256": "7ed652242ba2473b84eba42c2c5e8eee50e08ae95578727a70f599c435927494"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7640",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7640/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/e9dcb.svg",
+    "width": 651.452,
+    "height": 392.173,
+    "bytes": 573,
+    "sha256": "0475d96cd46fd60bf9c15694ac212c5a33bcbc65bfe7cbb918d874eab2d304be"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7641",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7641/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7642",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7642/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7643",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7643/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7644",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7644/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/6f329.svg",
+    "width": 182.247,
+    "height": 163.903,
+    "bytes": 5119,
+    "sha256": "06456aaa3612b5561b891efa8a82fc503d074a25b211d18cd239e609153259dc"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7646",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7646/ellipse-10.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/cc750.svg",
+    "width": 132.256,
+    "height": 109.96,
+    "bytes": 1118,
+    "sha256": "65f4e16b51ebc8465b9cf06a516e97e510c28caccac9faf342ac87e116d482a1"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7647",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7647/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/47df3.svg",
+    "width": 90.9151,
+    "height": 82.4926,
+    "bytes": 2520,
+    "sha256": "dcf1964bea207e687e557e9829cbf3451d08fa2ccb515b2330bdc1d2c9892c69"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7729",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7729/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/c13ca.svg",
+    "width": 84.1518,
+    "height": 267.509,
+    "bytes": 11484,
+    "sha256": "d351ed4fa596dc8b5bfa7625eed7595aafb116da63a6e2463827c91442898969"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7666",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7666/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/645a3.svg",
+    "width": 49,
+    "height": 44.5995,
+    "bytes": 2097,
+    "sha256": "84f865ecbd6cd567aeba82168f0997fae8db76f47cd9f640b0ae4c1e1336bd95"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7669",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7669/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/c59ca.svg",
+    "width": 177.67,
+    "height": 78.0596,
+    "bytes": 4748,
+    "sha256": "c411755750455b8d40c339e646c1e348f0ea168029ef254754a90bab07bc1e80"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7676",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7676/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7715",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7715/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/32d6a.svg",
+    "width": 355.56,
+    "height": 197.408,
+    "bytes": 19588,
+    "sha256": "b2e8686270dd84d9ee09dbb6ad33bce6c2db269c7b24c1011d7c9595e86b9edf"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7718",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7718/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/e0d67.svg",
+    "width": 292.4,
+    "height": 292.4,
+    "bytes": 7398,
+    "sha256": "a7bd458cf29c85c392014304fc6c57a8212aadd2623334752916abffe058b0c5"
+  },
+  {
+    "profile": "min-768",
+    "id": "1464:7732",
+    "path": "public/cases/chirp-brand/hero-layers/min-768/1464-7732/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/121dc745-a17a-4d16-817b-f3d50936e422/7713b.svg",
+    "width": 519.422,
+    "height": 73.843,
+    "bytes": 20876,
+    "sha256": "4d3d906b54d80385557eb4ac77e8f5f21b48bc05e07883953a9450e5306a4900"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7509",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7509/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/e5c22.svg",
+    "width": 545.174,
+    "height": 439.492,
+    "bytes": 865,
+    "sha256": "4b87184c5267d8d7bc24dfca3aa45a56719579f1b688d278476828c0761872af"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7510",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7510/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/9d197.svg",
+    "width": 539.862,
+    "height": 483.611,
+    "bytes": 864,
+    "sha256": "0c3c070759d4a35d7403d0c9eb65af82f8b7b437340adbfb270b5ed790f1097b"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7511",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7511/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/b8a10.svg",
+    "width": 627.163,
+    "height": 319.113,
+    "bytes": 562,
+    "sha256": "0553ef88ea84edfd4aefee6c99f58d215aca08d8f7208381c780f9d74cc11c2a"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7512",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7512/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7513",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7513/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7514",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7514/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7515",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7515/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/4bb4e.svg",
+    "width": 155.483,
+    "height": 123.618,
+    "bytes": 5115,
+    "sha256": "493d78ccc55feaa0253cc8d282ece6bc7ac8b8ad34bbd2bc4e9c6ffcbc4d00aa"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7517",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7517/ellipse-10.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/e1154.svg",
+    "width": 102.345,
+    "height": 86.3177,
+    "bytes": 1111,
+    "sha256": "d8a3b7b1db88fdaa4d4db2dd947799c12ead3b4a10689a2d605a500f761da32b"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7518",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7518/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/a5d28.svg",
+    "width": 69.4747,
+    "height": 63.4947,
+    "bytes": 2510,
+    "sha256": "d6bf0e64999b200ef3908bc85f3398dee9e673e0f316f6df0857ef399e40785a"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7526",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7526/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/96c71.svg",
+    "width": 261.781,
+    "height": 146.538,
+    "bytes": 14651,
+    "sha256": "be8cac91fd973085080eca9b82513269bc593a1705e49520aaf0ffce08dc8819"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7529",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7529/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/f6232.svg",
+    "width": 520.103,
+    "height": 74.9261,
+    "bytes": 21148,
+    "sha256": "8e917c1a73e9ab5363d4f97c48942aa82da119fae87fb274c03cb3692cec879a"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7532",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7532/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/cd83e.svg",
+    "width": 82.7922,
+    "height": 264.794,
+    "bytes": 11398,
+    "sha256": "f1310a6fb9ad52a2f76bcd8e2e8adfc2b39d42ecf2a7c45818172b70863fff5e"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7535",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7535/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/0212a.svg",
+    "width": 201.648,
+    "height": 202.24,
+    "bytes": 7537,
+    "sha256": "00faa03682edda48f78fe960b999b9df7294471c4aa868954060b13c02429747"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7547",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7547/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/ad9a0.svg",
+    "width": 27.5625,
+    "height": 25.0872,
+    "bytes": 2136,
+    "sha256": "6e1ee6dc3431aac1965ea6ad6caa130f7d476950b5c244eac1ed31dfceba20c4"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7550",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7550/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/ed498.svg",
+    "width": 99.9395,
+    "height": 43.9072,
+    "bytes": 4731,
+    "sha256": "e572fc79a53c1c1b82c07f8bff050ed66fc9387f1baa5f683e20c24d7f420d08"
+  },
+  {
+    "profile": "min-1024",
+    "id": "1464:7557",
+    "path": "public/cases/chirp-brand/hero-layers/min-1024/1464-7557/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5968eef-78dd-4892-bd7b-9b4f6dc5f9e1/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7450",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7450/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/2a907.svg",
+    "width": 545.174,
+    "height": 545.956,
+    "bytes": 863,
+    "sha256": "a5a09fbb3cc3acb42255863a61939c20f2614457c07c000a731d9d9a84490563"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7451",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7451/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/8ffcd.svg",
+    "width": 539.862,
+    "height": 555.274,
+    "bytes": 875,
+    "sha256": "3a014e7620d815bcc2f9b5d38e02058f7974bb08eeef1164325b965d6ebc9ddc"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7452",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7452/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/0fb28.svg",
+    "width": 627.163,
+    "height": 358.454,
+    "bytes": 566,
+    "sha256": "ab938867651f44167770d565a45e74e2f548cd2b260f4c240c5a2f648d577ee4"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7453",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7453/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7454",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7454/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7455",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7455/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7456",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7456/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/ac6c1.svg",
+    "width": 155.483,
+    "height": 147.654,
+    "bytes": 5123,
+    "sha256": "01917554ff5592dabb266d506e3ffdbf21a37202475bf45b482e00f4c957511e"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7458",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7458/ellipse-10.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/1cf75.svg",
+    "width": 102.345,
+    "height": 102.681,
+    "bytes": 1111,
+    "sha256": "513cfbff8f7f3658dadfc6830966557d44cbc08b376e4a7f40750805fa203e83"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7459",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7459/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/9c210.svg",
+    "width": 71.1394,
+    "height": 74.154,
+    "bytes": 2502,
+    "sha256": "8e0e60a60e0b01c18128bd59951dbe5433ece850ad1972547d0b5072798b59a1"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7467",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7467/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/c6e21.svg",
+    "width": 325.516,
+    "height": 181.357,
+    "bytes": 17459,
+    "sha256": "74cd0ecb6ea6e394150bae1998cda09702a1e59b0d4d1555b48faeb223463a60"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7470",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7470/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/18acd.svg",
+    "width": 646.097,
+    "height": 90.2824,
+    "bytes": 26089,
+    "sha256": "f447908edb9f6015b10033f96e3ebac00784eacf6f3dd0131e731ed206cfd7b7"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7473",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7473/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/98d70.svg",
+    "width": 102.773,
+    "height": 329.297,
+    "bytes": 13935,
+    "sha256": "f343166a843dc94a59db3f6268ccb75bcfca43259f1d9778b8ee0a7f4a861a44"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7476",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7476/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/c756c.svg",
+    "width": 223.71,
+    "height": 224.16,
+    "bytes": 7544,
+    "sha256": "0f7deef82a3d97ee7735835a28189505141f11c0781a9401b1835a7051598ec5"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7488",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7488/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/85c53.svg",
+    "width": 36.75,
+    "height": 33.4496,
+    "bytes": 2116,
+    "sha256": "01aad4fa78796d55b1a1eef1ff777feb15854584aee5bde04a20771663db32bd"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7491",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7491/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/e1831.svg",
+    "width": 133.252,
+    "height": 58.5439,
+    "bytes": 4739,
+    "sha256": "ea5a26515119ff3f062b0f49b3ff5360a51c50832823477e544176588a085e3b"
+  },
+  {
+    "profile": "min-1280",
+    "id": "1464:7498",
+    "path": "public/cases/chirp-brand/hero-layers/min-1280/1464-7498/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/75faa7d1-cf8c-4d71-965d-aa640fc69d77/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7391",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7391/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/f705a.svg",
+    "width": 612.513,
+    "height": 610.931,
+    "bytes": 863,
+    "sha256": "9be10738c05f856c7fbaa10044a0dbeb3dc4280064f7fa78a6acab4dcfc72e84"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7392",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7392/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/98a50.svg",
+    "width": 583.323,
+    "height": 599.011,
+    "bytes": 873,
+    "sha256": "8a7cf48723716974fae3ce679af129c36e921544c755334d7c68589d86d85044"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7393",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7393/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/d93cf.svg",
+    "width": 705.782,
+    "height": 404.422,
+    "bytes": 561,
+    "sha256": "b4bb798da5cd35322d0dd1fb86f89dd726334ff2fc9aacbd6f69794683335fa1"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7394",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7394/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7395",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7395/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7396",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7396/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7397",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7397/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/a13fc.svg",
+    "width": 171.69,
+    "height": 162.323,
+    "bytes": 5115,
+    "sha256": "a68c21e538c0b810f13a1303b96872a57fb4c257103c32b9b7c4693219ff1e0e"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7398",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7398/group-4217.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/157e7.svg",
+    "width": 112.667,
+    "height": 112.799,
+    "bytes": 3463,
+    "sha256": "c1c9d5d1d9df8cda0668f251f34f26fcdc738027540c97d7df083f1f7aade510"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7408",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7408/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/ea542.svg",
+    "width": 364.014,
+    "height": 201.588,
+    "bytes": 19605,
+    "sha256": "db4ed2887476de212d386d92c0b16b2b1a15532488f65b8553525d12697120ac"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7411",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7411/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/8f674.svg",
+    "width": 724.606,
+    "height": 98.8863,
+    "bytes": 28920,
+    "sha256": "29926036e310777154f6afc4ab683a3e14febdfcf4de4e6e9c96a632492e5de0"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7414",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7414/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/f426c.svg",
+    "width": 112.018,
+    "height": 365.402,
+    "bytes": 15636,
+    "sha256": "439b3ebc21fa00448db1a8f30cc37ad24f8913f67f1a8e234c4043783c98154d"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7417",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7417/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/a84e8.svg",
+    "width": 237.538,
+    "height": 237.538,
+    "bytes": 7424,
+    "sha256": "1efeac39fc8440607e83152ef292700c30a9f8e4185f89185c5f0f2b7d739818"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7429",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7429/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/645a3.svg",
+    "width": 49,
+    "height": 44.5995,
+    "bytes": 2097,
+    "sha256": "84f865ecbd6cd567aeba82168f0997fae8db76f47cd9f640b0ae4c1e1336bd95"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7432",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7432/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/c59ca.svg",
+    "width": 177.67,
+    "height": 78.0596,
+    "bytes": 4748,
+    "sha256": "c411755750455b8d40c339e646c1e348f0ea168029ef254754a90bab07bc1e80"
+  },
+  {
+    "profile": "min-1440",
+    "id": "1464:7439",
+    "path": "public/cases/chirp-brand/hero-layers/min-1440/1464-7439/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/f5dde0ad-0893-44c3-8000-3148bdde122e/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6349",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6349/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/28105.svg",
+    "width": 813.762,
+    "height": 812.417,
+    "bytes": 865,
+    "sha256": "584fbb433e97f866c19d69d06d6d70fe8374f3e53cdb701093ef97ccad7b494c"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6350",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6350/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/54142.svg",
+    "width": 713.212,
+    "height": 734.636,
+    "bytes": 877,
+    "sha256": "07cbd7e2deeeb507abacb811473197e837bc8c55d0ebce287f41b1f07854ff68"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6351",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6351/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/3e48d.svg",
+    "width": 940.744,
+    "height": 579.957,
+    "bytes": 612,
+    "sha256": "7fcd546ca7cbae86e9323eafc0690404b6cc7830d39b4a97a79f46318b2a4a70"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6352",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6352/image-35.png",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/e6ae6.png",
+    "bytes": 121093,
+    "sha256": "2a5334413a65eed8cd2fe2616e632ab7a2ff1b8bc6a8e7771f175199bf9d9584"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6353",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6353/group-4215-1-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/d1db0.png",
+    "bytes": 243255,
+    "sha256": "8a8c8a3ace29fc7b13b2b447e03f58ec1e54daad1cb70898b076f571559f7c7e"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6354",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6354/frame-3464590-1.png",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/59b13.png",
+    "bytes": 333210,
+    "sha256": "913c0e9443c3e2d6102e97716c1cbc03bbe712f0302e7b9d9a953b1c797c2ab0"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6355",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6355/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/12358.svg",
+    "width": 220.125,
+    "height": 207.813,
+    "bytes": 5139,
+    "sha256": "d3cc83840a18ca295ca79379f32f986b3f77a458034bede82a028b510a762d14"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:7078",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-7078/group-4217.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/3be33.svg",
+    "width": 143.517,
+    "height": 147.152,
+    "bytes": 3472,
+    "sha256": "52e6775b10b11f941d00bcd0694d3d79ee2346590c67b236066d0621216a52a1"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:7081",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-7081/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/08bc6.svg",
+    "width": 480.496,
+    "height": 266.548,
+    "bytes": 25919,
+    "sha256": "f269680643eac2bde33d5e2f5eda22b833d416ba595d1b62fd826466fff6d417"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6369",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6369/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/0db41.svg",
+    "width": 963.341,
+    "height": 129.954,
+    "bytes": 38299,
+    "sha256": "252fc6fd7bb936cab8e2df3e022ad85a50f593838adcaf265a68b00780f17d19"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6373",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6373/arrow.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/f4ee0.svg",
+    "width": 140.206,
+    "height": 478.606,
+    "bytes": 20529,
+    "sha256": "c30b1fc4729506e9077cd9d438eacda0d39a46da2ff25035982cfee6082f2f44"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6376",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6376/img-sign.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/ccedc.svg",
+    "width": 278.865,
+    "height": 279.022,
+    "bytes": 7545,
+    "sha256": "78b022bc40e9e58e5c0a6151b86db9595528adb8a7102fe93f265c51b1b7d60a"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6357",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6357/subtract.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/645a3.svg",
+    "width": 49,
+    "height": 44.5995,
+    "bytes": 2097,
+    "sha256": "84f865ecbd6cd567aeba82168f0997fae8db76f47cd9f640b0ae4c1e1336bd95"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6386",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6386/logo.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/c59ca.svg",
+    "width": 177.67,
+    "height": 78.0596,
+    "bytes": 4748,
+    "sha256": "c411755750455b8d40c339e646c1e348f0ea168029ef254754a90bab07bc1e80"
+  },
+  {
+    "profile": "min-1920",
+    "id": "1464:6393",
+    "path": "public/cases/chirp-brand/hero-layers/min-1920/1464-6393/vector.svg",
+    "url": "https://www.figma.com/api/mcp/asset/19dde7dd-0f40-42e3-ac27-90e096efd309/56aab.svg",
+    "width": 8,
+    "height": 8,
+    "bytes": 310,
+    "sha256": "b0281228f014da885c8e69cb0a213e71bdfb45cd65df02bd692e3be0f564d253"
+  }
+]

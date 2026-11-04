@@ -88,8 +88,8 @@ defineExpose({ replayIntro, resetMotion })
    </div>
    <div ref="panelBox" class="chirp-ds-hero__panel" :style="{left:reference.panel.x+'px',top:reference.panel.y+'px',width:reference.panel.width+'px',paddingTop:reference.panel.padding+'px',paddingBottom:(reference.panel.padding+Math.max(0,layers[2]!.y-reference.role.y))+'px'}">
     <div :ref="el=>setLayer(el,2)" data-layer="Role-Focus" :data-source-id="layers[2]!.id" class="chirp-ds-hero__copy" :style="{left:(layers[2]!.x-reference.panel.x)+'px',top:(layers[2]!.y-reference.role.y)+'px',width:layers[2]!.width+'px'}">
-     <DsRoleFocus v-if="ready" :role="copy.role" :focus="copy.focus" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" :breakpoint="breakpoint==='base'?'base':'min-425'" />
-     <template v-else><div v-for="variant in (['base','min-425'] as const)" :key="variant" :class="'chirp-ds-hero__initial-role--'+variant"><DsRoleFocus :role="copy.role" :focus="copy.focus" :breakpoint="variant" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" /></div></template>
+     <DsRoleFocus v-if="ready" :role="copy.role" :focus="copy.focus" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" :breakpoint="breakpoint==='base'?'base':'min-768'" />
+     <template v-else><div v-for="variant in (['base','min-768'] as const)" :key="variant" :class="'chirp-ds-hero__initial-role--'+variant"><DsRoleFocus :role="copy.role" :focus="copy.focus" :breakpoint="variant" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" /></div></template>
     </div>
    </div>
    <div :ref="el=>setLayer(el,1)" data-layer="b05-metaphor-songbird-v1 1" :data-source-id="layers[1]!.id" :data-animation-enabled="layers[1]!.animationEnabled" class="chirp-ds-hero__bird" :style="{left:(layers[1]!.x-layers[1]!.width)+'px',top:layers[1]!.y+'px',width:layers[1]!.width+'px',height:layers[1]!.height+'px'}">
@@ -134,6 +134,6 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__bird{left:var(--initial-birdX)!important;top:var(--initial-birdY)!important;width:var(--initial-birdW)!important;height:var(--initial-birdH)!important}
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__bird img{width:100%;height:100%}
 .chirp-ds-hero__initial-role--base{display:var(--initial-base)}
-.chirp-ds-hero__initial-role--min-425{display:var(--initial-web)}
+.chirp-ds-hero__initial-role--min-768{display:var(--initial-web)}
 </style>
 

@@ -451,18 +451,18 @@
     "viewport": 1024,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-1024.webp",
     "width": 1024,
-    "height": 562,
-    "bytes": 26830,
-    "sha256": "53b575c4b12204bf6d25c52f7922b2bcead3b604cb5231146f02931874ecec5d"
+    "height": 622,
+    "bytes": 26832,
+    "sha256": "08c454a8370a5236305dfde9be22886083f5f7ea26647b36926fc96ec3e9fbde"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 1280,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-1280.webp",
     "width": 1280,
-    "height": 702,
-    "bytes": 27988,
-    "sha256": "fc3deeae83ba8ca11464c5078b664e0cd9604a05f153ca2e6e64694f47119fca"
+    "height": 738,
+    "bytes": 27868,
+    "sha256": "49b17ea70b50b581d7f8731c21ecd40b0f2c0e2d78a94038af6fda6abb03a759"
   },
   {
     "component": "chirp-br-hero",
@@ -470,80 +470,80 @@
     "file": "/layered-fallbacks/chirp-br-hero/viewport-1440.webp",
     "width": 1440,
     "height": 790,
-    "bytes": 33592,
-    "sha256": "1ed4ef65be71c88c67f4ac2ce85c57434e3027de91fd5fb0e460de9ca73cf1f2"
+    "bytes": 30724,
+    "sha256": "d0fbb5a1ca2f790fe40a2910601260aff218466e26467360955bdc11a6d9dad5"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 1920,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-1920.webp",
     "width": 1920,
-    "height": 1055,
-    "bytes": 45182,
-    "sha256": "2b97dd3285ede415c219eb96ab5bc6ba414f160719e3f7f7f769a836a4475e90"
+    "height": 1054,
+    "bytes": 49456,
+    "sha256": "3ff081de337849ddf70675731a0bb101c5ea24fe21a0f17842d36218c98bcccf"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 320,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-320.webp",
     "width": 320,
-    "height": 907,
-    "bytes": 15102,
-    "sha256": "365404e8283104c491e5480c8439bc2b0a76e5d93d04147054fa01494ee34786"
+    "height": 834,
+    "bytes": 12598,
+    "sha256": "73695c1733874b16b40f5fff3d9fc10aea088a546f23005e92c0acb2b7030f6c"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 370,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-370.webp",
     "width": 370,
-    "height": 1049,
-    "bytes": 18542,
-    "sha256": "d343c229ff369431e63c777bb87f16816ddf7b6d0eae31a3362c45a5bcd28f58"
+    "height": 964,
+    "bytes": 15448,
+    "sha256": "6cace233df2e04003a791524bb3e8a8e96d9e27a66961610a6676addf885090f"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 410,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-410.webp",
     "width": 410,
-    "height": 1163,
-    "bytes": 21170,
-    "sha256": "8da788a6d41a26bb226fc7ef0d4b0a85d1a65b5b085b2fceabea0324a7898d11"
+    "height": 1069,
+    "bytes": 17628,
+    "sha256": "5f2279eaedf75b0cf1276822d68da5448047125754751683d2461ffb4259a7d6"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 425,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-425.webp",
     "width": 425,
-    "height": 1205,
-    "bytes": 22318,
-    "sha256": "522b8de9d48962d617cd88fccbff5717fd5add686499ff4d38f9748d12d8667c"
+    "height": 1108,
+    "bytes": 18612,
+    "sha256": "46b37492dd0e87795584b46857b6b9ce18a9b35fdad8d72990d08596275f3119"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 534,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-534.webp",
     "width": 534,
-    "height": 1514,
-    "bytes": 30130,
-    "sha256": "57ac64d90a426ef23dabb072c1fdac10b886e69757eccbfdf2292ecc8ef23451"
+    "height": 1392,
+    "bytes": 25002,
+    "sha256": "32ee7bf046afabc59e4cc8b6882b928f8927082df7f2eb46b76f2237e2c619ae"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 720,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-720.webp",
     "width": 720,
-    "height": 2041,
-    "bytes": 44254,
-    "sha256": "f6bfd2c651b6dd32cca5193c4e89cc90c667af2e6b135d172658c2c5bed2ecf3"
+    "height": 1877,
+    "bytes": 36782,
+    "sha256": "eb5f3332c2d0d3b62575997af14eeae8db4a11217520f2937ed93c3f4cbcea1f"
   },
   {
     "component": "chirp-br-hero",
     "viewport": 768,
     "file": "/layered-fallbacks/chirp-br-hero/viewport-768.webp",
     "width": 768,
-    "height": 1362,
-    "bytes": 38260,
-    "sha256": "5f34cd544496c25feb79b32990b869ced9f4ada86fbcfbfb3d2ec618431afde3"
+    "height": 1341,
+    "bytes": 34090,
+    "sha256": "47de1d3e65100ddc52ca519b6b97c1c3da0a395645c9366239f067c1283efc5e"
   },
   {
     "component": "chirp-ds-hero",

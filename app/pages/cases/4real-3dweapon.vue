@@ -14,6 +14,40 @@ let openingObserver: ResizeObserver | undefined
 let landingObserver: ResizeObserver | undefined
 let frameDocument: Document | undefined
 let pendingFrame = 0
+let snapFrame = 0, snapTimer: ReturnType<typeof setTimeout> | undefined
+let previousScroll = 0, scrollDirection = 0, expectedScroll = 0, snapBlockedUntil = 0
+let touching = false
+
+function cancelLandingSnap() {
+  clearTimeout(snapTimer)
+  cancelAnimationFrame(snapFrame)
+  snapFrame = 0
+}
+function scheduleLandingSnap() {
+  clearTimeout(snapTimer)
+  if (snapFrame || touching || scrollDirection <= 0 || performance.now() < snapBlockedUntil || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  const edge = landing.value?.parentElement?.getBoundingClientRect().top
+  const reach = Math.min(180, window.innerHeight * .22)
+  if (edge === undefined || edge <= 1 || edge > reach) return
+  snapTimer = setTimeout(() => {
+    const remaining = landing.value?.parentElement?.getBoundingClientRect().top
+    if (touching || remaining === undefined || remaining <= 1 || remaining > reach) return
+    const start = window.scrollY, target = start + remaining, started = performance.now()
+    const duration = 520
+    expectedScroll = start
+    function step(now: number) {
+      const progress = Math.min(1, (now - started) / duration)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      expectedScroll = start + (target - start) * eased
+      window.scrollTo({ top: expectedScroll, behavior: 'instant' })
+      if (progress < 1) snapFrame = requestAnimationFrame(step)
+      else { snapFrame = 0; snapBlockedUntil = performance.now() + 180 }
+    }
+    snapFrame = requestAnimationFrame(step)
+  }, 120)
+}
+function touchStart() { touching = true; cancelLandingSnap() }
+function touchEnd() { touching = false; scheduleLandingSnap() }
 type MobileLanding = Window & { weaponMobileLayout?: { measure: () => { height: number } | null; update: (offset: number, height: number) => void } }
 
 function syncFrameHeight() {
@@ -48,6 +82,11 @@ function updateOpening() {
 }
 function updateScroll() {
   pendingFrame = 0
+  const current = window.scrollY
+  if (snapFrame && Math.abs(current - expectedScroll) > 3) cancelLandingSnap()
+  if (!snapFrame && Math.abs(current - previousScroll) > .5) scrollDirection = Math.sign(current - previousScroll)
+  previousScroll = current
+  scheduleLandingSnap()
   showPageUp.value = window.scrollY > 100
   if (window.innerWidth < 1280 && landing.value) {
     const offset = Math.max(0, -landing.value.parentElement!.getBoundingClientRect().top)
@@ -55,8 +94,9 @@ function updateScroll() {
   }
 }
 function scheduleScroll() { if (!pendingFrame) pendingFrame = requestAnimationFrame(updateScroll) }
-function resize() { updateOpening(); syncFrameHeight(); scheduleScroll() }
+function resize() { cancelLandingSnap(); updateOpening(); syncFrameHeight(); scheduleScroll() }
 function scrollToStart() {
+  cancelLandingSnap()
   root.value?.focus({ preventScroll: true })
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
 }
@@ -68,13 +108,24 @@ onMounted(() => {
   if (landing.value?.contentDocument?.readyState === 'complete' && landing.value.contentDocument.URL !== 'about:blank') frameLoaded()
   window.addEventListener('scroll', scheduleScroll, { passive: true })
   window.addEventListener('resize', resize)
+  window.addEventListener('wheel', cancelLandingSnap, { passive: true })
+  window.addEventListener('touchstart', touchStart, { passive: true })
+  window.addEventListener('touchend', touchEnd, { passive: true })
+  window.addEventListener('touchcancel', touchEnd, { passive: true })
+  window.addEventListener('keydown', cancelLandingSnap)
 })
 onUnmounted(() => {
   openingObserver?.disconnect(); landingObserver?.disconnect()
   frameDocument?.defaultView?.removeEventListener('weapon-mobile-layout', resize)
   cancelAnimationFrame(pendingFrame)
+  cancelLandingSnap()
   window.removeEventListener('scroll', scheduleScroll)
   window.removeEventListener('resize', resize)
+  window.removeEventListener('wheel', cancelLandingSnap)
+  window.removeEventListener('touchstart', touchStart)
+  window.removeEventListener('touchend', touchEnd)
+  window.removeEventListener('touchcancel', touchEnd)
+  window.removeEventListener('keydown', cancelLandingSnap)
 })
 </script>
 
@@ -113,16 +164,17 @@ onUnmounted(() => {
 .weapon-case__column { width: 100%; max-width: 924px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; gap: var(--space-8); }
 .weapon-case__copy { width: 100%; display: flex; flex-direction: column; gap: var(--space-6); color: var(--text-default); font-family: var(--text-font-sans); font-size: var(--text-size-16); font-weight: var(--text-weight-regular); line-height: 1.6; font-variation-settings: var(--body-16-regular-font-variation); }
 .weapon-case__copy :deep(p) { margin: 0; }
-.weapon-case__role { width: 100%; max-width: 666px; }
+.weapon-case__role { width: 100%; }
 .weapon-case__landing { position: relative; z-index: 1; width: 100%; background: #fff; box-shadow: 3.024px 6.047px 20px var(--effect-shadow-2nd); }
 .weapon-case-landing { display: block; width: 100%; height: max(956px, calc(100svh - 168px)); border: 0; background: #fff; }
 .weapon-case__end-slot { height: 168px; }
 @media (max-width: 1279px) {
-  .weapon-case__back { z-index: 0; }
+  .weapon-case__back { z-index: 1; }
   .weapon-case-landing { position: sticky; top: 0; height: 100svh; }
   .weapon-case__end-slot { display: none; }
 }
 @media (min-width: 768px) {
+  .weapon-case__role { transform: translateX(-6.125px); }
   .weapon-case__opening { padding-bottom: var(--space-12); }
   .weapon-case__column { gap: var(--space-12); }
 }

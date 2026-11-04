@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
+import { computed, defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import ChirpPrHero from '../../components/ChirpPrHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsCaseImagePreview from '../../components/DsCaseImagePreview.vue'
 import '../../assets/css/case-preview-surface.css'
 import DsCaseImageViewer from '../../components/DsCaseImageViewer.vue'
+import type { CaseImageViewerSettings } from '../../components/case-image-viewer-settings'
 import RelatedCases from '../../components/RelatedCases.vue'
 import DsFooter from '../../components/DsFooter.vue'
 import DsPageUp from '../../components/DsPageUp.vue'
@@ -63,6 +64,32 @@ const sequence: { frame?: Frame; media?: typeof page.media[number] }[] = [
 ]
 const viewerOpen = ref(false)
 const selectedMedia = ref(page.media[0]!)
+const viewerSettingsByMedia: Record<string, CaseImageViewerSettings> = {
+  '1143:9000': {
+    alignY: 'viewport-center',
+  },
+  '1143:8884': {
+    initialScale: { base: '100%', 'min-768': 'fit-width' },
+    alignX: { base: 'left', 'min-768': 'center' },
+    alignY: { base: 'viewport-center', 'min-768': 'top' },
+  },
+  '1143:8800': {
+    initialScale: { base: '100%', 'min-768': 'fit-width' },
+    alignX: 'left',
+    alignY: 'viewport-center',
+  },
+  '1143:8720': {
+    initialScale: { base: '100%', 'min-768': 'fit-width' },
+    alignX: { base: 'left', 'min-768': 'center' },
+    alignY: { base: 'viewport-center', 'min-768': 'top' },
+  },
+  '1143:8641': {
+    initialScale: { base: '100%', 'min-768': 'fit-width' },
+    alignX: { base: 'left', 'min-768': 'center' },
+    alignY: { base: 'viewport-center', 'min-768': 'top' },
+  },
+}
+const selectedViewerSettings = computed(() => viewerSettingsByMedia[selectedMedia.value.node] ?? {})
 function openMedia(media: typeof page.media[number]) { selectedMedia.value = media; viewerOpen.value = true }
 const start = ref<HTMLElement>()
 const showPageUp = ref(false)
@@ -99,7 +126,7 @@ function scrollToStart() {
       <div class="product-case__end" aria-hidden="true" />
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-    <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title">
+    <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title" v-bind="selectedViewerSettings">
       <img :key="selectedMedia.src" :src="selectedMedia.src" :alt="selectedMedia.alt" />
     </DsCaseImageViewer>
   </main>

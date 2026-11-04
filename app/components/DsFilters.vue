@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, useId } from 'vue'
 import DsDropdownFilter from './DsDropdownFilter.vue'
+import DsTooltip from './DsTooltip.vue'
 import DsFilter from './DsFilter.vue'
 import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 
+const emptyValues = new Set(['gamedev', 'video', 'packaging'])
+const tooltipItem = ref<string | null>(null)
+const tooltipPrefix = useId()
 const filterItems = [
   { label: 'Все кейсы', value: 'all' },
   { label: 'Продукт', value: 'product' },
@@ -16,9 +20,9 @@ const filterItems = [
   { label: 'Gamedev', value: 'gamedev' },
   { label: 'Видео', value: 'video' },
   { label: 'Упаковка', value: 'packaging' },
-] as const
+] .map(item => ({ ...item, disabled: emptyValues.has(item.value), tooltip: emptyValues.has(item.value) ? 'coming soon' : undefined }))
 
-type FilterValue = (typeof filterItems)[number]['value']
+type FilterValue = 'all' | 'product' | 'ux' | 'design-system' | 'branding' | 'creative' | 'jewelry' | 'landing' | 'gamedev' | 'video' | 'packaging'
 
 const props = withDefaults(
   defineProps<{
@@ -60,12 +64,13 @@ const mobileMenuValue = computed(() =>
 )
 
 function select(value: FilterValue) {
+  if (emptyValues.has(value)) return
   selectedValue.value = value
 }
 
 function selectOverflow(label: string | null) {
   const item = overflowItems.find((candidate) => candidate.label === label)
-  if (item) select(item.value)
+  if (item) select(item.value as FilterValue)
 }
 
 function selectMobile(value: string | null) {
@@ -100,6 +105,8 @@ function selectMobile(value: string | null) {
       <DsDropdownFilter
         class="ds-filters__overflow"
         :items="overflowLabels"
+        :disabled-items="overflowItems.filter(item => item.disabled).map(item => item.label)"
+        disabled-tooltip="coming soon"
         :model-value="selectedOverflowLabel"
         :show-icons="false"
         lock-initial-width
@@ -108,18 +115,26 @@ function selectMobile(value: string | null) {
     </div>
 
     <div class="ds-filters__desktop" role="group" :aria-label="ariaLabel">
-      <DsFilter
-        v-for="item in filterItems"
-        :key="item.value"
-        :label="item.label"
-        :toggled="selectedValue === item.value"
-        @click="select(item.value)"
-      />
+      <span v-for="item in filterItems" :key="item.value" class="ds-filters__item"
+        :tabindex="item.disabled ? 0 : undefined"
+        :aria-label="item.disabled ? item.label : undefined"
+        :aria-disabled="item.disabled || undefined"
+        :aria-describedby="item.disabled ? tooltipPrefix + item.value : undefined"
+        @mouseenter="tooltipItem = item.value" @mouseleave="tooltipItem = null"
+        @focus="tooltipItem = item.value" @blur="tooltipItem = null"
+        @keydown.esc="tooltipItem = null">
+        <DsFilter :label="item.label" :disabled="item.disabled"
+          :toggled="selectedValue === item.value" @click="select(item.value as FilterValue)" />
+        <DsTooltip v-if="item.disabled" :id="tooltipPrefix + item.value"
+          :visible="tooltipItem === item.value" label="coming soon" pointer="Bottom" class="ds-filters__tooltip" />
+      </span>
     </div>
   </nav>
 </template>
 
 <style scoped>
+.ds-filters__item { position:relative;display:inline-flex; }
+.ds-filters__item .ds-filters__tooltip { position:absolute;bottom:100%;left:50%;transform:translateX(-50%);z-index:2;white-space:nowrap;pointer-events:none; }
 /* Filters — DS 1021:3477 */
 .ds-filters {
   width: 100%;

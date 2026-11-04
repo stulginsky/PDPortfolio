@@ -9,6 +9,17 @@
   var offset = 0;
   var metrics;
   var frame = 0;
+  var requestedOffset = 0;
+  var requestedHeight = 0;
+  var pauseTimer = 0;
+  var resumeFrame = 0;
+  var lastStop = null;
+
+  function cancelPause() {
+    clearTimeout(pauseTimer);
+    cancelAnimationFrame(resumeFrame);
+    pauseTimer = resumeFrame = 0;
+  }
 
   function measure() {
     if (!nodes || !media.matches) return null;
@@ -25,7 +36,7 @@
     }
     return metrics;
   }
-  function apply(nextOffset, viewportHeight) {
+  function renderOffset(nextOffset, viewportHeight) {
     if (!enabled || !metrics) return;
     var max = Math.max(0, metrics.height - viewportHeight);
     offset = Math.max(0, Math.min(max, nextOffset));
@@ -40,6 +51,38 @@
       if (child.contentWindow.weaponMobileLayout) child.contentWindow.weaponMobileLayout.update(offset, viewportHeight);
     });
   }
+  function apply(nextOffset, viewportHeight) {
+    var reversing = nextOffset < requestedOffset - .5;
+    requestedOffset = nextOffset;
+    requestedHeight = viewportHeight;
+    if (!enabled || !metrics) return;
+    if (cached || reversing || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cancelPause();
+      if (lastStop !== null && nextOffset < lastStop - 48) lastStop = null;
+      if (nextOffset === 0) lastStop = null;
+      renderOffset(nextOffset, viewportHeight);
+      return;
+    }
+    if (pauseTimer || resumeFrame) return;
+    var stop = offset <= .5 && nextOffset > .5 ? 0
+      : offset < metrics.pinAt && nextOffset >= metrics.pinAt ? metrics.pinAt : null;
+    if (stop === null || stop === lastStop) { renderOffset(nextOffset, viewportHeight); return; }
+    lastStop = stop;
+    renderOffset(stop, viewportHeight);
+    pauseTimer = setTimeout(function () {
+      pauseTimer = 0;
+      var start = offset;
+      var started = performance.now();
+      function resume(now) {
+        var progress = Math.min(1, (now - started) / 220);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        renderOffset(start + (requestedOffset - start) * eased, requestedHeight);
+        if (progress < 1) resumeFrame = requestAnimationFrame(resume);
+        else resumeFrame = 0;
+      }
+      resumeFrame = requestAnimationFrame(resume);
+    }, 200);
+  }
   function configure() {
     if (!nodes) return;
     if (media.matches && !enabled) {
@@ -51,6 +94,7 @@
       nodes.stack.appendChild(nodes.button);
       nodes.tail.appendChild(nodes.side);
     } else if (!media.matches && enabled) {
+      cancelPause();
       enabled = false;
       root.classList.remove('weapon-mobile-scroll', 'weapon-mobile-stack-pinned');
       nodes.scene.appendChild(nodes.quality);
@@ -79,6 +123,7 @@
     update: apply,
     state: function () { return { offset: offset, viewportHeight: innerHeight }; }
   };
+  addEventListener('pagehide', cancelPause);
   function start() {
     var scene = document.querySelector('.weapon-scene');
     if (!scene || !document.querySelector('.weapon-timer')) return false;
