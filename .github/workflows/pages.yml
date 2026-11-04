@@ -23,6 +23,8 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
         id: pages
+      - name: Check release composition
+        run: node scripts/check-release-tree.mjs
       - run: npm ci
       - name: Generate static portfolio
         run: npm run generate
