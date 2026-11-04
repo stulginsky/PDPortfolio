@@ -124,3 +124,9 @@ The static check verifies all page routes and local resource references. The opt
 - New pages in `app/pages` are included by Nuxt's static generation; `check:static` also checks every case page. No hosting prefix belongs in source content or generated JSON.
 
 For a future root-domain deployment, set `NUXT_APP_BASE_URL=/` and rebuild. Both Nuxt and the URL helpers use this one setting; local development and standalone Storybook default to `/`.
+
+## Analytics
+
+Yandex Metrika counter `114073004` is included globally in production Nuxt pages, with the supplied Webvisor, clickmap, link tracking, accurate bounce and `dataLayer` settings. SPA mode uses `defer: true` and one explicit page hit on initial mount and each completed route, including browser Back/Forward. In-page anchors do not create additional page views. A noscript pixel is included in every generated page. Development mode and Storybook do not initialize the counter; the embedded standalone landing does not initialize a second counter.
+
+`node scripts/check-static-site.mjs --browser` checks the loader and fallback on all 14 pages, then verifies initial/SPA/history hits on both viewport sizes. The test intercepts Yandex transport so test visits never enter production reports. Actual reporting can be checked in the counter's live reports after publication.

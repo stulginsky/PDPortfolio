@@ -48,6 +48,8 @@ for (const route of routes) {
   const url = base + route.replace(/^\//, '')
   const html = await fs.readFile(await fileFor(url), 'utf8')
   assert(html.includes('__NUXT'), 'Missing Nuxt document: ' + route)
+  assert.equal([...html.matchAll(/metrika\/tag\.js\?id=114073004/g)].length, 1, `One Metrika loader required: ${route}`)
+  assert(html.includes('https://mc.yandex.ru/watch/114073004'), `Missing noscript counter: ${route}`)
   for (const match of html.matchAll(/\s(?:src|href|poster)="(\/[^"]*)"/g)) {
     if (match[1].startsWith('//')) continue
     try { await fileFor(match[1].replaceAll('&amp;', '&')) } catch (error) { failures.add(`${route}: ${match[1]} — ${error.message}`) }
@@ -69,11 +71,24 @@ if (process.argv.includes('--browser')) {
   try {
     for (const width of [390, 1440]) {
       const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' })
+      // Leave the real bootstrap queue intact, but never send QA visits to Yandex.
+      await page.route('https://mc.yandex.ru/**', route => route.fulfill({ contentType: 'text/javascript', body: '/* Analytics transport disabled for QA. */' }))
+      async function hits(count) {
+        await page.waitForFunction(expected => (window.ym?.a || []).filter(args => args[1] === 'hit').length === expected, count)
+        const calls = await page.evaluate(() => window.ym.a.map(args => Array.from(args)))
+        assert.equal(calls.filter(args => args[1] === 'init').length, 1, 'Counter initialized once per document')
+        assert.equal(calls.find(args => args[1] === 'init')[2].defer, true, 'SPA views must not be counted twice')
+        assert(calls.every(args => args[0] === 114073004), 'Unexpected Metrika counter')
+        return calls.filter(args => args[1] === 'hit')
+      }
       page.on('pageerror', error => failures.add(error.message))
       page.on('response', response => { if (response.status() >= 400 && response.url().startsWith(origin)) failures.add(`${response.status()} ${response.url()}`) })
       for (const route of routes) {
         await page.goto(origin + base + route.replace(/^\//, ''), { waitUntil: 'domcontentloaded' })
         await page.waitForFunction(() => !!document.querySelector('#__nuxt')?.__vue_app__)
+        const initialHits = await hits(1)
+        assert.equal(initialHits[0][2], page.url(), `Initial page hit URL: ${route}`)
+        assert.equal(initialHits[0][3].title, await page.title(), `Initial page hit title: ${route}`)
         const urls = await page.locator('[src],a[href],source[srcset]').evaluateAll(elements => elements.flatMap(el => ['src','href','srcset'].flatMap(attr => {
           const value = el.getAttribute(attr)
           return value?.startsWith('/') && !value.startsWith('//') ? [attr === 'srcset' ? value.split(/\s/)[0] : value] : []
@@ -83,15 +98,24 @@ if (process.argv.includes('--browser')) {
       }
       await page.goto(origin + base, { waitUntil: 'domcontentloaded' })
       await page.waitForFunction(() => !!document.querySelector('#__nuxt')?.__vue_app__)
+      await hits(1)
       await page.evaluate(() => { window.__navigationMarker = true })
       await page.locator(`a[href="${base}cases/dc-vendor-app-ux"]`).first().click()
       await page.waitForURL('**/cases/dc-vendor-app-ux')
+      const navigatedHits = await hits(2)
+      assert.equal(navigatedHits[1][2], page.url())
+      assert.equal(navigatedHits[1][3].referer, origin + base)
+      assert.equal(navigatedHits[1][3].title, await page.title())
       assert(await page.evaluate(() => window.__navigationMarker), 'Case navigation must keep the Nuxt app mounted')
       await page.goBack({ waitUntil: 'domcontentloaded' })
       assert.equal(new URL(page.url()).pathname, base)
+      await hits(3)
+      await page.evaluate(() => { window.location.hash = 'analytics-anchor-test' })
+      await page.waitForURL('**/#analytics-anchor-test')
+      await hits(3)
       await page.close()
     }
     assert.equal(failures.size, 0, [...failures].join('\n'))
-    console.log('Browser checks passed: desktop/mobile, direct pages, local resources, Nuxt navigation and history.')
+    console.log('Browser checks passed: desktop/mobile, direct pages, local resources, Nuxt navigation, history, Metrika hits without duplicates or real analytics traffic.')
   } finally { await browser.close(); await new Promise(resolve => server.close(resolve)) }
 }
