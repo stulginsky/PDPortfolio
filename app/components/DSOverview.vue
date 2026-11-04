@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { vMediaReady } from './media-readiness'
 import manifest from '../../public/cases/chirp-design-system/overview/manifest.json'
 
@@ -43,7 +45,7 @@ const positions = assets.map((_, index) => Object.fromEntries(layouts.flatMap((l
       <figure v-media-ready v-for="(asset, index) in assets" :key="asset.figmaId"
         class="ds-overview__item media-skeleton" :style="positions[index]"
         :data-asset="asset.canonicalName" :data-figma-frame="asset.figmaId">
-        <img :src="asset.src" :alt="asset.canonicalName.replace('Asset/', '')"
+        <img :src="siteUrl(asset.src)" :alt="asset.canonicalName.replace('Asset/', '')"
           :width="asset.width" :height="asset.height" decoding="async" />
       </figure>
     </div>

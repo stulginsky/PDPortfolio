@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import {ref,useId} from 'vue'
 import './showcase-card-layout.css'
 import DsComingSoon from './DsComingSoon.vue'
@@ -22,10 +24,10 @@ function pointerEnter(event:PointerEvent){if(event.pointerType==='mouse'&&matchM
   <div class="skins4-real__scene">
    <TypoText tag="h2" class="skins4-real__accessible-title" :content="content.title" />
    <picture class="skins4-real__title" aria-hidden="true">
-    <source media="(min-width:462px)" :srcset="'/showcase/skins4-real/min-768/pict.svg'" />
-    <img :src="'/showcase/skins4-real/base/pict.svg'" width="288" height="500" alt="" />
+    <source media="(min-width:462px)" :srcset="siteSrcset('/showcase/skins4-real/min-768/pict.svg')" />
+    <img :src="siteUrl('/showcase/skins4-real/base/pict.svg')" width="288" height="500" alt="" />
    </picture>
-   <DsComingSoon class="skins4-real__subscribe" :href="href" :aria-label="content.subscribeLabel"
+   <DsComingSoon class="skins4-real__subscribe" :href="siteUrl(href)" :aria-label="content.subscribeLabel"
     :aria-describedby="showTooltip?tooltipId:undefined" @pointerenter="pointerEnter" @pointerleave="showTooltip=false"
     @focus="showTooltip=true" @blur="showTooltip=false" @keydown.esc="showTooltip=false" @click="$emit('subscribe',$event)" />
    <DsTooltip :visible="showTooltip" :id="tooltipId" class="skins4-real__tooltip" pointer="Right" :label="content.tooltip" />

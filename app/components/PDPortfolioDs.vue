@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,ref} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -29,7 +31,7 @@ function frameStyle(f:Frame,native:{w:number;h:number}){return {width:native.w+'
   @pointerenter="enter" @pointerleave="hovered=false" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
   <div v-for="profile in pdPortfolioDsProfiles" :key="profile.name" class="pd-portfolio-ds__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
    <div v-for="layer in selected(profile).layers" :key="layer.name" class="pd-portfolio-ds__layer" :data-layer="layer.name" :style="frameStyle(layer.frame,layer.intrinsic)">
-    <img class="pd-portfolio-ds__native" :src="asset(layer.src)" alt="" draggable="false" />
+    <img class="pd-portfolio-ds__native" :src="siteUrl(asset(layer.src))" alt="" draggable="false" />
    </div>
   </div>
   <div class="pd-portfolio-ds__blur" aria-hidden="true" />

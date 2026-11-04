@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import avatarUrl from "~/assets/img/avatar-portrait.jpeg";
 import { HOME_FILTERS, type HomeFilterId } from "~/types/home-card";
 
@@ -58,7 +60,7 @@ function clearPressedFilter() {
   >
     <nav class="showcase-header__compact-tabs" aria-label="Компактная навигация">
       <button type="button" class="showcase-header__avatar-button" aria-label="Наверх" @click="scrollToTop">
-        <img :src="avatarUrl" alt="" width="50" height="50">
+        <img :src="siteUrl(avatarUrl)" alt="" width="50" height="50">
       </button>
       <NuxtLink to="/" class="showcase-header__tab showcase-header__tab--active">Проекты</NuxtLink>
       <NuxtLink to="/resume" class="showcase-header__tab">Резюме</NuxtLink>

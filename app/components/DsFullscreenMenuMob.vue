@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 import { computed, nextTick, ref, useId } from 'vue'
 import DsButton from './DsButton.vue'
@@ -172,7 +174,7 @@ const { beginSwipe, moveSwipe, endSwipe, cancelSwipe } = useMenuSwipeDown(close,
                   :tooltip="item.tooltip"
                   :icon="item.icon"
                   :show-icon="item.showIcon ?? false"
-                  :href="item.href"
+                  :href="siteUrl(item.href)"
                   :aria-current="item.value === modelValue ? 'true' : undefined"
                   appearance="Lg"
                   type="Filter"

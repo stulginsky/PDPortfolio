@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed } from 'vue'
 defineOptions({ inheritAttrs: false })
 import tooltipPointerTop from '../assets/icons/tooltip-pointer-top.svg'
@@ -46,7 +48,7 @@ const pointerAsset = computed(() => pointerAssets[props.pointer])
   >
     <span class="ds-tooltip__pointer-slot" aria-hidden="true">
       <span class="ds-tooltip__pointer-canvas">
-        <img class="ds-tooltip__pointer" :src="pointerAsset" alt="" />
+        <img class="ds-tooltip__pointer" :src="siteUrl(pointerAsset)" alt="" />
       </span>
     </span>
     <div class="ds-tooltip__body">{{ label }}</div>

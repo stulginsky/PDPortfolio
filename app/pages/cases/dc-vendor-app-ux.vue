@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import DCVendorAppUxHero from '../../components/DCVendorAppUxHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
@@ -66,7 +68,7 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
  <main class="ux-case">
   <div ref="start" tabindex="-1" class="ux-case__hero" data-figma-frame="387:31257">
    <DCVendorAppUxHero />
-   <div class="ux-case__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+   <div class="ux-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
   </div>
   <div class="ux-case__flow">
    <section class="ux-case__prose ux-case__about" data-figma-frame="387:31290">
@@ -81,7 +83,7 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
    <div class="ux-case__band" data-figma-frame="378:32542">
     <div class="ux-case__window ux-case__window--research">
      <DsCaseImagePreview type="v2" :title="text('378:32408')" @zoom="openMedia('DCUX01 1',text('378:32408'))">
-      <div class="ux-case__viewport ux-case__viewport--research"><img :src="media('DCUX01 1').src" :width="media('DCUX01 1').width" :height="media('DCUX01 1').height" :alt="text('378:32408')" loading="lazy" /></div>
+      <div class="ux-case__viewport ux-case__viewport--research"><img :src="siteUrl(media('DCUX01 1').src)" :width="media('DCUX01 1').width" :height="media('DCUX01 1').height" :alt="text('378:32408')" loading="lazy" /></div>
      </DsCaseImagePreview>
     </div>
    </div>
@@ -91,15 +93,15 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
    </section>
    <section data-figma-frame="382:32662">
     <div class="ux-case__band ux-case__band--muted">
-     <div class="ux-case__window ux-case__window--directions"><DsCaseImagePreview type="v2" :title="text('382:32546')" @zoom="openMedia('DCUX02',text('382:32546'))"><div class="ux-case__viewport"><img :src="media('DCUX02').src" :width="media('DCUX02').width" :height="media('DCUX02').height" :alt="text('382:32546')" loading="lazy" /></div></DsCaseImagePreview></div>
+     <div class="ux-case__window ux-case__window--directions"><DsCaseImagePreview type="v2" :title="text('382:32546')" @zoom="openMedia('DCUX02',text('382:32546'))"><div class="ux-case__viewport"><img :src="siteUrl(media('DCUX02').src)" :width="media('DCUX02').width" :height="media('DCUX02').height" :alt="text('382:32546')" loading="lazy" /></div></DsCaseImagePreview></div>
     </div>
-    <div v-media-ready class="media-skeleton ux-case__photo"><div class="ux-case__photo-crop"><img :src="media('DCUX03').src" :width="media('DCUX03').width" :height="media('DCUX03').height" :alt="text('382:32546')" loading="lazy" /></div></div>
+    <div v-media-ready class="media-skeleton ux-case__photo"><div class="ux-case__photo-crop"><img :src="siteUrl(media('DCUX03').src)" :width="media('DCUX03').width" :height="media('DCUX03').height" :alt="text('382:32546')" loading="lazy" /></div></div>
    </section>
    <section class="ux-case__prose" data-figma-frame="382:32650">
     <h2 class="ux-case__heading"><template v-for="(part,index) in headingParts(text('382:32651'))" :key="index"><TypoText :content="part" /><wbr /></template></h2>
     <TypoText tag="p" class="ux-case__body" :content="text('382:32663')" />
    </section>
-   <div class="ux-case__band" data-figma-frame="382:32665"><div class="ux-case__window ux-case__window--process"><DsCaseImagePreview type="v2" :title="text('382:32651')" @zoom="openMedia('DCUX03-1',text('382:32651'))"><div class="ux-case__viewport ux-case__viewport--process"><img :src="media('DCUX03-1').src" :width="media('DCUX03-1').width" :height="media('DCUX03-1').height" :alt="text('382:32651')" loading="lazy" /></div></DsCaseImagePreview></div></div>
+   <div class="ux-case__band" data-figma-frame="382:32665"><div class="ux-case__window ux-case__window--process"><DsCaseImagePreview type="v2" :title="text('382:32651')" @zoom="openMedia('DCUX03-1',text('382:32651'))"><div class="ux-case__viewport ux-case__viewport--process"><img :src="siteUrl(media('DCUX03-1').src)" :width="media('DCUX03-1').width" :height="media('DCUX03-1').height" :alt="text('382:32651')" loading="lazy" /></div></DsCaseImagePreview></div></div>
    <template v-for="item in scenarios" :key="item.frame">
     <section class="ux-case__prose" :data-figma-frame="item.frame">
      <h2 class="ux-case__heading"><template v-for="(part,index) in headingParts(text(item.heading))" :key="index"><TypoText :content="part" /><wbr /></template></h2>
@@ -113,8 +115,8 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
      <div class="ux-case__window ux-case__window--rounded" :class="'ux-case__window--'+item.crop">
       <DsCaseImagePreview type="v2" :title="text(item.heading)" @zoom="openMedia(item.name,text(item.heading))">
        <div class="ux-case__viewport" :class="'ux-case__viewport--'+item.crop">
-        <div v-if="item.crop==='stop'" class="ux-case__stop-source"><img :src="media(item.name).src" :width="media(item.name).width" :height="media(item.name).height" :alt="text(item.heading)" loading="lazy" /></div>
-        <img v-else :src="media(item.name).src" :width="media(item.name).width" :height="media(item.name).height" :alt="text(item.heading)" loading="lazy" />
+        <div v-if="item.crop==='stop'" class="ux-case__stop-source"><img :src="siteUrl(media(item.name).src)" :width="media(item.name).width" :height="media(item.name).height" :alt="text(item.heading)" loading="lazy" /></div>
+        <img v-else :src="siteUrl(media(item.name).src)" :width="media(item.name).width" :height="media(item.name).height" :alt="text(item.heading)" loading="lazy" />
        </div>
       </DsCaseImagePreview>
      </div>
@@ -125,11 +127,11 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
      <h2 class="ux-case__heading"><template v-for="(part,index) in headingParts(text('382:36922'))" :key="index"><TypoText :content="part" /><wbr /></template></h2>
      <TypoText tag="p" class="ux-case__body" :content="text('382:36923')" />
     </div>
-    <div class="ux-case__results-images"><img v-for="name in ['DCUX09-1','DCUX09-2']" :key="name" :src="media(name).src" :width="media(name).width" :height="media(name).height" :alt="text('382:36922')" loading="lazy" /></div>
+    <div class="ux-case__results-images"><img v-for="name in ['DCUX09-1','DCUX09-2']" :key="name" :src="siteUrl(media(name).src)" :width="media(name).width" :height="media(name).height" :alt="text('382:36922')" loading="lazy" /></div>
    </section>
    <section class="ux-case__contribution" data-figma-frame="382:36956">
     <TypoText tag="h2" class="ux-case__heading" :content="text('382:36958')" />
-    <div class="case-content-layout"><div class="case-content-grid"><CaseContentCard v-for="item in contributions" :key="item.title" :title="text(item.title)" :body="text(item.body)" :src="media(item.name).src" :width="754" :height="450" :alt="text(item.title)" /></div></div>
+    <div class="case-content-layout"><div class="case-content-grid"><CaseContentCard v-for="item in contributions" :key="item.title" :title="text(item.title)" :body="text(item.body)" :src="siteUrl(media(item.name).src)" :width="754" :height="450" :alt="text(item.title)" /></div></div>
    </section>
    <section class="ux-case__related" data-figma-frame="382:36975">
     <div class="ux-case__related-heading ux-case__prose">
@@ -142,7 +144,7 @@ useSeoMeta({title:page.pageTitle,description:text('387:31298')})
    </section>
   </div>
   <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-  <DsCaseImageViewer v-if="activeMedia" v-model:open="viewerOpen" type="v2" :title="viewerTitle" v-bind="activeViewerSettings"><img :src="activeMedia.src" :width="activeMedia.width" :height="activeMedia.height" :alt="viewerTitle" /></DsCaseImageViewer>
+  <DsCaseImageViewer v-if="activeMedia" v-model:open="viewerOpen" type="v2" :title="viewerTitle" v-bind="activeViewerSettings"><img :src="siteUrl(activeMedia.src)" :width="activeMedia.width" :height="activeMedia.height" :alt="viewerTitle" /></DsCaseImageViewer>
  </main>
 </template>
 

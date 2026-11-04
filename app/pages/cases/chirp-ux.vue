@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { computed, defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import ChirpUxHero from '../../components/ChirpUxHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
@@ -28,7 +30,7 @@ const CaseFrame = defineComponent({
   props: { frame: { type: Object as PropType<Frame>, required: true } },
   setup(props) {
     function render(frame: Frame): ReturnType<typeof h> {
-      if (frame.asset) return h('img', { src: frame.asset, alt: '', width: frame.width, height: frame.height, class: frame.id === '528:2372' ? 'ux-case__brain' : 'ux-case__icon', 'data-figma-frame': frame.id })
+      if (frame.asset) return h('img', { src: siteUrl(frame.asset), alt: '', width: frame.width, height: frame.height, class: frame.id === '528:2372' ? 'ux-case__brain' : 'ux-case__icon', 'data-figma-frame': frame.id })
       if (frame.children) {
         const roleClasses = (roles[frame.id] || '').split(' ').filter(Boolean).map(role => `ux-case__${role}`)
         const children = frame.id === '528:2348'
@@ -51,7 +53,7 @@ const CaseFrame = defineComponent({
           if (at < 0) continue
           children.push(h(TypoText, { content: rest.slice(0, at) }), h(TypoText, {
             tag: fragment.href ? 'a' : 'u', content: term,
-            ...(fragment.href ? { href: fragment.href, class: 'ux-case__inline-link' } : {}),
+            ...(fragment.href ? { href: siteUrl(fragment.href), class: 'ux-case__inline-link' } : {}),
           }))
           rest = rest.slice(at + term.length)
         }
@@ -106,7 +108,7 @@ function scrollToStart() {
   <main class="ux-case">
     <div ref="start" class="ux-case__hero" tabindex="-1">
       <ChirpUxHero />
-      <div class="ux-case__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+      <div class="ux-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
     </div>
     <div class="ux-case__flow">
       <template v-for="(block, index) in sequence" :key="index">
@@ -114,13 +116,13 @@ function scrollToStart() {
         <div v-else-if="block.media" class="ux-case__illustration">
           <div class="case-preview-surface">
             <DsCaseImagePreview :title="block.media.title" :data-figma-frame="block.media.node" @zoom="openMedia(block.media)">
-              <img :src="block.media.src" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
+              <img :src="siteUrl(block.media.src)" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
             </DsCaseImagePreview>
           </div>
           <div v-if="'caption' in block.media" class="ux-case__column ux-case__caption"><TypoText tag="p" :content="block.media.caption" /></div>
         </div>
         <div v-else-if="block.collage" class="ux-case__collage" :data-figma-frame="page.collage.node">
-          <img :src="page.collage.src" :alt="page.collage.alt" :width="page.collage.width" :height="page.collage.height" />
+          <img :src="siteUrl(page.collage.src)" :alt="page.collage.alt" :width="page.collage.width" :height="page.collage.height" />
         </div>
       </template>
       <div class="ux-case__related"><RelatedCases current-case-href="/cases/chirp-ux" /></div>
@@ -129,7 +131,7 @@ function scrollToStart() {
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
     <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title" v-bind="selectedViewerSettings">
-      <img :key="selectedMedia.src" :src="selectedMedia.src" :alt="selectedMedia.alt" />
+      <img :key="selectedMedia.src" :src="siteUrl(selectedMedia.src)" :alt="selectedMedia.alt" />
     </DsCaseImageViewer>
   </main>
 </template>

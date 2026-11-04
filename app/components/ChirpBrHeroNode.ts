@@ -1,4 +1,5 @@
 import { defineComponent, h, type PropType, type CSSProperties, type VNode } from 'vue'
+import { siteUrl, siteSrcset } from '../utils/site-url'
 import DsRoleFocus from './DsRoleFocus.vue'
 import TypoText from './TypoText.vue'
 import ChirpBrHeroAsset from './ChirpBrHeroAsset.vue'
@@ -32,7 +33,7 @@ export default defineComponent({
     const anchor=titleAnchors[props.breakpoint].find(layer=>layer.name==='title')!
     const [width,height]=titleSizes[props.breakpoint]
     return h('div', { ...attrs, style:{position:'absolute',left:anchor.x+'px',top:anchor.y+'px',width:width+'px',height:height+'px'}, class:'chirp-br-hero__title-svg' }, [
-     h('picture',null,[props.initialMedia?h('source',{media:props.initialMedia,srcset:`/cases/chirp-brand/hero-layers/${props.breakpoint}/${node.id!.replace(':','-')}/title.svg`}):null,h('img',{src:props.initialMedia?undefined:`/cases/chirp-brand/hero-layers/${props.breakpoint}/${node.id!.replace(':','-')}/title.svg`,alt:'','aria-hidden':'true',draggable:false,onLoad:()=>emit('loaded'),style:{display:'block',maxWidth:'none',pointerEvents:'none',userSelect:'none'}})]),
+     h('picture',null,[props.initialMedia?h('source',{media:props.initialMedia,srcset:siteSrcset(`/cases/chirp-brand/hero-layers/${props.breakpoint}/${node.id!.replace(':','-')}/title.svg`)}):null,h('img',{src:props.initialMedia?undefined:siteUrl(`/cases/chirp-brand/hero-layers/${props.breakpoint}/${node.id!.replace(':','-')}/title.svg`),alt:'','aria-hidden':'true',draggable:false,onLoad:()=>emit('loaded'),style:{display:'block',maxWidth:'none',pointerEvents:'none',userSelect:'none'}})]),
      h('div',{style:semanticStyle},[
       h('h1',null,h(TypoText,{content:props.copy.headline.join(' ')})),
       h('p',null,h(TypoText,{content:props.copy.clarity})),

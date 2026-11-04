@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {
   RESUME_PDF_FILENAME,
   RESUME_PDF_PATH,
@@ -14,7 +16,7 @@ const pdfDownloadUrl = RESUME_PDF_PATH
   <div class="resume-actions resume-actions-enter">
     <DsButtonIcon
       tag="a"
-      :href="pdfDownloadUrl"
+      :href="siteUrl(pdfDownloadUrl)"
       :download="RESUME_PDF_FILENAME"
       icon="Download"
       aria-label="Скачать резюме PDF"

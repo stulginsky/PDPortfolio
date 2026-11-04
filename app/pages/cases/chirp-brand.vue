@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import ChirpBrHero from '../../components/ChirpBrHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
@@ -33,7 +35,7 @@ const CaseFrame = defineComponent({
         for (const link of node.links) {
           const at = rest.indexOf(link.text)
           if (at < 0) continue
-          parts.push(h(TypoText, { content: rest.slice(0, at) }), h(TypoText, { tag: 'a', href: link.href, content: link.text, class: 'brand-case__inline-link' }))
+          parts.push(h(TypoText, { content: rest.slice(0, at) }), h(TypoText, { tag: 'a', href: siteUrl(link.href), content: link.text, class: 'brand-case__inline-link' }))
           rest = rest.slice(at + link.text.length)
         }
         parts.push(h(TypoText, { content: rest }))
@@ -75,14 +77,14 @@ function scrollToStart() {
   <main class="brand-case">
     <div ref="start" class="brand-case__hero" tabindex="-1">
       <ChirpBrHero />
-      <div class="brand-case__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+      <div class="brand-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
     </div>
     <div class="brand-case__flow">
       <template v-for="(block, index) in sequence" :key="index">
         <div v-if="block.frame" class="brand-case__column"><CaseFrame :frame="block.frame" /></div>
         <div v-else-if="block.media" class="case-preview-surface">
           <DsCaseImagePreview :title="block.media.title" :data-figma-frame="block.media.node" @zoom="openMedia(block.media)">
-            <img :src="block.media.src" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
+            <img :src="siteUrl(block.media.src)" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
           </DsCaseImagePreview>
         </div>
       </template>
@@ -92,7 +94,7 @@ function scrollToStart() {
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
     <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title">
-      <img :key="selectedMedia.src" :src="selectedMedia.src" :alt="selectedMedia.alt" />
+      <img :key="selectedMedia.src" :src="siteUrl(selectedMedia.src)" :alt="selectedMedia.alt" />
     </DsCaseImageViewer>
   </main>
 </template>

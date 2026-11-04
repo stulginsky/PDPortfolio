@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { vMediaReady } from './media-readiness'
 import { vLayeredScene } from './layered-scene-readiness'
 import LayeredSceneFallback from './LayeredSceneFallback.vue'
@@ -151,23 +153,23 @@ defineExpose({ replayIntro, resetMotion })
       :data-layer="layer.name" :data-animation-enabled="layer.animationEnabled"
       :style="[geometryStyle(layer, index), index === 3 ? titleStyle : {}]">
       <picture v-if="index < 3" class="chirp-pr-hero__picture">
-        <template v-if="index === 0 && !ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="initialAsset(profile.profile, 'background')" /></template>
-        <img :src="backgroundImage(index)" alt="" draggable="false" @load="maybeIntro"
+        <template v-if="index === 0 && !ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(initialAsset(profile.profile, 'background'))" /></template>
+        <img :src="siteUrl(backgroundImage(index))" alt="" draggable="false" @load="maybeIntro"
           class="chirp-pr-hero__raster" :class="{ 'chirp-pr-hero__background-crop': index === 0 && breakpoint === 'min-1280' }" />
       </picture>
       <template v-else>
         <div class="chirp-pr-hero__wordmark" aria-hidden="true">
           <picture v-for="kind in (['name', 'logo'] as const)" :key="kind" class="chirp-pr-hero__picture">
-            <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="initialAsset(profile.profile, kind)" /></template>
-            <img :src="assets + reference.assetProfile + '/' + kind + '.svg'" alt="" draggable="false" @load="maybeIntro" :class="'chirp-pr-hero__' + kind" />
+            <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(initialAsset(profile.profile, kind))" /></template>
+            <img :src="siteUrl(assets + reference.assetProfile + '/' + kind + '.svg')" alt="" draggable="false" @load="maybeIntro" :class="'chirp-pr-hero__' + kind" />
           </picture>
         </div>
         <div class="chirp-pr-hero__copy">
           <h1 class="chirp-pr-hero__heading" :class="{ 'chirp-pr-hero__heading--sr-only': outlinedTitle }"><TypoText :content="title" /></h1>
           <div v-if="outlinedTitle" class="chirp-pr-hero__case-title" :style="titleSlotStyle" aria-hidden="true">
             <picture class="chirp-pr-hero__picture">
-              <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="initialAsset(profile.profile, 'title')" /></template>
-              <img :src="assets + breakpoint + '/case-title.svg'" alt="" draggable="false" @load="maybeIntro" class="chirp-pr-hero__case-title-svg" :style="titleAssetStyle" />
+              <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(initialAsset(profile.profile, 'title'))" /></template>
+              <img :src="siteUrl(assets + breakpoint + '/case-title.svg')" alt="" draggable="false" @load="maybeIntro" class="chirp-pr-hero__case-title-svg" :style="titleAssetStyle" />
             </picture>
           </div>
           <DsBadge type="HeroChirp" :label="badge" />

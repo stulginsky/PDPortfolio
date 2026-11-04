@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "check:static": "node scripts/check-static-site.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prebuild": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer",

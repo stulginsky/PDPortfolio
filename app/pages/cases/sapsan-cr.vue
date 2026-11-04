@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { ref } from 'vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsRoleFocus from '../../components/DsRoleFocus.vue'
@@ -23,7 +25,7 @@ function scrollToStart() {
 
 <template>
   <main ref="root" class="sapsan-case" tabindex="-1" data-figma-frame="1:233">
-    <div class="sapsan-case__back" data-figma-frame="26:71"><DsBtnNav tag="a" href="/" :aria-label="copy.backLabel" /></div>
+    <div class="sapsan-case__back" data-figma-frame="26:71"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="copy.backLabel" /></div>
     <section class="sapsan-case__opening" data-figma-frame="1:234">
       <div class="sapsan-case__copy" data-figma-text="1:235">
         <TypoText v-for="(paragraph, index) in copy.paragraphs" :key="index" tag="p" :content="paragraph" />
@@ -33,7 +35,7 @@ function scrollToStart() {
     <section class="sapsan-case__posters" data-figma-frame="1:237">
       <DsCaseImagePreview v-for="(media, index) in copy.media" :key="media.id" class="sapsan-case__poster"
         type="v2" :title="media.title" :data-figma-frame="media.id" @zoom="openImage(media)">
-        <img :src="media.src" :alt="media.title" :width="media.width" :height="media.height"
+        <img :src="siteUrl(media.src)" :alt="media.title" :width="media.width" :height="media.height"
           :loading="index === 0 ? 'eager' : 'lazy'" :fetchpriority="index === 0 ? 'high' : 'auto'" decoding="async" />
       </DsCaseImagePreview>
     </section>
@@ -44,7 +46,7 @@ function scrollToStart() {
     <DsPageUp @click="scrollToStart" />
     <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title"
       initial-scale="fit-width" fit-area="viewport">
-      <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
+      <img :src="siteUrl(selected.src)" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>
 </template>

@@ -1,3 +1,6 @@
+<script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+</script>
 <template>
   <div class="chirp-brand-v2" aria-hidden="true">
     <div class="chirp-brand-v2__pict">
@@ -12,7 +15,7 @@
       </div>
 
       <img
-        src="/cases/nested-chirp-brand/layers/frame-hover.svg"
+        :src="siteUrl('/cases/nested-chirp-brand/layers/frame-hover.svg')"
         alt=""
         class="chirp-brand-v2__wordmark chirp-brand-v2__wordmark--animated"
         data-layer="wordmark"
@@ -20,21 +23,21 @@
 
       <div class="chirp-brand-v2__main-bird" data-layer="songbird / main">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-default.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-default.png')"
           alt=""
         />
-        <img src="/cases/nested-chirp-brand/layers/songbird-hover.png" alt="" />
+        <img :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-hover.png')" alt="" />
       </div>
 
       <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--left" data-layer="leaf / left">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-pressed.png')"
           alt=""
         />
       </div>
       <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--right" data-layer="leaf / right">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-pressed.png')"
           alt=""
         />
       </div>
@@ -52,28 +55,28 @@
       </div>
 
       <img
-        src="/cases/nested-chirp-brand/layers/frame-hover.svg"
+        :src="siteUrl('/cases/nested-chirp-brand/layers/frame-hover.svg')"
         alt=""
         class="chirp-brand-v2__wordmark chirp-brand-v2__wordmark--animated"
       >
 
       <div class="chirp-brand-v2__main-bird">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-default.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-default.png')"
           alt=""
         >
-        <img src="/cases/nested-chirp-brand/layers/songbird-hover.png" alt="">
+        <img :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-hover.png')" alt="">
       </div>
 
       <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--left">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-pressed.png')"
           alt=""
         >
       </div>
       <div class="chirp-brand-v2__leaf chirp-brand-v2__leaf--right">
         <img
-          src="/cases/nested-chirp-brand/layers/songbird-pressed.png"
+          :src="siteUrl('/cases/nested-chirp-brand/layers/songbird-pressed.png')"
           alt=""
         >
       </div>

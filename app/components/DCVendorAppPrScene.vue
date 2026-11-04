@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { vendorPrAssets, vendorPrRawImageSizes } from './dc-vendor-app-pr.assets'
 import { vendorPrGeometry } from './dc-vendor-app-pr.geometry'
 import { type VendorPrLayer, type VendorPrState } from './dc-vendor-app-pr.scene-context'
@@ -52,13 +54,13 @@ function cropStyle(layer:PositionedLayer){
   <div v-for="layer in props.layers" :key="layer.name" class="dc-vendor-app-pr__layer" :data-layer="layer.name" :style="frameStyle(layer)">
    <template v-if="layer.name==='05-landform_city-1st'">
     <div v-for="(part,index) in parts.reference" :key="part.name" class="dc-vendor-app-pr__part" :data-part="part.name" :style="partStyle(layer,part,index)">
-     <img :src="vendorPrAssets[part.file]" :style="partAssetStyle(part)" alt="" draggable="false" />
+     <img :src="siteUrl(vendorPrAssets[part.file])" :style="partAssetStyle(part)" alt="" draggable="false" />
     </div>
    </template>
    <template v-else-if="layer.exportRect">
-    <img class="dc-vendor-app-pr__export" :src="vendorPrAssets[reference(layer).file]" :width="reference(layer).exportRect!.width" :height="reference(layer).exportRect!.height" :style="assetStyle(reference(layer),layer)" alt="" draggable="false" />
+    <img class="dc-vendor-app-pr__export" :src="siteUrl(vendorPrAssets[reference(layer).file])" :width="reference(layer).exportRect!.width" :height="reference(layer).exportRect!.height" :style="assetStyle(reference(layer),layer)" alt="" draggable="false" />
    </template>
-   <div v-else class="dc-vendor-app-pr__crop"><img :src="vendorPrAssets[layer.file]" :style="cropStyle(layer)" alt="" draggable="false" /></div>
+   <div v-else class="dc-vendor-app-pr__crop"><img :src="siteUrl(vendorPrAssets[layer.file])" :style="cropStyle(layer)" alt="" draggable="false" /></div>
   </div>
  </div>
 </template>

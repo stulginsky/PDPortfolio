@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import type { HomeCardScene } from "~/types/home-card";
 
 defineProps<{
@@ -10,11 +12,11 @@ defineProps<{
 <template>
   <div v-if="variant === 'ux'" class="chirp-scene chirp-scene--ux" aria-hidden="true">
     <div class="chirp-scene__pict chirp-ux__pict">
-      <img src="/cases/nested-chirp-ai-check/layers/phones-ux.png" alt="" class="chirp-ux__phones">
+      <img :src="siteUrl('/cases/nested-chirp-ai-check/layers/phones-ux.png')" alt="" class="chirp-ux__phones">
     </div>
     <div class="chirp-scene__progressive-blur chirp-ux__blur">
       <div class="chirp-ux__blurred-pict">
-        <img src="/cases/nested-chirp-ai-check/layers/phones-ux.png" alt="" class="chirp-ux__phones">
+        <img :src="siteUrl('/cases/nested-chirp-ai-check/layers/phones-ux.png')" alt="" class="chirp-ux__phones">
       </div>
     </div>
   </div>

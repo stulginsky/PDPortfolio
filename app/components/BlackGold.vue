@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import {ref,useId} from 'vue'
 import './showcase-card-layout.css'
 import DsComingSoon from './DsComingSoon.vue'
@@ -22,10 +24,10 @@ function pointerEnter(event:PointerEvent){if(event.pointerType==='mouse'&&matchM
   <div class="black-gold__scene">
    <TypoText tag="h2" class="black-gold__accessible-title" :content="content.title" />
    <picture class="black-gold__title" aria-hidden="true">
-    <source media="(min-width:462px)" :srcset="'/showcase/black-gold/min-768/pict.svg'" />
-    <img :src="'/showcase/black-gold/base/pict.svg'" width="288" height="500" alt="" />
+    <source media="(min-width:462px)" :srcset="siteSrcset('/showcase/black-gold/min-768/pict.svg')" />
+    <img :src="siteUrl('/showcase/black-gold/base/pict.svg')" width="288" height="500" alt="" />
    </picture>
-   <DsComingSoon class="black-gold__subscribe" :href="href" :aria-label="content.subscribeLabel"
+   <DsComingSoon class="black-gold__subscribe" :href="siteUrl(href)" :aria-label="content.subscribeLabel"
     :aria-describedby="showTooltip?tooltipId:undefined" @pointerenter="pointerEnter" @pointerleave="showTooltip=false"
     @focus="showTooltip=true" @blur="showTooltip=false" @keydown.esc="showTooltip=false" @click="$emit('subscribe',$event)" />
    <DsTooltip :visible="showTooltip" :id="tooltipId" class="black-gold__tooltip" pointer="Right" :label="content.tooltip" />

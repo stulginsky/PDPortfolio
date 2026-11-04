@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed, inject, onActivated, onDeactivated, onMounted, onUnmounted, ref } from 'vue'
 import { vMediaReady } from './media-readiness'
 import { vLayeredScene } from './layered-scene-readiness'
@@ -108,17 +110,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <a v-media-ready v-layered-scene ref="root" class="chirp-health chirp-card showcase-card" :href="props.href" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
+  <a v-media-ready v-layered-scene ref="root" class="chirp-health chirp-card showcase-card" :href="siteUrl(props.href)" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
     @pointerenter="enter" @pointerleave="leave" @pointerdown="down" @pointerup="release" @pointercancel="release"
     @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @scene-ready="hovered=false;pressed=false;keyboardPressed=false" @dragstart.prevent>
     <LayeredSceneFallback name="chirp-ai-health-assistant" />
     <div class="chirp-health__pict" :style="pictStyle" aria-hidden="true">
-      <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="src" :style="phoneStyle(i)" alt="" draggable="false" />
+      <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="siteUrl(src)" :style="phoneStyle(i)" alt="" draggable="false" />
     </div>
     <div class="chirp-health__cred" :style="credStyle">
       <div class="chirp-health__blur" :style="{ ...rectStyle(geometry.blur), width: '100%' }" aria-hidden="true">
         <div class="chirp-health__blur-scene" :style="blurSceneStyle">
-          <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="src" :style="phoneStyle(i)" alt="" draggable="false" />
+          <img v-for="(src, i) in sources" :key="src" class="chirp-health__phone" :src="siteUrl(src)" :style="phoneStyle(i)" alt="" draggable="false" />
         </div>
       </div>
       <div class="chirp-health__gradient chirp-health__gradient--default" />

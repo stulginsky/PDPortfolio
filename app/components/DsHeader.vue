@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import DsAvatarLg from './DsAvatarLg.vue'
 import TypoText from './TypoText.vue'
 import site from '../../content/site.json'
@@ -35,13 +37,13 @@ const phoneHref = computed(() => `tel:${props.phone.replace(/[^+\d]/g, '')}`)
         <TypoText class="ds-header__name" tag="h1" :content="name" />
         <TypoText class="ds-header__description" tag="p" :content="description" />
         <div class="ds-header__contacts">
-          <TypoText class="ds-header__email" tag="a" :href="emailHref" target="_blank" rel="noopener noreferrer" :content="email" />
+          <TypoText class="ds-header__email" tag="a" :href="siteUrl(emailHref)" target="_blank" rel="noopener noreferrer" :content="email" />
           <span class="ds-header__separator ds-header__separator--email" aria-hidden="true">·</span>
-          <TypoText tag="a" :href="phoneHref" :content="phone" />
+          <TypoText tag="a" :href="siteUrl(phoneHref)" :content="phone" />
           <span class="ds-header__separator" aria-hidden="true">·</span>
-          <TypoText tag="a" :href="telegramUrl" target="_blank" rel="noopener noreferrer" :content="telegramLabel" />
+          <TypoText tag="a" :href="siteUrl(telegramUrl)" target="_blank" rel="noopener noreferrer" :content="telegramLabel" />
           <span class="ds-header__separator" aria-hidden="true">·</span>
-          <TypoText tag="a" :href="maxUrl" target="_blank" rel="noopener noreferrer" :content="maxLabel" />
+          <TypoText tag="a" :href="siteUrl(maxUrl)" target="_blank" rel="noopener noreferrer" :content="maxLabel" />
         </div>
       </div>
     </div>

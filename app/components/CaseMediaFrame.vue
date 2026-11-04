@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 defineProps<{
   title: string;
   src: string;
@@ -16,10 +18,10 @@ const emit = defineEmits<{
     <figcaption class="case-media-frame__header">
       <TypoText :content="title" tag="p" />
       <button type="button" class="icon-button" :aria-label="openLabel.replace('{title}', title)" @click="emit('open')">
-        <img src="/cases/chirp-product/media/magnifying-glass.svg" alt="" aria-hidden="true">
+        <img :src="siteUrl('/cases/chirp-product/media/magnifying-glass.svg')" alt="" aria-hidden="true">
       </button>
     </figcaption>
-    <img class="case-media-frame__image" :src="src" :alt="alt">
+    <img class="case-media-frame__image" :src="siteUrl(src)" :alt="alt">
   </figure>
 </template>
 

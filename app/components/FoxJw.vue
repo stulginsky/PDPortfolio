@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,onMounted,onUnmounted,ref,watch} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -94,13 +96,13 @@ const asset=(file:string)=>'/showcase/fox-jw/'+file
   @pointerenter="enter" @pointermove="move" @pointerleave="!touchActive&&reset()" @pointerdown="down" @pointerup="up" @pointercancel="cancel" @touchstart.passive="startTouch" @touchmove.passive="moveTouch" @touchend.passive="endTouch" @touchcancel.passive="endTouch" @blur="reset" @keydown="keydown" @keyup="keyup" @click="activate">
   <div v-for="profile in foxJwProfiles" :key="profile.name" class="fox-jw__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
    <div v-for="(layer,index) in layers(profile)" :key="layer.name" class="fox-jw__layer" :data-layer="layer.name" :style="layerStyle(layer,profile.states[0].layers[index]!)">
-    <img v-if="layer.name==='Fox-back'" :src="asset('fox-back.png')" alt="" draggable="false" />
-    <div v-else-if="layer.name==='Fox-tails'" class="fox-jw__tails" :style="{transform:`rotate(${tailAngle}deg)`}"><img :src="asset('fox-tails.png')" alt="" draggable="false" /></div>
-    <div v-else-if="layer.name==='Fox-head'" class="fox-jw__head-crop"><img :src="asset('fox-head.png')" alt="" draggable="false" /></div>
+    <img v-if="layer.name==='Fox-back'" :src="siteUrl(asset('fox-back.png'))" alt="" draggable="false" />
+    <div v-else-if="layer.name==='Fox-tails'" class="fox-jw__tails" :style="{transform:`rotate(${tailAngle}deg)`}"><img :src="siteUrl(asset('fox-tails.png'))" alt="" draggable="false" /></div>
+    <div v-else-if="layer.name==='Fox-head'" class="fox-jw__head-crop"><img :src="siteUrl(asset('fox-head.png'))" alt="" draggable="false" /></div>
     <template v-else>
-     <img v-for="texture in eyeTextures(profile,layer.name)" :key="texture.src" class="fox-jw__eye-texture" :src="asset(texture.src)" :width="texture.intrinsicW" :height="texture.intrinsicH" :style="textureStyle(texture,profile.states[0].layers[index]!)" alt="" draggable="false" />
+     <img v-for="texture in eyeTextures(profile,layer.name)" :key="texture.src" class="fox-jw__eye-texture" :src="siteUrl(asset(texture.src))" :width="texture.intrinsicW" :height="texture.intrinsicH" :style="textureStyle(texture,profile.states[0].layers[index]!)" alt="" draggable="false" />
      <div v-if="layer.name==='eyes02'" class="fox-jw__gaze" :style="gazeStyle(layer,profile.states[0].layers[index]!)">
-      <div v-for="name in ['Ellipse 330','Ellipse 331']" :key="name" class="fox-jw__pupil" :data-pupil="name"><img v-for="texture in pupilTextures(profile,name)" :key="texture.src" class="fox-jw__eye-texture" :src="asset(texture.src)" :width="texture.intrinsicW" :height="texture.intrinsicH" :style="textureStyle(texture,profile.states[0].layers[index]!)" alt="" draggable="false" /></div>
+      <div v-for="name in ['Ellipse 330','Ellipse 331']" :key="name" class="fox-jw__pupil" :data-pupil="name"><img v-for="texture in pupilTextures(profile,name)" :key="texture.src" class="fox-jw__eye-texture" :src="siteUrl(asset(texture.src))" :width="texture.intrinsicW" :height="texture.intrinsicH" :style="textureStyle(texture,profile.states[0].layers[index]!)" alt="" draggable="false" /></div>
      </div>
     </template>
    </div>

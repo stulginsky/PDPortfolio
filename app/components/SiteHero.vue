@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 
 import avatarUrl from "~/assets/img/avatar-portrait.jpeg";
 import siteData from "#content/site.json";
@@ -66,7 +68,7 @@ useHead({
 
         <img
 
-          :src="avatarUrl"
+          :src="siteUrl(avatarUrl)"
 
           alt="Константин Базаров"
 
@@ -102,15 +104,15 @@ useHead({
 
         <p class="hero__contacts">
 
-          <a :href="`mailto:${site.email}`"><TypoText :content="site.email" /></a>
+          <a :href="siteUrl(`mailto:${site.email}`)"><TypoText :content="site.email" /></a>
 
           <span class="hero__sep" aria-hidden="true">·</span>
 
-          <a :href="phoneHref"><TypoText :content="site.phone" /></a>
+          <a :href="siteUrl(phoneHref)"><TypoText :content="site.phone" /></a>
 
           <span class="hero__sep" aria-hidden="true">·</span>
 
-          <a :href="site.telegramUrl" target="_blank" rel="noopener noreferrer"><TypoText :content="site.telegramLabel" /></a>
+          <a :href="siteUrl(site.telegramUrl)" target="_blank" rel="noopener noreferrer"><TypoText :content="site.telegramLabel" /></a>
 
         </p>
 
@@ -212,7 +214,7 @@ useHead({
 
           <img
 
-            :src="avatarUrl"
+            :src="siteUrl(avatarUrl)"
 
             alt=""
 

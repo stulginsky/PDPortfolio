@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed, ref, watch } from 'vue'
 
 defineOptions({ inheritAttrs: false })
@@ -97,7 +99,7 @@ watch(
       'button-base--hover-suppressed': suppressHoverUntilLeave,
       'button-base--pressed-appearance-toggled': pressedAppearance === 'Toggled',
     }"
-    :href="tag === 'a' ? href : undefined"
+    :href="siteUrl(tag === 'a' ? href : undefined)"
     :disabled="tag === 'button' ? disabled : undefined"
     :aria-disabled="tag === 'a' && disabled ? true : undefined"
     :style="pressStyle"

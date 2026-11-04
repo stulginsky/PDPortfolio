@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { vMediaReady } from './media-readiness'
 import { vLayeredScene } from './layered-scene-readiness'
 import LayeredSceneFallback from './LayeredSceneFallback.vue'
@@ -135,10 +137,10 @@ defineExpose({ replayIntro, resetMotion })
       :data-layer="layer.name" :data-animation-enabled="layer.animationEnabled"
       :style="[geometryStyle(layer), index === 4 ? titleStyle : {}]">
       <picture v-if="index < 2">
-        <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="rasterSource(profile.profile, index)" /></template>
-        <img :src="rasterSource(breakpoint, index)" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__baked-background" :style="rasterStyle(index)" />
+        <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(rasterSource(profile.profile, index))" /></template>
+        <img :src="siteUrl(rasterSource(breakpoint, index))" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__baked-background" :style="rasterStyle(index)" />
       </picture>
-      <img v-else-if="index === 2" :src="assets + 'phones-ux.png'" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__raster" />
+      <img v-else-if="index === 2" :src="siteUrl(assets + 'phones-ux.png')" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__raster" />
       <template v-else-if="index === 3">
         <DsRoleFocus v-if="ready" :role="role" :focus="focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-768'" />
         <template v-else>
@@ -149,16 +151,16 @@ defineExpose({ replayIntro, resetMotion })
       <template v-else>
         <div class="chirp-ux-hero__wordmark" aria-hidden="true">
           <picture v-for="kind in (['name', 'logo'] as const)" :key="kind">
-            <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="assets + profile.profile + '/' + kind + '.svg'" /></template>
-            <img :src="assets + breakpoint + '/' + kind + '.svg'" alt="" draggable="false" @load="maybeIntro" :class="'chirp-ux-hero__' + kind" />
+            <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(assets + profile.profile + '/' + kind + '.svg')" /></template>
+            <img :src="siteUrl(assets + breakpoint + '/' + kind + '.svg')" alt="" draggable="false" @load="maybeIntro" :class="'chirp-ux-hero__' + kind" />
           </picture>
         </div>
         <div class="chirp-ux-hero__copy">
           <h1 class="chirp-ux-hero__heading" :class="{ 'chirp-ux-hero__heading--sr-only': outlinedTitle }"><TypoText :content="title" /></h1>
           <div v-if="outlinedTitle" class="chirp-ux-hero__case-title" :style="titleSlotStyle" aria-hidden="true">
             <picture>
-              <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="assets + profile.profile + '/case-title.svg'" /></template>
-              <img :src="assets + breakpoint + '/case-title.svg'" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__case-title-svg" :style="titleAssetStyle" />
+              <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile.profile" :media="profile.media" :srcset="siteSrcset(assets + profile.profile + '/case-title.svg')" /></template>
+              <img :src="siteUrl(assets + breakpoint + '/case-title.svg')" alt="" draggable="false" @load="maybeIntro" class="chirp-ux-hero__case-title-svg" :style="titleAssetStyle" />
             </picture>
           </div>
           <DsBadge type="HeroChirp" :label="badge" />

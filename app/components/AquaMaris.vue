@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,ref} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -19,7 +21,7 @@ function keyup(e:KeyboardEvent){if(e.key==='Enter'||e.key===' '){e.preventDefaul
 <template>
  <div class="aqua-maris showcase-card" role="button" tabindex="0" :aria-label="content.title" :data-state="state"
   @pointerenter="enter" @pointerleave="hovered=false" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
-  <img class="aqua-maris__image" src="/showcase/aqua-maris/aqua-maris-back.png" width="431" height="552" alt="" draggable="false" />
+  <img class="aqua-maris__image" :src="siteUrl('/showcase/aqua-maris/aqua-maris-back.png')" width="431" height="552" alt="" draggable="false" />
   <div class="aqua-maris__blur" aria-hidden="true" />
   <div class="aqua-maris__gradient" aria-hidden="true" />
   <div class="aqua-maris__copy">

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { useMenuSwipeDown } from "../composables/useMenuSwipeDown"
 /**
  * DsDropdownSelect — DS component 1015:4517 (DropdownSelect-web)
@@ -160,7 +162,7 @@ onUnmounted(() => {
             :label="item.label"
             :icon="item.icon"
             :show-icon="item.showIcon"
-            :href="item.href"
+            :href="siteUrl(item.href)"
             :aria-current="item.value === modelValue ? 'true' : undefined"
             appearance="Sm"
             @click="select(item)"

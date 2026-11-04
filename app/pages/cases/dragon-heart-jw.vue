@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { ref } from 'vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsRoleFocus from '../../components/DsRoleFocus.vue'
@@ -23,7 +25,7 @@ function scrollToStart() {
 
 <template>
   <main ref="root" class="dragon-heart-case" tabindex="-1" data-figma-frame="7:191">
-    <div class="dragon-heart-case__back" data-figma-frame="7:209"><DsBtnNav tag="a" href="/" :aria-label="copy.backLabel" /></div>
+    <div class="dragon-heart-case__back" data-figma-frame="7:209"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="copy.backLabel" /></div>
     <section class="dragon-heart-case__opening" data-figma-frame="7:192">
       <div class="dragon-heart-case__copy" data-figma-text="7:193">
         <TypoText v-for="(paragraph, index) in copy.paragraphs" :key="index" tag="p" :content="paragraph" />
@@ -31,13 +33,13 @@ function scrollToStart() {
       <DsRoleFocus class="dragon-heart-case__role" :role="copy.role" :focus="copy.focus" data-figma-frame="7:194" />
     </section>
     <section class="dragon-heart-case__media" data-figma-frame="7:195">
-      <video class="dragon-heart-case__video" :src="copy.video.src" controls playsinline preload="metadata"
+      <video class="dragon-heart-case__video" :src="siteUrl(copy.video.src)" controls playsinline preload="metadata"
         :aria-label="copy.video.title" width="848" height="480" data-figma-frame="7:294">
-        <a :href="copy.video.src"><TypoText :content="copy.video.fallback" /></a>
+        <a :href="siteUrl(copy.video.src)"><TypoText :content="copy.video.fallback" /></a>
       </video>
       <DsCaseImagePreview v-for="media in copy.media" :key="media.id" class="dragon-heart-case__image"
         type="v2" :title="media.title" :data-figma-frame="media.id" @zoom="openImage(media)">
-        <img class="dragon-heart-case__art" :src="media.src" :alt="media.title" :width="media.width" :height="media.height" loading="lazy" decoding="async" />
+        <img class="dragon-heart-case__art" :src="siteUrl(media.src)" :alt="media.title" :width="media.width" :height="media.height" loading="lazy" decoding="async" />
       </DsCaseImagePreview>
     </section>
     <div class="dragon-heart-case__ending" data-figma-frame="7:205">
@@ -47,7 +49,7 @@ function scrollToStart() {
     <DsPageUp @click="scrollToStart" />
     <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title"
       initial-scale="cover" fit-area="viewport" align-x="center" align-y="viewport-center">
-      <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
+      <img :src="siteUrl(selected.src)" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed } from 'vue'
 import DsButtonIcon from './DsButtonIcon.vue'
 
@@ -41,7 +43,7 @@ const accessibleLabel = computed(() => props.ariaLabel || labelByDirection[props
   <DsButtonIcon
     class="ds-btn-nav"
     :tag="tag"
-    :href="href"
+    :href="siteUrl(href)"
     :icon="icon"
     raised
     :aria-label="accessibleLabel"

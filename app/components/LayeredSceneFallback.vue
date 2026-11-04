@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import './layered-scene-fallback.css'
 
 const props = defineProps<{ name: string }>()
@@ -10,11 +12,12 @@ const relatedSource = (width: number) => `/layered-fallbacks/${props.name}/relat
 
 <template>
   <picture class="layered-scene-fallback layered-scene-fallback--default" data-scene-fallback aria-hidden="true">
-    <source v-for="width in widths" :key="width" :media="`(min-width: ${width}px)`" :srcset="source(width)" />
-    <img :src="source(320)" alt="" draggable="false" decoding="async" />
+    <source v-for="width in widths" :key="width" :media="`(min-width: ${width}px)`" :srcset="siteSrcset(source(width))" />
+    <img :src="siteUrl(source(320))" alt="" draggable="false" decoding="async" />
   </picture>
-  <picture class="layered-scene-fallback layered-scene-fallback--related" data-scene-fallback aria-hidden="true">
-    <source v-for="width in relatedWidths" :key="width" :media="`(min-width: ${width}px)`" :srcset="relatedSource(width)" />
-    <img :src="source(320)" alt="" draggable="false" decoding="async" />
+  <!-- The exporter generates related-card crops only for cards, never heroes. -->
+  <picture v-if="!name.endsWith('-hero')" class="layered-scene-fallback layered-scene-fallback--related" data-scene-fallback aria-hidden="true">
+    <source v-for="width in relatedWidths" :key="width" :media="`(min-width: ${width}px)`" :srcset="siteSrcset(relatedSource(width))" />
+    <img :src="siteUrl(source(320))" alt="" draggable="false" decoding="async" />
   </picture>
 </template>

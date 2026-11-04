@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,ref} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -29,19 +31,19 @@ function skyStyle(f:Frame){return {'--sky-cover':`max(1,calc(100cqw / ${f.x+f.w}
  <div class="sapsan-cr showcase-card" role="button" tabindex="0" :aria-label="content.title" :data-state="state"
   @pointerenter="enter" @pointerleave="hovered=false" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
   <div v-for="profile in sapsanProfiles" :key="'sky-'+profile.name" class="sapsan-cr__sky" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
-   <img class="sapsan-cr__layer" data-layer="sky" :style="skyStyle(selected(profile).sky)" :src="asset('sky.png')" width="1086" height="1448" alt="" draggable="false" />
+   <img class="sapsan-cr__layer" data-layer="sky" :style="skyStyle(selected(profile).sky)" :src="siteUrl(asset('sky.png'))" width="1086" height="1448" alt="" draggable="false" />
   </div>
   <div v-for="profile in sapsanProfiles" :key="profile.name" class="sapsan-cr__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
-   <img class="sapsan-cr__layer sapsan-cr__year" data-layer="2009" :style="frameStyle(selected(profile).year)" :src="asset('2009.png')" width="1086" height="1448" alt="" draggable="false" />
+   <img class="sapsan-cr__layer sapsan-cr__year" data-layer="2009" :style="frameStyle(selected(profile).year)" :src="siteUrl(asset('2009.png'))" width="1086" height="1448" alt="" draggable="false" />
    <div v-for="(raster,index) in selected(profile).rasters" :key="raster.name" class="sapsan-cr__layer sapsan-cr__blend" :data-layer="raster.name" :style="frameStyle(raster.frame)">
     <div v-for="source in profile.states" :key="source.name" class="sapsan-cr__texture" :data-texture="source.name" :style="{opacity:source.name===state?1:0}">
-     <img class="sapsan-cr__native" :src="asset(source.rasters[index].src)" :width="source.rasters[index].intrinsic.w" :height="source.rasters[index].intrinsic.h" :style="{transform:'matrix('+source.rasters[index].matrix.join(',')+')'}" alt="" draggable="false" />
+     <img class="sapsan-cr__native" :src="siteUrl(asset(source.rasters[index].src))" :width="source.rasters[index].intrinsic.w" :height="source.rasters[index].intrinsic.h" :style="{transform:'matrix('+source.rasters[index].matrix.join(',')+')'}" alt="" draggable="false" />
     </div>
    </div>
-   <img class="sapsan-cr__layer" data-layer="my" :style="frameStyle(selected(profile).my)" :src="asset('my.png')" width="1533" height="1026" alt="" draggable="false" />
+   <img class="sapsan-cr__layer" data-layer="my" :style="frameStyle(selected(profile).my)" :src="siteUrl(asset('my.png'))" width="1533" height="1026" alt="" draggable="false" />
    <div v-for="(shadow,index) in selected(profile).shadows" :key="shadow.name" class="sapsan-cr__layer sapsan-cr__blend" :data-layer="shadow.name" :style="frameStyle(shadow.frame)">
     <div v-for="source in profile.states" :key="source.name" class="sapsan-cr__texture" :data-texture="source.name" :style="{opacity:source.name===state?1:0}">
-     <img class="sapsan-cr__native" :src="asset(source.shadows[index].src)" :width="source.shadows[index].intrinsic.w" :height="source.shadows[index].intrinsic.h" :style="{left:source.shadows[index].x+'px',top:source.shadows[index].y+'px',transform:'scale('+source.shadows[index].sx+','+source.shadows[index].sy+')'}" alt="" draggable="false" />
+     <img class="sapsan-cr__native" :src="siteUrl(asset(source.shadows[index].src))" :width="source.shadows[index].intrinsic.w" :height="source.shadows[index].intrinsic.h" :style="{left:source.shadows[index].x+'px',top:source.shadows[index].y+'px',transform:'scale('+source.shadows[index].sx+','+source.shadows[index].sy+')'}" alt="" draggable="false" />
     </div>
    </div>
   </div>

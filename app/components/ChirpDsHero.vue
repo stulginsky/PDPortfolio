@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { vMediaReady } from './media-readiness'
 import { vLayeredScene } from './layered-scene-readiness'
 import LayeredSceneFallback from './LayeredSceneFallback.vue'
@@ -81,8 +83,8 @@ defineExpose({ replayIntro, resetMotion })
    <div class="chirp-ds-hero__clip" :data-source-id="reference.clip.id" :style="{left:reference.clip.x+'px',top:reference.clip.y+'px',width:reference.clip.width+'px',height:reference.clip.height+'px'}">
    <div :ref="el=>setLayer(el,0)" data-layer="Chirp design system" :data-source-id="layers[0]!.id" class="chirp-ds-hero__title" :style="{left:(layers[0]!.x-reference.clip.x)+'px',top:(layers[0]!.y-reference.clip.y)+'px'}">
     <picture>
-     <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile" :media="profile==='base'?'(min-width: 0px)':'(min-width: '+heroReferences[profile].width+'px)'" :srcset="titleAsset(profile)" /></template>
-     <img :src="titleAsset(breakpoint)" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
+     <template v-if="!ready && !props.breakpoint"><source v-for="profile in initialProfiles" :key="profile" :media="profile==='base'?'(min-width: 0px)':'(min-width: '+heroReferences[profile].width+'px)'" :srcset="siteSrcset(titleAsset(profile))" /></template>
+     <img :src="siteUrl(titleAsset(breakpoint))" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
     </picture>
    </div>
    </div>
@@ -93,7 +95,7 @@ defineExpose({ replayIntro, resetMotion })
     </div>
    </div>
    <div :ref="el=>setLayer(el,1)" data-layer="b05-metaphor-songbird-v1 1" :data-source-id="layers[1]!.id" :data-animation-enabled="layers[1]!.animationEnabled" class="chirp-ds-hero__bird" :style="{left:(layers[1]!.x-layers[1]!.width)+'px',top:layers[1]!.y+'px',width:layers[1]!.width+'px',height:layers[1]!.height+'px'}">
-    <img src="/cases/chirp-design-system/hero-layers/b05-metaphor-songbird-v1-1.png" :width="layers[1]!.width" :height="layers[1]!.height" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
+    <img :src="siteUrl('/cases/chirp-design-system/hero-layers/b05-metaphor-songbird-v1-1.png')" :width="layers[1]!.width" :height="layers[1]!.height" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
    </div>
   </div>
  </section>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import type { HomeCard } from "~/types/home-card";
 
 const props = defineProps<{
@@ -39,7 +41,7 @@ function move(direction: -1 | 1) {
         :aria-label="labels.previousRelated"
         @click="move(-1)"
       >
-        <img src="/cases/chirp-product/media/nav-arrow.svg" alt="" aria-hidden="true">
+        <img :src="siteUrl('/cases/chirp-product/media/nav-arrow.svg')" alt="" aria-hidden="true">
       </button>
       <button
         v-if="canGoForward"
@@ -48,7 +50,7 @@ function move(direction: -1 | 1) {
         :aria-label="labels.nextRelated"
         @click="move(1)"
       >
-        <img src="/cases/chirp-product/media/nav-arrow.svg" alt="" aria-hidden="true">
+        <img :src="siteUrl('/cases/chirp-product/media/nav-arrow.svg')" alt="" aria-hidden="true">
       </button>
     </div>
   </section>

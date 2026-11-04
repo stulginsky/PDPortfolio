@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed, inject, onActivated, onDeactivated, onMounted, onUnmounted, ref } from 'vue'
 import { vMediaReady } from './media-readiness'
 import { vLayeredScene } from './layered-scene-readiness'
@@ -135,7 +137,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <a v-media-ready v-layered-scene ref="root" class="chirp-ds-card chirp-card showcase-card" :href="props.href" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
+  <a v-media-ready v-layered-scene ref="root" class="chirp-ds-card chirp-card showcase-card" :href="siteUrl(props.href)" :style="[initialStyle,rootStyle]" :data-ready="ready" :data-state="state" :data-breakpoint="breakpoint"
     @pointerenter="enter" @pointerleave="leave" @pointerdown="down" @pointerup="release" @pointercancel="release"
     @keydown.enter="keyboardPressed = true" @keyup.enter="release" @blur="release" @scene-ready="hovered=false;pressed=false;keyboardPressed=false" @dragstart.prevent>
     <LayeredSceneFallback name="chirp-ai-design-system" />

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,ref} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -20,9 +22,9 @@ function keyup(e:KeyboardEvent){if(e.key==='Enter'||e.key===' '){e.preventDefaul
  <div class="absolut showcase-card" role="button" tabindex="0" :aria-label="content.title" :data-state="state"
   @pointerenter="enter" @pointerleave="hovered=false" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
   <div class="absolut__art" aria-hidden="true">
-   <img class="absolut__image-17-1" src="/showcase/absolut/image-17-1.png" width="294" height="532" alt="" draggable="false" />
+   <img class="absolut__image-17-1" :src="siteUrl('/showcase/absolut/image-17-1.png')" width="294" height="532" alt="" draggable="false" />
    <div class="absolut__art-blur" />
-   <img class="absolut__image-15" src="/showcase/absolut/image-15.png" width="1536" height="1140" alt="" draggable="false" />
+   <img class="absolut__image-15" :src="siteUrl('/showcase/absolut/image-15.png')" width="1536" height="1140" alt="" draggable="false" />
   </div>
   <div class="absolut__blur" aria-hidden="true" />
   <div class="absolut__gradient" aria-hidden="true" />

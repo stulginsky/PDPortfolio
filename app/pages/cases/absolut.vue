@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { ref } from 'vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsRoleFocus from '../../components/DsRoleFocus.vue'
@@ -23,7 +25,7 @@ function scrollToStart() {
 
 <template>
   <main ref="root" class="absolut-case" tabindex="-1" data-figma-frame="14:6723">
-    <div class="absolut-case__back" data-figma-frame="45:114"><DsBtnNav tag="a" href="/" :aria-label="copy.backLabel" /></div>
+    <div class="absolut-case__back" data-figma-frame="45:114"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="copy.backLabel" /></div>
     <section class="absolut-case__opening" data-figma-frame="14:6727">
       <div class="absolut-case__copy" data-figma-text="14:6728">
         <TypoText v-for="(paragraph, index) in copy.paragraphs" :key="index" tag="p" :content="paragraph" />
@@ -33,7 +35,7 @@ function scrollToStart() {
     <section class="absolut-case__posters" data-figma-frame="14:6735">
       <DsCaseImagePreview v-for="(media, index) in copy.media" :key="media.id" class="absolut-case__poster"
         type="v2" :title="media.title" :data-figma-frame="media.id" @zoom="openImage(media)">
-        <img :src="media.src" :alt="media.title" :width="media.width" :height="media.height"
+        <img :src="siteUrl(media.src)" :alt="media.title" :width="media.width" :height="media.height"
           :loading="index === 0 ? 'eager' : 'lazy'" :fetchpriority="index === 0 ? 'high' : 'auto'" decoding="async" />
       </DsCaseImagePreview>
     </section>
@@ -46,7 +48,7 @@ function scrollToStart() {
       :initial-scale="{ base: 'fit-screen', 'min-768': 'fit-height' }"
       :align-y="{ base: 'viewport-center', 'min-768': 'top' }"
       fit-area="viewport">
-      <img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" />
+      <img :src="siteUrl(selected.src)" :alt="selected.title" :width="selected.width" :height="selected.height" />
     </DsCaseImageViewer>
   </main>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import TypoText from './TypoText.vue'
 import { vMediaReady } from './media-readiness'
 import './case-content-grid.css'
@@ -18,7 +20,7 @@ withDefaults(defineProps<{
 <template>
  <article class="case-content-card">
   <div v-media-ready class="case-content-card__media media-skeleton" :style="{'--case-card-media-ratio':width+'/'+height}">
-   <img :src="src" :width="width" :height="height" :alt="alt" loading="lazy" />
+   <img :src="siteUrl(src)" :width="width" :height="height" :alt="alt" loading="lazy" />
   </div>
   <div class="case-content-card__copy">
    <div class="case-content-card__eyebrow-slot"><TypoText v-if="eyebrow" tag="p" class="case-content-card__eyebrow" :content="eyebrow" /></div>

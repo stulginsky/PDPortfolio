@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import avatarPortraitUrl from '../assets/img/avatar-portrait.jpeg'
 </script>
 
 <template>
   <div class="ds-avatar-lg" aria-hidden="true">
-    <img :src="avatarPortraitUrl" alt="" class="ds-avatar-lg__photo">
+    <img :src="siteUrl(avatarPortraitUrl)" alt="" class="ds-avatar-lg__photo">
   </div>
 </template>
 

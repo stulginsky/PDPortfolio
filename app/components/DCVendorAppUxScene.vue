@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import background from '../../public/cases/dc-vendor-app-ux/hero-layers/01-background.png'
 import chef from '../../public/cases/dc-vendor-app-ux/hero-layers/02-chef.png'
 import countertop from '../../public/cases/dc-vendor-app-ux/hero-layers/03-countertop.png'
@@ -26,7 +28,7 @@ function cropStyle(layer:SceneLayer) {
 <template>
   <div class="dc-vendor-app-ux__scene" aria-hidden="true">
     <div v-for="layer in props.layers" :key="layer.name" class="dc-vendor-app-ux__layer" :data-layer="layer.name" :style="style(layer)">
-      <div class="dc-vendor-app-ux__crop"><img :src="images[layer.name]" :style="cropStyle(layer)" alt="" draggable="false" /></div>
+      <div class="dc-vendor-app-ux__crop"><img :src="siteUrl(images[layer.name])" :style="cropStyle(layer)" alt="" draggable="false" /></div>
     </div>
   </div>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import cardContent from '../../content/home-cards.json'
 import DsBtnNav from './DsBtnNav.vue'
@@ -54,8 +55,8 @@ const hasDCCards = computed(() => cards.value.some(card => card.kind === 'dc'))
 const selectionKind = computed(() => hasDCCards.value ? 'dc' : cards.value.some(card => card.kind === '4real') ? '4real' : 'chirp')
 function activateCase(card: { name: string; href: string }, event: MouseEvent | KeyboardEvent) {
   if (card.name !== '4Real3Dweapon' || (event.type === 'click' && event.defaultPrevented)) return
-  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(card.href, '_blank', 'noopener')
-  else window.location.assign(card.href)
+  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(siteUrl(card.href), '_blank', 'noopener')
+  else window.location.assign(siteUrl(card.href))
 }
 const root = ref<HTMLElement>()
 const rail = ref<HTMLElement>()

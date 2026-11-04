@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { onMounted, onUnmounted, ref } from 'vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsRoleFocus from '../../components/DsRoleFocus.vue'
@@ -131,7 +133,7 @@ onUnmounted(() => {
 
 <template>
   <main ref="root" class="weapon-case" tabindex="-1" data-figma-frame="13:279">
-    <div class="weapon-case__back" data-figma-frame="15:435"><DsBtnNav tag="a" href="/" :aria-label="copy.backLabel" /></div>
+    <div class="weapon-case__back" data-figma-frame="15:435"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="copy.backLabel" /></div>
     <section ref="opening" class="weapon-case__opening">
       <div class="weapon-case__column" data-figma-frame="13:280">
         <div class="weapon-case__copy" data-figma-text="13:281">
@@ -141,7 +143,7 @@ onUnmounted(() => {
       </div>
     </section>
     <section class="weapon-case__landing" :aria-label="copy.landingLabel" data-figma-frame="13:283">
-      <iframe ref="landing" class="weapon-case-landing" src="/cases/3D_Weapon/home.html" :title="copy.landingLabel"
+      <iframe ref="landing" class="weapon-case-landing" :src="siteUrl('/cases/3D_Weapon/home.html')" :title="copy.landingLabel"
         allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen @load="frameLoaded" />
       <div class="weapon-case__end-slot" aria-hidden="true" data-figma-frame="13:300" />
     </section>

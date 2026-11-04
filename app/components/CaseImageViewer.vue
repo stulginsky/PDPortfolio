@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import DsBtnCross from './DsBtnCross.vue'
 
 const props = defineProps<{
@@ -182,7 +184,7 @@ onBeforeUnmount(() => {
               @click="isMenuOpen = !isMenuOpen"
             >
               {{ scaleLabel }}
-              <img src="/cases/chirp-product/media/chevron-down.svg" alt="" aria-hidden="true">
+              <img :src="siteUrl('/cases/chirp-product/media/chevron-down.svg')" alt="" aria-hidden="true">
             </button>
             <div v-if="isMenuOpen" class="case-image-viewer__menu" role="menu">
               <button v-for="option in presetOptions" :key="option" type="button" role="menuitem" @click="setPreset(option)">
@@ -209,7 +211,7 @@ onBeforeUnmount(() => {
           :style="{ width: `max(100%, ${naturalSize.width * scale}px)`, height: `max(100%, ${naturalSize.height * scale}px)` }"
         >
           <div class="case-image-viewer__canvas" :style="{ width: `${naturalSize.width * scale}px`, height: `${naturalSize.height * scale}px` }">
-            <img ref="imageRef" :src="src" :alt="alt" draggable="false" @load="onImageLoad">
+            <img ref="imageRef" :src="siteUrl(src)" :alt="alt" draggable="false" @load="onImageLoad">
           </div>
         </div>
       </div>

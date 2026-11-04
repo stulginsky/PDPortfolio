@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 defineProps<{ href: string; ariaLabel: string }>()
 defineEmits<{ click: [event: MouseEvent] }>()
 </script>
 
 <template>
-  <a class="ds-coming-soon" :href="href" target="_blank" rel="noopener noreferrer" :aria-label="ariaLabel" @click="$emit('click', $event)">
-    <img src="/showcase/dc-picker-app-ux/coming-soon.png" width="98" height="98" alt="" draggable="false" />
+  <a class="ds-coming-soon" :href="siteUrl(href)" target="_blank" rel="noopener noreferrer" :aria-label="ariaLabel" @click="$emit('click', $event)">
+    <img :src="siteUrl('/showcase/dc-picker-app-ux/coming-soon.png')" width="98" height="98" alt="" draggable="false" />
   </a>
 </template>
 

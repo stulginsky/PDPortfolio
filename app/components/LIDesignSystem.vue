@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import {ref,useId} from 'vue'
 import './showcase-card-layout.css'
 import DsComingSoon from './DsComingSoon.vue'
@@ -21,16 +23,16 @@ function pointerEnter(event:PointerEvent){if(event.pointerType==='mouse'&&matchM
  <article class="li-design-system showcase-card" :aria-label="title">
   <div class="li-design-system__scene">
    <picture class="li-design-system__background" aria-hidden="true">
-    <source media="(min-width:462px)" srcset="/showcase/li-design-system/min-768/group-4224.svg" />
-    <img src="/showcase/li-design-system/base/group-4224.svg" width="404" height="216" alt="" />
+    <source media="(min-width:462px)" :srcset="siteSrcset('/showcase/li-design-system/min-768/group-4224.svg')" />
+    <img :src="siteUrl('/showcase/li-design-system/base/group-4224.svg')" width="404" height="216" alt="" />
    </picture>
    <TypoText tag="h2" class="li-design-system__accessible-title" :content="content.title" />
-   <img class="li-design-system__logo" src="/showcase/li-design-system/subtract.svg" width="80" height="33.1585" alt="" aria-hidden="true" />
+   <img class="li-design-system__logo" :src="siteUrl('/showcase/li-design-system/subtract.svg')" width="80" height="33.1585" alt="" aria-hidden="true" />
    <picture class="li-design-system__title" aria-hidden="true">
-    <source media="(min-width:462px)" srcset="/showcase/li-design-system/min-768/lidport-ui.svg" />
-    <img src="/showcase/li-design-system/base/lidport-ui.svg" width="191" height="108" alt="" />
+    <source media="(min-width:462px)" :srcset="siteSrcset('/showcase/li-design-system/min-768/lidport-ui.svg')" />
+    <img :src="siteUrl('/showcase/li-design-system/base/lidport-ui.svg')" width="191" height="108" alt="" />
    </picture>
-   <DsComingSoon class="li-design-system__subscribe" :href="href" :aria-label="content.subscribeLabel"
+   <DsComingSoon class="li-design-system__subscribe" :href="siteUrl(href)" :aria-label="content.subscribeLabel"
     :aria-describedby="showTooltip?tooltipId:undefined" @pointerenter="pointerEnter" @pointerleave="showTooltip=false"
     @focus="showTooltip=true" @blur="showTooltip=false" @keydown.esc="showTooltip=false" @click="$emit('subscribe',$event)" />
    <DsTooltip :visible="showTooltip" :id="tooltipId" class="li-design-system__tooltip" pointer="Right" :label="content.tooltip" />

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import songbirdMain from '../../public/cases/nested-chirp-brand/layers/songbird-main.png'
 import songbirdMainMultiply from '../../public/cases/nested-chirp-brand/layers/multiply/songbird-main.png'
 import songbirdDecorLeft from '../../public/cases/nested-chirp-brand/layers/songbird-decor-left.png'
@@ -39,14 +41,14 @@ function shapeStyle(shape: Shape, layer: SceneLayer) {
         <div v-for="(shape, index) in layer.children" :key="index" class="chirp-brand__shape" :style="shapeStyle(shape, layer)" />
       </template>
       <template v-else-if="layer.name === 'SongbirdMain'">
-        <img class="chirp-brand__raster" :src="songbirdMain" alt="" draggable="false" />
-        <img class="chirp-brand__raster chirp-brand__multiply" :src="songbirdMainMultiply" alt="" draggable="false" />
+        <img class="chirp-brand__raster" :src="siteUrl(songbirdMain)" alt="" draggable="false" />
+        <img class="chirp-brand__raster chirp-brand__multiply" :src="siteUrl(songbirdMainMultiply)" alt="" draggable="false" />
       </template>
       <template v-else-if="layer.name === 'Logotype'">
-        <img v-for="logo in logos" :key="logo.src" class="chirp-brand__logo" :src="logo.src" alt="" draggable="false"
+        <img v-for="logo in logos" :key="logo.src" class="chirp-brand__logo" :src="siteUrl(logo.src)" alt="" draggable="false"
           :style="{ width: logo.width + 'px', height: logo.height + 'px', transform: `scale(${layer.position.width / logo.width}, ${layer.position.height / logo.height})`, opacity: logo.breakpoint === props.breakpoint && logo.state === props.state ? 1 : 0 }" />
       </template>
-      <img v-else class="chirp-brand__raster" :class="{ 'chirp-brand__leaf-left': layer.name === 'SongbirdDecorLeft' }" :src="layer.name === 'SongbirdDecorLeft' ? songbirdDecorLeft : songbirdDecorRight" alt="" draggable="false" />
+      <img v-else class="chirp-brand__raster" :class="{ 'chirp-brand__leaf-left': layer.name === 'SongbirdDecorLeft' }" :src="siteUrl(layer.name === 'SongbirdDecorLeft' ? songbirdDecorLeft : songbirdDecorRight)" alt="" draggable="false" />
     </div>
   </div>
 </template>

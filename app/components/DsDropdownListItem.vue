@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed, inject, ref, useId } from 'vue'
 import { getButtonIconSource, type ButtonIconName } from './button-icons'
 import DsTooltip from './DsTooltip.vue'
@@ -54,7 +56,7 @@ const emit = defineEmits<{
       `ds-dropdown-list-item--${resolvedType.toLowerCase()}`,
       { 'ds-dropdown-list-item--has-icon': showIcon },
     ]"
-    :href="disabled ? undefined : href"
+    :href="siteUrl(disabled ? undefined : href)"
     :aria-label="disabled && tooltip ? label : undefined"
     :aria-disabled="disabled || undefined"
     :aria-describedby="disabled && tooltip ? tooltipId : undefined"

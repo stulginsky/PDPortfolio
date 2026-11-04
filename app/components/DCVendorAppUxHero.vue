@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { computed, inject, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import TypoText from './TypoText.vue'
 import content from '../../content/cases/dc-vendor-app-ux.json'
@@ -63,8 +65,8 @@ defineExpose({resetMotion,replayIntro})
    <div v-for="(layer,index) in layers" v-media-ready :key="layer.name" :ref="el=>{if(el)nodes[index]=el as HTMLElement}" class="dc-vendor-app-ux-hero__layer" :class="'dc-ux-layer-'+index" :data-layer="layer.name" :data-animation-enabled="layer.animationEnabled" :style="geometry(index)">
     <div v-if="layer.name==='Title-shadow'" class="dc-vendor-app-ux-hero__shadow" />
     <picture v-else class="dc-vendor-app-ux-hero__media" :class="{'dc-vendor-app-ux-hero__media--title':index===layers.length-1}">
-     <template v-if="!props.breakpoint"><source v-for="profile in profiles" :key="profile" :media="media(profile)" :srcset="asset(profile,index)" /></template>
-     <img :src="asset(breakpoint,index)" :fetchpriority="index === layers.length - 1 ? 'high' : 'auto'" alt="" draggable="false" decoding="async" :style="paintStyle(index)" @load="maybeIntro" />
+     <template v-if="!props.breakpoint"><source v-for="profile in profiles" :key="profile" :media="media(profile)" :srcset="siteSrcset(asset(profile,index))" /></template>
+     <img :src="siteUrl(asset(breakpoint,index))" :fetchpriority="index === layers.length - 1 ? 'high' : 'auto'" alt="" draggable="false" decoding="async" :style="paintStyle(index)" @load="maybeIntro" />
     </picture>
    </div>
   </div>

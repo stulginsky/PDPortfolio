@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import DsHeader from './DsHeader.vue'
 import DsTopNav from './DsTopNav.vue'
@@ -59,8 +60,8 @@ const cases = [
 const visibleCases = computed(() => cases.filter(item => category.value === 'all' || item.category === category.value))
 function activateCase(item: typeof cases[number], event: MouseEvent | KeyboardEvent) {
   if (!('activateHref' in item) || (event.type === 'click' && event.defaultPrevented)) return
-  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(item.activateHref, '_blank', 'noopener')
-  else window.location.assign(item.activateHref)
+  if (event.ctrlKey || event.metaKey || event.shiftKey) window.open(siteUrl(item.activateHref), '_blank', 'noopener')
+  else window.location.assign(siteUrl(item.activateHref))
 }
 
 function scrollToHeader() {

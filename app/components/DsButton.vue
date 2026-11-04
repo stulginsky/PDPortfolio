@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import ButtonBase from './ButtonBase.vue'
 import { getButtonIconSource, type ButtonIconName } from './button-icons'
 
@@ -44,7 +46,7 @@ defineEmits<{
     class="ds-button"
     :class="{ 'ds-button--icon-right': iconRight }"
     :tag="tag"
-    :href="href"
+    :href="siteUrl(href)"
     :disabled="disabled"
     :raised="raised"
     :toggled="toggled"

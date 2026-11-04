@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { computed } from 'vue'
 import type { CSSProperties } from 'vue'
 const props = defineProps<{src:string; width:number; height:number; boxStyle?:CSSProperties; media?:string}>()
@@ -9,4 +11,4 @@ const imageStyle = computed<CSSProperties>(()=>props.width>0 ? {
  pointerEvents:'none',userSelect:'none',
 } : {position:'absolute',inset:0,width:'100%',height:'100%',objectFit:props.boxStyle?.objectFit || 'fill',pointerEvents:'none',userSelect:'none'})
 </script>
-<template><div :style="[boxStyle,{containerType:'size'}]"><picture><source v-if="media" :media="media" :srcset="src" /><img :src="media ? undefined : src" alt="" draggable="false" :style="imageStyle" @load="emit('loaded')" /></picture></div></template>
+<template><div :style="[boxStyle,{containerType:'size'}]"><picture><source v-if="media" :media="media" :srcset="siteSrcset(src)" /><img :src="siteUrl(media ? undefined : src)" alt="" draggable="false" :style="imageStyle" @load="emit('loaded')" /></picture></div></template>

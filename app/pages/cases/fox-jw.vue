@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { ref } from 'vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import DsRoleFocus from '../../components/DsRoleFocus.vue'
@@ -23,7 +25,7 @@ function scrollToStart() {
 
 <template>
   <main ref="root" class="fox-case" tabindex="-1" data-figma-frame="2:204">
-    <div class="fox-case__back" data-figma-frame="2:229"><DsBtnNav tag="a" href="/" :aria-label="copy.backLabel" /></div>
+    <div class="fox-case__back" data-figma-frame="2:229"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="copy.backLabel" /></div>
     <section class="fox-case__opening" data-figma-frame="2:205">
       <div class="fox-case__copy" data-figma-text="2:206">
         <TypoText v-for="(paragraph, index) in copy.paragraphs" :key="index" tag="p" :content="paragraph" />
@@ -31,13 +33,13 @@ function scrollToStart() {
       <DsRoleFocus class="fox-case__role" :role="copy.role" :focus="copy.focus" data-figma-frame="2:207" />
     </section>
     <section class="fox-case__media" data-figma-frame="2:208">
-      <iframe class="fox-case__player" :src="copy.player.src" :title="copy.player.title"
+      <iframe class="fox-case__player" :src="siteUrl(copy.player.src)" :title="copy.player.title"
         allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen
         xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
         data-figma-frame="2:421" />
       <DsCaseImagePreview v-for="media in copy.media" :key="media.id" class="fox-case__image"
         type="v2" :title="media.title" :data-figma-frame="media.id" @zoom="openImage(media)">
-        <div class="fox-case__crop" :data-art="media.title"><img class="fox-case__art" :src="media.src" :alt="media.title" :width="media.width" :height="media.height" loading="lazy" decoding="async" /></div>
+        <div class="fox-case__crop" :data-art="media.title"><img class="fox-case__art" :src="siteUrl(media.src)" :alt="media.title" :width="media.width" :height="media.height" loading="lazy" decoding="async" /></div>
       </DsCaseImagePreview>
     </section>
     <div class="fox-case__ending" data-figma-frame="2:225">
@@ -47,7 +49,7 @@ function scrollToStart() {
     <DsPageUp @click="scrollToStart" />
     <DsCaseImageViewer v-if="selected" v-model:open="viewerOpen" type="v2" :title="selected.title" :content-size="{ width: 2170.829834, height: 1080 }"
       initial-scale="cover" fit-area="viewport" align-x="center" align-y="viewport-center">
-      <div class="fox-case__viewer-art" :data-art="selected.title"><img :src="selected.src" :alt="selected.title" :width="selected.width" :height="selected.height" /></div>
+      <div class="fox-case__viewer-art" :data-art="selected.title"><img :src="siteUrl(selected.src)" :alt="selected.title" :width="selected.width" :height="selected.height" /></div>
     </DsCaseImageViewer>
   </main>
 </template>

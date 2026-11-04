@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { onMounted, onUnmounted, ref } from 'vue'
 import DCVendorAppPrHero from '../../components/DCVendorAppPrHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
@@ -49,7 +51,7 @@ function scrollToStart() {
   <main class="dc-product">
     <div ref="start" class="dc-product__hero" tabindex="-1" data-figma-frame="213:7487">
       <DCVendorAppPrHero />
-      <div class="dc-product__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+      <div class="dc-product__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
     </div>
     <div class="dc-product__flow">
       <section class="dc-product__about-title dc-product__two dc-product__inset" data-figma-frame="220:1791">
@@ -64,7 +66,7 @@ function scrollToStart() {
         </div>
       </section>
       <section class="dc-product__influence dc-product__two dc-product__inset" data-figma-frame="220:1792">
-        <div v-media-ready class="media-skeleton dc-product__influence-image"><img v-bind="{ src: media('249:4705').src, width: 852, height: 785 }" alt="" class="dc-product__image" /></div>
+        <div v-media-ready class="media-skeleton dc-product__influence-image"><img v-bind="{ src: siteUrl(media('249:4705').src), width: 852, height: 785 }" alt="" class="dc-product__image" /></div>
         <div class="dc-product__influence-group">
           <TypoText tag="h2" class="dc-product__heading" :content="text('190:1486')" />
           <div class="dc-product__influence-copy">
@@ -75,7 +77,7 @@ function scrollToStart() {
       </section>
       <section class="dc-product__research-outer" data-figma-frame="249:5449">
         <div class="dc-product__research dc-product__inset" data-figma-frame="190:1568">
-        <img :src="media('249:4706').src" width="1404" height="824" alt="" class="dc-product__map" />
+        <img :src="siteUrl(media('249:4706').src)" width="1404" height="824" alt="" class="dc-product__map" />
         <div class="dc-product__research-content">
           <div class="dc-product__stats">
             <div class="dc-product__stat"><TypoText tag="p" class="dc-product__number" :content="text('190:1574')" /><TypoText tag="p" :content="text('190:1575')" /></div>
@@ -95,7 +97,7 @@ function scrollToStart() {
         </div>
       </section>
       <section class="dc-product__growth dc-product__two dc-product__inset" data-figma-frame="191:1635">
-        <div v-media-ready class="media-skeleton dc-product__ecosystem"><img :src="media('249:4700').src" width="810" height="785" alt="" class="dc-product__image" /></div>
+        <div v-media-ready class="media-skeleton dc-product__ecosystem"><img :src="siteUrl(media('249:4700').src)" width="810" height="785" alt="" class="dc-product__image" /></div>
         <div class="dc-product__growth-group">
           <TypoText tag="h2" class="dc-product__heading" :content="text('190:1463')" />
           <div class="dc-product__growth-copy">
@@ -108,7 +110,7 @@ function scrollToStart() {
         <TypoText tag="h2" class="dc-product__heading dc-product__center" :content="text('191:1726')" />
         <div class="case-content-layout"><div class="case-content-grid case-content-grid--two">
           <CaseContentCard v-for="item in discovery" :key="item.frame" :data-figma-frame="item.frame"
-            :title="text(item.title)" :body="text(item.body)" :eyebrow="text(item.label)" :src="media(item.image).src"
+            :title="text(item.title)" :body="text(item.body)" :eyebrow="text(item.label)" :src="siteUrl(media(item.image).src)"
             :width="754" :height="450" />
         </div></div>
       </section>
@@ -116,7 +118,7 @@ function scrollToStart() {
         <TypoText tag="h2" class="dc-product__heading dc-product__center" :content="text('190:1512')" />
         <div class="case-content-layout"><div class="case-content-grid">
           <CaseContentCard v-for="item in contributions" :key="item.frame" :data-figma-frame="item.frame"
-            :title="text(item.title)" :body="text(item.body)" :src="media(item.image).src" :width="754" :height="450" />
+            :title="text(item.title)" :body="text(item.body)" :src="siteUrl(media(item.image).src)" :width="754" :height="450" />
         </div></div>
       </section>
       <section class="dc-product__related" data-figma-frame="190:1494">

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed } from 'vue'
 import colorBrand from '../../public/cases/chirp-design-system/card-layers/color-brand.png'
 import images from '../../public/cases/chirp-design-system/card-layers/images.png'
@@ -54,12 +56,12 @@ function codeImageStyle(layer: SceneLayer) {
  <div class="chirp-ds-card__scene" aria-hidden="true">
   <div v-for="layer in stableLayers" :key="layer.name" :data-layer="layer.name" class="chirp-ds-card__layer" :class="{ 'chirp-ds-card__code': layer.name === 'code' }" :style="{ ...layerStyle(layer), zIndex: props.layers.indexOf(layer) }">
    <template v-if="layer.name.startsWith('Ellipse')">
-    <img v-for="asset in ellipses.filter(a => a.breakpoint === props.breakpoint && a.name === layer.name)" :key="asset.src" :src="asset.src" class="chirp-ds-card__ellipse" :style="ellipseStyle(layer, asset)" alt="" draggable="false" />
+    <img v-for="asset in ellipses.filter(a => a.breakpoint === props.breakpoint && a.name === layer.name)" :key="asset.src" :src="siteUrl(asset.src)" class="chirp-ds-card__ellipse" :style="ellipseStyle(layer, asset)" alt="" draggable="false" />
    </template>
    <div v-else-if="layer.name === 'code'" class="chirp-ds-card__code-slot" :style="codeSlot(layer)">
-    <img :src="codeImage" class="chirp-ds-card__code-image" :style="codeImageStyle(layer)" alt="" draggable="false" />
+    <img :src="siteUrl(codeImage)" class="chirp-ds-card__code-image" :style="codeImageStyle(layer)" alt="" draggable="false" />
    </div>
-   <img v-else :src="assets[layer.name]" class="chirp-ds-card__raster" alt="" draggable="false" />
+   <img v-else :src="siteUrl(assets[layer.name])" class="chirp-ds-card__raster" alt="" draggable="false" />
   </div>
  </div>
 </template>

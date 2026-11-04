@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import type { HomeCard, HomeCardScene } from "~/types/home-card";
 import { parseBadges } from "~/utils/home-cards";
 
@@ -130,18 +132,18 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
     >
       <div class="chirp-health-card__pict">
         <img
-          src="/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png"
+          :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png')"
           alt=""
           class="chirp-health-card__phone chirp-health-card__phone--profile"
         >
         <img
-          src="/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png"
+          :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png')"
           alt=""
           class="chirp-health-card__phone chirp-health-card__phone--diagnosis"
         >
         <div class="chirp-health-card__treatment-stage">
           <img
-            src="/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png"
+            :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png')"
             alt=""
             class="chirp-health-card__phone chirp-health-card__phone--treatment"
           >
@@ -163,18 +165,18 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
       <div class="chirp-health-card__blur-fade">
         <div class="chirp-health-card__blurred-pict">
           <img
-            src="/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png"
+            :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-profile@2x.png')"
             alt=""
             class="chirp-health-card__phone chirp-health-card__phone--profile"
           >
           <img
-            src="/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png"
+            :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-diagnosis@2x.png')"
             alt=""
             class="chirp-health-card__phone chirp-health-card__phone--diagnosis"
           >
           <div class="chirp-health-card__treatment-stage">
             <img
-              src="/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png"
+              :src="siteUrl('/cases/chirp-ai-health-assistant/layers/phone-treatment@2x.png')"
               alt=""
               class="chirp-health-card__phone chirp-health-card__phone--treatment"
             >

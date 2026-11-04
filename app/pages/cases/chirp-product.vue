@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { computed, defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import ChirpPrHero from '../../components/ChirpPrHero.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
@@ -110,14 +112,14 @@ function scrollToStart() {
   <main class="product-case">
     <div ref="start" class="product-case__hero" tabindex="-1">
       <ChirpPrHero />
-      <div class="product-case__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+      <div class="product-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
     </div>
     <div class="product-case__flow">
       <template v-for="(block, index) in sequence" :key="index">
         <div v-if="block.frame" class="product-case__column"><CaseFrame :frame="block.frame" /></div>
         <div v-else-if="block.media" class="case-preview-surface">
           <DsCaseImagePreview :title="block.media.title" :data-figma-frame="block.media.node" @zoom="openMedia(block.media)">
-            <img :src="block.media.src" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
+            <img :src="siteUrl(block.media.src)" :alt="block.media.alt" :width="block.media.width" :height="block.media.height" />
           </DsCaseImagePreview>
         </div>
       </template>
@@ -127,7 +129,7 @@ function scrollToStart() {
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
     <DsCaseImageViewer v-model:open="viewerOpen" :title="selectedMedia.title" v-bind="selectedViewerSettings">
-      <img :key="selectedMedia.src" :src="selectedMedia.src" :alt="selectedMedia.alt" />
+      <img :key="selectedMedia.src" :src="siteUrl(selectedMedia.src)" :alt="selectedMedia.alt" />
     </DsCaseImageViewer>
   </main>
 </template>

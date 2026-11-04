@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 const props = withDefaults(defineProps<{ active?: boolean }>(), {
   active: false,
 });
@@ -9,41 +11,41 @@ const dsAsset = (fileName: string) => `cases/chirp-design-system/layers/${fileNa
 <template>
   <div class="chirp-ds-v2" aria-hidden="true">
     <div class="chirp-ds-v2__pict">
-      <img :src="dsAsset('color-brand.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__color-brand" />
-      <img :src="dsAsset('images.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__images" />
-      <img :src="dsAsset('input-text.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__input-text" />
-      <img :src="dsAsset('chat-bubble.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
-      <img :src="dsAsset('logotype.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
-      <img :src="dsAsset('date-picker.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
-      <img :src="dsAsset('gender-select.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
-      <img :src="dsAsset('button.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
-      <img :src="dsAsset('row-diagnosis.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
-      <img :src="dsAsset('row-query-result.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
-      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
-      <img :src="dsAsset('row-list-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
+      <img :src="siteUrl(dsAsset('color-brand.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__color-brand" />
+      <img :src="siteUrl(dsAsset('images.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__images" />
+      <img :src="siteUrl(dsAsset('input-text.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__input-text" />
+      <img :src="siteUrl(dsAsset('chat-bubble.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
+      <img :src="siteUrl(dsAsset('logotype.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
+      <img :src="siteUrl(dsAsset('date-picker.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
+      <img :src="siteUrl(dsAsset('gender-select.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
+      <img :src="siteUrl(dsAsset('button.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
+      <img :src="siteUrl(dsAsset('row-diagnosis.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
+      <img :src="siteUrl(dsAsset('row-query-result.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
+      <img :src="siteUrl(dsAsset('row-stepper-item.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
+      <img :src="siteUrl(dsAsset('row-list-item.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
 
-      <div class="chirp-ds-v2__code"><img :src="dsAsset('code.png')" alt="" /></div>
-      <img :src="dsAsset('ellipse-active-glow.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" data-layer="Ellipse 5" />
-      <img :src="dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" data-layer="Ellipse 6" />
+      <div class="chirp-ds-v2__code"><img :src="siteUrl(dsAsset('code.png'))" alt="" /></div>
+      <img :src="siteUrl(dsAsset('ellipse-active-glow.svg'))" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" data-layer="Ellipse 5" />
+      <img :src="siteUrl(dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg'))" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" data-layer="Ellipse 6" />
     </div>
 
     <div class="chirp-ds-v2__pict chirp-ds-v2__pict--blurred">
-      <img :src="dsAsset('color-brand.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__color-brand" />
-      <img :src="dsAsset('images.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__images" />
-      <img :src="dsAsset('input-text.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__input-text" />
-      <img :src="dsAsset('chat-bubble.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
-      <img :src="dsAsset('logotype.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
-      <img :src="dsAsset('date-picker.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
-      <img :src="dsAsset('gender-select.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
-      <img :src="dsAsset('button.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
-      <img :src="dsAsset('row-diagnosis.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
-      <img :src="dsAsset('row-query-result.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
-      <img :src="dsAsset('row-stepper-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
-      <img :src="dsAsset('row-list-item.png')" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
+      <img :src="siteUrl(dsAsset('color-brand.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__color-brand" />
+      <img :src="siteUrl(dsAsset('images.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__images" />
+      <img :src="siteUrl(dsAsset('input-text.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__input-text" />
+      <img :src="siteUrl(dsAsset('chat-bubble.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__chat-bubble" />
+      <img :src="siteUrl(dsAsset('logotype.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__logotype" />
+      <img :src="siteUrl(dsAsset('date-picker.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__date-picker" />
+      <img :src="siteUrl(dsAsset('gender-select.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__gender-select" />
+      <img :src="siteUrl(dsAsset('button.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__button" />
+      <img :src="siteUrl(dsAsset('row-diagnosis.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-diagnosis" />
+      <img :src="siteUrl(dsAsset('row-query-result.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-query" />
+      <img :src="siteUrl(dsAsset('row-stepper-item.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--short" />
+      <img :src="siteUrl(dsAsset('row-list-item.png'))" alt="" class="chirp-ds-v2__layer chirp-ds-v2__row-list-item chirp-ds-v2__row-list-item--tall" />
 
-      <div class="chirp-ds-v2__code"><img :src="dsAsset('code.png')" alt="" /></div>
-      <img :src="dsAsset('ellipse-active-glow.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" />
-      <img :src="dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg')" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" />
+      <div class="chirp-ds-v2__code"><img :src="siteUrl(dsAsset('code.png'))" alt="" /></div>
+      <img :src="siteUrl(dsAsset('ellipse-active-glow.svg'))" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-5" />
+      <img :src="siteUrl(dsAsset(props.active ? 'ellipse-pressed.svg' : 'ellipse-hover.svg'))" alt="" class="chirp-ds-v2__ellipse chirp-ds-v2__ellipse-6" />
     </div>
   </div>
 </template>

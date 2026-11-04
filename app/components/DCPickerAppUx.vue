@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import './showcase-card-layout.css'
 import DsComingSoon from './DsComingSoon.vue'
 import DsTooltip from './DsTooltip.vue'
@@ -24,10 +26,10 @@ defineEmits<{ subscribe: [event: MouseEvent] }>()
 <template>
   <article class="dc-picker-app-ux showcase-card" :aria-label="content.title.replace(/\s+/g, ' ')">
     <div class="dc-picker-app-ux__scene">
-      <img class="dc-picker-app-ux__logo" src="/showcase/dc-picker-app-ux/09-ostrich.svg" width="51.5657" height="55.3042" alt="" aria-hidden="true" />
+      <img class="dc-picker-app-ux__logo" :src="siteUrl('/showcase/dc-picker-app-ux/09-ostrich.svg')" width="51.5657" height="55.3042" alt="" aria-hidden="true" />
       <TypoText tag="h2" class="dc-picker-app-ux__accessible-title" :content="content.title" />
-      <img class="dc-picker-app-ux__title" src="/showcase/dc-picker-app-ux/picker-app.svg" width="173" height="157" alt="" aria-hidden="true" />
-      <DsComingSoon class="dc-picker-app-ux__subscribe" :href="href" :aria-label="content.subscribeLabel"
+      <img class="dc-picker-app-ux__title" :src="siteUrl('/showcase/dc-picker-app-ux/picker-app.svg')" width="173" height="157" alt="" aria-hidden="true" />
+      <DsComingSoon class="dc-picker-app-ux__subscribe" :href="siteUrl(href)" :aria-label="content.subscribeLabel"
         :aria-describedby="showTooltip ? tooltipId : undefined"
         @pointerenter="pointerEnter" @pointerleave="showTooltip = false"
         @focus="showTooltip = true" @blur="showTooltip = false"

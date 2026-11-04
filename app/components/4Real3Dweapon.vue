@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,onMounted,onUnmounted,ref,watch} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -79,7 +81,7 @@ function keyup(e:KeyboardEvent){if(e.key==='Enter'||e.key===' '){e.preventDefaul
   <div v-for="profile in weaponProfiles" :key="profile.name" class="card-4real-3dweapon__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
    <div class="card-4real-3dweapon__stripe" :style="{...stripeStyle(profile.stripe),clipPath:`inset(0 ${pressProgress*50}%)`}" />
    <div class="card-4real-3dweapon__weapon" :style="weaponStyle(selected(profile).weapon)">
-    <img v-for="(frame,index) in weaponFrames" :key="frame.src" class="card-4real-3dweapon__frame" :src="asset(frame.src)" width="945" height="564" :style="frameStyle(index)" alt="" draggable="false" />
+    <img v-for="(frame,index) in weaponFrames" :key="frame.src" class="card-4real-3dweapon__frame" :src="siteUrl(asset(frame.src))" width="945" height="564" :style="frameStyle(index)" alt="" draggable="false" />
    </div>
   </div>
   <div class="card-4real-3dweapon__blur" aria-hidden="true" />

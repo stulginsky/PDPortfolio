@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import { computed, defineComponent, h, onMounted, onUnmounted, ref, type PropType } from 'vue'
 import content from '../../content/about.json'
 import TypoText from './TypoText.vue'
@@ -73,10 +75,10 @@ onUnmounted(() => observer?.disconnect())
       </div>
       <aside class="about-page__sidebar">
         <div class="about-page__summary-wrap">
-          <img class="about-page__quote-open" src="/resume/quote-open.svg" alt="" aria-hidden="true" />
+          <img class="about-page__quote-open" :src="siteUrl('/resume/quote-open.svg')" alt="" aria-hidden="true" />
           <div class="about-page__summary">
             <TypoText tag="p" class="about-page__summary-copy" :content="nodes['1588:8431']!.text" />
-            <img class="about-page__quote-close" src="/resume/quote-close.svg" alt="" aria-hidden="true" />
+            <img class="about-page__quote-close" :src="siteUrl('/resume/quote-close.svg')" alt="" aria-hidden="true" />
           </div>
         </div>
         <div class="about-page__skills">

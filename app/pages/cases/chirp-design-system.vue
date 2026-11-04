@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../../utils/site-url'
+
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import ChirpDsHero from '../../components/ChirpDsHero.vue'
 import DSOverview from '../../components/DSOverview.vue'
@@ -75,7 +77,7 @@ const documentLines = computed(() => {
     <div class="ds-case__scene" :style="bannerStyle">
       <div ref="start" class="ds-case__hero" tabindex="-1">
         <ChirpDsHero :panel-appearance="dark ? 'on-dark' : 'on-light'" />
-        <div class="ds-case__back"><DsBtnNav tag="a" href="/" :aria-label="page.backLabel" /></div>
+        <div class="ds-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
       </div>
       <section class="ds-case__content" data-figma-frame="781:3490">
         <div ref="toolbar" class="ds-case__column ds-case__toolbar">

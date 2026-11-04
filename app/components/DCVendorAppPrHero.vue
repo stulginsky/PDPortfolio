@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteSrcset, siteUrl } from '../utils/site-url'
+
 import { computed, inject, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import TypoText from './TypoText.vue'
 import content from '../../content/cases/dc-vendor-app-pr.json'
@@ -55,8 +57,8 @@ defineExpose({resetMotion,replayIntro})
   <LayeredSceneFallback name="dc-vendor-app-pr-hero" />
   <div class="dc-vendor-app-pr-hero__art" aria-hidden="true">
    <picture v-for="(layer,index) in layers" v-media-ready :key="layer.name" :ref="el=>{if(el)nodes[index]=el as HTMLElement}" class="dc-vendor-app-pr-hero__layer" :class="'dc-layer-'+index" :data-layer="layer.name" :data-animation-enabled="layer.animationEnabled" :style="geometry(index)">
-    <template v-if="!props.breakpoint"><source v-for="profile in profiles" :key="profile" :media="media(profile)" :srcset="asset(profile,index)" /></template>
-    <img :src="asset(breakpoint,index)" :fetchpriority="layer.name === 'Title' ? 'high' : 'auto'" alt="" draggable="false" decoding="async" @load="maybeIntro" />
+    <template v-if="!props.breakpoint"><source v-for="profile in profiles" :key="profile" :media="media(profile)" :srcset="siteSrcset(asset(profile,index))" /></template>
+    <img :src="siteUrl(asset(breakpoint,index))" :fetchpriority="layer.name === 'Title' ? 'high' : 'auto'" alt="" draggable="false" decoding="async" @load="maybeIntro" />
    </picture>
   </div>
   <div class="dc-vendor-app-pr-hero__semantic">

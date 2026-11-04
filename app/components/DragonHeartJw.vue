@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteUrl } from '../utils/site-url'
+
 import {computed,onMounted,onUnmounted,ref,watch} from 'vue'
 import DsBadge from './DsBadge.vue'
 import TypoText from './TypoText.vue'
@@ -58,7 +60,7 @@ function layerStyle(layer:ReturnType<typeof layers>[number],native:Layer){
   @pointerenter="enter" @pointerleave="reset" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
   <div v-for="profile in dragonHeartJwProfiles" :key="profile.name" class="dragon-heart-jw__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
    <div v-for="(layer,index) in layers(profile)" :key="layer.name" class="dragon-heart-jw__layer" :data-layer="layer.name" :style="layerStyle(layer,profile.states[0].layers[index]!)">
-    <img v-if="layer.name!=='shader'" :src="'/showcase/dragon-heart-jw/'+layer.name.toLowerCase()+'.png'" alt="" draggable="false" />
+    <img v-if="layer.name!=='shader'" :src="siteUrl('/showcase/dragon-heart-jw/'+layer.name.toLowerCase()+'.png')" alt="" draggable="false" />
    </div>
   </div>
   <div class="dragon-heart-jw__blur" aria-hidden="true" />
