@@ -82,7 +82,26 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 Public URL: https://stulginsky.github.io/PDPortfolio/
 
-`.github/workflows/pages.yml` generates the static portfolio and deploys it on every push to `main`; it can also be started manually from Actions. Repository Settings → Pages → Source must be **GitHub Actions**. Node.js 24 and `npm ci` are used in CI. The uploaded artifact is `.output/public`; generated build output is not committed.
+`.github/workflows/pages.yml` generates the static portfolio and deploys it after a verified release is merged into `main`; it can also be started manually from Actions. Repository Settings → Pages → Source must be **GitHub Actions**. Node.js 24 and `npm ci` are used in CI. The uploaded artifact is `.output/public`; generated build output is not committed.
+
+### Development and release branches
+
+Work in `develop`. Keep Storybook, sandboxes, export evidence, editor configuration and diagnostic scripts there. Do not merge `develop` directly into `main`, or merge the cleaned `main` back into `develop`.
+
+After committing and pushing the intended development version, run **from develop**:
+
+```bash
+npm run release:plan
+npm run release:prepare
+```
+
+The first command previews exclusions. The second fetches current `main` and `develop`, verifies the source is clean and pushed, creates a filtered `release/<12-character-source-sha>` snapshot on top of `main`, pushes it and opens a PR. It leaves the develop checkout and index unchanged. Git HTTPS credentials (or a process-local `GITHUB_TOKEN`) authenticate PR creation; credentials are never written to files or logs. `--local` prepares the branch without pushing or opening a PR.
+
+`release.config.json` is the explicit publication inventory. Production sources, content, public assets and build/check scripts remain in main; unknown root files and development-only paths are excluded. The release package omits development-only npm commands while retaining dependencies and the matching lockfile. No artwork, copy, geometry or tokens are transformed.
+
+The PR's required `release-validation` check verifies this inventory, typography, static generation and local page/resource references. Main requires a PR and this check against the current base, including for administrators. Merge a passing release PR to publish; the next release is another filtered snapshot. Development-only changes that do not alter that snapshot need no release. Git history is retained; this process cleans main's current tree, not past commits.
+
+To change the publication inventory, update and review `release.config.json` in develop, test with `node --test scripts/test-release-policy.mjs`, then prepare a release. New root directories are excluded until explicitly classified.
 
 To reproduce the Pages build in PowerShell:
 
@@ -105,3 +124,9 @@ The static check verifies all page routes and local resource references. The opt
 - New pages in `app/pages` are included by Nuxt's static generation; `check:static` also checks every case page. No hosting prefix belongs in source content or generated JSON.
 
 For a future root-domain deployment, set `NUXT_APP_BASE_URL=/` and rebuild. Both Nuxt and the URL helpers use this one setting; local development and standalone Storybook default to `/`.
+
+## Analytics
+
+Yandex Metrika counter `114073004` is included globally in production Nuxt pages, with the supplied Webvisor, clickmap, link tracking, accurate bounce and `dataLayer` settings. SPA mode uses `defer: true` and one explicit page hit on initial mount and each completed route, including browser Back/Forward. In-page anchors do not create additional page views. A noscript pixel is included in every generated page. Development mode and Storybook do not initialize the counter; the embedded standalone landing does not initialize a second counter.
+
+`node scripts/check-static-site.mjs --browser` checks the loader and fallback on all 14 pages, then verifies initial/SPA/history hits on both viewport sizes. The test intercepts Yandex transport so test visits never enter production reports. Actual reporting can be checked in the counter's live reports after publication.
