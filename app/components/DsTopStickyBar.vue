@@ -125,8 +125,9 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
 .ds-top-sticky-bar--web {
   display: flex;
   justify-content: flex-end;
-  height: 100px;
-  padding: 0 var(--space-6);
+  min-height: 100px;
+  height: auto;
+  padding: var(--space-6);
   gap: var(--space-3);
 }
 .ds-top-sticky-bar--web .ds-top-sticky-bar__title {
@@ -153,6 +154,7 @@ onBeforeUnmount(() => { hideHint(); query?.removeEventListener('change', update)
 .ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu),
 .ds-top-sticky-bar--controls-only .ds-top-sticky-bar__menu :deep(.ds-fs-menu__trigger) { width: auto; }
 .ds-top-sticky-bar--controls-only.ds-top-sticky-bar--web {
+  min-height: 98px;
   height: 98px;
   padding: var(--space-6);
   border-radius: 0 0 0 var(--radius-xxlg);

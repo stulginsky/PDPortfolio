@@ -2,7 +2,9 @@ import type {Meta,StoryObj} from '@storybook/vue3-vite'
 import {expect,fn,userEvent,waitFor} from 'storybook/test'
 import Component4Real3Dweapon from './4Real3Dweapon.vue'
 import content from '../../content/4real-3dweapon.json'
-const meta={title:'Compositions/Showcase cards/4Real3Dweapon',component:Component4Real3Dweapon,tags:['autodocs'],parameters:{layout:'padded',docs:{description:{component:'[Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3344-2470). Девять оригинальных кадров, интервал25мс, плавное совмещение и смешивание соседних поз: наведение проигрывает01→09 один раз, уход разворачивает текущий кадр к01. Пружинное приближение и возврат с мягким разгоном и торможением; нажатие меняет только масштаб; синяя полоса сохраняется. Размытие с градиентной маской. На touch нет залипающего Hover. Enter/Space повторяют нажатие, Escape сбрасывает состояние. Переход подключается при интеграции; сейчас компонент сообщает событие activate. Размеры и перенос бэджей — по общему контракту витрины.'}}},args:{onActivate:fn()}} satisfies Meta<typeof Component4Real3Dweapon>
+const meta={title:'Compositions/Showcase cards/4Real3Dweapon',component:Component4Real3Dweapon,tags:['autodocs', '!dev'],parameters:{layout:'padded',docs:{description:{component:"Интерактивная карточка кейса «4Real3Dweapon» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3344-2470\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},args:{onActivate:fn()}
+  ,
+  } satisfies Meta<typeof Component4Real3Dweapon>
 export default meta
 type Story=StoryObj<typeof meta>
 export const Preview:Story={

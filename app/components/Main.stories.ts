@@ -2,13 +2,14 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, userEvent, waitFor, within } from 'storybook/test'
 import Main from './Main.vue'
 
-const meta = { title:'Pages/Main', component:Main, parameters:{layout:'fullscreen'}, tags:['autodocs'], beforeEach: () => { localStorage.removeItem('pdportfolio:showcase:category') } } satisfies Meta<typeof Main>
+const meta = { title:'Pages/Main', component:Main, parameters:{layout:'fullscreen'}, tags:['!autodocs', '!dev'], beforeEach: () => { localStorage.removeItem('pdportfolio:showcase:category') } } satisfies Meta<typeof Main>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Showcase: Story = {
  play: async ({canvasElement}) => {
   const canvas=within(canvasElement)
-  await waitFor(()=>expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(16))
+  await waitFor(()=>expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(17))
+  await expect(canvasElement.querySelector('[data-case-href="/storybook/"] .pd-portfolio-ds')).not.toBeNull()
   await expect(canvasElement.querySelector('[data-case-href="/cases/fox-jw"]')).not.toBeNull()
   await expect(canvasElement.querySelector('[data-case-href="/cases/dragon-heart-jw"]')).not.toBeNull()
   await expect(canvasElement.querySelector('[data-case-href="/cases/sapsan-cr"] .sapsan-cr')).not.toBeNull()
@@ -30,6 +31,9 @@ export const Showcase: Story = {
       await userEvent.click(canvas.getByRole('button',{name:label,exact:true}))
     }
   }
+  await selectCategory('Дизайн система')
+  await expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(3)
+  await expect(canvasElement.querySelector('[data-case-href="/storybook/"] .pd-portfolio-ds')).not.toBeNull()
   await selectCategory('Лэндинг', true)
   await expect(localStorage.getItem('pdportfolio:showcase:category')).toBe('landing')
   await expect(canvasElement.querySelectorAll('.main-page__case')).toHaveLength(3)

@@ -3,6 +3,7 @@ import { expect } from 'storybook/test'
 import DsRoleFocus from './DsRoleFocus.vue'
 
 const meta = {
+  tags: ['!dev'],
   title: 'Components/RoleFocus',
   component: DsRoleFocus,
   // Docs is explicitly composed in storybook/components/RoleFocus.mdx.
@@ -25,7 +26,7 @@ const meta = {
     controls: { sort: 'none' },
     docs: {
       description: {
-        component: '[Figma 1107:7326](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1107-7326)\n\n<details>\n<summary>Техническое описание</summary>\n\nDocs показывает один вариант: base по умолчанию; радиокнопки breakpoint переключают production-компонент на min-768. Sandbox показывает один адаптивный компонент: ниже768px base, от768px min-768; используйте родной viewport Storybook. Колонка подписей116px, выключка справа только в min-768. Typograf сохраняет целые пункты и прикрепляет разделитель к предыдущему пункту. API role/focus/breakpoint не изменён.\n\n</details>',
+        component: "Роль автора и профессиональный фокус в проекте.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1107-7326\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -70,6 +71,7 @@ export const Preview: Story = {
 
 // No forced breakpoint: native viewport changes exercise production CSS.
 export const Sandbox: Story = {
+  tags: ['dev'],
   args: { breakpoint: undefined },
   parameters: {
     controls: { exclude: ['breakpoint'] },

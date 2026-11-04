@@ -6,65 +6,93 @@ import DsFullscreenMenuMob from './DsFullscreenMenuMob.vue'
 const meta = {
   title: 'Components/FullscreenMenu-mob',
   component: DsFullscreenMenuMob,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     raised: false,
   },
   argTypes: {
-    items: {
-      control: false,
-      description: 'Список пунктов `{ label, value, icon?, showIcon?, href? }`. `href` открывается в новой вкладке и не меняет `modelValue`; для Figma задаются `href`, `icon: ExternalLink` и `showIcon: true`.',
-      table: {
-        category: 'Содержимое',
-        type: { summary: 'MenuItem[]' },
-      },
+  "items": {
+    "description": "Список пунктов `{ label, value, icon?, showIcon?, href? }`. `href` открывается в новой вкладке и не меняет `modelValue`; для Figma задаются `href`, `icon: ExternalLink` и `showIcon: true`.",
+    "table": {
+      "category": "Содержимое",
+      "type": {
+        "summary": "MenuItem[]"
+      }
     },
-    modelValue: {
-      control: false,
-      description: 'Выбранное значение. `null` показывает вводную подпись trigger.',
-      table: {
-        category: 'Состояние',
-        type: { summary: 'string | null' },
-        defaultValue: { summary: 'null' },
-      },
-    },
-    placeholder: {
-      control: 'text',
-      description: 'Вводная подпись закрытого trigger, пока `modelValue` не выбран.',
-      table: {
-        category: 'Содержимое',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Продукт · Креатив · Бренд & ...' },
-      },
-    },
-    ariaLabel: {
-      control: 'text',
-      description: 'Доступное имя trigger и полноэкранного диалога.',
-      table: {
-        category: 'Доступность',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Открыть меню' },
-      },
-    },
-    raised: {
-      control: 'boolean',
-      description: 'Figma Button `Raised=On` для закрытого trigger. В Sandbox применяется ко всем трём примерам.',
-      table: {
-        category: 'Внешний вид',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    toggled: {
-      control: false,
-      description: 'Устойчивый Figma Button `State=Toggled`. Применяется потребителем только к выбранному фильтру; navigation и Zoom после выбора возвращаются в Default.',
-      table: {
-        category: 'Состояние',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
+    "control": false
   },
+  "modelValue": {
+    "description": "Выбранное значение. `null` показывает вводную подпись trigger.",
+    "table": {
+      "category": "Состояние",
+      "type": {
+        "summary": "string | null"
+      },
+      "defaultValue": {
+        "summary": "null"
+      }
+    },
+    "control": false
+  },
+  "placeholder": {
+    "description": "Вводная подпись закрытого trigger, пока `modelValue` не выбран.",
+    "table": {
+      "category": "Содержимое",
+      "type": {
+        "summary": "string"
+      },
+      "defaultValue": {
+        "summary": "Продукт · Креатив · Бренд & ..."
+      }
+    },
+    "control": {
+      "type": "text"
+    }
+  },
+  "ariaLabel": {
+    "description": "Доступное имя trigger и полноэкранного диалога.",
+    "table": {
+      "category": "Доступность",
+      "type": {
+        "summary": "string"
+      },
+      "defaultValue": {
+        "summary": "Открыть меню"
+      }
+    },
+    "control": {
+      "type": "text"
+    }
+  },
+  "raised": {
+    "description": "Figma Button `Raised=On` для закрытого trigger. В Sandbox применяется ко всем трём примерам.",
+    "table": {
+      "category": "Внешний вид",
+      "type": {
+        "summary": "boolean"
+      },
+      "defaultValue": {
+        "summary": "false"
+      }
+    },
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "toggled": {
+    "description": "Устойчивый Figma Button `State=Toggled`. Применяется потребителем только к выбранному фильтру; navigation и Zoom после выбора возвращаются в Default.",
+    "table": {
+      "category": "Состояние",
+      "type": {
+        "summary": "boolean"
+      },
+      "defaultValue": {
+        "summary": "false"
+      }
+    },
+    "control": false
+  }
+},
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -73,7 +101,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "[1021:3359](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359)\n\n<details>\n<summary>Техническое описание</summary>\n\nFullscreenMenu-mob — DS component [1021:3359](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359). Fullscreen single-select menu for mobile.\n\n| State | Trigger / surface |\n|---|---|\n| Default | Closed DsButton + ChevronDown; optional Raised |\n| ActivePressed | Touch press only: DsButton + ChevronUp until release |\n| Opened | Plum fullscreen surface; centred Lg rows, Cross and inner scroll |\n\nTrigger built on DsButton with canonical ChevronDown / ChevronUp. The menu closes on selection, Cross, or a downward touch swipe when the inner list has reached its top. Hover is not rendered for this mobile component.\n\n</details>",
+          "Полноэкранное меню выбора для мобильного интерфейса.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1021-3359\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -83,6 +111,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: (args) => ({
     components: { DsFullscreenMenuMob },
     setup() {

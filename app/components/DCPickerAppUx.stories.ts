@@ -6,24 +6,11 @@ import DCPickerAppUx from './DCPickerAppUx.vue'
 const meta = {
   title: 'Compositions/Showcase cards/DCPickerApp-UX',
   component: DCPickerAppUx,
-  tags: ['autodocs'],
-  parameters: { layout: 'padded', docs: { description: { component: `Анонс будущего кейса. Карточка без перехода; кнопка «Скоро» открывает системный почтовый клиент через mailto:.
-
-Получатель: **stulginsky@gmail.com**
-
-Тема: **Сообщите о новом кейсе**
-
-Текст письма:
-
-> Привет, Константин! Очень хочу посмотреть новый кейс {Название кейса}. Сообщите о публикации. Спасибо.
-
-Название берётся из карточки и подставляется с обычными пробелами: для этой карточки — **Picker App**.
-
-Письмо открывается как редактируемый черновик. Пользователь отправляет его самостоятельно. В Preview запуск перехвачен; в Sandbox переключатель «Открывать почтовый клиент» разрешает настоящий переход по mailto:. По умолчанию переключатель выключен. Production-компонент содержит полную ссылку с адресом, темой и телом письма.
-
-[Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3217-3056). Ширина430px сохранена по общему контракту витрины. Семь бэджей переносятся строками; мобильное положение заголовка из base.` } } },
+  tags: ['autodocs', '!dev'],
+  parameters: { layout: 'padded', docs: { description: { component: "Интерактивная карточка кейса «DCPickerApp-UX» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3217-3056\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
   args: { onSubscribe: fn() },
-} satisfies Meta<typeof DCPickerAppUx>
+
+  } satisfies Meta<typeof DCPickerAppUx>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Preview: Story = {
@@ -55,6 +42,7 @@ export const Preview: Story = {
   },
 }
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { DCPickerAppUx },
     setup() {

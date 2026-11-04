@@ -14,18 +14,18 @@ import DsAvatarSm from './DsAvatarSm.vue'
 const smMeta = {
   title: "Components/Avatar-Sm",
   component: DsAvatarSm,
-  tags: ["autodocs"],
+  tags: ["autodocs", '!dev'],
   argTypes: {
-    click: {
-      action: "click",
-      description: "Action that returns to the full page header.",
-    },
-  },
+  "click": {
+    "action": "click",
+    "description": "Action that returns to the full page header."
+  }
+},
   parameters: {
     layout: "centered",
     docs: {
       description: {
-        component: "[Figma 124:712](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=124-712)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Avatar-Sm 124:712. Interactive compact avatar 50×50, radius=60.\nAction: scroll to hero top (К началу страницы).\nUses the original Figma asset AvatarPortrait.\n\n| State | Border | Image origin |\n|---|---|---|\n| Default | border/default 1px inside | -0.28 / -1.07px |\n| Hover | border/action-hover 3px inside | -0.28 / -1.07px |\n| ActivePressed | border/action-pressed 3px inside | -0.28 / -1.07px |\n\n</details>",
+        component: "Компактный аватар в навигации. Нажатие сообщает о запросе перехода к полной шапке.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=124-712\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

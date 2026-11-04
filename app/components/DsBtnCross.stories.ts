@@ -5,20 +5,41 @@ import DsBtnCross from './DsBtnCross.vue'
 const meta = {
   title: 'Components/BtnCross',
   component: DsBtnCross,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     ariaLabel: 'Close',
     raised: false,
   },
   argTypes: {
-    ariaLabel: { control: 'text', description: 'Accessible name for screen readers.' },
-    raised: { control: 'boolean', description: 'Nested ButtonIcon Raised; Default surface only.' },
+  "ariaLabel": {
+    "description": "Accessible name for screen readers.",
+    "control": {
+      "type": "text"
+    }
   },
+  "raised": {
+    "description": "Nested ButtonIcon Raised; Default surface only.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "pressedAppearance": {
+    "table": {
+      "disable": true
+    },
+    "control": false
+  }
+},
+  render: args => ({
+    components: { DsBtnCross },
+    setup: () => ({ args }),
+    template: '<DsBtnCross v-bind="args" pressed-appearance="ActivePressed" />',
+  }),
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[BtnCross 290:1960](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=290-1960)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [BtnCross 290:1960](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=290-1960). It composes `DsButtonIcon` with the canonical `Cross` asset. Default is transparent unless raised=true forwards the original ButtonIcon Raised surface (surface/raised); Hover and ActivePressed are native pointer states.\n\n</details>",
+        component: "Кнопка закрытия панели или всплывающего элемента.\n\nВ мобильном полноэкранном меню доступны состояния Default и ActivePressed. Оформление нажатия действует только во время удержания кнопки; постоянного состояния Toggled у крестика нет. После активации кнопка закрывает меню.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=290-1960\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -28,8 +49,19 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  play: async ({ canvas }) => {
-    await expect(canvas.getByRole('button', { name: 'Close' })).toBeVisible()
+  play: async ({ canvas, userEvent }) => {
+    const button = canvas.getByRole('button', { name: 'Close' })
+    await expect(button).toBeVisible()
+    await expect(button).not.toHaveAttribute('aria-pressed')
+    await expect(button).not.toHaveClass('button-base--pressed-appearance-toggled')
+    await userEvent.hover(button)
+    await userEvent.pointer({ target: button, keys: '[MouseLeft>]' })
+    await expect(button).toHaveClass('button-base--pressed')
+    await expect(button).not.toHaveClass('button-base--toggled')
+    await userEvent.pointer({ target: button, keys: '[/MouseLeft]' })
+    await expect(button).not.toHaveClass('button-base--pressed')
+    await expect(button).not.toHaveClass('button-base--toggled')
+    await userEvent.unhover(button)
   },
 }
 

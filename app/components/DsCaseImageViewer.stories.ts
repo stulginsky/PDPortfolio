@@ -1,36 +1,55 @@
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, userEvent, waitFor, within } from 'storybook/test'
 import DsCaseImageViewer from './DsCaseImageViewer.vue'
+import { siteUrl } from '../utils/site-url'
+import DsButton from './DsButton.vue'
 import DSOverview from './DSOverview.vue'
 import { galleryNativeSize } from './ds-overview.geometry'
+const demoMedia = siteUrl('/cases/chirp-product/media/P02.svg')
 const meta = {
-  title: 'Components/CaseImageViewer', component: DsCaseImageViewer, tags: ['autodocs'],
+  title: 'Components/CaseImageViewer', component: DsCaseImageViewer, tags: ['!autodocs', '!dev'],
   args: { title: 'Когда включается Chirp', open: true, type: 'v1' },
   argTypes: { type: { control: 'inline-radio', options: ['v1', 'v2'], description: 'v1 — полная шапка, v2 — только контролы. Оба режима полноэкранные, desktop Fit to width, mobile Zoom 100%.' } },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 1019:11807](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1019-11807)
-
-<details>
-<summary>Техническое описание</summary>
-
-Тип v1 — полная шапка; v2 — только контролы масштаба и закрытия (Controls only). Оба типа полноэкранные, с прокруткой X/Y при переполнении. SLOT — одно img/inline SVG с исходными размерами; для составного содержимого передайте contentSize={width,height}. Все изображения композиции должны загрузиться до ready. Base открывается в 100%, min-768 в Fit to width. Media gap 24px, поля 16/64px. Wheel scroll, Ctrl/⌘+wheel zoom; drag/pinch pan/zoom. DsScroll X/Y при overflow. Escape/close возвращают фокус, scroll страницы и начальное состояние. Tooltip управляется загрузкой медиа. Sandbox сразу показывает открытый fullscreen viewer; режим определяется viewport.
-
-</details>
-` } } },
+  parameters: { layout: 'fullscreen', docs: { story: { inline: true }, description: { component: "Полноэкранный просмотр изображения с масштабированием и навигацией.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1019-11807\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 } satisfies Meta<typeof DsCaseImageViewer>
 export default meta
 type Story = StoryObj<typeof meta>
+export const Preview: Story = {
+  args: { open: false },
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsButton, DsCaseImageViewer },
+      setup() {
+        const open = computed({ get: () => args.open ?? false, set: value => updateArgs({ open: value }) })
+        return { args, open, demoMedia }
+      },
+      template: `<div>
+        <p>Настройте Controls ниже, затем откройте просмотрщик. Чтобы изменить настройки, закройте его.</p>
+        <DsButton text="Открыть просмотрщик" @click="open=true" />
+        <DsCaseImageViewer v-bind="args" v-model:open="open"><img :src="demoMedia" alt="Схема сценариев Chirp" /></DsCaseImageViewer>
+      </div>`,
+    }
+  },
+}
+
 export const Sandbox: Story = {
+  tags: ['!dev'],
   render: args => ({
     components: { DsCaseImageViewer },
-    setup() { const open = ref(true), zoom = ref(100); return { args, open, zoom } },
+    setup() {
+      const open = ref(args.open ?? true), zoom = ref(100)
+      watch(() => args.open, value => { open.value = value ?? true })
+      return { args, open, zoom, demoMedia }
+    },
     template: `<div>
       <button @click="open=true">Открыть просмотрщик</button>
       <p role="status" style="padding:16px">Zoom: {{ Math.round(zoom) }}%</p>
       <DsCaseImageViewer v-model:open="open" :type="args.type" :title="args.title"
         :initial-scale="args.initialScale" :align-x="args.alignX" :align-y="args.alignY" :fit-area="args.fitArea"
-        @zoom="zoom=$event"><img src="/cases/chirp-product/media/P02.svg" alt="Схема сценариев Chirp" /></DsCaseImageViewer>
+        @zoom="zoom=$event"><img :src="demoMedia" alt="Схема сценариев Chirp" /></DsCaseImageViewer>
     </div>`,
   }),
   play: async ({ canvasElement }) => {

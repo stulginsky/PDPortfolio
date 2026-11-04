@@ -7,27 +7,67 @@ import './DsScroll.stories.css'
 const meta = {
   title: 'Components/Scroll',
   component: DsScroll,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     axis: 'Y',
     scrollId: 'scroll-demo',
   },
   argTypes: {
-    axis: { control: 'inline-radio', options: ['X', 'Y'] },
-    scrollId: { control: 'text', description: 'ID of the controlled scroll container.' },
+  "axis": {
+    "options": [
+      "X",
+      "Y"
+    ],
+    "control": {
+      "type": "inline-radio"
+    }
   },
+  "scrollId": {
+    "description": "ID of the controlled scroll container.",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component: "<details>\n<summary>Техническое описание</summary>\n\nScrollable-content indicator. The production thumb follows native X/Y scroll, supports keyboard and desktop drag, and is hidden when its axis has no overflow.\n\n</details>",
+        component: "Полоса управления прокруткой связанного контейнера. Выберите горизонтальную или вертикальную ось.",
       },
     },
   },
 } satisfies Meta<typeof DsScroll>
 
+meta.parameters.docs.description.component =
+  "<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-3619\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>\n\n" + meta.parameters.docs.description.component
+
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const Preview: Story = {
+  render: args => ({
+    components: { DsScroll },
+    setup: () => ({
+      args,
+      onWheel(event: WheelEvent) {
+        if (args.axis !== 'X') return
+        event.preventDefault()
+        const container = event.currentTarget as HTMLElement
+        const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
+        const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? container.clientWidth : 1
+        container.scrollLeft += delta * unit
+      },
+    }),
+    template: `<div style="position:relative;width:320px;max-width:100%;height:220px;overflow:hidden">
+      <div :key="args.axis" :id="args.scrollId" tabindex="0" class="scroll-story__content" style="height:100%;scrollbar-width:none"
+        :style="{overflowX:args.axis === 'X' ? 'auto' : 'hidden',overflowY:args.axis === 'Y' ? 'auto' : 'hidden'}" @wheel="onWheel">
+        <div style="width:720px;min-height:560px"><p v-for="i in 18" :key="i">Paragraph {{ i }}. Scrollable content.</p></div>
+      </div>
+      <DsScroll v-bind="args" :style="args.axis === 'X' ? {position:'absolute',left:0,right:0,bottom:0,width:'auto'} : {position:'absolute',top:0,right:0,bottom:0,height:'auto'}" />
+    </div>`,
+  }),
+}
 
 export const VerticalY: Story = {
   render: () => ({
@@ -83,6 +123,7 @@ export const AllVariants: Story = {
 }
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: () => ({
     components: { DsScroll },
     setup() {
@@ -93,7 +134,7 @@ export const Sandbox: Story = {
     template: `
       <div style="display:grid;gap:24px;padding:32px;background:var(--surface-default);font-family:var(--text-font-sans)">
         <div style="position:relative;width:320px;height:220px;border:1px solid var(--border-default);border-radius:8px;overflow:hidden">
-          <div id="scroll-sandbox" data-testid="scroll-sandbox" class="scroll-story__content" style="width:100%;height:100%;overflow:auto;padding:16px 28px 28px 16px;box-sizing:border-box;scrollbar-width:none" @scroll="yPosition = $event.target.scrollTop; xPosition = $event.target.scrollLeft">
+          <div id="scroll-sandbox" tabindex="0" data-testid="scroll-sandbox" class="scroll-story__content" style="width:100%;height:100%;overflow:auto;padding:16px 28px 28px 16px;box-sizing:border-box;scrollbar-width:none" @scroll="yPosition = $event.target.scrollTop; xPosition = $event.target.scrollLeft">
             <div style="width:720px;min-height:560px">
               <p style="margin:0 0 16px;white-space:nowrap">A long text line makes the content overflow horizontally inside this single scrollable area.</p>
               <p v-for="i in 18" :key="i" style="margin:0 0 12px">Paragraph {{ i }}. This text makes the same content overflow vertically.</p>

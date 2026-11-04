@@ -29,7 +29,7 @@ const iconOptions = [
 const meta = {
   title: 'Components/DropdownListItem',
   component: DsDropdownListItem,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     label: 'List item',
     appearance: 'Sm',
@@ -38,22 +38,73 @@ const meta = {
     type: 'General',
   },
   argTypes: {
-    label: { control: 'text', description: 'Figma TextListItem#1295:0' },
-    appearance: { control: 'inline-radio', options: ['Sm', 'Lg'] },
-    icon: { control: 'select', options: iconOptions },
-    showIcon: { control: 'boolean', description: 'Figma ShowIcon#1295:39' },
-    type: { control: 'inline-radio', options: ['General', 'Filter'] },
+  "label": {
+    "description": "Figma TextListItem#1295:0",
+    "control": {
+      "type": "text"
+    }
   },
+  "appearance": {
+    "options": [
+      "Sm",
+      "Lg"
+    ],
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "icon": {
+    "options": [
+      "Favicon",
+      "Download",
+      "Print",
+      "ArrowNavLeft",
+      "ArrowNavRight",
+      "ArrowNavUp",
+      "Cross",
+      "MagnifyingGlass",
+      "Sun",
+      "Moon",
+      "GitHub",
+      "Figma",
+      "ExternalLink",
+      "ChevronDown",
+      "ChevronUp",
+      "Check"
+    ],
+    "control": {
+      "type": "select"
+    }
+  },
+  "showIcon": {
+    "description": "Figma ShowIcon#1295:39",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "type": {
+    "options": [
+      "General",
+      "Filter"
+    ],
+    "control": {
+      "type": "inline-radio"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          "<details>\n<summary>Техническое описание</summary>\n\nGeneral aligns text and icon to opposing edges. Filter centers the text-plus-icon group. Long text wraps; it is never truncated with an ellipsis.\n\n</details>",
+          "Отдельный пункт выпадающего списка с текстом и необязательной иконкой.",
       },
     },
   },
 } satisfies Meta<typeof DsDropdownListItem>
+
+meta.parameters.docs.description.component =
+  "<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=325-1613\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>\n\n" + meta.parameters.docs.description.component
 
 export default meta
 type Story = StoryObj<typeof meta>

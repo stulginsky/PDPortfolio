@@ -27,9 +27,14 @@ const config: StorybookConfig = {
   ],
   // templateCompilation() only adds the Vue alias; the SFC plugin is required
   // for Storybook's browser-test Vite server as well.
-  async viteFinal(config) {
+  async viteFinal(config, { configType }) {
     return mergeConfig(config, {
       plugins: [vue()],
+      define: {
+        'import.meta.env.VITE_SITE_BASE_URL': JSON.stringify(
+          process.env.STORYBOOK_SITE_BASE_URL || (configType === 'PRODUCTION' ? '/PDPortfolio/' : '/'),
+        ),
+      },
       optimizeDeps: { include: ['typograf'] },
       resolve: {
         alias: {

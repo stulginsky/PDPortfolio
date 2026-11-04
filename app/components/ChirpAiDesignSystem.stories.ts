@@ -7,22 +7,19 @@ import cards from '../../content/home-cards.json'
 
 const meta = {
   title: 'Compositions/Showcase cards/Chirp AI Design System',
-  component: ChirpAiDesignSystem, tags: ['autodocs'],
+  component: ChirpAiDesignSystem, tags: ['autodocs', '!dev'],
   args: { title: cards[3]!.title, subtitle: cards[3]!.subtitle, badges: cards[3]!.badges.split(',').map(x => x.trim()), href: cards[3]!.href },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 815:2280](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2280)
+  parameters: { layout: 'fullscreen', docs: { description: { component: "Интерактивная карточка кейса «Chirp AI Design System» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2280\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 
-<details>
-<summary>Техническое описание</summary>
-
-Ширина100%/max430px; высота500px ниже462px,532px от462px. Base <768px / min-768 ≥768px. Пятнадцать исходных слоёв Figma, самостоятельные Default/Hover/ActivePressed и редактор X/Y/Width/Height/Rotation по слою, состоянию и breakpoint. Motion300ms ease-out; press150ms. Reduced motion без переходов. DsBadge и исходные изображения/SVG Figma. Progressive blur — согласованное приближение. Sandbox предотвращает переход в кейс.
-
-</details>
-` } } },
-} satisfies Meta<typeof ChirpAiDesignSystem>
+  } satisfies Meta<typeof ChirpAiDesignSystem>
 export default meta
 type Story = StoryObj<typeof meta>
+export const Preview: Story = {
+  render: args => ({ components: { ChirpAiDesignSystem }, setup: () => ({ args }), template: "<div style=\"width:100%;max-width:430px\" @click.capture.prevent><ChirpAiDesignSystem v-bind=\"args\" /></div>" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { ChirpAiDesignSystemSandbox },
     setup() { return { args } },

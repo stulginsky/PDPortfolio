@@ -1,3 +1,4 @@
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect } from 'storybook/test'
 import { ref } from 'vue'
@@ -6,7 +7,7 @@ import DsButtonIcon from './DsButtonIcon.vue'
 const meta = {
   title: 'Components/ButtonIcon',
   component: DsButtonIcon,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     icon: 'Favicon',
     raised: false,
@@ -15,35 +16,63 @@ const meta = {
     ariaLabel: 'Icon action',
   },
   argTypes: {
-    icon: {
-      control: 'select',
-      options: [
-        'Download', 'Print', 'ArrowNavLeft', 'ArrowNavRight', 'ArrowNavUp',
-        'Cross', 'MagnifyingGlass', 'Sun', 'Moon', 'GitHub', 'Figma', 'ExternalLink',
-        'Favicon', 'ChevronDown', 'ChevronUp', 'Check',
-      ],
-      description: 'Figma Instance#1258:11; a canonical Foundation icon.',
-    },
-    raised: {
-      control: 'boolean',
-      description: 'Figma Raised=Off / On. Raised is available only for State=Default.',
-    },
-    toggled: {
-      control: 'boolean',
-      description: 'Persistent Figma State=Toggled.',
-    },
-    pressedAppearance: {
-      control: 'inline-radio',
-      options: ['ActivePressed', 'Toggled'],
-      description: 'Visual mapping of the physical press; semantic wrappers use Toggled only when Figma composes it literally.',
-    },
-    ariaLabel: { control: 'text' },
+  "icon": {
+    "options": [
+      "Download",
+      "Print",
+      "ArrowNavLeft",
+      "ArrowNavRight",
+      "ArrowNavUp",
+      "Cross",
+      "MagnifyingGlass",
+      "Sun",
+      "Moon",
+      "GitHub",
+      "Figma",
+      "ExternalLink",
+      "Favicon",
+      "ChevronDown",
+      "ChevronUp",
+      "Check"
+    ],
+    "description": "Figma Instance#1258:11; a canonical Foundation icon.",
+    "control": {
+      "type": "select"
+    }
   },
+  "raised": {
+    "description": "Figma Raised=Off / On. Raised is available only for State=Default.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "toggled": {
+    "description": "Persistent Figma State=Toggled.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "pressedAppearance": {
+    "options": [
+      "ActivePressed",
+      "Toggled"
+    ],
+    "description": "Visual mapping of the physical press; semantic wrappers use Toggled only when Figma composes it literally.",
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "ariaLabel": {
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[ButtonIcon 1258:6254](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1258-6254)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [ButtonIcon 1258:6254](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1258-6254).\n\nThe component uses original Foundation SVGs as monochrome masks so the glyph follows the semantic color of each state. Hover and ActivePressed are real pointer states; toggled is the persistent state.\n\n</details>",
+        component: "Компактная кнопка с иконкой для действия или перехода по ссылке.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1258-6254\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -162,8 +191,11 @@ export const Sandbox: Story = {
     components: { DsButtonIcon },
     setup() {
       const toggled = ref(args.toggled)
+watchStoryArg(() => args.toggled, value => { toggled.value = value })
       const raised = ref(args.raised)
+watchStoryArg(() => args.raised, value => { raised.value = value })
       const pressedAppearance = ref(args.pressedAppearance)
+watchStoryArg(() => args.pressedAppearance, value => { pressedAppearance.value = value })
       const pointerDowns = ref(0)
       const clicks = ref(0)
       const toggleOnClick = ref(false)

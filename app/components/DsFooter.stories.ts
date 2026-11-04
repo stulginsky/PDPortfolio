@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { ref } from 'vue'
 import DsFooter from './DsFooter.vue'
 
 const meta = {
   title: 'Components/Footer',
   component: DsFooter,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[1094:6423](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6423)\n\n<details>\n<summary>Техническое описание</summary>\n\nFooter — DS [1094:6423](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6423).\n\n| Breakpoint | Layout |\n|---|---|\n| base (<410px) | Centred vertical stack |\n| min-410 (≥410px) | Centred horizontal row |\n\n</details>",
+        component: "Завершающий блок страницы.\n\n### Брейкпоинты\n\n- **До 410 px (base):** подписи и иконка расположены вертикально.\n- **От 410 px (min-410):** подписи и иконка расположены в одной строке.\n\nВ Sandbox меняйте ширину через панель viewport Storybook.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6423\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -20,20 +19,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: () => ({
     components: { DsFooter },
-    setup() {
-      const breakpoint = ref<'base' | 'min-410'>('base')
-      return { breakpoint }
-    },
-    template: `
-      <div style="display:grid;gap:32px;box-sizing:border-box;width:100%;padding:16px;">
-        <div style="display:flex;gap:8px;align-items:center;">
-          <button type="button" :aria-pressed="breakpoint === 'base'" @click="breakpoint = 'base'">Base</button>
-          <button type="button" :aria-pressed="breakpoint === 'min-410'" @click="breakpoint = 'min-410'">min-410</button>
-        </div>
-        <DsFooter :data-storybook-breakpoint="breakpoint" />
-      </div>
-    `,
+    template: '<DsFooter />',
   }),
 }

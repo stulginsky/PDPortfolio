@@ -11,16 +11,24 @@ import DsDropdownListItem from './DsDropdownListItem.vue'
 const meta = {
   title: 'Components/DropdownListSelector',
   component: DsDropdownListSelector,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: { type: 'General' },
   argTypes: {
-    type: { control: 'inline-radio', options: ['General', 'Filter'] },
-  },
+  "type": {
+    "options": [
+      "General",
+      "Filter"
+    ],
+    "control": {
+      "type": "inline-radio"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 1282:6724](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1282-6724)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownListSelector 1282:6724. Shared web surface for dropdown rows.\n\nFigma references Items = 3 | 4 and Type = General | Filter with Shadow/2nd in every variant.\nIn production, the default slot can contain any number of DsDropdownListItem rows.\nGeneral web menus hug the widest row and keep every option on one line. The Sandbox exposes\nthe nested row data without turning it into public Selector props.\n\n</details>",
+        component: "Общая оболочка списка пунктов меню или фильтра.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1282-6724\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -47,6 +55,14 @@ function renderList(items: string[], type: 'General' | 'Filter', width: number) 
       </div>
     `,
   })
+}
+
+export const Preview: Story = {
+  render: args => ({
+    components: { DsDropdownListSelector, DsDropdownListItem },
+    setup: () => ({ args, listItems }),
+    template: '<DsDropdownListSelector :type="args.type"><li v-for="(item, index) in listItems" :key="index"><DsDropdownListItem :label="item" appearance="Sm" /></li></DsDropdownListSelector>',
+  }),
 }
 
 export const Default: Story = {
@@ -86,6 +102,7 @@ const iconOptions = [
 ]
 
 export const Sandbox: StoryObj = {
+  tags: ['dev'],
   args: {
     itemsCount: 4,
     type: 'General',

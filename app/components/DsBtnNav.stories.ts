@@ -6,31 +6,50 @@ import DsBtnNav from './DsBtnNav.vue'
 const meta = {
   title: 'Components/BtnNav',
   component: DsBtnNav,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     direction: 'Left',
     tag: 'button',
     ariaLabel: 'Back',
   },
   argTypes: {
-    direction: {
-      control: 'inline-radio',
-      options: ['Left', 'Right', 'Up'],
-      description: 'Canonical Figma Direction property.',
-    },
-    tag: {
-      control: 'inline-radio',
-      options: ['button', 'a'],
-      description: 'Semantic native element.',
-    },
-    href: { control: 'text' },
-    ariaLabel: { control: 'text' },
+  "direction": {
+    "options": [
+      "Left",
+      "Right",
+      "Up"
+    ],
+    "description": "Canonical Figma Direction property.",
+    "control": {
+      "type": "inline-radio"
+    }
   },
+  "tag": {
+    "options": [
+      "button",
+      "a"
+    ],
+    "description": "Semantic native element.",
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "href": {
+    "control": {
+      "type": "text"
+    }
+  },
+  "ariaLabel": {
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[BtnNav 281:506](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=281-506)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [BtnNav 281:506](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=281-506). It composes `DsButtonIcon` with `raised` and the original `ArrowNavLeft`, `ArrowNavRight`, or `ArrowNavUp` Foundation asset. Hover and ActivePressed are native pointer states.\n\n</details>",
+        component: "Кнопка направленной навигации.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=281-506\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

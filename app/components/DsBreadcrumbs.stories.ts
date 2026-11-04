@@ -19,37 +19,51 @@ const children = [
 const meta = {
   title: 'Components/Breadcrumbs',
   component: DsBreadcrumbs,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     items: children.slice(0, 3),
     mode: 'Default',
     parent,
   },
   argTypes: {
-    items: {
-      control: 'object',
-      description: 'Visible child path; the final item is current and non-interactive. Parent is supplied separately.',
-    },
-    mode: {
-      control: 'inline-radio',
-      options: ['Default', 'Overflow'],
-      description: 'Overflow: below 768px only the current item remains; from 768px the final two remain. Earlier steps open through …. ',
-    },
-    parent: {
-      control: 'object',
-      description: 'Optional destination for the left parent-navigation button.',
-    },
-    select: { action: 'select' },
+  "items": {
+    "description": "Visible child path; the final item is current and non-interactive. Parent is supplied separately.",
+    "control": {
+      "type": "object"
+    }
   },
+  "mode": {
+    "options": [
+      "Default",
+      "Overflow"
+    ],
+    "description": "Overflow: below 768px only the current item remains; from 768px the final two remain. Earlier steps open through …. ",
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "parent": {
+    "description": "Optional destination for the left parent-navigation button.",
+    "control": {
+      "type": "object"
+    }
+  },
+  "select": {
+    "action": "select"
+  }
+},
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component: "<details>\n<summary>Техническое описание</summary>\n\nOne generic hierarchy component. It never renders navigation as placeholder links:\nselection is emitted through `select`, and the optional parent button emits `parent`.\n\n| Mode | Display |\n|---|---|\n| Default | The complete hierarchy |\n| Overflow | base: `… · current`; min-768: `… · previous · current`; earlier items open in the menu |\n\n</details>",
+        component: "Навигация по иерархии разделов с переходом к родителю и соседним элементам.",
       },
     },
   },
 } satisfies Meta<typeof DsBreadcrumbs>
+
+meta.parameters.docs.description.component =
+  "<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1097-4338\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>\n\n" + meta.parameters.docs.description.component
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -113,6 +127,7 @@ export const AllVariants: Story = {
 }
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: () => ({
     components: { DsBreadcrumbs },
     setup() {

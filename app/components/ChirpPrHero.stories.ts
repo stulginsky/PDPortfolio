@@ -8,24 +8,20 @@ import { getHeroBreakpoint, createHeroDraft } from './chirp-pr-hero.scene-contex
 const meta = {
   title: 'Compositions/Case heroes/Chirp-Pr-hero',
   component: ChirpPrHero,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: { title: content.hero.title, badge: content.hero.badge },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 1003:4914](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1003-4914)
+  parameters: { layout: 'fullscreen', docs: { description: { component: "Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1003-4914\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 
-<details><summary>Техническое описание</summary>
-
-Шесть mobile-first профилей. Вертикальная композиция до 1024px; desktop от min-1024. Оригинальные слои Figma, DS Roboto Flex wght500/YOPQ25 и Badge/HeroChirp. Pointer-driven параллакс, mobile-вступление, reduced motion. В Sandbox — X/Y reference, вязкость, скорость возврата, базовое смещение, амплитуда, направление вступления и включение анимации каждого слоя. Черновик сохраняется локально; JSON содержит все профили. Компонент подключён к странице /cases/chirp-product. Начальный серверный рендер выбирает геометрию и исходные ассеты по CSS/picture до запуска JavaScript, затем передаёт управление существующему runtime без скачка профиля.
-
-Общая шкала hero-motion: отклик100ms×вязкость, возврат600ms/скорость возврата после80ms без движения. Базовое смещение — физические px; JSON v2, старые черновики мигрируют.
-
-</details>
-` } } },
-} satisfies Meta<typeof ChirpPrHero>
+  } satisfies Meta<typeof ChirpPrHero>
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Preview: Story = {
+  render: args => ({ components: { ChirpPrHero }, setup: () => ({ args }), template: "<ChirpPrHero v-bind=\"args\" />" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { ChirpPrHeroSandbox },
     setup() { return { args } },

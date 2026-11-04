@@ -1,31 +1,67 @@
+import { computed as computedStoryModel } from 'vue'
+import { useArgs } from 'storybook/preview-api'
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import { expect, fn, userEvent, within } from 'storybook/test'
 import DsTopNavScrollResume from './DsTopNavScrollResume.vue'
+import DsTopNavScrollVitrina from './DsTopNavScrollVitrina.vue'
 
 const meta = {
-  title: 'Components/TopNavScroll/Resume',
+  title: 'Components/TopNavScroll',
   component: DsTopNavScrollResume,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: { place: 'Resume', ariaLabel: 'Навигация резюме', 'onUpdate:place': fn(), onAvatarClick: fn(), onProjects: fn(), onDownload: fn(), onPrint: fn() },
   argTypes: {
-    place: { control: 'inline-radio', options: ['Vitrina', 'Resume'], description: 'Выбранный таб; v-model:place.' },
-    ariaLabel: { control: 'text', description: 'Доступное имя навигации.' },
+  "place": {
+    "options": [
+      "Vitrina",
+      "Resume"
+    ],
+    "description": "Выбранный таб; v-model:place.",
+    "control": {
+      "type": "inline-radio"
+    }
   },
+  "ariaLabel": {
+    "description": "Доступное имя навигации.",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'fullscreen',
-    docs: { description: { component: "[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060)\n\n<details>\n<summary>Техническое описание</summary>\n\n[Figma TopNavScroll/Resume 1047:4060](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060).\n\n| Breakpoint | Раскладка |\n|---|---|\n| base <534px | Полный viewport без внешних отступов; reference 320×140; действия второй строкой через 16px; табы Fill равными долями |\n| min-534 534–767px | Полная ширина viewport; высота 82px; navigation Fill, actions Hug |\n| min-768 ≥768px | 394px без действий, 534px с действиями; высота 90px, верхний отступ 8px, radius 48px |\n\nAvatar-Sm 50×50; табы переключают Toggled без ActivePressed. До min-768 Hover табов отключён.\nDownload/Print: общий entrance из SiteNavResumeActions — fade + translateX(-8px), 300ms, delays 100/200ms; reduced motion отключает анимацию.\nEvents: update:place, avatar-click, projects, download, print. Слотов нет.\n\n</details>" } },
+    docs: { story: { inline: true }, description: { component: "Компактная навигация между проектами и резюме. Переключатель place меняет композицию; в режиме Resume доступны скачивание и печать резюме.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1047-4060\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } },
   },
 } satisfies Meta<typeof DsTopNavScrollResume>
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Preview: Story = {
+  name: 'Sandbox',
+  tags: ['dev'],
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsTopNavScrollResume, DsTopNavScrollVitrina },
+      setup() {
+        const model = computedStoryModel({ get: () => args.place, set: value => updateArgs({ place: value }) })
+        return { args, model }
+      },
+      template: '<div style="box-sizing:border-box;min-height:204px;padding-block:32px"><DsTopNavScrollResume v-if="model === \'Resume\'" v-bind="args" v-model:place="model" /><DsTopNavScrollVitrina v-else v-bind="args" v-model:place="model" /></div>',
+    }
+  },
+}
+
 export const Sandbox: Story = {
+  tags: ['!dev'],
   render: args => ({
     components: { DsTopNavScrollResume },
     setup() {
       const width = ref(320)
       const place = ref<'Vitrina' | 'Resume'>(args.place ?? 'Resume')
+watchStoryArg(() => args.place, value => { place.value = value ?? 'Resume' })
       const downloads = ref(0)
       const prints = ref(0)
       const avatarClicks = ref(0)

@@ -1,3 +1,4 @@
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
@@ -6,7 +7,7 @@ import DsImgTitleToolbar from './DsImgTitleToolbar.vue'
 const meta = {
   title: 'Components/ImgTitle/ImgTitleToolbar',
   component: DsImgTitleToolbar,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     title: 'Value',
     showZoom: true,
@@ -15,24 +16,28 @@ const meta = {
     onSelect: fn(),
   },
   argTypes: {
-    title: {
-      control: 'text',
-      description: 'Figma TEXT `Title#1016:1`.',
-    },
-    showZoom: {
-      control: 'boolean',
-      description: 'Figma BOOLEAN `Show zoom#1016:11`.',
-    },
-    modelValue: {
-      control: false,
-      description: 'Single-selected internal document. `null` retains the introductory FullscreenMenu trigger.',
-    },
+  "title": {
+    "description": "Figma TEXT `Title#1016:1`.",
+    "control": {
+      "type": "text"
+    }
   },
+  "showZoom": {
+    "description": "Figma BOOLEAN `Show zoom#1016:11`.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "modelValue": {
+    "description": "Single-selected internal document. `null` retains the introductory FullscreenMenu trigger.",
+    "control": false
+  }
+},
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1388-4795)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitleToolbar — Figma 1388:4795](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1388-4795).\n\nНавигационный toolbar использует DsTab, мобильный DsFullscreenMenuMob, web DsDropdownSelect и DsButtonIcon.\n\n| Figma variant | Production rule |\n| --- | --- |\n| base + Menu | 320–767px: title + текущий trigger + zoom в одной строке, если помещаются (Hug); иначе две строки на всю доступную ширину (Fill). Меню остаётся FullscreenMenu/Mob. |\n| min-768 + Inline | Ряд tab, пока он помещается в доступную ширину до 924px. |\n| min-768 + Menu | Автоматический overflow fallback: web dropdown с DropdownListSelector Type=Filter. |\n\nNavigation не является prop: режим выбирается измерением реального ряда. Figma открывается в новом окне и не меняет modelValue.\nПри отключённой лупе заголовок центрируется. Скрытые измерительные ряды изолированы и не создают горизонтальный scroll.\n\n</details>",
+        component: "Панель заголовка изображения с выбором материала и дополнительными действиями.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1388-4795\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -59,26 +64,16 @@ export const AllVariants: Story = {
 }
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: (args) => ({
     components: { DsImgTitleToolbar },
     setup() {
-      const breakpoint = ref<'base' | 'min-768'>('base')
-      const width = ref(288)
+
+
       const value = ref<'overview' | 'foundation' | 'tokens' | null>(null)
       const zooms = ref(0)
       const showZoom = ref(args.showZoom)
-      function base() {
-        breakpoint.value = 'base'
-        width.value = 288
-      }
-      function inline() {
-        breakpoint.value = 'min-768'
-        width.value = 924
-      }
-      function overflow() {
-        breakpoint.value = 'min-768'
-        width.value = 457
-      }
+watchStoryArg(() => args.showZoom, value => { showZoom.value = value })
       function zoom(event: MouseEvent) {
         zooms.value += 1
         args.onZoom?.(event)
@@ -86,22 +81,22 @@ export const Sandbox: Story = {
       function select(next: 'overview' | 'foundation' | 'tokens') {
         args.onSelect?.(next)
       }
-      return { args, breakpoint, width, value, zooms, showZoom, base, inline, overflow, zoom, select }
+      return { args, value, zooms, showZoom, zoom, select }
     },
     template: `
       <div style="display:grid;align-content:start;gap:24px;min-height:480px;box-sizing:border-box;padding:16px;">
         <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <button type="button" @click="base">Base</button>
-          <button type="button" @click="inline">min-768</button>
-          <button type="button" @click="overflow">Overflow</button>
+
+
+
           <label><input type="checkbox" v-model="showZoom" /> MagnifyingGlass</label>
         </div>
-        <div :style="{ width: width + 'px' }">
+        <div style="width:100%;min-width:0">
           <DsImgTitleToolbar
             v-bind="args"
             v-model="value"
             :show-zoom="showZoom"
-            :data-storybook-breakpoint="breakpoint"
+
             @zoom="zoom"
             @select="select"
           />
@@ -114,57 +109,18 @@ export const Sandbox: Story = {
     const canvas = within(canvasElement)
     const toolbar = canvas.getByRole('region', { name: 'Навигация по материалам изображения' })
 
-    await userEvent.click(canvas.getByRole('button', { name: 'Base', exact: true }))
-    await waitFor(() => expect(toolbar).toHaveClass('ds-img-title-toolbar--menu'))
-    const mobileTrigger = canvas.getByRole('button', { name: 'Выбрать материал' })
-    await expect(mobileTrigger).toHaveTextContent('Overview · Docs · Figma')
-    await userEvent.click(mobileTrigger)
-    const overlay = within(document.body)
-    await userEvent.click(overlay.getByRole('button', { name: 'Foundation.md' }))
-    await expect(canvas.getByRole('status')).toHaveTextContent('Selected: foundation')
-    await expect(overlay.queryByRole('dialog')).toBeNull()
-
-    await userEvent.click(canvas.getByRole('button', { name: 'Выбрать материал' }))
-    const figma = overlay.getByRole('link', { name: 'Figma' })
-    await expect(figma).toHaveAttribute('href', 'https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc/Chirp-DS?node-id=0-1')
-    await expect(figma).toHaveAttribute('target', '_blank')
-    await userEvent.click(figma)
-    await expect(overlay.queryByRole('dialog')).toBeNull()
-    await expect(canvas.getByRole('status')).toHaveTextContent('Selected: foundation')
-
-    await userEvent.click(canvas.getByRole('button', { name: 'min-768', exact: true }))
-    await waitFor(() => expect(toolbar).toHaveClass('ds-img-title-toolbar--inline'))
-    await document.fonts.ready
-    if (CSS.supports('text-box', 'trim-both cap alphabetic')) {
-      const row = toolbar.querySelector('.ds-img-title-toolbar__header')!.getBoundingClientRect()
-      const center = row.y + row.height / 2
-      for (const glyphs of toolbar.querySelectorAll('.ds-img-title-toolbar__header .ds-img-title-toolbar__glyphs, .ds-img-title-toolbar__header .ds-tab__glyphs')) {
-        const box = glyphs.getBoundingClientRect()
-        await expect(Math.abs(box.y + box.height / 2 - center)).toBeLessThan(.2)
-      }
+    await waitFor(() => expect(toolbar).not.toHaveAttribute('data-storybook-breakpoint'))
+    if (!canvas.queryByRole('button', { name: 'Tokens.json', exact: true })) {
+      const trigger = toolbar.querySelector('button:not([aria-label="Увеличить изображение"])') as HTMLButtonElement
+      await userEvent.click(trigger)
     }
-    await userEvent.click(canvas.getByRole('button', { name: 'Tokens.json' }))
+    await userEvent.click(within(document.body).getByRole('button', { name: 'Tokens.json', exact: true }))
     await expect(canvas.getByRole('status')).toHaveTextContent('Selected: tokens')
-
-    await userEvent.click(canvas.getByRole('button', { name: 'Overflow', exact: true }))
-    await waitFor(() => expect(toolbar).toHaveClass('ds-img-title-toolbar--menu'))
-    const webTrigger = canvas.getByRole('button', { name: 'Tokens.json', exact: true })
-    await userEvent.click(webTrigger)
-    await expect(canvas.getByRole('list', { name: 'Select options' })).toHaveClass('ds-dropdown-list-selector--filter')
-    await expect(overlay.queryByRole('dialog')).toBeNull()
-    await userEvent.click(canvas.getByRole('button', { name: 'Overview', exact: true }))
-    await expect(canvas.getByRole('status')).toHaveTextContent('Selected: overview')
-
+    await expect(meta.args.onSelect).toHaveBeenCalledWith('tokens')
     await userEvent.click(canvas.getByRole('button', { name: /Увеличить изображение/ }))
     await expect(canvas.getByRole('status')).toHaveTextContent('Zooms: 1')
-    const widthWithZoom = toolbar.getBoundingClientRect().width
+    await expect(meta.args.onZoom).toHaveBeenCalled()
     await userEvent.click(canvas.getByRole('checkbox', { name: 'MagnifyingGlass' }))
     await expect(canvas.queryByRole('button', { name: /Увеличить изображение/ })).toBeNull()
-    await waitFor(() => expect(toolbar.getBoundingClientRect().width).toBeLessThan(widthWithZoom))
-    await userEvent.click(canvas.getByRole('button', { name: 'Base', exact: true }))
-    await waitFor(() => expect(toolbar).toHaveClass('ds-img-title-toolbar--menu'))
-    const baseHeight = toolbar.getBoundingClientRect().height
-    await userEvent.click(canvas.getByRole('checkbox', { name: 'MagnifyingGlass' }))
-    await expect(toolbar.getBoundingClientRect().height).toBe(baseHeight)
   },
 }

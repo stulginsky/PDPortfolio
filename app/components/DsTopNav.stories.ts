@@ -1,3 +1,6 @@
+import { computed as computedStoryModel } from 'vue'
+import { useArgs } from 'storybook/preview-api'
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import { expect, fn, userEvent, within } from 'storybook/test'
@@ -6,7 +9,7 @@ import DsTopNav from './DsTopNav.vue'
 const meta = {
   title: 'Components/TopNav',
   component: DsTopNav,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     place: 'Vitrina',
     ariaLabel: 'Навигация портфолио',
@@ -15,21 +18,28 @@ const meta = {
     onPrint: fn(),
   },
   argTypes: {
-    place: {
-      control: 'inline-radio',
-      options: ['Vitrina', 'Resume'],
-      description: 'Текущее представление. Используйте v-model:place; активный таб повторно не переключается.',
-    },
-    ariaLabel: {
-      control: 'text',
-      description: 'Доступное имя навигации.',
-    },
+  "place": {
+    "options": [
+      "Vitrina",
+      "Resume"
+    ],
+    "description": "Текущее представление. Используйте v-model:place; активный таб повторно не переключается.",
+    "control": {
+      "type": "inline-radio"
+    }
   },
+  "ariaLabel": {
+    "description": "Доступное имя навигации.",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[Figma 1025:7335](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-7335)\n\n<details>\n<summary>Техническое описание</summary>\n\nTopNav — [Figma 1025:7335](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-7335), сверка 2026-10-01.\n\nНавигация полной шапки из готовых Tab и ButtonIcon. Не sticky-шапка: TopNavScroll — отдельные компоненты.\n\n| Breakpoint | Vitrina | Resume |\n|---|---|---|\n| base (<570px) | Равные табы на доступной ширине, поля 16px, gap 24px | Download/Print ниже по центру, gap 32px; высота 132px |\n| min-570 (≥570px) | Табы 288px по центру | Действия справа через 24px; высота 50px |\n\nПодписи: **Проекты**, **Резюме**. Активный таб — Toggled, без ActivePressed при переключении.\nDownload/Print — разовые действия; не меняют выбранное представление.\n\nПоявление действий как в SiteNavResumeActions: fade + сдвиг слева на 8px за 300ms, задержки 100/200ms. Повторяется при переходе «Проекты → Резюме»; reduced motion отключает эффект.\n\n**Events:** update:place — запрос переключения; download / print — MouseEvent, действие выполняет потребитель.\nСлотов нет. PDF, маршрутизация и печать страницы не зашиты в компонент.\n\n</details>",
+        component: "Переключение между проектами и резюме с действиями скачивания и печати.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-7335\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -38,11 +48,29 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Preview: Story = {
+  name: 'Sandbox',
+  tags: ['dev'],
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsTopNav },
+      setup() {
+        const model = computedStoryModel({ get: () => args.place, set: value => updateArgs({ place: value }) })
+        return { args, model }
+      },
+      template: '<div style="box-sizing:border-box;width:100%;padding:32px"><DsTopNav v-bind="args" v-model:place="model" /></div>',
+    }
+  },
+}
+
 export const Sandbox: Story = {
+  tags: ['!dev'],
   render: (args) => ({
     components: { DsTopNav },
     setup() {
       const place = ref<'Vitrina' | 'Resume'>(args.place ?? 'Vitrina')
+watchStoryArg(() => args.place, value => { place.value = value ?? 'Vitrina' })
       const width = ref(320)
       const downloads = ref(0)
       const prints = ref(0)

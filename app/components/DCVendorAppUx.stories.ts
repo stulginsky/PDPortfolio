@@ -6,20 +6,19 @@ import content from '../../content/cases/dc-vendor-app-ux.json'
 import './dc-vendor-app-ux.sandbox.css'
 
 const meta = {
-  title: 'Compositions/Showcase cards/DCVendorApp-UX', component: DCVendorAppUx, tags:['autodocs'],
+  title: 'Compositions/Showcase cards/DCVendorApp-UX', component: DCVendorAppUx, tags:['autodocs', '!dev'],
   args:{title:content.card.title,subtitle:content.card.subtitle,href:'#'},
-  parameters:{layout:'fullscreen',docs:{description:{component:`
-[Figma 1580:3390](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1580-3390)
+  parameters:{layout:'fullscreen',docs:{description:{component:"Интерактивная карточка кейса «DCVendorApp-UX» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1580-3390\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
 
-<details><summary>Техническое описание</summary>
-
-Девять оригинальных слоёв; base/min-768 и Default/Hover/ActivePressed. Ширина100%/max430, высота500 ниже462/532 от462. Редактор X/Y/Width/Height/Rotation, сохранение черновика и JSON. Порядок бейджей сохраняет различие исходных breakpoint. Локальный скелетон; CSS выбирает начальную геометрию до JS. Progressive blur использует принятый адаптер карточек. Переход в Sandbox отключён.
-
-</details>`}}},
-} satisfies Meta<typeof DCVendorAppUx>
+  } satisfies Meta<typeof DCVendorAppUx>
 export default meta
 type Story=StoryObj<typeof meta>
+export const Preview: Story = {
+  render: args => ({ components: { DCVendorAppUx }, setup: () => ({ args }), template: "<div style=\"width:100%;max-width:430px\" @click.capture.prevent><DCVendorAppUx v-bind=\"args\" /></div>" }),
+}
+
 export const Sandbox:Story={
+  tags: ['dev'],
   render:args=>({components:{DCVendorAppUxSandbox},setup:()=>({args}),template:'<DCVendorAppUxSandbox :card-args="args" />'}),
   play:async({canvas,canvasElement})=>{
     const card=canvas.getByRole('link')

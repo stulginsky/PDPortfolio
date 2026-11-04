@@ -1,3 +1,5 @@
+import { computed as computedStoryModel } from 'vue'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect } from 'storybook/test'
 import DsDropdownFilter from './DsDropdownFilter.vue'
@@ -9,7 +11,7 @@ import DsDropdownFilter from './DsDropdownFilter.vue'
 const meta = {
   title: 'Components/DropdownFilter',
   component: DsDropdownFilter,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     items: ['Gamedev', 'Видео', 'Упаковка'],
     modelValue: null,
@@ -17,15 +19,37 @@ const meta = {
     lockInitialWidth: false,
   },
   argTypes: {
-    modelValue: { control: 'text', description: 'Currently selected overflow filter' },
-    showIcons: { control: 'boolean', description: 'Shows canonical Favicon in standalone list rows.' },
-    lockInitialWidth: { control: 'boolean', description: 'Locks the Default trigger width when labels vary in a composed filter row.' },
+  "modelValue": {
+    "options": [
+      null,
+      "Gamedev",
+      "Видео",
+      "Упаковка"
+    ],
+    "description": "Выбранная категория. null — выбор отсутствует.",
+    "control": {
+      "type": "select"
+    }
   },
+  "showIcons": {
+    "description": "Shows canonical Favicon in standalone list rows.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "lockInitialWidth": {
+    "description": "Locks the Default trigger width when labels vary in a composed filter row.",
+    "control": {
+      "type": "boolean"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
+      story: { inline: true },
       description: {
-        component: "[Figma 1016:6638](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-6638)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownFilter-web 1016:6638. Overflow filter for 1024–1279px viewport range.\nContains 3 hidden categories: Gamedev, Видео, Упаковка.\n\n| Trigger label | Condition |\n|---|---|\n| \"Gamedev & more\" | No overflow category selected |\n| Category name | Overflow category selected; closed trigger retains Toggled visual |\n\n</details>",
+        component: "Выбор категории из выпадающего списка дополнительных фильтров.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-6638\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -33,6 +57,20 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const Preview: Story = {
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsDropdownFilter },
+      setup() {
+        const model = computedStoryModel({ get: () => args.modelValue, set: value => updateArgs({ modelValue: value }) })
+        return { args, model }
+      },
+      template: '<div :style="{ paddingBottom: `${(args.items?.length ?? 3) * 48 + 20}px` }"><DsDropdownFilter v-bind="args" v-model="model" /></div>',
+    }
+  },
+}
 
 export const Default: Story = { args: { modelValue: null } }
 

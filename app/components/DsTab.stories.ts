@@ -6,7 +6,7 @@ import DsTab from './DsTab.vue'
 const meta = {
   title: 'Components/Tab',
   component: DsTab,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     tabLabel: 'TabValue',
     iconRight: false,
@@ -14,17 +14,43 @@ const meta = {
     toggled: false,
   },
   argTypes: {
-    tabLabel: { control: 'text', description: 'Figma TEXT property TabLabel' },
-    iconRight: { control: 'boolean', description: 'Figma property IconRight: Off / On' },
-    toolbar: { control: 'inline-radio', options: ['Main', 'Image'], description: 'Figma property Toolbar' },
-    toggled: { control: 'boolean', description: 'Controlled state; maps to Figma State=Toggled.' },
-    click: { action: 'click' },
+  "tabLabel": {
+    "description": "Figma TEXT property TabLabel",
+    "control": {
+      "type": "text"
+    }
   },
+  "iconRight": {
+    "description": "Figma property IconRight: Off / On",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "toolbar": {
+    "options": [
+      "Main",
+      "Image"
+    ],
+    "description": "Figma property Toolbar",
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "toggled": {
+    "description": "Controlled state; maps to Figma State=Toggled.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "click": {
+    "action": "click"
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Tab 33:1544](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1544)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Tab 33:1544](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1544).\n\nDefault and Hover are real pointer states. For this local tab switcher, `ActivePressed` remains only a Figma reference; `toggled` is the controlled persistent state and sets `aria-current=\"page\"`.\n\nThe icon is the original Figma ExternalLink asset.\n\n</details>",
+        component: "Вкладка для переключения представления или раздела.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1544\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

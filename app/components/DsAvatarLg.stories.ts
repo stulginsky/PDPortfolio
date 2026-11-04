@@ -5,12 +5,12 @@ import DsAvatarLg from './DsAvatarLg.vue'
 const meta = {
   title: 'Components/Avatar-Lg',
   component: DsAvatarLg,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Avatar-Lg 124:563](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=124-563)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Avatar-Lg 124:563](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=124-563). Static 120×120 author portrait with a 2px `border/default` stroke. The registered local `AvatarPortrait` asset is fixed by the component; it has no public props or interaction states.\n\n</details>",
+        component: "Крупный портрет автора для полной шапки страницы.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=124-563\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

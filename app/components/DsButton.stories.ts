@@ -1,3 +1,4 @@
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect } from 'storybook/test'
 import { ref } from 'vue'
@@ -6,7 +7,7 @@ import DsButton from './DsButton.vue'
 const meta = {
   title: 'Components/Button',
   component: DsButton,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     text: 'Button',
     icon: 'Favicon',
@@ -17,45 +18,89 @@ const meta = {
     tag: 'button',
   },
   argTypes: {
-    text: {
-      control: 'text',
-      description: 'Figma Text#968:17.',
-    },
-    icon: {
-      control: 'select',
-      options: ['Favicon', 'ChevronDown', 'ChevronUp', 'ExternalLink'],
-      description: 'Figma Icon#968:0; used only while IconRight=On.',
-    },
-    iconRight: {
-      control: 'boolean',
-      description: 'Figma IconRight=Off / On.',
-    },
-    raised: {
-      control: 'boolean',
-      description: 'Figma Raised=Off / On; only the Default surface is raised.',
-    },
-    toggled: {
-      control: 'boolean',
-      description: 'Persistent Figma State=Toggled.',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Native safety state; no separate Figma variant exists.',
-    },
-    tag: {
-      control: 'inline-radio',
-      options: ['button', 'a'],
-    },
-    href: { control: 'text' },
-    ariaLabel: { control: 'text' },
-    ariaControls: { control: 'text' },
-    ariaExpanded: { control: 'boolean' },
+  "text": {
+    "description": "Текст кнопки.",
+    "control": {
+      "type": "text"
+    }
   },
+  "icon": {
+    "options": [
+      "Favicon",
+      "ChevronDown",
+      "ChevronUp",
+      "ExternalLink"
+    ],
+    "description": "Иконка справа от текста. Видна, когда включено iconRight.",
+    "control": {
+      "type": "select"
+    }
+  },
+  "iconRight": {
+    "description": "Показывает иконку справа от текста.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "raised": {
+    "description": "Добавляет тень в исходном состоянии. Наведите указатель, чтобы увидеть переход.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "toggled": {
+    "description": "Включает устойчивое выбранное состояние.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "disabled": {
+    "description": "Отключает взаимодействие с кнопкой.",
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "tag": {
+    "name": "tag — кнопка или ссылка",
+    "options": [
+      "button",
+      "a"
+    ],
+    "description": "button — кнопка действия; a — ссылка на адрес из href. Меняет HTML-элемент и поведение, внешний вид сохраняется.",
+    "control": {
+      "type": "inline-radio"
+    }
+  },
+  "href": {
+    "description": "Адрес перехода при tag=a.",
+    "control": {
+      "type": "text"
+    }
+  },
+  "ariaLabel": {
+    "description": "Доступное название для скринридера. Внешний вид не меняется.",
+    "control": {
+      "type": "text"
+    }
+  },
+  "ariaControls": {
+    "description": "ID управляемого элемента. Внешний вид не меняется.",
+    "control": {
+      "type": "text"
+    }
+  },
+  "ariaExpanded": {
+    "description": "Сообщает скринридеру, раскрыт ли управляемый элемент. Само по себе ничего не раскрывает.",
+    "control": {
+      "type": "boolean"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Button 968:5914](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-5914)\n\n<details>\n<summary>Техническое описание</summary>\n\nFigma [Button 968:5914](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-5914). `Raised` exists only for `State=Default`; hover and physical press are live DOM states, and `toggled` is controlled persistent state.\n\n</details>",
+        component: "Кнопка действия или перехода по ссылке. Свойства ниже позволяют менять текст, иконку и состояние.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-5914\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -188,6 +233,7 @@ export const Sandbox: Story = {
     components: { DsButton },
     setup() {
       const toggled = ref(args.toggled)
+watchStoryArg(() => args.toggled, value => { toggled.value = value })
       return { args, toggled }
     },
     template: `

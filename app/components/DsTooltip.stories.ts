@@ -12,25 +12,42 @@ import DsTooltip from './DsTooltip.vue'
 const meta = {
   title: 'Components/Tooltip',
   component: DsTooltip,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     label: 'Tooltip',
     pointer: 'Top',
   },
   argTypes: {
-    visible: { control: 'boolean', description: 'Плавное появление и скрытие за 300 мс. Компонент остаётся смонтированным.' },
-    label: { control: 'text', description: 'Tooltip text (Text#324:8)' },
-    pointer: {
-      control: 'inline-radio',
-      options: ['Top', 'Bottom', 'Left', 'Right'],
-      description: 'Arrow direction (Pointer variant)',
-    },
+  "visible": {
+    "description": "Плавное появление и скрытие за 300 мс. Компонент остаётся смонтированным.",
+    "control": {
+      "type": "boolean"
+    }
   },
+  "label": {
+    "description": "Tooltip text (Text#324:8)",
+    "control": {
+      "type": "text"
+    }
+  },
+  "pointer": {
+    "options": [
+      "Top",
+      "Bottom",
+      "Left",
+      "Right"
+    ],
+    "description": "Arrow direction (Pointer variant)",
+    "control": {
+      "type": "inline-radio"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 324:2111](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=324-2111)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Tooltip 324:2111. 4 pointer directions, DS/Body/sm (14px), accent/plum bg, text/inverse, Shadow/2nd.\nNon-interactive — parent controls visibility.\n\n</details>",
+        component: "Короткая поясняющая подсказка рядом с элементом интерфейса.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=324-2111\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

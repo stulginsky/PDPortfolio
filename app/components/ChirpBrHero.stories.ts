@@ -5,22 +5,19 @@ import ChirpBrHeroSandbox from './ChirpBrHeroSandbox.vue'
 import content from '../../content/cases/chirp-brand.json'
 import {createHeroDraft,getHeroBreakpoint} from './chirp-br-hero.scene-context'
 const meta={
- title:'Compositions/Case heroes/Chirp-Br-hero',component:ChirpBrHero,tags:['autodocs'],
+ title:'Compositions/Case heroes/Chirp-Br-hero',component:ChirpBrHero,tags:['autodocs', '!dev'],
  args:{role:content.hero.role,focus:content.hero.focus},
- parameters:{layout:'fullscreen',docs:{description:{component:`
-[Figma1464:7870](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1464-7870)
+ parameters:{layout:'fullscreen',docs:{description:{component:"Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1464-7870\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
 
-CSS selects the original responsive scene before JavaScript. Only the selected profile requests its original assets. Local loading shimmer waits for image decode; RoleFocus remains available. Mounted handover removes initial alternatives without a geometry change.\n\n<details><summary>Техническое описание</summary>
-
-Шесть mobile-first профилей. Playfair/PT Sans локально, Role-Focus из DS. Оригинальные SVG и изображения, исходные преобразования и порядок слоёв. Пробный параллакс, вступление после загрузки и reduced motion. Sandbox: X/Y исходного Figma reference, вязкость, скорость возврата, базовое смещение, амплитуда, направление вступления, выключатель слоя, сбросы, локальные черновики и JSON. Общий локальный кейс использует тот же компонент; публикация не выполняется. Все шесть вариантов синхронизированы с Figma03.11.2026; Role-Focus вертикальный в base/min-768 и горизонтальный от1024.
-
-Общая шкала hero-motion: отклик100ms×вязкость, возврат600ms/скорость возврата после80ms без движения. Базовое смещение — физические px; JSON v2, старые черновики мигрируют.
-
-</details>`}}},
-} satisfies Meta<typeof ChirpBrHero>
+  } satisfies Meta<typeof ChirpBrHero>
 export default meta
 type Story=StoryObj<typeof meta>
+export const Preview: Story = {
+  render: args => ({ components: { ChirpBrHero }, setup: () => ({ args }), template: "<ChirpBrHero v-bind=\"args\" />" }),
+}
+
 export const Sandbox:Story={
+  tags: ['dev'],
  render:args=>({components:{ChirpBrHeroSandbox},setup:()=>({args}),template:'<ChirpBrHeroSandbox :hero-args="args" />'}),
  play:async({canvas,canvasElement})=>{
   if(new URLSearchParams(window.location.search).get('embed')==='true')return

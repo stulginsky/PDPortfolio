@@ -4,16 +4,11 @@ import {computed,ref} from 'vue'
 import BlackGold from './BlackGold.vue'
 
 const meta={
- title:'Compositions/Showcase cards/BlackGold',component:BlackGold,tags:['autodocs'],
- parameters:{layout:'padded',docs:{description:{component:`Анонс кейса Black Gold ONLINE. Карточка не ведёт на страницу; «Скоро» открывает черновик письма. [Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3495-2896).
-
-Получатель: **stulginsky@gmail.com**. Тема: **Сообщите о новом кейсе**.
-
-> Привет, Константин! Очень хочу посмотреть новый кейс Black Gold ONLINE. Сообщите о публикации. Спасибо.
-
-Название автоматически подставляется из карточки. Tooltip: задержка100мс, переход300мс. В Preview запуск почты перехвачен. В Sandbox переключатель разрешает системный mailto; по умолчанию выключен. Размеры по общему контракту: до430px, высота500/532px.`}}},
+ title:'Compositions/Showcase cards/BlackGold',component:BlackGold,tags:['autodocs', '!dev'],
+ parameters:{layout:'padded',docs:{description:{component:"Интерактивная карточка кейса «BlackGold» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3495-2896\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
  args:{onSubscribe:fn()},
-} satisfies Meta<typeof BlackGold>
+
+  } satisfies Meta<typeof BlackGold>
 export default meta
 type Story=StoryObj<typeof meta>
 export const Preview:Story={
@@ -43,6 +38,7 @@ export const Preview:Story={
  },
 }
 export const Sandbox:Story={
+  tags: ['dev'],
  render:args=>({components:{BlackGold},setup(){
   const openMailClient=ref(false)
   const bindings=computed(()=>({...args,onSubscribe(event:MouseEvent){if(!openMailClient.value)event.preventDefault();args.onSubscribe?.(event)}}))

@@ -6,13 +6,15 @@ import manifest from '../../public/cases/chirp-design-system/overview/manifest.j
 const meta = {
   title: 'Compositions/Case media/DSOverview',
   component: DSOverview,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   parameters: { layout: 'fullscreen', docs: { description: { component:
-    'Case-specific Figma frame781:3508. Updated source: Chirp-DS40002070:3159,50 original supplied SVGs. Width≤924px, gap32px,3 columns≥1280 /2≥768 /1 below768. Palettes grouped first, then Logotype on narrow layouts; desktop source columns preserved; intrinsic proportions; no background baked into media. Toolbar and full case are separate compositions.' } } },
-} satisfies Meta<typeof DSOverview>
+    "Обзор элементов дизайн-системы Chirp." } } },
+
+  } satisfies Meta<typeof DSOverview>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: () => ({
     components: { DSOverview },
     template: '<div style="padding:32px 16px 48px;background:var(--case-image-preview-web);display:flex;justify-content:center"><DSOverview /></div>',

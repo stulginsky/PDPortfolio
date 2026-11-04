@@ -13,26 +13,41 @@ import DsFilter from './DsFilter.vue'
 const meta = {
   title: 'Components/Filter',
   component: DsFilter,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     label: 'Продукт',
     toggled: false,
     disabled: false,
   },
   argTypes: {
-    label: { control: 'text', description: 'Filter label text (Text-filter#182:0)' },
-    toggled: {
-      control: 'boolean',
-      description: 'Toggled/Selected state (aria-pressed=true)',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    disabled: { control: 'boolean' },
+  "label": {
+    "description": "Filter label text (Text-filter#182:0)",
+    "control": {
+      "type": "text"
+    }
   },
+  "toggled": {
+    "description": "Toggled/Selected state (aria-pressed=true)",
+    "table": {
+      "defaultValue": {
+        "summary": "false"
+      }
+    },
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "disabled": {
+    "control": {
+      "type": "boolean"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 43:867](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=43-867)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS Filter 43:867. Portfolio category selection chip.\n\n| State | Trigger | Surface | Text |\n|---|---|---|---|\n| Default | — | transparent | text/action (accent/aubergine) |\n| Hover | :hover | surface/action-hover | text/default |\n| ActivePressed | Figma reference; not rendered for local selection | — | — |\n| Toggled | prop toggled=true | surface/action-toggled | text/inverse |\n| Disabled | prop disabled=true | — | text/muted |\n\n</details>",
+        component: "Переключатель категории в списке фильтров.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=43-867\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

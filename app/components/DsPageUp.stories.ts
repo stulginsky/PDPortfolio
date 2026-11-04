@@ -6,7 +6,7 @@ import DsPageUp from './DsPageUp.vue'
 const meta = {
   title: 'Components/PageUp',
   component: DsPageUp,
-  tags: ['autodocs'],
+  tags: ['!autodocs', '!dev'],
   argTypes: {
     click: { action: 'click' },
   },
@@ -14,7 +14,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[PageUp 1094:6509](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6509)\n\n<details>\n<summary>Техническое описание</summary>\n\nИсточник: Figma component [PageUp 1094:6509](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6509).\n\nКомпонент фиксирует оболочку 98×98 в правом нижнем углу viewport и композиционно использует `DsBtnNav` с `Direction=Up`. У него нет props состояния: родитель условно монтирует PageUp из того же источника видимости компактной шапки, что и Avatar-Sm, и передаёт один обработчик прокрутки через `@click`.\n\n</details>",
+        component: "Кнопка возврата к началу страницы.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1094-6509\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

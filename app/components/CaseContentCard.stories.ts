@@ -15,10 +15,11 @@ const examples=[
  ['190:1524','249:4673','','190:1527','190:1528'],
 ].map(([frame,image,label,title,body])=>{const m=content.page.media.find(m=>m.node===image)!;return {frame,src:m.src,eyebrow:label?nodes[label]:undefined,title:nodes[title],body:nodes[body],width:754,height:450}})
 const meta={
- title:'Components/CaseContentCard',component:CaseContentCard,tags:['autodocs'],
+ title:'Components/CaseContentCard',component:CaseContentCard,tags:['autodocs', '!dev'],
  args:{title:nodes['191:1753'],body:nodes['191:1754'],eyebrow:nodes['191:1752'],src:fixed.src,width:754,height:450},
- parameters:{layout:'padded',docs:{description:{component:'Две колонки от790px контейнера (вьюпорт934), три от1296px (1440). Base до544px; оформленные карточки368–852px. Рамка изображения:754:450, Base544:342; оригинал заполняет её без искажения. Пустой слот подписи сохраняет32px в рамке и26px в Base. Последняя карточка центрируется с шириной своих соседей. Крупная типографика от1776px контейнера (1920). [Контракт](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3177-2103).'}}},
-} satisfies Meta<typeof CaseContentCard>
+ parameters:{layout:'padded',docs:{description:{component:"Карточка содержимого кейса с изображением, заголовком и текстом.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3177-2103\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
+
+  } satisfies Meta<typeof CaseContentCard>
 export default meta
 type Story=StoryObj<typeof meta>
 const verify=async({canvasElement}:{canvasElement:HTMLElement})=>{
@@ -39,7 +40,8 @@ const verify=async({canvasElement}:{canvasElement:HTMLElement})=>{
 export const Compact:Story={name:'Base',render:args=>({components:{CaseContentCard},setup:()=>({args}),template:'<div class="case-content-layout" style="max-width:544px"><div class="case-content-grid"><CaseContentCard v-bind="args" /></div></div>'}),play:verify}
 export const Fixed:Story={name:'Two Columns',render:args=>({components:{CaseContentCard},setup:()=>({args}),template:'<div class="case-content-layout"><div class="case-content-grid case-content-grid--two"><CaseContentCard v-for="i in 2" :key="i" v-bind="args" /></div></div>'}),play:verify}
 export const Proportional:Story={name:'Three Columns',render:args=>({components:{CaseContentCard},setup:()=>({args}),template:'<div class="case-content-layout"><div class="case-content-grid"><CaseContentCard v-for="i in 3" :key="i" v-bind="args" /></div></div>'}),play:verify}
-export const Sandbox:Story={...Proportional}
+export const Sandbox: Story = {
+  tags: ['dev'],...Proportional}
 export const ExistingGrid:Story={
  parameters:{layout:'fullscreen'},
  render:()=>({components:{CaseContentCard},setup:()=>({examples}),template:'<div class="case-card-demo"><div class="case-content-layout"><div class="case-content-grid case-content-grid--two"><CaseContentCard v-for="item in examples.slice(0,4)" :key="item.frame" v-bind="item" /></div></div><div class="case-content-layout"><div class="case-content-grid"><CaseContentCard v-for="item in examples.slice(4)" :key="item.frame" v-bind="item" /></div></div></div>'}),

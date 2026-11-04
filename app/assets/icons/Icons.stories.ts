@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import check from './check.svg'
 import arrowNavLeft from './arrow-nav-left.svg'
 import arrowNavRight from './arrow-nav-right.svg'
 import arrowNavUp from './arrow-nav-up.svg'
@@ -16,6 +17,7 @@ import magnifyingGlass from './magnifying-glass.svg'
 import sun from './sun.svg'
 
 const icons = [
+  { name: 'Check', src: check },
   { name: 'Download', src: download },
   { name: 'Print', src: print },
   { name: 'ArrowNavLeft', src: arrowNavLeft },
@@ -35,12 +37,12 @@ const icons = [
 
 const meta = {
   title: 'Foundation/Icons',
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: `Original SVG assets from the Figma [Icons section](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=33-1944).\n\nThe catalog is a Foundation asset inventory, not a replacement for a component API.`,
+        component: "Оригинальные SVG-ассеты со страницы <a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3624-411\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>.",
       },
     },
   },
@@ -56,7 +58,7 @@ export const Catalog: Story = {
       <main style="display:grid;gap:24px;padding:32px;background:var(--surface-default)">
         <header style="display:grid;gap:4px">
           <h1 style="margin:0">Icons</h1>
-          <p style="margin:0">15 original SVG assets from Figma</p>
+          <p style="margin:0">{{ icons.length }} original SVG assets from Figma</p>
         </header>
         <section aria-label="Icon catalog" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(144px,1fr));gap:12px">
           <article v-for="icon in icons" :key="icon.name" style="display:grid;justify-items:center;gap:12px;padding:20px 12px;border:1px solid var(--border-default);background:var(--surface-default)">

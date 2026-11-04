@@ -6,27 +6,44 @@ import DsBreadcrumbsItem from './DsBreadcrumbsItem.vue'
 const meta = {
   title: 'Components/BreadcrumbsItem',
   component: DsBreadcrumbsItem,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     label: 'Product discovery',
     showDot: true,
     current: false,
   },
   argTypes: {
-    label: { control: 'text' },
-    showDot: { control: 'boolean' },
-    current: { control: 'boolean' },
-    click: { action: 'click' },
+  "label": {
+    "control": {
+      "type": "text"
+    }
   },
+  "showDot": {
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "current": {
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "click": {
+    "action": "click"
+  }
+},
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component: "<details>\n<summary>Техническое описание</summary>\n\nOne Figma breadcrumb step. It owns its 8 px label-to-dot gap and 8 px trailing spacing; composition controls real navigation through `click`.\n\n</details>",
+        component: "Отдельный элемент навигационной цепочки.",
       },
     },
   },
 } satisfies Meta<typeof DsBreadcrumbsItem>
+
+meta.parameters.docs.description.component =
+  "<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=317-2055\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>\n\n" + meta.parameters.docs.description.component
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -6,17 +6,33 @@ import { heroBreakpoints, heroReferences, getHeroBreakpoint } from './dc-vendor-
 import content from '../../content/cases/dc-vendor-app-ux.json'
 
 const meta = {
- title: 'Compositions/Case heroes/DCVendorApp-UX-hero', component: DCVendorAppUxHero, tags: ['autodocs'],
- argTypes: { breakpoint: { control: 'inline-radio', options: heroBreakpoints, description: 'Figma profile. Sandbox follows viewport automatically.' } },
- parameters: { layout:'fullscreen', docs:{description:{component:'[Figma 1341:7217](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1341-7217). Six proportional profiles, original kitchen/bag/phone layers and their reflections, outlined SVG Title and accessible generated text. Sandbox: shared pointer/touch motion, idle return, mobile intro, reduced motion, decimal controls, reset and JSON v2. Integrated into the UX case. Loading: early original Title after independent decode/high priority; warm HSL-derived shimmer; remaining scene reveals atomically.'}}},
+ title: 'Compositions/Case heroes/DCVendorApp-UX-hero', component: DCVendorAppUxHero, tags: ['autodocs', '!dev'],
+ argTypes: {
+  "breakpoint": {
+    "options": [
+      "base",
+      "min-768",
+      "min-1024",
+      "min-1280",
+      "min-1440",
+      "min-1920"
+    ],
+    "description": "Figma profile. Sandbox follows viewport automatically.",
+    "control": {
+      "type": "inline-radio"
+    }
+  }
+},
+ parameters: { layout:'fullscreen', docs:{description:{component:"Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1341-7217\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
 } satisfies Meta<typeof DCVendorAppUxHero>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Preview:Story = {
- args:{breakpoint:'base'},tags:['!dev'],
- render:args=>({components:{DCVendorAppUxHero},setup:()=>({args,heroReferences}),template:'<div :style="{width:heroReferences[args.breakpoint || \'base\'].width+\'px\',maxWidth:\'100%\'}"><DCVendorAppUxHero v-bind="args" /></div>'}),
+ tags: ['!dev'],
+ render:args=>({components:{DCVendorAppUxHero},setup:()=>({args,heroReferences}),template:'<DCVendorAppUxHero v-bind="args" />'}),
 }
 export const Sandbox:Story = {
+  tags: ['dev'],
  argTypes:{breakpoint:{control:false}},
  render:()=>({components:{DCVendorAppUxHeroSandbox},template:'<DCVendorAppUxHeroSandbox />'}),
  play:async({canvas,canvasElement})=>{

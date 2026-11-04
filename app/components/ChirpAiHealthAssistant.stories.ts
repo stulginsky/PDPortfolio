@@ -7,22 +7,19 @@ import cards from '../../content/home-cards.json'
 
 const meta = {
   title: 'Compositions/Showcase cards/Chirp AI health assistant',
-  component: ChirpAiHealthAssistant, tags: ['autodocs'],
+  component: ChirpAiHealthAssistant, tags: ['autodocs', '!dev'],
   args: { title: cards[0]!.title, subtitle: cards[0]!.subtitle, badges: cards[0]!.badges.split(',').map(x => x.trim()), href: cards[0]!.href },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 815:2062](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2062)
+  parameters: { layout: 'fullscreen', docs: { description: { component: "Интерактивная карточка кейса «Chirp AI health assistant» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2062\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 
-<details>
-<summary>Техническое описание</summary>
-
-Base <768px: reference 264×500. Min-768: reference 430×532. Реальные Default/Hover/ActivePressed, 300ms ease-out; press 150ms. Touch без Hover. Reduced motion отключает переходы. DsBadge и исходные изображения Figma. Согласованное приближение progressive blur: один blur с градиентной маской. Ссылка ведёт в кейс; Sandbox предотвращает переход для проверки анимации. Выбор ширины не подменяет viewport breakpoint.
-
-</details>
-` } } },
-} satisfies Meta<typeof ChirpAiHealthAssistant>
+  } satisfies Meta<typeof ChirpAiHealthAssistant>
 export default meta
 type Story = StoryObj<typeof meta>
+export const Preview: Story = {
+  render: args => ({ components: { ChirpAiHealthAssistant }, setup: () => ({ args }), template: "<div style=\"width:100%;max-width:430px\" @click.capture.prevent><ChirpAiHealthAssistant v-bind=\"args\" /></div>" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { ChirpAiHealthAssistantSandbox },
     setup() { return { args } },

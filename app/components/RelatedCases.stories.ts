@@ -7,29 +7,63 @@ import RelatedCasesSandbox from './RelatedCasesSandbox.vue'
 const meta = {
   title: 'Compositions/RelatedCases',
   component: RelatedCases,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: { ariaLabel: 'Другие кейсы', previousLabel: 'Предыдущие кейсы', nextLabel: 'Следующие кейсы' },
   argTypes: {
-    cardNames: { control: 'object', description: 'Explicit ordered production component names; omitted keeps the original Chirp catalog.' },
-    currentCaseHref: { control: 'select', options: ['', '/cases/chirp-product', '/cases/chirp-ux', '/cases/chirp-brand', '/cases/chirp-design-system', '/cases/dc-vendor-app-pr', '/cases/dc-vendor-app-ux'], description: 'Текущий кейс исключается из ленты. Пустое значение — полный каталог.' },
-    ariaLabel: { control: 'text', description: 'Доступное название области ленты.' },
-    previousLabel: { control: 'text', description: 'Доступное название стрелки Left.' },
-    nextLabel: { control: 'text', description: 'Доступное название стрелки Right.' },
+  "cardNames": {
+    "description": "Explicit ordered production component names; omitted keeps the original Chirp catalog.",
+    "control": {
+      "type": "object"
+    }
   },
+  "currentCaseHref": {
+    "options": [
+      "",
+      "/cases/chirp-product",
+      "/cases/chirp-ux",
+      "/cases/chirp-brand",
+      "/cases/chirp-design-system",
+      "/cases/dc-vendor-app-pr",
+      "/cases/dc-vendor-app-ux"
+    ],
+    "description": "Текущий кейс исключается из ленты. Пустое значение — полный каталог.",
+    "control": {
+      "type": "select"
+    }
+  },
+  "ariaLabel": {
+    "description": "Доступное название области ленты.",
+    "control": {
+      "type": "text"
+    }
+  },
+  "previousLabel": {
+    "description": "Доступное название стрелки Left.",
+    "control": {
+      "type": "text"
+    }
+  },
+  "nextLabel": {
+    "description": "Доступное название стрелки Right.",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'fullscreen',
-    docs: { description: { component: `
-[Figma 968:7007](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-7007)
-
-All showcase cards share the user-approved fixed-height contract in ds/showcase-card-sizing.md: nominal width=min(430,viewport−32); actual width capped by available rail; height500 below462,532 above. Copy scales proportionally only under container compression. Below534 multi-card RelatedCases use288px width; below352 the rail fields are removed to expose24px of the next card at320. No text-driven height, desktop-canvas transform or Chirp/DC exception. Existing navigation and motion preserved.
-
-` } },
+    docs: { source: { type: 'code' }, description: { component: "Подборка связанных проектов с переключением карточек.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=968-7007\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } },
   },
 } satisfies Meta<typeof RelatedCases>
 export default meta
 type Story = StoryObj<typeof meta>
 const blockNavigation = (event: MouseEvent) => { if ((event.target as HTMLElement).closest('a')) event.preventDefault() }
+export const Preview: Story = {
+  render: args => ({ components: { RelatedCases }, setup: () => ({ args }), template: "<RelatedCases v-bind=\"args\" />" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
  render: args => ({components:{RelatedCasesSandbox},setup:()=>({args}),template:'<RelatedCasesSandbox :component-args="args" />'}),
  play: async ({canvas,canvasElement}) => {
   const root=canvasElement.querySelector<HTMLElement>('.related-cases')!

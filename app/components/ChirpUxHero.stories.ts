@@ -8,22 +8,20 @@ import { getHeroBreakpoint } from './chirp-ux-hero.scene-context'
 const meta = {
   title: 'Compositions/Case heroes/Chirp-UX-hero',
   component: ChirpUxHero,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: { ...content.hero },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 1455:3417](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1455-3417)
+  parameters: { layout: 'fullscreen', docs: { description: { component: "Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1455-3417\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 
-<details><summary>Техническое описание</summary>
-
-Шесть mobile-first профилей, горизонтальная композиция от1024px. Стандартный CaseTitle — оригинальный прозрачный SVG с контурами и тенью Figma; скрытый h1 берёт текст из generated JSON. Другой title в Controls показывает текстовый fallback DS Roboto Flex wght500/YOPQ25. Badge и Role-Focus остаются отдельными DS-компонентами. Слои реагируют на движение курсора/пальца и возвращаются к старту после остановки, даже при удержании пальца. Вязкость замедляет отклик, скорость возврата ускоряет откат; размах = базовое смещение × амплитуда. Числовой шаг0,1. Mobile-вступление и reduced motion сохранены. Role-Focus и HeroTitle неподвижны по умолчанию. Sandbox: reference X/Y, независимые настройки движения и выключатель для каждого слоя; сбросы, локальное сохранение и JSON всех профилей. Старые speed мигрируют в обратную вязкость. Страница кейса не переподключена.
-
-</details>
-` } } },
-} satisfies Meta<typeof ChirpUxHero>
+  } satisfies Meta<typeof ChirpUxHero>
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Preview: Story = {
+  render: args => ({ components: { ChirpUxHero }, setup: () => ({ args }), template: "<ChirpUxHero v-bind=\"args\" />" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { ChirpUxHeroSandbox },
     setup() { return { args } },

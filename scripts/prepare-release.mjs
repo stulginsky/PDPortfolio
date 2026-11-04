@@ -30,8 +30,9 @@ if (planOnly) {
     const pkg = JSON.parse(git(['show', `${source}:package.json`]))
     const content = JSON.stringify(releasePackage(pkg, policy), null, 2) + '\n'
     const packageSha = git(['hash-object', '-w', '--stdin'], { input: content }).trim()
+    const sourceSha = git(['hash-object', '-w', '--stdin'], { input: JSON.stringify({ sourceCommit: source }, null, 2) + '\n' }).trim()
     git(['read-tree', '--empty'], { env })
-    git(['update-index', '-z', '--index-info'], { env, input: selected.map(entry => `${entry.mode} ${entry.path === 'package.json' ? packageSha : entry.sha}\t${entry.path}\0`).join('') })
+    git(['update-index', '-z', '--index-info'], { env, input: selected.map(entry => `${entry.mode} ${entry.path === 'package.json' ? packageSha : entry.sha}\t${entry.path}\0`).join('') + `100644 ${sourceSha}\t${policy.releaseSourceFile}\0` })
     tree = git(['write-tree'], { env }).trim()
   } finally {
     // Only remove the exact temporary index and its own newly-created directory.

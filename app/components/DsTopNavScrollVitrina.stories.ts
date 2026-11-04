@@ -1,3 +1,6 @@
+import { computed as computedStoryModel } from 'vue'
+import { useArgs } from 'storybook/preview-api'
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import { expect, fn, userEvent, within } from 'storybook/test'
@@ -6,7 +9,7 @@ import DsTopNavScrollVitrina from './DsTopNavScrollVitrina.vue'
 const meta = {
   title: 'Components/TopNavScroll/Vitrina',
   component: DsTopNavScrollVitrina,
-  tags: ['autodocs'],
+  tags: ['!autodocs', '!dev'],
   args: {
     ariaLabel: 'Навигация портфолио',
     place: 'Vitrina',
@@ -25,7 +28,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059)\n\n<details>\n<summary>Техническое описание</summary>\n\nTopNavScroll/Vitrina — [Figma 1025:5059](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059).\n\nSticky navigation витрины, собранная из Avatar-Sm и Tab. Выбранный tab получает Toggled. До min-768 Hover отключён. Sandbox демонстрирует переключение в обе стороны; смена страницы/композиции принадлежит потребителю.\n\n| Breakpoint | Геометрия |\n|---|---|\n| base (<394px) | 320px — reference; panel на всю ширину viewport без внешних отступов, 82px, нижние radius 32px |\n| min-394 (394–767px) | полная ширина viewport × 82px; табы Fill |\n| min-768 (≥768px) | 394×82 с верхним отступом 8px и radius 48px |\n\n**Events:** avatar-click — прокрутить к полной шапке; resume — перейти к резюме. Слотов нет.\n\n</details>",
+        component: "Компактная навигация при просмотре витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1025-5059\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -34,12 +37,30 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Preview: Story = {
+  name: 'Sandbox',
+  tags: ['!dev'],
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsTopNavScrollVitrina },
+      setup() {
+        const model = computedStoryModel({ get: () => args.place, set: value => updateArgs({ place: value }) })
+        return { args, model }
+      },
+      template: '<DsTopNavScrollVitrina v-bind="args" v-model:place="model" />',
+    }
+  },
+}
+
 export const Sandbox: Story = {
+  tags: ['!dev'],
   render: (args) => ({
     components: { DsTopNavScrollVitrina },
     setup() {
       const width = ref(320)
       const place = ref<'Vitrina' | 'Resume'>(args.place ?? 'Vitrina')
+watchStoryArg(() => args.place, value => { place.value = value ?? 'Vitrina' })
       function selectPlace(value: 'Vitrina' | 'Resume') {
         place.value = value
         args['onUpdate:place']?.(value)

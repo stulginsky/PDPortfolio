@@ -25,31 +25,43 @@ import { expect, waitFor } from 'storybook/test'
 const meta = {
   title: 'Components/Badge',
   component: DsBadge,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     label: 'UX-research',
     type: 'Card',
   },
   argTypes: {
-    type: {
-      control: 'inline-radio',
-      options: ['Card', 'HeroChirp', 'CardCompact'],
-      description: 'DS variant (Type property in Figma)',
-      table: {
-        type: { summary: 'Card | HeroChirp | CardCompact' },
-        defaultValue: { summary: 'Card' },
+  "type": {
+    "options": [
+      "Card",
+      "HeroChirp",
+      "CardCompact"
+    ],
+    "description": "DS variant (Type property in Figma)",
+    "table": {
+      "type": {
+        "summary": "Card | HeroChirp | CardCompact"
       },
+      "defaultValue": {
+        "summary": "Card"
+      }
     },
-    label: {
-      control: 'text',
-      description: 'Badge text content (TEXT override Text#312:0)',
-    },
+    "control": {
+      "type": "inline-radio"
+    }
   },
+  "label": {
+    "description": "Badge text content (TEXT override Text#312:0)",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[312:1991](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991)\n\n<details>\n<summary>Техническое описание</summary>\n\nNon-interactive informational label with Hug content sizing.\nThree variants from Figma Component Set [312:1991](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991).\n\n| Type | Size | Typography | Background |\n|---|---|---|---|\n| Card | 94×29 | DS/Body/xs strong (12px, w600), radius 32px | surface/default |\n| HeroChirp | 123×40 | DS/Body/base strong (16px, w600), radius 32px | surface/badge-chirp (accent/mint) |\n| CardCompact | 79×24 | DS/Badge/Card/min (10px, w600) | surface/default |\n\n</details>",
+        component: "Короткая метка категории или характеристики проекта.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=312-1991\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },

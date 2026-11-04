@@ -1,3 +1,5 @@
+import { computed as computedStoryModel } from 'vue'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect } from 'storybook/test'
 import DsDropdownSelect from './DsDropdownSelect.vue'
@@ -9,7 +11,7 @@ import DsDropdownSelect from './DsDropdownSelect.vue'
 const meta = {
   title: 'Components/DropdownSelect',
   component: DsDropdownSelect,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     modelValue: '',
     placeholder: 'Select',
@@ -28,16 +30,38 @@ const meta = {
     ],
   },
   argTypes: {
-    placeholder: { control: 'text' },
-    modelValue: { control: 'text' },
-    raised: { control: 'boolean' },
-    items: { control: false, description: 'Menu items accept `href?`; an external item opens in a new tab and preserves `modelValue`.' },
+  "placeholder": {
+    "control": {
+      "type": "text"
+    }
   },
+  "modelValue": {
+    "options": [
+      "",
+      "overview",
+      "foundation",
+      "tokens"
+    ],
+    "description": "Выбранный пункт из списка примера. Пустое значение показывает placeholder.",
+    "control": {
+      "type": "select"
+    }
+  },
+  "raised": {
+    "control": {
+      "type": "boolean"
+    }
+  },
+  "items": {
+    "description": "Menu items accept `href?`; an external item opens in a new tab and preserves `modelValue`.",
+    "control": false
+  }
+},
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "[Figma 1015:4517](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517)\n\n<details>\n<summary>Техническое описание</summary>\n\nDS DropdownSelect-web 1015:4517. Compact universal web dropdown.\n\n| State | Trigger |\n|---|---|\n| Default | Closed Button + ChevronDown |\n| Hover | Closed Button + ChevronDown :hover |\n| ActivePressed | Figma reference; not rendered for this local toggle |\n| Opened | Button Toggled + ChevronUp + supplied ListItem/Sm rows |\n\n</details>",
+        component: "Выбор одного пункта из выпадающего списка.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1015-4517\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -45,6 +69,20 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const Preview: Story = {
+  render: args => {
+    const [, updateArgs] = useArgs()
+    return {
+      components: { DsDropdownSelect },
+      setup() {
+        const model = computedStoryModel({ get: () => args.modelValue, set: value => updateArgs({ modelValue: value }) })
+        return { args, model }
+      },
+      template: '<DsDropdownSelect v-bind="args" v-model="model" />',
+    }
+  },
+}
 
 export const Default: Story = {}
 

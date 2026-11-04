@@ -1,7 +1,7 @@
 {
   "fileKey": "TPjPitung1VP3oQg42f56O",
   "page": "0:1",
-  "capturedAt": "2026-10-24",
+  "capturedAt": "2026-11-05",
   "styles": [
     {
       "id": "S:5b6a3f17d2b45aae36736ebcb260679de4b10888,",
@@ -69,7 +69,7 @@
           "gutterSize": 8,
           "alignment": "STRETCH",
           "count": 1,
-          "offset": 24,
+          "offset": 16,
           "boundVariables": {}
         }
       ],

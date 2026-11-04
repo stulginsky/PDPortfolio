@@ -5,12 +5,12 @@ import SiteNavResumeActions from './SiteNavResumeActions.vue'
 const meta = {
   title: 'Compositions/SiteNavResumeActions',
   component: SiteNavResumeActions,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: "<details>\n<summary>Техническое описание</summary>\n\nResume action composition from Figma TopNav and TopNavScroll/Resume. It uses the `Download` and `Print` instances of `DsButtonIcon`. Shared entrance: opacity + 8px slide from the left, 300ms, delays 100/200ms; disabled with prefers-reduced-motion.\n\n</details>",
+        component: "Действия скачивания и печати резюме.",
       },
     },
   },

@@ -7,22 +7,19 @@ import cards from '../../content/home-cards.json'
 
 const meta = {
   title: 'Compositions/Showcase cards/Chirp Explainable AI UX',
-  component: ChirpExplainableAiUx, tags: ['autodocs'],
+  component: ChirpExplainableAiUx, tags: ['autodocs', '!dev'],
   args: { title: cards[1]!.title, subtitle: cards[1]!.subtitle, badges: cards[1]!.badges.split(',').map(x => x.trim()), href: cards[1]!.href },
-  parameters: { layout: 'fullscreen', docs: { description: { component: `
-[Figma 815:2114](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2114)
+  parameters: { layout: 'fullscreen', docs: { description: { component: "Интерактивная карточка кейса «Chirp Explainable AI UX» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=815-2114\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>" } } },
 
-<details>
-<summary>Техническое описание</summary>
-
-Width100%/max430px; height500px below462px,532px from462px. Base <768px / min-768 ≥768px. phonesUX-v2 — один исходный слой Figma; X/Y/Width/Height/Rotation настраиваются отдельно по состояниям и breakpoint. Реальные Default/Hover/ActivePressed, 300ms ease-out; press 150ms. Touch без Hover. Reduced motion отключает переходы. DsBadge и исходные изображения Figma. Согласованное приближение progressive blur: один blur с градиентной маской. Ссылка ведёт в кейс; Sandbox предотвращает переход для проверки анимации. Выбор ширины не подменяет viewport breakpoint.
-
-</details>
-` } } },
-} satisfies Meta<typeof ChirpExplainableAiUx>
+  } satisfies Meta<typeof ChirpExplainableAiUx>
 export default meta
 type Story = StoryObj<typeof meta>
+export const Preview: Story = {
+  render: args => ({ components: { ChirpExplainableAiUx }, setup: () => ({ args }), template: "<div style=\"width:100%;max-width:430px\" @click.capture.prevent><ChirpExplainableAiUx v-bind=\"args\" /></div>" }),
+}
+
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: args => ({
     components: { ChirpExplainableAiUxSandbox },
     setup() { return { args } },

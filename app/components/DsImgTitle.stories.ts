@@ -1,3 +1,4 @@
+import { watch as watchStoryArg } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import { expect, fn, userEvent, within } from 'storybook/test'
@@ -8,21 +9,31 @@ const title = 'Value'
 const meta = {
   title: 'Components/ImgTitle/ImgTitle',
   component: DsImgTitle,
-  tags: ['autodocs'],
+  tags: ['autodocs', '!dev'],
   args: {
     btnOnly: false,
     title,
     onZoom: fn(),
   },
   argTypes: {
-    btnOnly: { control: 'boolean', description: 'Figma Btn only: круглая лупа без видимого заголовка; 128×128 px во всех брейкпоинтах.' },
-    title: { control: 'text', description: 'Figma TEXT Title. Текст переносится при переполнении в base и min-768.' },
+  "btnOnly": {
+    "description": "Figma Btn only: круглая лупа без видимого заголовка; 128×128 px во всех брейкпоинтах.",
+    "control": {
+      "type": "boolean"
+    }
   },
+  "title": {
+    "description": "Figma TEXT Title. Текст переносится при переполнении в base и min-768.",
+    "control": {
+      "type": "text"
+    }
+  }
+},
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: "[ImgTitle — Figma 1016:5882](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-5882)\n\n<details>\n<summary>Техническое описание</summary>\n\n[ImgTitle — Figma 1016:5882](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-5882).\n\nBtn only=On: круглая лупа 128×128px, внутренний круг 66×66px, действие 50×50px; видимый заголовок скрыт, текст остаётся в доступном имени действия. Btn only=Off сохраняет панель заголовка и действие увеличения. Дополнительный toolbar будет отдельным компонентом. Лупа обязательна.\n\n| Breakpoint | Типографика заголовка | Геометрия |\n| --- | --- | --- |\n| base (<768px) | Heading/sm — 18px / 145% | Fill; reference 288×74px; padding 12/12/12/24; перенос при переполнении |\n| min-768 | Heading/md — 22px / 130% | Fill при viewport 768px, Hug выше; cap 924px; padding 12/12/12/24; перенос при переполнении |\n\nСобытие zoom — запрос на открытие viewer. Изображение само по себе не является триггером.\n\n</details>",
+        component: "Заголовок изображения с действием увеличенного просмотра.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1016-5882\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>",
       },
     },
   },
@@ -46,6 +57,7 @@ export const ButtonOnly: Story = {
 }
 
 export const Sandbox: Story = {
+  tags: ['dev'],
   render: (args) => ({
     components: { DsImgTitle },
     setup() {
@@ -53,6 +65,7 @@ export const Sandbox: Story = {
       const width = ref(288)
       const zooms = ref(0)
       const titleText = ref(args.title)
+watchStoryArg(() => args.title, value => { titleText.value = value })
       function setBreakpoint(value: 'base' | 'min-768', nextWidth: number) {
         breakpoint.value = value
         width.value = nextWidth

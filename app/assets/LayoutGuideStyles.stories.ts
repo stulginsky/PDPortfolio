@@ -9,6 +9,7 @@ function preview(style: typeof styles[number]) {
  return { width:style.referenceWidth+'px', boxSizing:'border-box', display:'grid', gridTemplateColumns:'repeat('+grid.count+', minmax(0,1fr))', columnGap:grid.gutterSize+'px', paddingInline:grid.offset+'px', height:'120px', background:'var(--surface-default)', color:'var(--text-default)' }
 }
 const meta = {
+  tags: ['!dev'],
  title:'Foundation/Layout guide styles',
  parameters:{layout:'padded'},
 } satisfies Meta

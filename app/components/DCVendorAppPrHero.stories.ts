@@ -6,17 +6,33 @@ import { heroBreakpoints, heroReferences, getHeroBreakpoint } from './dc-vendor-
 import content from '../../content/cases/dc-vendor-app-pr.json'
 
 const meta = {
- title: 'Compositions/Case heroes/DCVendorApp-Pr-hero', component: DCVendorAppPrHero, tags: ['autodocs'],
- argTypes: { breakpoint: { control: 'inline-radio', options: heroBreakpoints, description: 'Figma profile. Sandbox follows viewport automatically.' } },
- parameters: { layout:'fullscreen', docs:{description:{component:'[Figma 3023:3699](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3023-3699). Six proportional profiles, eight original layers, outlined SVG Title and accessible generated text. Sandbox: shared pointer/touch motion, idle return, mobile intro, reduced motion, decimal controls, reset and JSON v2. Used by the Product case.'}}},
+ title: 'Compositions/Case heroes/DCVendorApp-Pr-hero', component: DCVendorAppPrHero, tags: ['autodocs', '!dev'],
+ argTypes: {
+  "breakpoint": {
+    "options": [
+      "base",
+      "min-768",
+      "min-1024",
+      "min-1280",
+      "min-1440",
+      "min-1920"
+    ],
+    "description": "Figma profile. Sandbox follows viewport automatically.",
+    "control": {
+      "type": "inline-radio"
+    }
+  }
+},
+ parameters: { layout:'fullscreen', docs:{description:{component:"Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3023-3699\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
 } satisfies Meta<typeof DCVendorAppPrHero>
 export default meta
 type Story = StoryObj<typeof meta>
 export const Preview:Story = {
- args:{breakpoint:'base'},tags:['!dev'],
- render:args=>({components:{DCVendorAppPrHero},setup:()=>({args,heroReferences}),template:'<div :style="{width:heroReferences[args.breakpoint || \'base\'].width+\'px\',maxWidth:\'100%\'}"><DCVendorAppPrHero v-bind="args" /></div>'}),
+ tags: ['!dev'],
+ render:args=>({components:{DCVendorAppPrHero},setup:()=>({args,heroReferences}),template:'<DCVendorAppPrHero v-bind="args" />'}),
 }
 export const Sandbox:Story = {
+  tags: ['dev'],
  argTypes:{breakpoint:{control:false}},
  render:()=>({components:{DCVendorAppPrHeroSandbox},template:'<DCVendorAppPrHeroSandbox />'}),
  play:async({canvas,canvasElement})=>{

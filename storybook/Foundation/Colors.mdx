@@ -1,219 +1,166 @@
-﻿import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
 
 <Meta title="Foundation/Colors" />
 
+<div className="foundation-colors">
+
 # Colors
 
-Обновление2026-10-24: gray-500 ≈#777E8D, gray-700 ≈#4C5A70. Точные RGB floats читаются из tokens.css. text/muted и text/secondary сохраняют алиасы; независимые gray-700-alpha-20/35/50 в Figma остались прежними.
+Цветовая палитра дизайн-системы. <a href="https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1" target="_blank" rel="noopener noreferrer">Figma</a>.
 
-Цвета PDPortfolio DS. Источник правды — [Figma PDPortfolio-DS](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1).
-Все значения читаются из `tokens.css` — CSS custom properties, отображённые из Figma Variables.
-
-## Confirmed decorative tokens
-
-<table>
-<thead><tr><th scope="col">Token</th><th scope="col">CSS</th><th scope="col">Value / alias</th></tr></thead>
-<tbody>
-<tr><td><code>decorative/deep-water</code></td><td><code>var(--decorative-deep-water)</code></td><td>#3B729D</td></tr>
-<tr><td><code>decorative/showcase/dc/background-green</code></td><td><code>var(--decorative-showcase-dc-background-green)</code></td><td>decorative/ostrich</td></tr>
-</tbody>
-</table>
+## Primitive
 
 <ColorPalette>
-<ColorItem title="decorative/deep-water" subtitle="var(--decorative-deep-water)" colors={{value:"var(--decorative-deep-water)"}} />
-<ColorItem title="decorative/showcase/dc/background-green" subtitle="var(--decorative-showcase-dc-background-green)" colors={{value:"var(--decorative-showcase-dc-background-green)"}} />
+  <ColorItem title="accent/lavender" subtitle="var(--accent-lavender)" colors={{ value: "var(--accent-lavender)" }} />
+  <ColorItem title="accent/lilac" subtitle="var(--accent-lilac)" colors={{ value: "var(--accent-lilac)" }} />
+  <ColorItem title="accent/violet" subtitle="var(--accent-violet)" colors={{ value: "var(--accent-violet)" }} />
+  <ColorItem title="accent/plum" subtitle="var(--accent-plum)" colors={{ value: "var(--accent-plum)" }} />
+  <ColorItem title="accent/aubergine" subtitle="var(--accent-aubergine)" colors={{ value: "var(--accent-aubergine)" }} />
+  <ColorItem title="gray-00" subtitle="var(--gray-00)" colors={{ value: "var(--gray-00)" }} />
+  <ColorItem title="gray-50" subtitle="var(--gray-50)" colors={{ value: "var(--gray-50)" }} />
+  <ColorItem title="gray-100" subtitle="var(--gray-100)" colors={{ value: "var(--gray-100)" }} />
+  <ColorItem title="gray-200" subtitle="var(--gray-200)" colors={{ value: "var(--gray-200)" }} />
+  <ColorItem title="gray-300" subtitle="var(--gray-300)" colors={{ value: "var(--gray-300)" }} />
+  <ColorItem title="gray-500" subtitle="var(--gray-500)" colors={{ value: "var(--gray-500)" }} />
+  <ColorItem title="gray-700" subtitle="var(--gray-700)" colors={{ value: "var(--gray-700)" }} />
+  <ColorItem title="gray-900" subtitle="var(--gray-900)" colors={{ value: "var(--gray-900)" }} />
+  <ColorItem title="gray-950" subtitle="var(--gray-950)" colors={{ value: "var(--gray-950)" }} />
+  <ColorItem title="success-500" subtitle="var(--success-500)" colors={{ value: "var(--success-500)" }} />
+  <ColorItem title="warning-500" subtitle="var(--warning-500)" colors={{ value: "var(--warning-500)" }} />
+  <ColorItem title="error-500" subtitle="var(--error-500)" colors={{ value: "var(--error-500)" }} />
+  <ColorItem title="info-500" subtitle="var(--info-500)" colors={{ value: "var(--info-500)" }} />
+  <ColorItem title="blue-600" subtitle="var(--blue-600)" colors={{ value: "var(--blue-600)" }} />
+  <ColorItem title="shadow/color" subtitle="var(--shadow-color)" colors={{ value: "var(--shadow-color)" }} />
+  <ColorItem title="accent/mint" subtitle="var(--accent-mint)" colors={{ value: "var(--accent-mint)" }} />
+  <ColorItem title="shadow/color-1st" subtitle="var(--shadow-color-1st)" colors={{ value: "var(--shadow-color-1st)" }} />
+  <ColorItem title="shadow/color-2nd" subtitle="var(--shadow-color-2nd)" colors={{ value: "var(--shadow-color-2nd)" }} />
+  <ColorItem title="gray-200-alpha-85" subtitle="var(--gray-200-alpha-85)" colors={{ value: "var(--gray-200-alpha-85)" }} />
+  <ColorItem title="teal-200-alpha-50" subtitle="var(--teal-200-alpha-50)" colors={{ value: "var(--teal-200-alpha-50)" }} />
+  <ColorItem title="gray-700-alpha-20" subtitle="var(--gray-700-alpha-20)" colors={{ value: "var(--gray-700-alpha-20)" }} />
+  <ColorItem title="gray-700-alpha-35" subtitle="var(--gray-700-alpha-35)" colors={{ value: "var(--gray-700-alpha-35)" }} />
+  <ColorItem title="gray-700-alpha-50" subtitle="var(--gray-700-alpha-50)" colors={{ value: "var(--gray-700-alpha-50)" }} />
+  <ColorItem title="green-600" subtitle="var(--green-600)" colors={{ value: "var(--green-600)" }} />
+  <ColorItem title="card/color-border" subtitle="var(--card-color-border)" colors={{ value: "var(--card-color-border)" }} />
 </ColorPalette>
 
-## Decorative — декоративные фоны
+## Semantic
 
-Отдельная группа внутри Primitive и Semantic, не новая коллекция. Только оформление витрины: не текст, управляющие элементы или продуктовые статусы.
-
-### Палитра (Primitive)
+### surface
 
 <ColorPalette>
-  <ColorItem title="decorative/sparrow" subtitle="var(--decorative-sparrow)" colors={{ turquoise: 'var(--decorative-sparrow)' }} />
-  <ColorItem title="decorative/jackdaw" subtitle="var(--decorative-jackdaw)" colors={{ mint: 'var(--decorative-jackdaw)' }} />
-  <ColorItem title="decorative/robin" subtitle="var(--decorative-robin)" colors={{ cyan: 'var(--decorative-robin)' }} />
-  <ColorItem title="decorative/teal" subtitle="var(--decorative-teal)" colors={{ teal: 'var(--decorative-teal)' }} />
+  <ColorItem title="surface/default" subtitle="var(--surface-default)" colors={{ value: "var(--surface-default)" }} />
+  <ColorItem title="surface/subtle" subtitle="var(--surface-subtle)" colors={{ value: "var(--surface-subtle)" }} />
+  <ColorItem title="surface/raised" subtitle="var(--surface-raised)" colors={{ value: "var(--surface-raised)" }} />
+  <ColorItem title="surface/action-primary" subtitle="var(--surface-action-primary)" colors={{ value: "var(--surface-action-primary)" }} />
+  <ColorItem title="surface/action-primary-hover" subtitle="var(--surface-action-primary-hover)" colors={{ value: "var(--surface-action-primary-hover)" }} />
+  <ColorItem title="surface/badge-chirp" subtitle="var(--surface-badge-chirp)" colors={{ value: "var(--surface-badge-chirp)" }} />
+  <ColorItem title="surface/action-hover" subtitle="var(--surface-action-hover)" colors={{ value: "var(--surface-action-hover)" }} />
+  <ColorItem title="surface/action-pressed" subtitle="var(--surface-action-pressed)" colors={{ value: "var(--surface-action-pressed)" }} />
+  <ColorItem title="surface/action-toggled" subtitle="var(--surface-action-toggled)" colors={{ value: "var(--surface-action-toggled)" }} />
+  <ColorItem title="surface/menu-item-default" subtitle="var(--surface-menu-item-default)" colors={{ value: "var(--surface-menu-item-default)" }} />
+  <ColorItem title="surface/menu-item-hover" subtitle="var(--surface-menu-item-hover)" colors={{ value: "var(--surface-menu-item-hover)" }} />
+  <ColorItem title="surface/menu-item-pressed" subtitle="var(--surface-menu-item-pressed)" colors={{ value: "var(--surface-menu-item-pressed)" }} />
+  <ColorItem title="surface/fullscreen-header-start" subtitle="var(--surface-fullscreen-header-start)" colors={{ value: "var(--surface-fullscreen-header-start)" }} />
+  <ColorItem title="surface/fullscreen-header-end" subtitle="var(--surface-fullscreen-header-end)" colors={{ value: "var(--surface-fullscreen-header-end)" }} />
+  <ColorItem title="surface/scroll-thumb" subtitle="var(--surface-scroll-thumb)" colors={{ value: "var(--surface-scroll-thumb)" }} />
+  <ColorItem title="surface/scroll-thumb-hover" subtitle="var(--surface-scroll-thumb-hover)" colors={{ value: "var(--surface-scroll-thumb-hover)" }} />
+  <ColorItem title="surface/scroll-thumb-pressed" subtitle="var(--surface-scroll-thumb-pressed)" colors={{ value: "var(--surface-scroll-thumb-pressed)" }} />
+  <ColorItem title="surface/magnifying-img-preview" subtitle="var(--surface-magnifying-img-preview)" colors={{ value: "var(--surface-magnifying-img-preview)" }} />
 </ColorPalette>
 
-### Фоны витрины (Semantic)
-
-Префикс всех ролей — `decorative/showcase/`. Значения являются aliases на декоративную палитру.
-
-<table>
-  <thead><tr><th scope="col">Роль</th><th scope="col">Primitive</th></tr></thead>
-  <tbody>
-    <tr><td><code>chirp-ai-health-assistant/background</code></td><td><code>decorative/sparrow</code></td></tr>
-    <tr><td><code>chirp-explainable-ai-ux/background</code></td><td><code>decorative/jackdaw</code></td></tr>
-    <tr><td><code>chirp-ai-medical-brand/background</code></td><td><code>decorative/robin</code></td></tr>
-    <tr><td><code>chirp-ai-design-system/background</code></td><td><code>decorative/robin</code></td></tr>
-    <tr><td><code>chirp-ai-design-system/background-underlay</code></td><td><code>decorative/teal</code></td></tr>
-  </tbody>
-</table>
-
-## Accent (Primitive)
+### text
 
 <ColorPalette>
-  <ColorItem
-    title="accent/lavender"
-    subtitle="var(--accent-lavender)"
-    colors={{ lavender: 'var(--accent-lavender)' }}
-  />
-  <ColorItem
-    title="accent/lilac"
-    subtitle="var(--accent-lilac)"
-    colors={{ lilac: 'var(--accent-lilac)' }}
-  />
-  <ColorItem
-    title="accent/violet"
-    subtitle="var(--accent-violet)"
-    colors={{ violet: 'var(--accent-violet)' }}
-  />
-  <ColorItem
-    title="accent/plum"
-    subtitle="var(--accent-plum)"
-    colors={{ plum: 'var(--accent-plum)' }}
-  />
-  <ColorItem
-    title="accent/aubergine"
-    subtitle="var(--accent-aubergine)"
-    colors={{ aubergine: 'var(--accent-aubergine)' }}
-  />
-  <ColorItem
-    title="accent/mint"
-    subtitle="var(--accent-mint)"
-    colors={{ mint: 'var(--accent-mint)' }}
-  />
-  <ColorItem
-    title="blue-600"
-    subtitle="var(--blue-600)"
-    colors={{ blue600: 'var(--blue-600)' }}
-  />
+  <ColorItem title="text/default" subtitle="var(--text-default)" colors={{ value: "var(--text-default)" }} />
+  <ColorItem title="text/secondary" subtitle="var(--text-secondary)" colors={{ value: "var(--text-secondary)" }} />
+  <ColorItem title="text/muted" subtitle="var(--text-muted)" colors={{ value: "var(--text-muted)" }} />
+  <ColorItem title="text/subtle" subtitle="var(--text-subtle)" colors={{ value: "var(--text-subtle)" }} />
+  <ColorItem title="text/inverse" subtitle="var(--text-inverse)" colors={{ value: "var(--text-inverse)" }} />
+  <ColorItem title="text/accent-general" subtitle="var(--text-accent-general)" colors={{ value: "var(--text-accent-general)" }} />
+  <ColorItem title="text/accent-chirp" subtitle="var(--text-accent-chirp)" colors={{ value: "var(--text-accent-chirp)" }} />
+  <ColorItem title="text/accent-dc" subtitle="var(--text-accent-dc)" colors={{ value: "var(--text-accent-dc)" }} />
+  <ColorItem title="text/success" subtitle="var(--text-success)" colors={{ value: "var(--text-success)" }} />
+  <ColorItem title="text/error" subtitle="var(--text-error)" colors={{ value: "var(--text-error)" }} />
+  <ColorItem title="text/body-accent" subtitle="var(--text-body-accent)" colors={{ value: "var(--text-body-accent)" }} />
+  <ColorItem title="text/action" subtitle="var(--text-action)" colors={{ value: "var(--text-action)" }} />
+  <ColorItem title="text/link-default" subtitle="var(--text-link-default)" colors={{ value: "var(--text-link-default)" }} />
+  <ColorItem title="text/link-hover" subtitle="var(--text-link-hover)" colors={{ value: "var(--text-link-hover)" }} />
+  <ColorItem title="text/link-pressed" subtitle="var(--text-link-pressed)" colors={{ value: "var(--text-link-pressed)" }} />
 </ColorPalette>
 
-## Gray (Primitive)
+### border
 
 <ColorPalette>
-  <ColorItem title="gray-00" subtitle="var(--gray-00)" colors={{ gray00: 'var(--gray-00)' }} />
-  <ColorItem title="gray-50" subtitle="var(--gray-50)" colors={{ gray50: 'var(--gray-50)' }} />
-  <ColorItem title="gray-100" subtitle="var(--gray-100)" colors={{ gray100: 'var(--gray-100)' }} />
-  <ColorItem title="gray-200" subtitle="var(--gray-200)" colors={{ gray200: 'var(--gray-200)' }} />
-  <ColorItem title="gray-300" subtitle="var(--gray-300)" colors={{ gray300: 'var(--gray-300)' }} />
-  <ColorItem title="gray-500" subtitle="var(--gray-500)" colors={{ gray500: 'var(--gray-500)' }} />
-  <ColorItem title="gray-700" subtitle="var(--gray-700)" colors={{ gray700: 'var(--gray-700)' }} />
-  <ColorItem title="gray-900" subtitle="var(--gray-900)" colors={{ gray900: 'var(--gray-900)' }} />
-  <ColorItem title="gray-950" subtitle="var(--gray-950)" colors={{ gray950: 'var(--gray-950)' }} />
+  <ColorItem title="border/default" subtitle="var(--border-default)" colors={{ value: "var(--border-default)" }} />
+  <ColorItem title="border/strong" subtitle="var(--border-strong)" colors={{ value: "var(--border-strong)" }} />
+  <ColorItem title="border/focus" subtitle="var(--border-focus)" colors={{ value: "var(--border-focus)" }} />
+  <ColorItem title="border/error" subtitle="var(--border-error)" colors={{ value: "var(--border-error)" }} />
+  <ColorItem title="border/action-hover" subtitle="var(--border-action-hover)" colors={{ value: "var(--border-action-hover)" }} />
+  <ColorItem title="border/action-pressed" subtitle="var(--border-action-pressed)" colors={{ value: "var(--border-action-pressed)" }} />
+  <ColorItem title="border/case-card" subtitle="var(--border-case-card)" colors={{ value: "var(--border-case-card)" }} />
 </ColorPalette>
 
-## Status (Primitive)
+### bg
 
 <ColorPalette>
-  <ColorItem title="success-500" subtitle="var(--success-500)" colors={{ success: 'var(--success-500)' }} />
-  <ColorItem title="warning-500" subtitle="var(--warning-500)" colors={{ warning: 'var(--warning-500)' }} />
-  <ColorItem title="error-500" subtitle="var(--error-500)" colors={{ error: 'var(--error-500)' }} />
-  <ColorItem title="info-500" subtitle="var(--info-500)" colors={{ info: 'var(--info-500)' }} />
+  <ColorItem title="bg/success" subtitle="var(--bg-success)" colors={{ value: "var(--bg-success)" }} />
+  <ColorItem title="bg/warning" subtitle="var(--bg-warning)" colors={{ value: "var(--bg-warning)" }} />
+  <ColorItem title="bg/error" subtitle="var(--bg-error)" colors={{ value: "var(--bg-error)" }} />
+  <ColorItem title="bg/info" subtitle="var(--bg-info)" colors={{ value: "var(--bg-info)" }} />
 </ColorPalette>
 
-## Surface (Semantic)
-
-<table>
-  <thead>
-    <tr><th scope="col">Токен</th><th scope="col">Alias</th><th scope="col">Роль</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><code>--surface-default</code></td><td><code>gray-00</code></td><td>Фон страницы</td></tr>
-    <tr><td><code>--surface-subtle</code></td><td><code>gray-100</code></td><td>Приподнятые панели</td></tr>
-    <tr><td><code>--surface-raised</code></td><td><code>gray-200</code></td><td>Бордеры, разделители</td></tr>
-    <tr><td><code>--surface-action-primary</code></td><td><code>accent/violet</code></td><td>CTA-кнопка (default)</td></tr>
-    <tr><td><code>--surface-action-primary-hover</code></td><td><code>accent/plum</code></td><td>CTA hover + Avatar border hover</td></tr>
-    <tr><td><code>--surface-action-hover</code></td><td><code>accent/lavender</code></td><td>Hover интерактивных элементов</td></tr>
-    <tr><td><code>--surface-action-pressed</code></td><td><code>accent/plum</code></td><td>ActivePressed состояние</td></tr>
-    <tr><td><code>--surface-action-toggled</code></td><td><code>accent/aubergine</code></td><td>Toggled/Selected состояние</td></tr>
-    <tr><td><code>--surface-badge-chirp</code></td><td><code>accent/mint</code></td><td>Badge Type=HeroChirp фон</td></tr>
-    <tr><td><code>--surface-menu-item-default</code></td><td><code>accent/plum</code></td><td>Пункт меню (default)</td></tr>
-    <tr><td><code>--surface-menu-item-hover</code></td><td><code>accent/violet</code></td><td>Пункт меню (hover)</td></tr>
-    <tr><td><code>--surface-menu-item-pressed</code></td><td><code>accent/aubergine</code></td><td>Пункт меню (pressed)</td></tr>
-  </tbody>
-</table>
+### effect
 
 <ColorPalette>
-  <ColorItem title="surface/default" subtitle="var(--surface-default)" colors={{ default: 'var(--surface-default)' }} />
-  <ColorItem title="surface/subtle" subtitle="var(--surface-subtle)" colors={{ subtle: 'var(--surface-subtle)' }} />
-  <ColorItem title="surface/raised" subtitle="var(--surface-raised)" colors={{ raised: 'var(--surface-raised)' }} />
-  <ColorItem title="surface/action-primary" subtitle="var(--surface-action-primary)" colors={{ actionPrimary: 'var(--surface-action-primary)' }} />
-  <ColorItem title="surface/action-primary-hover" subtitle="var(--surface-action-primary-hover)" colors={{ actionPrimaryHover: 'var(--surface-action-primary-hover)' }} />
-  <ColorItem title="surface/action-hover" subtitle="var(--surface-action-hover)" colors={{ actionHover: 'var(--surface-action-hover)' }} />
-  <ColorItem title="surface/action-pressed" subtitle="var(--surface-action-pressed)" colors={{ actionPressed: 'var(--surface-action-pressed)' }} />
-  <ColorItem title="surface/action-toggled" subtitle="var(--surface-action-toggled)" colors={{ actionToggled: 'var(--surface-action-toggled)' }} />
-  <ColorItem title="surface/badge-chirp" subtitle="var(--surface-badge-chirp)" colors={{ badgeChirp: 'var(--surface-badge-chirp)' }} />
-  <ColorItem title="surface/menu-item-default" subtitle="var(--surface-menu-item-default)" colors={{ menuDefault: 'var(--surface-menu-item-default)' }} />
-  <ColorItem title="surface/menu-item-hover" subtitle="var(--surface-menu-item-hover)" colors={{ menuHover: 'var(--surface-menu-item-hover)' }} />
-  <ColorItem title="surface/menu-item-pressed" subtitle="var(--surface-menu-item-pressed)" colors={{ menuPressed: 'var(--surface-menu-item-pressed)' }} />
+  <ColorItem title="effect/shadow-1st" subtitle="var(--effect-shadow-1st)" colors={{ value: "var(--effect-shadow-1st)" }} />
+  <ColorItem title="effect/shadow-2nd" subtitle="var(--effect-shadow-2nd)" colors={{ value: "var(--effect-shadow-2nd)" }} />
 </ColorPalette>
 
-## Text (Semantic)
+## Decorative
 
-<table>
-  <thead>
-    <tr><th scope="col">Токен</th><th scope="col">Alias</th><th scope="col">Роль</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><code>--text-default</code></td><td><code>gray-900</code></td><td>Основной текст</td></tr>
-    <tr><td><code>--text-secondary</code></td><td><code>gray-700</code></td><td>Вторичный текст</td></tr>
-    <tr><td><code>--text-muted</code></td><td><code>gray-500</code></td><td>Приглушённый текст</td></tr>
-    <tr><td><code>--text-subtle</code></td><td><code>gray-300</code></td><td>Очень приглушённый</td></tr>
-    <tr><td><code>--text-inverse</code></td><td><code>gray-00</code></td><td>Инверсный (на тёмном фоне)</td></tr>
-    <tr><td><code>--text-accent-general</code></td><td><code>accent/violet</code></td><td>Акцентный (общий)</td></tr>
-    <tr><td><code>--text-accent-chirp</code></td><td><code>blue-600</code></td><td>Акцентный (Chirp)</td></tr>
-    <tr><td><code>--text-body-accent</code></td><td><code>accent/aubergine</code></td><td>Body акцент</td></tr>
-    <tr><td><code>--text-action</code></td><td><code>accent/aubergine</code></td><td>Action-текст</td></tr>
-    <tr><td><code>--text-link-hover</code></td><td><code>accent/violet</code></td><td>Ссылка hover</td></tr>
-    <tr><td><code>--text-link-pressed</code></td><td><code>accent/plum</code></td><td>Ссылка pressed</td></tr>
-    <tr><td><code>--text-error</code></td><td><code>error-500</code></td><td>Ошибка</td></tr>
-  </tbody>
-</table>
+### Primitive
 
 <ColorPalette>
-  <ColorItem title="text/default" subtitle="var(--text-default)" colors={{ default: 'var(--text-default)' }} />
-  <ColorItem title="text/secondary" subtitle="var(--text-secondary)" colors={{ secondary: 'var(--text-secondary)' }} />
-  <ColorItem title="text/muted" subtitle="var(--text-muted)" colors={{ muted: 'var(--text-muted)' }} />
-  <ColorItem title="text/subtle" subtitle="var(--text-subtle)" colors={{ subtle: 'var(--text-subtle)' }} />
-  <ColorItem title="text/inverse" subtitle="var(--text-inverse)" colors={{ inverse: 'var(--text-inverse)' }} />
-  <ColorItem title="text/accent-general" subtitle="var(--text-accent-general)" colors={{ accentGeneral: 'var(--text-accent-general)' }} />
-  <ColorItem title="text/accent-chirp" subtitle="var(--text-accent-chirp)" colors={{ accentChirp: 'var(--text-accent-chirp)' }} />
+  <ColorItem title="decorative/sparrow" subtitle="var(--decorative-sparrow)" colors={{ value: "var(--decorative-sparrow)" }} />
+  <ColorItem title="decorative/jackdaw" subtitle="var(--decorative-jackdaw)" colors={{ value: "var(--decorative-jackdaw)" }} />
+  <ColorItem title="decorative/robin" subtitle="var(--decorative-robin)" colors={{ value: "var(--decorative-robin)" }} />
+  <ColorItem title="decorative/teal" subtitle="var(--decorative-teal)" colors={{ value: "var(--decorative-teal)" }} />
+  <ColorItem title="decorative/waxwing" subtitle="var(--decorative-waxwing)" colors={{ value: "var(--decorative-waxwing)" }} />
+  <ColorItem title="decorative/ostrich" subtitle="var(--decorative-ostrich)" colors={{ value: "var(--decorative-ostrich)" }} />
+  <ColorItem title="decorative/deep-water" subtitle="var(--decorative-deep-water)" colors={{ value: "var(--decorative-deep-water)" }} />
+  <ColorItem title="decorative/kitchen" subtitle="var(--decorative-kitchen)" colors={{ value: "var(--decorative-kitchen)" }} />
+  <ColorItem title="decorative/aqua" subtitle="var(--decorative-aqua)" colors={{ value: "var(--decorative-aqua)" }} />
+  <ColorItem title="decorative/amber" subtitle="var(--decorative-amber)" colors={{ value: "var(--decorative-amber)" }} />
+  <ColorItem title="decorative/wine" subtitle="var(--decorative-wine)" colors={{ value: "var(--decorative-wine)" }} />
+  <ColorItem title="decorative/sand" subtitle="var(--decorative-sand)" colors={{ value: "var(--decorative-sand)" }} />
+  <ColorItem title="decorative/steel-blue" subtitle="var(--decorative-steel-blue)" colors={{ value: "var(--decorative-steel-blue)" }} />
+  <ColorItem title="decorative/slate" subtitle="var(--decorative-slate)" colors={{ value: "var(--decorative-slate)" }} />
+  <ColorItem title="decorative/night" subtitle="var(--decorative-night)" colors={{ value: "var(--decorative-night)" }} />
+  <ColorItem title="decorative/bronze-glow" subtitle="var(--decorative-bronze-glow)" colors={{ value: "var(--decorative-bronze-glow)" }} />
+  <ColorItem title="decorative/cobalt" subtitle="var(--decorative-cobalt)" colors={{ value: "var(--decorative-cobalt)" }} />
 </ColorPalette>
 
-## Border (Semantic)
+### Semantic
 
 <ColorPalette>
-  <ColorItem title="border/default" subtitle="var(--border-default)" colors={{ borderDefault: 'var(--border-default)' }} />
-  <ColorItem title="border/strong" subtitle="var(--border-strong)" colors={{ borderStrong: 'var(--border-strong)' }} />
-  <ColorItem title="border/focus" subtitle="var(--border-focus)" colors={{ borderFocus: 'var(--border-focus)' }} />
-  <ColorItem title="border/error" subtitle="var(--border-error)" colors={{ borderError: 'var(--border-error)' }} />
-  <ColorItem title="border/action-hover" subtitle="var(--border-action-hover)" colors={{ borderActionHover: 'var(--border-action-hover)' }} />
-  <ColorItem title="border/action-pressed" subtitle="var(--border-action-pressed)" colors={{ borderActionPressed: 'var(--border-action-pressed)' }} />
-  <ColorItem title="border/case-card" subtitle="var(--border-case-card) → card/color-border · #B0D9C1" colors={{ caseCard: 'var(--border-case-card)' }} />
+  <ColorItem title="decorative/showcase/chirp-ai-health-assistant/background" subtitle="var(--decorative-showcase-chirp-ai-health-assistant-background)" colors={{ value: "var(--decorative-showcase-chirp-ai-health-assistant-background)" }} />
+  <ColorItem title="decorative/showcase/chirp-explainable-ai-ux/background" subtitle="var(--decorative-showcase-chirp-explainable-ai-ux-background)" colors={{ value: "var(--decorative-showcase-chirp-explainable-ai-ux-background)" }} />
+  <ColorItem title="decorative/showcase/chirp-ai-medical-brand/background" subtitle="var(--decorative-showcase-chirp-ai-medical-brand-background)" colors={{ value: "var(--decorative-showcase-chirp-ai-medical-brand-background)" }} />
+  <ColorItem title="decorative/showcase/chirp-ai-design-system/background" subtitle="var(--decorative-showcase-chirp-ai-design-system-background)" colors={{ value: "var(--decorative-showcase-chirp-ai-design-system-background)" }} />
+  <ColorItem title="decorative/showcase/dc/background-green" subtitle="var(--decorative-showcase-dc-background-green)" colors={{ value: "var(--decorative-showcase-dc-background-green)" }} />
+  <ColorItem title="decorative/showcase/dc/background-blue" subtitle="var(--decorative-showcase-dc-background-blue)" colors={{ value: "var(--decorative-showcase-dc-background-blue)" }} />
+  <ColorItem title="decorative/showcase/dc/background-brown" subtitle="var(--decorative-showcase-dc-background-brown)" colors={{ value: "var(--decorative-showcase-dc-background-brown)" }} />
+  <ColorItem title="decorative/case/background-chirp-ds" subtitle="var(--decorative-case-background-chirp-ds)" colors={{ value: "var(--decorative-case-background-chirp-ds)" }} />
+  <ColorItem title="decorative/showcase/aqua-maris/background" subtitle="var(--decorative-showcase-aqua-maris-background)" colors={{ value: "var(--decorative-showcase-aqua-maris-background)" }} />
+  <ColorItem title="decorative/showcase/absolut/background" subtitle="var(--decorative-showcase-absolut-background)" colors={{ value: "var(--decorative-showcase-absolut-background)" }} />
+  <ColorItem title="decorative/showcase/sapsan-cr/background" subtitle="var(--decorative-showcase-sapsan-cr-background)" colors={{ value: "var(--decorative-showcase-sapsan-cr-background)" }} />
+  <ColorItem title="decorative/showcase/pd-portfolio-ds/background" subtitle="var(--decorative-showcase-pd-portfolio-ds-background)" colors={{ value: "var(--decorative-showcase-pd-portfolio-ds-background)" }} />
+  <ColorItem title="decorative/showcase/4real-3dweapon/background" subtitle="var(--decorative-showcase-4real-3dweapon-background)" colors={{ value: "var(--decorative-showcase-4real-3dweapon-background)" }} />
+  <ColorItem title="decorative/showcase/4real-3dweapon/stripe" subtitle="var(--decorative-showcase-4real-3dweapon-stripe)" colors={{ value: "var(--decorative-showcase-4real-3dweapon-stripe)" }} />
+  <ColorItem title="decorative/showcase/dragon-heart-jw/background" subtitle="var(--decorative-showcase-dragon-heart-jw-background)" colors={{ value: "var(--decorative-showcase-dragon-heart-jw-background)" }} />
+  <ColorItem title="decorative/showcase/dragon-heart-jw/shader" subtitle="var(--decorative-showcase-dragon-heart-jw-shader)" colors={{ value: "var(--decorative-showcase-dragon-heart-jw-shader)" }} />
+  <ColorItem title="decorative/showcase/dragon-heart-jw/glow" subtitle="var(--decorative-showcase-dragon-heart-jw-glow)" colors={{ value: "var(--decorative-showcase-dragon-heart-jw-glow)" }} />
+  <ColorItem title="decorative/showcase/fox-jw/background" subtitle="var(--decorative-showcase-fox-jw-background)" colors={{ value: "var(--decorative-showcase-fox-jw-background)" }} />
 </ColorPalette>
 
-
-## Variables · 2026-10-25
-
-`accent/lavender` синхронизирован с Figma: #F0E0FF. Значения цветов и альфа-каналы сохраняются без округления в коде.
-
-<table>
-  <thead>
-    <tr><th>Semantic</th><th>Primitive</th><th>CSS</th></tr>
-  </thead>
-  <tbody>
-<tr><td>text/success</td><td>success-500</td><td><code>--text-success</code></td></tr>
-<tr><td>surface/magnifying-img-preview</td><td>gray-700-alpha-20</td><td><code>--surface-magnifying-img-preview</code></td></tr>
-  </tbody>
-</table>
-
-<ColorPalette>
-<ColorItem title="text/success" subtitle="var(--text-success)" colors={{ success: 'var(--text-success)' }} />
-<ColorItem title="surface/magnifying-img-preview" subtitle="var(--surface-magnifying-img-preview)" colors={{ preview: 'var(--surface-magnifying-img-preview)' }} />
-</ColorPalette>
-
-Контраст text/success на светлых поверхностях требует отдельного согласования; цвет автоматически не изменён.
+</div>

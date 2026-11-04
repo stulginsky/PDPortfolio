@@ -1,0 +1,33 @@
+/* Documentation uses the width available beside Storybook navigation. */
+.sbdocs-content {
+  width: 100%;
+  max-width: none !important;
+  min-width: 0;
+}
+
+.sbdocs-preview {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Wide documentation tables scroll locally instead of widening the page. */
+.sbdocs-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Foundation specimens retain their original type sizes. */
+.sbdocs-content > section {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.foundation-colors div {
+  min-width: 0;
+}
+
+.foundation-colors [title="value"] span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

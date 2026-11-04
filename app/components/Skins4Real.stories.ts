@@ -4,16 +4,11 @@ import {computed,ref} from 'vue'
 import Skins4Real from './Skins4Real.vue'
 
 const meta={
- title:'Compositions/Showcase cards/Skins4Real',component:Skins4Real,tags:['autodocs'],
- parameters:{layout:'padded',docs:{description:{component:`Анонс кейса Skins 4Real. Карточка не ведёт на страницу; «Скоро» открывает черновик письма. [Figma](https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3495-2839).
-
-Получатель: **stulginsky@gmail.com**. Тема: **Сообщите о новом кейсе**.
-
-> Привет, Константин! Очень хочу посмотреть новый кейс Skins 4Real. Сообщите о публикации. Спасибо.
-
-Название автоматически подставляется из карточки. Tooltip: задержка100мс, переход300мс. В Preview запуск почты перехвачен. В Sandbox переключатель разрешает системный mailto; по умолчанию выключен. Размеры по общему контракту: до430px, высота500/532px.`}}},
+ title:'Compositions/Showcase cards/Skins4Real',component:Skins4Real,tags:['autodocs', '!dev'],
+ parameters:{layout:'padded',docs:{description:{component:"Интерактивная карточка кейса «Skins4Real» для витрины проектов.\n\n<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=3495-2839\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>"}}},
  args:{onSubscribe:fn()},
-} satisfies Meta<typeof Skins4Real>
+
+  } satisfies Meta<typeof Skins4Real>
 export default meta
 type Story=StoryObj<typeof meta>
 export const Preview:Story={
@@ -43,6 +38,7 @@ export const Preview:Story={
  },
 }
 export const Sandbox:Story={
+  tags: ['dev'],
  render:args=>({components:{Skins4Real},setup(){
   const openMailClient=ref(false)
   const bindings=computed(()=>({...args,onSubscribe(event:MouseEvent){if(!openMailClient.value)event.preventDefault();args.onSubscribe?.(event)}}))

@@ -5,18 +5,56 @@ import ChirpDsHeroSandbox from './ChirpDsHeroSandbox.vue'
 import content from '../../content/cases/chirp-design-system.json'
 import {heroBreakpoints,heroReferences,getHeroBreakpoint} from './chirp-ds-hero.scene-context'
 const meta={
- title:'Compositions/Case heroes/Chirp-Ds-hero',component:ChirpDsHero,tags:['autodocs'],
- args:{panelAppearance:'default',role:content.hero.role,focus:content.hero.focus},
- argTypes:{panelAppearance:{control:'radio',options:['default','on-light','on-dark']},breakpoint:{control:'radio',options:heroBreakpoints},role:{control:'text'},focus:{control:'text'}},
- parameters:{layout:'fullscreen',docs:{description:{component:'CSS/picture select the accepted responsive profile before JavaScript; mounted measurements hand over without a layout change. Delayed-script regression covers eight widths. Figma TPjPitung1VP3oQg42f56O/1553:4645, revised2026-10-19. Original clip frame owns green background and clips only the animated title; bird remains outside. No root green background or gap before panel. Original outlined title SVGs and mirrored bird. User JSON preset: title and bird animate by default in opposite cursor directions; RoleFocus remains static. Reduced motion disables animation. Sandbox: reference X/Y, viscosity, return speed, physical-pixel base offset, amplitude, directions, disable, reset and JSON v2; shared runtime and calibrated defaults. Contextual panelAppearance: default keeps own surface; on-light/on-dark use transparent panel and secondary/inverse RoleFocus text over a composition-owned continuous background. Sandbox environment selector demonstrates both. Production case reuses this component.'}}},
+ title:'Compositions/Case heroes/Chirp-Ds-hero',component:ChirpDsHero,tags:['autodocs', '!dev'],
+ args: {panelAppearance:'default',role:content.hero.role,focus:content.hero.focus},
+ argTypes: {
+  "panelAppearance": {
+    "options": [
+      "default",
+      "on-light",
+      "on-dark"
+    ],
+    "control": {
+      "type": "radio"
+    }
+  },
+  "breakpoint": {
+    "options": [
+      "base",
+      "min-768",
+      "min-1024",
+      "min-1280",
+      "min-1440",
+      "min-1920"
+    ],
+    "control": {
+      "type": "radio"
+    }
+  },
+  "role": {
+    "control": {
+      "type": "text"
+    }
+  },
+  "focus": {
+    "control": {
+      "type": "text"
+    }
+  }
+},
+ parameters:{layout:'fullscreen',docs:{description:{component:"Первый экран кейса: знакомит с проектом и задаёт его визуальный контекст."}}},
 } satisfies Meta<typeof ChirpDsHero>
+meta.parameters.docs.description.component =
+  "<a href=\"https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=1553-4645\" target=\"_blank\" rel=\"noopener noreferrer\">Figma</a>\n\n" + meta.parameters.docs.description.component
+
 export default meta
 type Story=StoryObj<typeof meta>
 export const Preview:Story={
- args:{breakpoint:'base'},tags:['!dev'],
- render:args=>({components:{ChirpDsHero},setup:()=>({args,heroReferences}),template:'<div :style="{width:heroReferences[args.breakpoint || \'base\'].width+\'px\',maxWidth:\'100%\'}"><ChirpDsHero v-bind="args" /></div>'}),
+ tags: ['!dev'],
+ render:args=>({components:{ChirpDsHero},setup:()=>({args,heroReferences}),template:'<ChirpDsHero v-bind="args" />'}),
 }
 export const Sandbox:Story={
+  tags: ['dev'],
  argTypes:{breakpoint:{control:false}},
  render:args=>({components:{ChirpDsHeroSandbox},setup:()=>({args}),template:'<ChirpDsHeroSandbox :hero-args="args" />'}),
  play:async({canvas,canvasElement})=>{
