@@ -32,3 +32,5 @@ tmp/
 
 *storybook.log
 storybook-static
+.storybook-source/
+/exports/card-edges/

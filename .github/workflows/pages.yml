@@ -34,6 +34,13 @@ jobs:
         run: npm run check:static
         env:
           NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}/
+      - uses: ./.github/actions/build-storybook
+        with:
+          site-base: ${{ steps.pages.outputs.base_path }}/
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:storybook
+        env:
+          NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: .output/public

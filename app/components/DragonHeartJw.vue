@@ -58,12 +58,16 @@ function layerStyle(layer:ReturnType<typeof layers>[number],native:Layer){
 <template>
  <div class="dragon-heart-jw showcase-card" role="button" tabindex="0" :aria-label="content.title" :data-state="state" :data-animating="animating"
   @pointerenter="enter" @pointerleave="reset" @pointerdown="down" @pointerup="up" @pointercancel="reset" @blur="reset" @keydown="keydown" @keyup="keyup" @click="emit('activate',$event)">
-  <div v-for="profile in dragonHeartJwProfiles" :key="profile.name" class="dragon-heart-jw__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
+  <div v-for="pass in ['sharp','restore']" :key="pass" class="dragon-heart-jw__scene" :class="'dragon-heart-jw__scene--'+pass" :data-card-scene="pass" aria-hidden="true">
+   <div class="dragon-heart-jw__scene-content">
+   <div v-for="profile in dragonHeartJwProfiles" :key="profile.name" class="dragon-heart-jw__art" :data-profile="profile.name" :style="{'--art-width':profile.width+'px'}" aria-hidden="true">
    <div v-for="(layer,index) in layers(profile)" :key="layer.name" class="dragon-heart-jw__layer" :data-layer="layer.name" :style="layerStyle(layer,profile.states[0].layers[index]!)">
     <img v-if="layer.name!=='shader'" :src="siteUrl('/showcase/dragon-heart-jw/'+layer.name.toLowerCase()+'.png')" alt="" draggable="false" />
    </div>
   </div>
-  <div class="dragon-heart-jw__blur" aria-hidden="true" />
+   </div>
+   <div v-if="pass === 'sharp'" class="dragon-heart-jw__blur" />
+  </div>
   <div class="dragon-heart-jw__gradient" aria-hidden="true" />
   <div class="dragon-heart-jw__copy">
    <div class="dragon-heart-jw__title-block"><TypoText tag="h2" class="dragon-heart-jw__title" :content="content.title" /><TypoText tag="p" class="dragon-heart-jw__subtitle" :content="content.subtitle" /></div>
@@ -82,7 +86,12 @@ function layerStyle(layer:ReturnType<typeof layers>[number],native:Layer){
 .dragon-heart-jw__layer img {position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;user-select:none;}
 .dragon-heart-jw__layer[data-layer=shader] {background:var(--decorative-showcase-dragon-heart-jw-shader);}
 .dragon-heart-jw__layer[data-layer=pendant] img {inset:auto;width:199.230756964%;height:113.586449564%;left:-51.655426568%;top:-2.028327708%;}
-.dragon-heart-jw__blur {position:absolute;inset:auto 0 0;height:200px;backdrop-filter:blur(30px);background:rgb(0 0 0 / .01);mask-image:linear-gradient(to bottom,transparent,black);pointer-events:none;}
+.dragon-heart-jw__scene {position:absolute;inset:0;pointer-events:none;}
+.dragon-heart-jw__scene-content {position:absolute;inset:0;overflow:hidden;background:var(--decorative-showcase-dragon-heart-jw-background);}
+.dragon-heart-jw__blur {position:absolute;inset:auto 0 0;height:200px;backdrop-filter:blur(30px);background:rgb(0 0 0 / .01);}
+/* Blend the sharp artwork back over an unmasked blur. Keeping the mask off the
+   backdrop-filter avoids clipped input textures while preserving the fade. */
+.dragon-heart-jw__scene--restore {clip-path:inset(calc(100% - 200px) 0 0 0);mask-image:linear-gradient(to bottom,black calc(100% - 200px),transparent);}
 .dragon-heart-jw__gradient {position:absolute;inset:0;background:linear-gradient(to bottom,transparent 19.2307696%,rgb(0 0 0 / .6) 75%,rgb(0 0 0 / .65));pointer-events:none;}
 .dragon-heart-jw__copy {position:absolute;inset:auto var(--space-4) var(--space-4);display:flex;flex-direction:column;gap:var(--space-3);pointer-events:none;}
 .dragon-heart-jw__title-block {display:flex;flex-direction:column;gap:var(--space-1);}

@@ -13,6 +13,7 @@ export function treeEntries(ref) {
 }
 
 export function allowedPath(file, policy) {
+  if (file === policy.releaseSourceFile) return true
   if (policy.excludePatterns.some(pattern => new RegExp(pattern).test(file))) return false
   return policy.includeFiles.includes(file) || policy.includeDirectories.some(directory => file.startsWith(directory))
 }
