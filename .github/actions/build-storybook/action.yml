@@ -1,0 +1,31 @@
+name: Build pinned Storybook and assemble publication
+description: Build development-only Storybook sources from the release's exact source commit.
+inputs:
+  site-base:
+    description: Hosting prefix shared with the portfolio.
+    required: true
+runs:
+  using: composite
+  steps:
+    - id: source
+      shell: bash
+      run: |
+        node --input-type=module -e "import fs from 'node:fs'; import assert from 'node:assert/strict'; const {sourceCommit}=JSON.parse(fs.readFileSync('.release-source.json','utf8')); assert.match(sourceCommit,/^[a-f0-9]{40}$/); fs.appendFileSync(process.env.GITHUB_OUTPUT,'sha='+sourceCommit+'\n')"
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ steps.source.outputs.sha }}
+        path: .storybook-source
+        persist-credentials: false
+    - name: Install pinned Storybook dependencies
+      shell: bash
+      working-directory: .storybook-source
+      run: npm ci
+    - name: Build Storybook
+      shell: bash
+      working-directory: .storybook-source
+      run: npm run build-storybook
+      env:
+        STORYBOOK_SITE_BASE_URL: ${{ inputs.site-base }}
+    - name: Assemble publication
+      shell: bash
+      run: node scripts/assemble-publication.mjs .storybook-source/storybook-static

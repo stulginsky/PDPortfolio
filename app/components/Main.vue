@@ -11,6 +11,7 @@ import ChirpAiHealthAssistant from './ChirpAiHealthAssistant.vue'
 import ChirpExplainableAiUx from './ChirpExplainableAiUx.vue'
 import ChirpAiMedicalBrand from './ChirpAiMedicalBrand.vue'
 import ChirpAiDesignSystem from './ChirpAiDesignSystem.vue'
+import PDPortfolioDs from './PDPortfolioDs.vue'
 import DCVendorAppPr from './DCVendorAppPr.vue'
 import DCVendorAppUx from './DCVendorAppUx.vue'
 import DCPickerAppUx from './DCPickerAppUx.vue'
@@ -44,6 +45,7 @@ const cases = [
   { id: 'ChirpExplainableAiUx', category: 'ux', component: ChirpExplainableAiUx },
   { id: 'ChirpAiMedicalBrand', category: 'branding', component: ChirpAiMedicalBrand },
   { id: 'ChirpAiDesignSystem', category: 'design-system', component: ChirpAiDesignSystem },
+  { id: 'PDPortfolioDs', category: 'design-system', component: PDPortfolioDs, activateHref: '/storybook/' },
   { id: 'DCVendorAppPr', category: 'product', component: DCVendorAppPr, href: '/cases/dc-vendor-app-pr' },
   { id: 'DCVendorAppUx', category: 'ux', component: DCVendorAppUx, href: '/cases/dc-vendor-app-ux' },
   { id: '4Real3Dweapon', category: 'landing', component: Component4Real3Dweapon, activateHref: '/cases/4real-3dweapon' },
