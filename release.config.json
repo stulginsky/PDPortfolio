@@ -2,14 +2,17 @@
   "sourceBranch": "develop",
   "targetBranch": "main",
   "releaseBranchPrefix": "release/",
+  "releaseSourceFile": ".release-source.json",
   "includeDirectories": ["app/", "content/", "public/"],
   "includeFiles": [
     ".editorconfig", ".gitattributes", ".gitignore", "AGENTS.md", "README.md",
     "package.json", "package-lock.json", "nuxt.config.ts", "tsconfig.json", "release.config.json",
     ".github/workflows/pages.yml", ".github/workflows/release-check.yml",
+    ".github/actions/build-storybook/action.yml",
     "scripts/apply-typograf-content.mjs", "scripts/check-case-typography.mjs",
     "scripts/generate-weapon-footer.mjs", "scripts/check-static-site.mjs",
     "scripts/check-release-tree.mjs", "scripts/lib/release-policy.mjs",
+    "scripts/assemble-publication.mjs", "scripts/check-storybook-static.mjs",
     "scripts/lib/typograf-shared.mjs", "scripts/lib/case-editorial.mjs"
   ],
   "excludePatterns": [
@@ -18,7 +21,7 @@
     "^content/TYPOGRAPHY\\.md$", "^content/assets/README\\.md$"
   ],
   "releaseScripts": [
-    "build", "dev", "generate", "check:static", "check:release", "preview", "postinstall",
+    "build", "dev", "generate", "check:static", "check:storybook", "check:release", "preview", "postinstall",
     "prebuild", "pregenerate", "predev", "generate:weapon-footer", "check:case-typography", "typograf:apply"
   ]
 }

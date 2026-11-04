@@ -11,7 +11,7 @@ permissions:
 jobs:
   release-validation:
     name: release-validation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -25,5 +25,12 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /PDPortfolio/
       - run: npm run check:static
+        env:
+          NUXT_APP_BASE_URL: /PDPortfolio/
+      - uses: ./.github/actions/build-storybook
+        with:
+          site-base: /PDPortfolio/
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:storybook
         env:
           NUXT_APP_BASE_URL: /PDPortfolio/
