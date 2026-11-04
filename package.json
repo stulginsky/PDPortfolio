@@ -7,6 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "check:static": "node scripts/check-static-site.mjs",
+    "check:release": "node scripts/check-release-tree.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prebuild": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer",
@@ -14,11 +15,7 @@
     "predev": "npm run generate:weapon-footer",
     "generate:weapon-footer": "node scripts/generate-weapon-footer.mjs",
     "check:case-typography": "node scripts/check-case-typography.mjs",
-    "typograf:apply": "node scripts/apply-typograf-content.mjs",
-    "typograf:preview": "node scripts/typograf-preview.mjs",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test-storybook": "vitest --project=storybook --run"
+    "typograf:apply": "node scripts/apply-typograf-content.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
