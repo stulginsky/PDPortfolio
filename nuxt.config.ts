@@ -11,7 +11,21 @@ export default defineNuxtConfig({
   app: {
     baseURL,
     head: process.env.NODE_ENV === 'production' ? {
-      script: [{ key: 'yandex-metrika', innerHTML: metrikaBootstrap }],
+      script: [
+        { key: 'yandex-metrika', innerHTML: metrikaBootstrap },
+        {
+          key: 'google-analytics',
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-6WJY3M3EHY',
+        },
+        {
+          key: 'google-analytics-config',
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-6WJY3M3EHY');`,
+        },
+      ],
       noscript: [{ key: 'yandex-metrika-noscript', innerHTML: metrikaNoscript, tagPosition: 'bodyClose' }],
     } : {},
   },
