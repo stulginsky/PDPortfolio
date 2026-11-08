@@ -3,7 +3,8 @@ import { expect, fn } from 'storybook/test'
 import DsButtonIcon from './DsButtonIcon.vue'
 
 const meta = {
-  title: 'Components/BtnDownload',
+  id: 'components-btndownload',
+  title: 'Components/ButtonDownload',
   component: DsButtonIcon,
   tags: ['autodocs', '!dev'],
   args: { icon: 'Download', ariaLabel: 'Скачать', raised: false, toggled: false, pressedAppearance: 'ActivePressed', onClick: fn() },

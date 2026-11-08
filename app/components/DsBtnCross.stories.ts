@@ -3,7 +3,8 @@ import { expect } from 'storybook/test'
 import DsBtnCross from './DsBtnCross.vue'
 
 const meta = {
-  title: 'Components/BtnCross',
+  id: 'components-btncross',
+  title: 'Components/ButtonCross',
   component: DsBtnCross,
   tags: ['autodocs', '!dev'],
   args: {

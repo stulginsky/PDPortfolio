@@ -3,7 +3,8 @@ import { expect, fn } from 'storybook/test'
 import DsButtonIcon from './DsButtonIcon.vue'
 
 const meta = {
-  title: 'Components/BtnMagnifyingGlass',
+  id: 'components-btnmagnifyingglass',
+  title: 'Components/ButtonMagnifyingGlass',
   component: DsButtonIcon,
   tags: ['autodocs', '!dev'],
   args: { icon: 'MagnifyingGlass', ariaLabel: 'Увеличить', raised: false, toggled: false, pressedAppearance: 'ActivePressed', onClick: fn() },

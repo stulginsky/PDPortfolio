@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import http from 'node:http'
@@ -7,6 +8,11 @@ import ts from 'typescript'
 const base = process.env.NUXT_APP_BASE_URL || '/PDPortfolio/'
 assert(base.startsWith('/') && base.endsWith('/'), 'Base URL must start and end with /')
 const output = path.resolve('.output/public')
+assert.deepEqual(
+  (await fs.readdir(path.join(output, 'resume'))).filter(file => /\.pdf$/i.test(file)),
+  ['Bazarov-Product-Designer-Resume.pdf'],
+  'Publish only the approved final resume PDF',
+)
 async function pageRoutes(directory, prefix = '') {
   const routes = []
   for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
@@ -73,6 +79,8 @@ if (process.argv.includes('--browser')) {
       const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' })
       // Leave the real bootstrap queue intact, but never send QA visits to Yandex.
       await page.route('https://mc.yandex.ru/**', route => route.fulfill({ contentType: 'text/javascript', body: '/* Analytics transport disabled for QA. */' }))
+      await page.route('https://www.googletagmanager.com/**', route => route.fulfill({ contentType: 'text/javascript', body: '/* Analytics transport disabled for QA. */' }))
+      await page.route('https://*.google-analytics.com/**', route => route.fulfill({ body: '' }))
       async function hits(count) {
         await page.waitForFunction(expected => (window.ym?.a || []).filter(args => args[1] === 'hit').length === expected, count)
         const calls = await page.evaluate(() => window.ym.a.map(args => Array.from(args)))
@@ -113,6 +121,23 @@ if (process.argv.includes('--browser')) {
       await page.evaluate(() => { window.location.hash = 'analytics-anchor-test' })
       await page.waitForURL('**/#analytics-anchor-test')
       await hits(3)
+      await page.goto(origin + base + 'resume', { waitUntil: 'domcontentloaded' })
+      await page.waitForFunction(() => !!document.querySelector('#__nuxt')?.__vue_app__)
+      const resumeFilename = 'Bazarov-Product-Designer-Resume.pdf'
+      const resumeHash = createHash('sha256').update(await fs.readFile(path.join('public/resume', resumeFilename))).digest('hex')
+      async function verifyResumeDownload(navigation) {
+        const [download] = await Promise.all([
+          page.waitForEvent('download'),
+          navigation.getByRole('button', { name: 'Скачать резюме PDF', exact: true }).click(),
+        ])
+        assert.equal(download.suggestedFilename(), resumeFilename)
+        const downloaded = await fs.readFile(await download.path())
+        assert.equal(createHash('sha256').update(downloaded).digest('hex'), resumeHash, 'Download must match the approved PDF byte for byte')
+      }
+      await verifyResumeDownload(page.locator('.ds-top-nav'))
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+      await verifyResumeDownload(page.locator('.ds-top-nav-scroll-resume'))
+      console.log(`${width}px resume: full and compact navigation download the approved PDF with its exact filename and bytes`)
       await page.close()
     }
     assert.equal(failures.size, 0, [...failures].join('\n'))

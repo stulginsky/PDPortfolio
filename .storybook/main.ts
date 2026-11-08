@@ -2,6 +2,7 @@ import type { StorybookConfig } from '@storybook/vue3-vite'
 import { fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import { mergeConfig } from 'vite'
+import { managerNavigationHead } from './build-manager-navigation.ts'
 
 const config: StorybookConfig = {
   framework: {
@@ -25,6 +26,7 @@ const config: StorybookConfig = {
     '@storybook/addon-mcp',
     '@chromatic-com/storybook'
   ],
+  managerHead: managerNavigationHead,
   // templateCompilation() only adds the Vue alias; the SFC plugin is required
   // for Storybook's browser-test Vite server as well.
   async viteFinal(config, { configType }) {

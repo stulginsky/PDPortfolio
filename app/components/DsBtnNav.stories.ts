@@ -4,7 +4,8 @@ import { ref } from 'vue'
 import DsBtnNav from './DsBtnNav.vue'
 
 const meta = {
-  title: 'Components/BtnNav',
+  id: 'components-btnnav',
+  title: 'Components/ButtonNav',
   component: DsBtnNav,
   tags: ['autodocs', '!dev'],
   args: {

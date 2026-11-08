@@ -24,6 +24,16 @@ const preview: Preview = {
         }
         if (a.title === 'Введение') return -1
         if (b.title === 'Введение') return 1
+        const sections = ['Foundation', 'Components', 'Compositions']
+        const sectionA = a.title.split('/')[0]
+        const sectionB = b.title.split('/')[0]
+        const rankA = sections.includes(sectionA) ? sections.indexOf(sectionA) : sections.length
+        const rankB = sections.includes(sectionB) ? sections.indexOf(sectionB) : sections.length
+        if (rankA !== rankB) return rankA - rankB
+        if (sectionA === 'Components' && sectionB === 'Components') {
+          const label = (title) => title.split('/').slice(1).map(part => part.replace(/^Btn(?=[A-Z])/, 'Button')).join('/')
+          return label(a.title).localeCompare(label(b.title), 'en', { sensitivity: 'base', numeric: true })
+        }
         return 0
       },
     },
