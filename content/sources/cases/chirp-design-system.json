@@ -5,6 +5,37 @@
     "role": "Design System Designer · Product Designer",
     "focus": "Design System Architecture · Design Tokens · UI Foundations · Component Architecture · Figma Library"
   },
+  "overview": {
+    "eyebrow": "CHIRP   /   DESIGN SYSTEM",
+    "title": "Chirp Design System",
+    "description": "Библиотека для понятных медицинских интерфейсов.\nОбщие основы, связанные компоненты и короткие правила применения.",
+    "characterTitle": "Ясность в каждой детали",
+    "characterBody": "PT Sans, мягкие поверхности и бирюзовый акцент помогают выстроить спокойную и понятную иерархию.",
+    "startTitle": "01   /   С чего начать",
+    "startBody": "Выберите нужный раздел библиотеки.",
+    "openLabel": "Открыть →",
+    "sections": [
+      {
+        "title": "Foundations",
+        "body": "Цвета, типографика, размеры, сетка и эффекты.",
+        "href": "https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc?node-id=40002277-2792"
+      },
+      {
+        "title": "Components",
+        "body": "Свойства, состояния и примеры применения.",
+        "href": "https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc?node-id=40002269-1009"
+      },
+      {
+        "title": "Library guide",
+        "body": "Навигация по всей библиотеке.",
+        "href": "https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc?node-id=40002282-2813"
+      }
+    ],
+    "usageTitle": "02   /   Как устроена библиотека",
+    "usageBody": "Используйте экземпляры компонентов и предусмотренные свойства. Применяйте текстовые стили, семантические цвета и общие шкалы размеров. Проверяйте содержание и состояния в контексте экрана.",
+    "guideLabel": "CHIRP   /   START     Library guide →",
+    "guideHref": "https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc?node-id=40002282-2813"
+  },
   "page": {
     "toolbarTitle": "Mobile & Web",
     "backLabel": "К проектам",

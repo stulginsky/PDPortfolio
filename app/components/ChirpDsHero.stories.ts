@@ -65,6 +65,13 @@ export const Sandbox:Story={
   await waitFor(()=>expect(root.dataset.ready).toBe('true'))
   await waitFor(()=>expect(root.dataset.mediaState).toBe('ready'))
   await expect(root.querySelectorAll('.ds-role-focus')).toHaveLength(1)
+  const role=root.querySelector<HTMLElement>('.ds-role-focus')!
+  await expect(root.querySelector('.chirp-ds-hero__stage')).not.toContainElement(role)
+  if(window.innerWidth<768){
+   const label=role.querySelector<HTMLElement>('.ds-role-focus__label')!
+   await expect(Math.abs(label.getBoundingClientRect().height-parseFloat(getComputedStyle(label).lineHeight))).toBeLessThan(.2)
+   await expect(Math.abs(role.getBoundingClientRect().width-root.clientWidth+32)).toBeLessThan(.2)
+  }
   await expect(canvas.getByRole('heading',{level:1})).toBeInTheDocument()
   const clip=root.querySelector<HTMLElement>('.chirp-ds-hero__clip')!
   await expect(clip).toContainElement(root.querySelector('[data-layer="Chirp design system"]') as HTMLElement)
