@@ -17,7 +17,7 @@ const root=ref<HTMLElement>()
 const panelBox=ref<HTMLElement>()
 const panelHeight=ref<number>()
 const ready=ref(false)
-const heroHeight=computed(()=>(reference.value.panel.y+(panelHeight.value??reference.value.panel.height))*ratio.value)
+const heroHeight=computed(()=>reference.value.panel.y*ratio.value+(panelHeight.value??reference.value.panel.height*(breakpoint.value==='base'?1:ratio.value)))
 const viewport=ref(320)
 const containerWidth=ref(320)
 const breakpoint=computed(()=>props.breakpoint??getHeroBreakpoint(viewport.value))
@@ -31,6 +31,9 @@ function initialValues(profile: HeroBreakpoint) {
  const reference=heroReferences[profile], scene=defaults[profile]
  const px=(n:number)=>n+'px'
  return {scale:'calc(100cqw / '+reference.width+'px)',width:px(reference.width),
+  panelScale:profile==='base'?'1':'calc(100cqw / '+reference.width+'px)',
+  panelWidth:profile==='base'?'100cqw':px(reference.panel.width),
+  copyWidth:profile==='base'?'calc(100cqw - '+(reference.width-scene[2]!.width)+'px)':px(scene[2]!.width),
   clip:px(reference.clip.height),padding:px(reference.panel.padding),
   titleX:px(scene[0]!.x-reference.clip.x),titleY:px(scene[0]!.y-reference.clip.y),
   birdX:px(scene[1]!.x-scene[1]!.width),birdY:px(scene[1]!.y),birdW:px(scene[1]!.width),birdH:px(scene[1]!.height),
@@ -65,7 +68,7 @@ const {resetMotion,replayIntro,maybeIntro,pointerDown,release}=useHeroMotion({
 function sync() {
   viewport.value = window.innerWidth
   containerWidth.value = root.value?.clientWidth || viewport.value
-  if(panelBox.value) panelHeight.value=panelBox.value.getBoundingClientRect().height/ratio.value
+  if(panelBox.value) panelHeight.value=panelBox.value.getBoundingClientRect().height
   nextTick(renderOffsets)
 }
 watch(()=>breakpoint.value,()=>{panelHeight.value=undefined;void nextTick(sync)})
@@ -88,14 +91,14 @@ defineExpose({ replayIntro, resetMotion })
     </picture>
    </div>
    </div>
-   <div ref="panelBox" class="chirp-ds-hero__panel" :style="{left:reference.panel.x+'px',top:reference.panel.y+'px',width:reference.panel.width+'px',paddingTop:reference.panel.padding+'px',paddingBottom:(reference.panel.padding+Math.max(0,layers[2]!.y-reference.role.y))+'px'}">
-    <div :ref="el=>setLayer(el,2)" data-layer="Role-Focus" :data-source-id="layers[2]!.id" class="chirp-ds-hero__copy" :style="{left:(layers[2]!.x-reference.panel.x)+'px',top:(layers[2]!.y-reference.role.y)+'px',width:layers[2]!.width+'px'}">
-     <DsRoleFocus v-if="ready" :role="copy.role" :focus="copy.focus" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" :breakpoint="breakpoint==='base'?'base':'min-768'" />
-     <template v-else><div v-for="variant in (['base','min-768'] as const)" :key="variant" :class="'chirp-ds-hero__initial-role--'+variant"><DsRoleFocus :role="copy.role" :focus="copy.focus" :breakpoint="variant" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" /></div></template>
-    </div>
-   </div>
    <div :ref="el=>setLayer(el,1)" data-layer="b05-metaphor-songbird-v1 1" :data-source-id="layers[1]!.id" :data-animation-enabled="layers[1]!.animationEnabled" class="chirp-ds-hero__bird" :style="{left:(layers[1]!.x-layers[1]!.width)+'px',top:layers[1]!.y+'px',width:layers[1]!.width+'px',height:layers[1]!.height+'px'}">
     <img :src="siteUrl('/cases/chirp-design-system/hero-layers/b05-metaphor-songbird-v1-1.png')" :width="layers[1]!.width" :height="layers[1]!.height" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
+   </div>
+  </div>
+  <div ref="panelBox" class="chirp-ds-hero__panel" :style="{left:reference.panel.x*ratio+'px',top:reference.panel.y*ratio+'px',width:(breakpoint==='base'?containerWidth:reference.panel.width)+'px',transform:breakpoint==='base'?'none':'scale('+ratio+')',paddingTop:reference.panel.padding+'px',paddingBottom:(reference.panel.padding+Math.max(0,layers[2]!.y-reference.role.y))+'px'}">
+   <div :ref="el=>setLayer(el,2)" data-layer="Role-Focus" :data-source-id="layers[2]!.id" class="chirp-ds-hero__copy" :style="{left:(layers[2]!.x-reference.panel.x)+'px',top:(layers[2]!.y-reference.role.y)+'px',width:(breakpoint==='base'?containerWidth-reference.width+layers[2]!.width:layers[2]!.width)+'px'}">
+    <DsRoleFocus v-if="ready" :role="copy.role" :focus="copy.focus" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" :breakpoint="breakpoint==='base'?'base':'min-768'" />
+    <template v-else><div v-for="variant in (['base','min-768'] as const)" :key="variant" :class="'chirp-ds-hero__initial-role--'+variant"><DsRoleFocus :role="copy.role" :focus="copy.focus" :breakpoint="variant" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" /></div></template>
    </div>
   </div>
  </section>
@@ -107,7 +110,7 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-ds-hero__title,.chirp-ds-hero__panel,.chirp-ds-hero__bird{position:absolute}
 .chirp-ds-hero__title{transform:translate3d(var(--motion-x,0px),0,0)}
 .chirp-ds-hero__title img{display:block;max-width:none;pointer-events:none;user-select:none}
-.chirp-ds-hero__panel{box-sizing:border-box;background:var(--surface-default)}
+.chirp-ds-hero__panel{box-sizing:border-box;background:var(--surface-default);transform-origin:top left}
 .chirp-ds-hero[data-panel-appearance='on-light'] .chirp-ds-hero__panel,.chirp-ds-hero[data-panel-appearance='on-dark'] .chirp-ds-hero__panel{background:transparent}
 .chirp-ds-hero__copy{position:relative}
 .chirp-ds-hero__bird{transform:translate3d(var(--motion-x,0px),0,0);pointer-events:none}
@@ -131,11 +134,17 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__stage{width:var(--initial-width)!important;transform:none!important;zoom:var(--initial-scale);padding-top:var(--initial-clip)}
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__clip{left:0!important;top:0!important;width:var(--initial-width)!important;height:var(--initial-clip)!important}
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__title{left:var(--initial-titleX)!important;top:var(--initial-titleY)!important}
-.chirp-ds-hero[data-ready="false"] .chirp-ds-hero__panel{position:relative;left:0!important;top:0!important;width:var(--initial-width)!important;padding-top:var(--initial-padding)!important;padding-bottom:var(--initial-bottom)!important}
-.chirp-ds-hero[data-ready="false"] .chirp-ds-hero__copy{left:var(--initial-copyX)!important;top:var(--initial-copyY)!important;width:var(--initial-copyW)!important}
+.chirp-ds-hero[data-ready="false"] .chirp-ds-hero__panel{position:relative;left:0!important;top:0!important;transform:none!important;zoom:var(--initial-panelScale);width:var(--initial-panelWidth)!important;padding-top:var(--initial-padding)!important;padding-bottom:var(--initial-bottom)!important}
+.chirp-ds-hero[data-ready="false"] .chirp-ds-hero__copy{left:var(--initial-copyX)!important;top:var(--initial-copyY)!important;width:var(--initial-copyWidth)!important}
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__bird{left:var(--initial-birdX)!important;top:var(--initial-birdY)!important;width:var(--initial-birdW)!important;height:var(--initial-birdH)!important}
 .chirp-ds-hero[data-ready="false"] .chirp-ds-hero__bird img{width:100%;height:100%}
 .chirp-ds-hero__initial-role--base{display:var(--initial-base)}
 .chirp-ds-hero__initial-role--min-768{display:var(--initial-web)}
+.chirp-ds-hero{--initial-panelScale:var(--base-panelScale);--initial-panelWidth:var(--base-panelWidth);--initial-copyWidth:var(--base-copyWidth)}
+@media(min-width:768px){.chirp-ds-hero{--initial-panelScale:var(--min-768-panelScale);--initial-panelWidth:var(--min-768-panelWidth);--initial-copyWidth:var(--min-768-copyWidth)}}
+@media(min-width:1024px){.chirp-ds-hero{--initial-panelScale:var(--min-1024-panelScale);--initial-panelWidth:var(--min-1024-panelWidth);--initial-copyWidth:var(--min-1024-copyWidth)}}
+@media(min-width:1280px){.chirp-ds-hero{--initial-panelScale:var(--min-1280-panelScale);--initial-panelWidth:var(--min-1280-panelWidth);--initial-copyWidth:var(--min-1280-copyWidth)}}
+@media(min-width:1440px){.chirp-ds-hero{--initial-panelScale:var(--min-1440-panelScale);--initial-panelWidth:var(--min-1440-panelWidth);--initial-copyWidth:var(--min-1440-copyWidth)}}
+@media(min-width:1920px){.chirp-ds-hero{--initial-panelScale:var(--min-1920-panelScale);--initial-panelWidth:var(--min-1920-panelWidth);--initial-copyWidth:var(--min-1920-copyWidth)}}
 </style>
 
