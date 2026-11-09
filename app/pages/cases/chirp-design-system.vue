@@ -5,14 +5,11 @@ import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import ChirpDsHero from '../../components/ChirpDsHero.vue'
 import DSOverview from '../../components/DSOverview.vue'
 import DsImgTitleToolbar from '../../components/DsImgTitleToolbar.vue'
-import DsCaseImageViewer from '../../components/DsCaseImageViewer.vue'
 import DsBtnNav from '../../components/DsBtnNav.vue'
 import RelatedCases from '../../components/RelatedCases.vue'
 import DsFooter from '../../components/DsFooter.vue'
 import DsPageUp from '../../components/DsPageUp.vue'
 import TypoText from '../../components/TypoText.vue'
-import { galleryNativeSize } from '../../components/ds-overview.geometry'
-import { heroBreakpoints, heroReferences } from '../../components/chirp-ds-hero.scene-context'
 import content from '../../../content/cases/chirp-design-system.json'
 import foundation from '../../../content/documents/chirp-design-system/foundation.md?raw'
 import tokens from '../../../content/documents/chirp-design-system/tokens.json?raw'
@@ -22,11 +19,10 @@ useSeoMeta({ title: content.pageTitle, description: content.hero.focus })
 type Tab = 'overview' | 'foundation' | 'tokens'
 const tab = ref<Tab>('overview')
 const dark = computed(() => tab.value !== 'overview')
-const bannerStyle = Object.fromEntries(heroBreakpoints.map(profile => ['--banner-'+profile, (heroReferences[profile].panel.y / heroReferences[profile].width * 100)+'vw']))
+const toolbarSelection = ref<Tab | null>(null)
 const toolbar = ref<HTMLElement>()
 const documentBox = ref<HTMLElement>()
 const start = ref<HTMLElement>()
-const viewerOpen = ref(false)
 const showPageUp = ref(false)
 let observer: IntersectionObserver | undefined
 onMounted(() => {
@@ -37,6 +33,7 @@ onMounted(() => {
 })
 onUnmounted(() => { observer?.disconnect() })
 async function selectTab(value: Tab) {
+  toolbarSelection.value = value
   if (tab.value === value) return
   tab.value = value
   await nextTick()
@@ -74,15 +71,15 @@ const documentLines = computed(() => {
 
 <template>
   <main class="ds-case" :class="{ 'ds-case--dark': dark }">
-    <div class="ds-case__scene" :style="bannerStyle">
+    <div class="ds-case__scene">
       <div ref="start" class="ds-case__hero" tabindex="-1">
         <ChirpDsHero :panel-appearance="dark ? 'on-dark' : 'on-light'" />
         <div class="ds-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
       </div>
       <section class="ds-case__content" data-figma-frame="781:3490">
         <div ref="toolbar" class="ds-case__column ds-case__toolbar">
-          <DsImgTitleToolbar :model-value="tab" :title="page.toolbarTitle" :show-zoom="!dark"
-            @select="selectTab" @zoom="viewerOpen = true" />
+          <DsImgTitleToolbar :model-value="toolbarSelection" :title="page.toolbarTitle" :show-zoom="false"
+            @select="selectTab" />
         </div>
         <div class="ds-case__column">
           <DSOverview v-if="tab === 'overview'" />
@@ -109,10 +106,6 @@ const documentLines = computed(() => {
       <div class="ds-case__end" aria-hidden="true" />
     </div>
     <DsPageUp v-if="showPageUp" @click="scrollToStart" />
-    <DsCaseImageViewer v-model:open="viewerOpen" :title="page.toolbarTitle" :content-size="galleryNativeSize"
-      :initial-scale="{ base: '60%', 'min-768': 'fit-width' }">
-      <DSOverview mode="viewer" />
-    </DsCaseImageViewer>
   </main>
 </template>
 
@@ -120,11 +113,12 @@ const documentLines = computed(() => {
 .ds-case { width: 100%; --ds-page-gap: var(--space-8); background: var(--surface-default); }
 .ds-case--dark { background: #1e1e1e; }
 .ds-case__scene { position: relative; isolation: isolate; }
-.ds-case__scene::before { content: ''; position: absolute; inset: var(--banner-height) 0 0; z-index: -1; background: var(--case-image-preview-mob); }
-.ds-case--dark .ds-case__scene::before { background: #1e1e1e; }
 .ds-case__hero { position: relative; outline: none; }
 .ds-case__back { position: absolute; top: 0; left: 0; height: 100px; padding: var(--space-6); display: flex; align-items: center; box-sizing: border-box; z-index: 2; }
-.ds-case__content { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-8) 0 var(--space-12); }
+.ds-case__content { display: flex; flex-direction: column; align-items: center; gap: 0; padding: var(--space-4) 0 var(--space-8); background: linear-gradient(94.11905deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
+.ds-case--dark .ds-case__content { background: #1e1e1e; }
+.ds-case__hero { background: var(--surface-default); }
+.ds-case--dark .ds-case__hero { background: #1e1e1e; }
 .ds-case__column { width: calc(100% - 32px); max-width: var(--case-content-max); min-width: 0; }
 .ds-case__toolbar { scroll-margin-top: 0; }
 .ds-case__document { width: 100%; overflow-x: auto; background: #1e1e1e; color: #d4d4d4; padding-block: var(--space-3); border-radius: var(--radius-xlg); }
@@ -147,13 +141,10 @@ const documentLines = computed(() => {
 .ds-case__footer { width: 100%; }
 .ds-case__end { height: 98px; width: 100%; }
 @media (min-width: 768px) {
+  .ds-case__content { gap: var(--space-8); padding: var(--space-8) 0 var(--space-12); background: linear-gradient(126.206587deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
   .ds-case { --ds-page-gap: var(--space-12); }
   .ds-case__related { padding-inline: var(--space-4); }
   .ds-case__related-copy h2 { font-size: var(--text-size-32); line-height: 1.2; }
-}
-@media (min-width: 1024px) {
-  .ds-case__scene::before { background: var(--case-image-preview-web); }
-  .ds-case--dark .ds-case__scene::before { background: #1e1e1e; }
 }
 @media (min-width: 1280px) {
   .ds-case { --ds-page-gap: var(--space-16); }
@@ -161,10 +152,4 @@ const documentLines = computed(() => {
   .ds-case__related-copy p { font-size: var(--text-size-20); font-weight: 300; letter-spacing: .01em; }
 }
 
-.ds-case__scene{--banner-height:var(--banner-base)}
-@media(min-width:768px){.ds-case__scene{--banner-height:var(--banner-min-768)}}
-@media(min-width:1024px){.ds-case__scene{--banner-height:var(--banner-min-1024)}}
-@media(min-width:1280px){.ds-case__scene{--banner-height:var(--banner-min-1280)}}
-@media(min-width:1440px){.ds-case__scene{--banner-height:var(--banner-min-1440)}}
-@media(min-width:1920px){.ds-case__scene{--banner-height:var(--banner-min-1920)}}
 </style>
