@@ -63,8 +63,11 @@ function renderOffsets(values:number[]=latestOffsets){
 }
 const {resetMotion,replayIntro,maybeIntro,pointerDown,release}=useHeroMotion({
  root,layers:()=>layers.value,breakpoint:()=>breakpoint.value,mode:()=>editor?.mode.value,
- width:()=>containerWidth.value,viewport:()=>viewport.value,render:renderOffsets,enabled:isMoving,scope:'hero'
+ width:()=>containerWidth.value,viewport:()=>viewport.value,render:renderOffsets,enabled:isMoving,scope:'viewport'
 })
+function onPointerLeave(event: PointerEvent) {
+  if(event.pointerType !== 'mouse') release(event)
+}
 function sync() {
   viewport.value = window.innerWidth
   containerWidth.value = root.value?.clientWidth || viewport.value
@@ -79,7 +82,7 @@ defineExpose({ replayIntro, resetMotion })
 
 </script>
 <template>
- <section v-media-ready v-layered-scene ref="root" class="chirp-ds-hero media-skeleton media-skeleton--hero" :data-breakpoint="breakpoint" :data-ready="ready" data-motion="neutral" :aria-label="caseContent.pageTitle" :data-panel-appearance="panelAppearance" :style="[initialStyle,{height:heroHeight+'px', '--hero-banner-height':reference.panel.y*ratio+'px'}]" @scene-ready="maybeIntro" @pointerdown="pointerDown" @pointerleave="release()">
+ <section v-media-ready v-layered-scene ref="root" class="chirp-ds-hero media-skeleton media-skeleton--hero" :data-breakpoint="breakpoint" :data-ready="ready" data-motion="neutral" :aria-label="caseContent.pageTitle" :data-panel-appearance="panelAppearance" :style="[initialStyle,{height:heroHeight+'px', '--hero-banner-height':reference.panel.y*ratio+'px'}]" @scene-ready="maybeIntro" @pointerdown="pointerDown" @pointerleave="onPointerLeave">
   <LayeredSceneFallback name="chirp-ds-hero" />
   <h1 class="chirp-ds-hero__semantic"><TypoText :content="copy.title" /></h1>
   <div class="chirp-ds-hero__stage" :style="{width:reference.width+'px',transform:'scale('+ratio+')'}">
