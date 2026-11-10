@@ -71,12 +71,12 @@ const documentLines = computed(() => {
 
 <template>
   <main class="ds-case" :class="{ 'ds-case--dark': dark }">
-    <div class="ds-case__scene">
+    <div class="ds-case__scene" data-figma-frame="1799:5735">
       <div ref="start" class="ds-case__hero" tabindex="-1">
         <ChirpDsHero :panel-appearance="dark ? 'on-dark' : 'on-light'" />
         <div class="ds-case__back"><DsBtnNav tag="a" :href="siteUrl('/')" :aria-label="page.backLabel" /></div>
       </div>
-      <section class="ds-case__content" data-figma-frame="781:3490">
+      <section class="ds-case__content" data-figma-frame="1799:5708">
         <div ref="toolbar" class="ds-case__column ds-case__toolbar">
           <DsImgTitleToolbar :model-value="toolbarSelection" :title="page.toolbarTitle" :show-zoom="false"
             @select="selectTab" />
@@ -112,13 +112,11 @@ const documentLines = computed(() => {
 <style scoped>
 .ds-case { width: 100%; --ds-page-gap: var(--space-8); background: var(--surface-default); }
 .ds-case--dark { background: #1e1e1e; }
-.ds-case__scene { position: relative; isolation: isolate; }
+.ds-case__scene { position: relative; isolation: isolate; background: linear-gradient(94.11905deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
+.ds-case--dark .ds-case__scene { background: #1e1e1e; }
 .ds-case__hero { position: relative; outline: none; }
 .ds-case__back { position: absolute; top: 0; left: 0; height: 100px; padding: var(--space-6); display: flex; align-items: center; box-sizing: border-box; z-index: 2; }
-.ds-case__content { display: flex; flex-direction: column; align-items: center; gap: 0; padding: var(--space-4) 0 var(--space-8); background: linear-gradient(94.11905deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
-.ds-case--dark .ds-case__content { background: #1e1e1e; }
-.ds-case__hero { background: var(--surface-default); }
-.ds-case--dark .ds-case__hero { background: #1e1e1e; }
+.ds-case__content { display: flex; flex-direction: column; align-items: center; gap: 0; padding: var(--space-4) 0 var(--space-8); }
 .ds-case__column { width: calc(100% - 32px); max-width: var(--case-content-max); min-width: 0; }
 .ds-case__toolbar { scroll-margin-top: 0; }
 .ds-case__document { width: 100%; overflow-x: auto; background: #1e1e1e; color: #d4d4d4; padding-block: var(--space-3); border-radius: var(--radius-xlg); }
@@ -141,7 +139,8 @@ const documentLines = computed(() => {
 .ds-case__footer { width: 100%; }
 .ds-case__end { height: 98px; width: 100%; }
 @media (min-width: 768px) {
-  .ds-case__content { gap: var(--space-8); padding: var(--space-8) 0 var(--space-12); background: linear-gradient(126.206587deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
+  .ds-case__scene { background: linear-gradient(116.289174deg, rgb(229 231 235) 41.653%, rgb(184 221 205) 99.224%); }
+  .ds-case__content { gap: var(--space-8); padding: var(--space-8) 0 var(--space-12); }
   .ds-case { --ds-page-gap: var(--space-12); }
   .ds-case__related { padding-inline: var(--space-4); }
   .ds-case__related-copy h2 { font-size: var(--text-size-32); line-height: 1.2; }

@@ -1,8 +1,10 @@
-﻿import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="Foundation/Breakpoints" />
 
 # Responsive Breakpoints
+
+Проверяйте компонент до и после его порога, а также на минимальной поддерживаемой ширине. В Sandbox меняйте viewport Storybook. Не выводите поведение компонента только из названия устройства или ширины направляющей.
 
 Layout guide styles описаны отдельно в Foundation/Layout guide styles.1920 - 2cols — стандартный DS-layout;1920/720 в именах направляющих сами по себе не вводят CSS-breakpoint.
 
@@ -42,3 +44,15 @@ DS использует `min-width` breakpoints. Свойство `Breakpoint` �
 </table>
 
 > Storybook viewport presets настроены в `.storybook/preview.ts` и доступны в тулбаре Storybook.
+
+
+## Пример кода
+
+```css
+/* Пример существующего порога. Выбирайте его по контракту компонента. */
+@media (min-width: 768px) {
+  .section {
+    gap: var(--case-flow-gap);
+  }
+}
+```

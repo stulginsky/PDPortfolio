@@ -7,7 +7,7 @@ import DsButton from './DsButton.vue'
 const meta = {
   title: 'Components/Button',
   component: DsButton,
-  tags: ['autodocs', '!dev'],
+  tags: ['!autodocs', '!dev'],
   args: {
     text: 'Button',
     icon: 'Favicon',
@@ -43,7 +43,7 @@ const meta = {
     }
   },
   "raised": {
-    "description": "Добавляет тень в исходном состоянии. Наведите указатель, чтобы увидеть переход.",
+    "description": "Задаёт фон исходного состояния. Наведите указатель, чтобы увидеть переход.",
     "control": {
       "type": "boolean"
     }

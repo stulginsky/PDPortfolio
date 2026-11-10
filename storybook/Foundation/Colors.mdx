@@ -6,6 +6,8 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
 
 # Colors
 
+Выбирайте семантические цвета по роли: текст, поверхность, граница или действие. Примитивы показывают исходную палитру, декоративные цвета предназначены для соответствующих композиций. Используйте CSS-переменные из каталога; проверяйте контраст текста на реальном фоне.
+
 Цветовая палитра дизайн-системы. <a href="https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1" target="_blank" rel="noopener noreferrer">Figma</a>.
 
 ## Primitive
@@ -164,3 +166,14 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
 </ColorPalette>
 
 </div>
+
+
+## Пример кода
+
+```css
+.surface {
+  color: var(--text-default);
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+}
+```

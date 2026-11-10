@@ -1,3 +1,4 @@
+import { DocsGuidance } from '../../.storybook/DocsPage'
 import { Meta, Title, Description, Canvas, Controls } from '@storybook/addon-docs/blocks'
 import * as RoleFocusStories from '../../app/components/DsRoleFocus.stories'
 
@@ -5,5 +6,11 @@ import * as RoleFocusStories from '../../app/components/DsRoleFocus.stories'
 
 <Title />
 <Description of={RoleFocusStories} />
+## Интерактивный пример
+
+Измените роль, фокус и доступный breakpoint в Controls.
+
 <Canvas of={RoleFocusStories.Preview} />
 <Controls of={RoleFocusStories.Preview} sort="none" />
+
+<DocsGuidance />

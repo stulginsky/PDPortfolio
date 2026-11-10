@@ -1,12 +1,14 @@
-﻿import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="Foundation/Spacing & Radii" />
 
 # Spacing & Radii
 
+Используйте существующие токены для padding, gap и скруглений. Выбирайте значения по контракту компонента и композиции; имя токена не заменяет его фактическое значение.
+
 Примитивные токены из Figma Variables (`tokens.css`).
 
-Обновление2026-10-24: space/20 =72px, включая padding и gap. Каноническое имя20 не означает20×4.
+space/20 = 72px, включая padding и gap. Каноническое имя 20 не означает 20×4.
 
 ## Spacing
 
@@ -127,3 +129,15 @@
 <tr><td>Image preview/Magnifying-img-preview</td><td><code>--image-preview-magnifying-img-preview: blur(2px)</code></td><td>4</td></tr>
   </tbody>
 </table>
+
+
+## Пример кода
+
+```css
+.group {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-xlg);
+}
+```

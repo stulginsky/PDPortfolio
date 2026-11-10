@@ -4,7 +4,9 @@ import { Meta } from "@storybook/addon-docs/blocks"
 
 # Typography
 
-Source: <a href="https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1" target="_blank" rel="noopener noreferrer">Figma</a>, 2026-10-22.
+Выбирайте типографический стиль по роли текста и уровню заголовка. Используйте согласованный набор размера, начертания, интерлиньяжа и межбуквенного интервала. Проверяйте длинный текст и переносы на узком экране.
+
+<a href="https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio-DS?node-id=0-1" target="_blank" rel="noopener noreferrer">Figma</a>.
 
 Число в имени — точный размер в px: DS/Heading/72 → text/size-72. Regular и Strong — самостоятельные комплексные стили. Минимумы Card/Badge сохраняют ролевые имена. Несовместимые weight bindings отключены ради сохранения исходных осей; все параметры приведены ниже.
 
@@ -149,3 +151,16 @@ Source: <a href="https://www.figma.com/design/TPjPitung1VP3oQg42f56O/PDPortfolio
 <p><strong>DS/Badge/Card/min</strong></p>
 <p style={{fontFamily:"var(--text-font-sans)",fontSize:"var(--text-size-badge-card-min)",fontWeight:600,fontVariationSettings:"\"wght\" 600, \"YTFI\" 738, \"XOPQ\" 96, \"slnt\" 0, \"YOPQ\" 79, \"XTRA\" 468, \"wdth\" 100, \"YTLC\" 514, \"YTDE\" -203, \"YTAS\" 750, \"YTUC\" 712, \"GRAD\" 0",fontOpticalSizing:"none",lineHeight:1.100000023841858,letterSpacing:"0em"}}>Designed &amp; Developed — Типографика</p>
 </section>
+
+
+## Пример кода
+
+```css
+.control-label {
+  font-family: var(--text-font-sans);
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-medium);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+```
