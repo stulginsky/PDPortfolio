@@ -16,7 +16,11 @@ const config: StorybookConfig = {
     experimentalDocgenServer: true,
   },
   stories: [
-    '../app/**/*.stories.@(js|ts)',
+    // Files named *.local.stories.ts remain visible in the development
+    // catalog under a [LOCAL] title and are excluded from publication.
+    process.env.NODE_ENV === 'production'
+      ? '../app/**/!(*.local).stories.@(js|ts)'
+      : '../app/**/*.stories.@(js|ts)',
     '../storybook/**/*.mdx',
   ],
   addons: [

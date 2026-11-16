@@ -4,7 +4,7 @@ import DSOverview from './DSOverview.vue'
 import content from '../../content/cases/chirp-design-system.json'
 
 const meta = {
-  title: 'Compositions/Case media/DSOverview',
+  title: 'Compositions/Case media/[LOCAL] DSOverview',
   component: DSOverview,
   tags: ['autodocs', '!dev'],
   parameters: { layout: 'fullscreen', docs: { description: { component:

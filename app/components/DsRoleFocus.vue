@@ -63,7 +63,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
   font-variation-settings: "wght" 600, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 25, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
-  line-height: 1.45;
+  line-height: 26px;
   letter-spacing: 0;
 }
 
@@ -75,8 +75,12 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
   font-variation-settings: "wght" 400, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
-  line-height: 1.6; /* 160% */
+  line-height: 26px; /* Figma rounds 160% of 16px to a 26px line box */
   letter-spacing: 0;
+}
+
+.ds-role-focus__row:first-child .ds-role-focus__label {
+  height: 32px; /* fixed label slot in Role-Focus/base */
 }
 
 .ds-role-focus__item {
@@ -85,7 +89,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
 
 .ds-role-focus--min-768 .ds-role-focus__row {
   flex-direction: row;
-  align-items: first baseline;
+  align-items: flex-start;
   gap: var(--space-3);
 }
 
@@ -102,6 +106,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
   flex: 1;
   font-size: var(--text-size-20);
   font-weight: var(--text-weight-light);
+  line-height: 1.6;
   font-variation-settings: "wght" 300, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
     "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
     "wdth" 100;
@@ -111,7 +116,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
 @media (min-width: 768px) {
   .ds-role-focus:not(.ds-role-focus--base) .ds-role-focus__row {
     flex-direction: row;
-    align-items: first baseline;
+    align-items: flex-start;
     gap: var(--space-3); /* 12px between label col and value */
   }
 
@@ -128,6 +133,7 @@ const focusItems = computed(() => typografRoleFocusItems(props.focus))
     flex: 1;
     font-size: var(--text-size-20); /* min-768: DS/Body/md — 20px */
     font-weight: var(--text-weight-light); /* 300 */
+    line-height: 1.6;
     font-variation-settings: "wght" 300, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
       "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712,
       "wdth" 100;

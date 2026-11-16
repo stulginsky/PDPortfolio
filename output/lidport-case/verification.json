@@ -1,0 +1,320 @@
+{
+  "results": [
+    {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "heroHeight": 560,
+      "frames": [
+        {
+          "id": "3:1078",
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1873
+        },
+        {
+          "id": "3:1080",
+          "x": 0,
+          "y": 560,
+          "width": 1920,
+          "height": 1313
+        },
+        {
+          "id": "4:1347",
+          "x": 498,
+          "y": 666,
+          "width": 924,
+          "height": 1159
+        },
+        {
+          "id": "4:1349",
+          "x": 498,
+          "y": 666,
+          "width": 924,
+          "height": 141
+        },
+        {
+          "id": "4:1359",
+          "x": 498,
+          "y": 855,
+          "width": 924,
+          "height": 264
+        },
+        {
+          "id": "4:1360",
+          "x": 498,
+          "y": 855,
+          "width": 292,
+          "height": 264
+        },
+        {
+          "id": "4:1364",
+          "x": 814,
+          "y": 855,
+          "width": 292,
+          "height": 264
+        },
+        {
+          "id": "4:1369",
+          "x": 1130,
+          "y": 855,
+          "width": 292,
+          "height": 264
+        },
+        {
+          "id": "4:1379",
+          "x": 498,
+          "y": 1167,
+          "width": 924,
+          "height": 74
+        },
+        {
+          "id": "4:1392",
+          "x": 498,
+          "y": 1289,
+          "width": 924,
+          "height": 265
+        },
+        {
+          "id": "4:1411",
+          "x": 498,
+          "y": 1602,
+          "width": 924,
+          "height": 109
+        },
+        {
+          "id": "3:1118",
+          "x": 0,
+          "y": 1883,
+          "width": 1920,
+          "height": 474
+        }
+      ],
+      "images": [
+        {
+          "src": "/cases/lidport-design-system/hero-layers/min-1920/lada-image-logo.svg?v=7814569539e4",
+          "ok": true
+        },
+        {
+          "src": "/cases/lidport-design-system/hero-layers/min-1920/dillers-portal-design-system.svg?v=4ce12facaa6e",
+          "ok": true
+        },
+        {
+          "src": "inline-svg",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "heroHeight": 673,
+      "frames": [
+        {
+          "id": "3:1078",
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 2224.359375
+        },
+        {
+          "id": "3:1080",
+          "x": 0,
+          "y": 673,
+          "width": 768,
+          "height": 1551.359375
+        },
+        {
+          "id": "4:1347",
+          "x": 16,
+          "y": 779,
+          "width": 736,
+          "height": 1397.359375
+        },
+        {
+          "id": "4:1349",
+          "x": 16,
+          "y": 779,
+          "width": 736,
+          "height": 152
+        },
+        {
+          "id": "4:1359",
+          "x": 16,
+          "y": 979,
+          "width": 736,
+          "height": 294.40625
+        },
+        {
+          "id": "4:1360",
+          "x": 16,
+          "y": 979,
+          "width": 229.328125,
+          "height": 294.40625
+        },
+        {
+          "id": "4:1364",
+          "x": 269.328125,
+          "y": 979,
+          "width": 229.328125,
+          "height": 294.40625
+        },
+        {
+          "id": "4:1369",
+          "x": 522.65625,
+          "y": 979,
+          "width": 229.328125,
+          "height": 294.40625
+        },
+        {
+          "id": "4:1379",
+          "x": 16,
+          "y": 1321.40625,
+          "width": 736,
+          "height": 73.59375
+        },
+        {
+          "id": "4:1392",
+          "x": 16,
+          "y": 1443,
+          "width": 736,
+          "height": 463.984375
+        },
+        {
+          "id": "4:1411",
+          "x": 16,
+          "y": 1954.984375,
+          "width": 736,
+          "height": 107.578125
+        },
+        {
+          "id": "3:1118",
+          "x": 0,
+          "y": 2234.359375,
+          "width": 768,
+          "height": 474
+        }
+      ],
+      "images": [
+        {
+          "src": "/cases/lidport-design-system/hero-layers/min-768/lada-image-logo.svg?v=5a34168bff73",
+          "ok": true
+        },
+        {
+          "src": "/cases/lidport-design-system/hero-layers/min-768/dillers-portal-design-system.svg?v=0cc77e320450",
+          "ok": true
+        },
+        {
+          "src": "inline-svg",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "heroHeight": 540,
+      "frames": [
+        {
+          "id": "3:1078",
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 3610.078125
+        },
+        {
+          "id": "3:1080",
+          "x": 0,
+          "y": 540,
+          "width": 320,
+          "height": 3070.078125
+        },
+        {
+          "id": "4:1347",
+          "x": 16,
+          "y": 684,
+          "width": 288,
+          "height": 2894.078125
+        },
+        {
+          "id": "4:1349",
+          "x": 16,
+          "y": 732,
+          "width": 288,
+          "height": 280
+        },
+        {
+          "id": "4:1359",
+          "x": 16,
+          "y": 1060,
+          "width": 288,
+          "height": 752.375
+        },
+        {
+          "id": "4:1360",
+          "x": 16,
+          "y": 1060,
+          "width": 288,
+          "height": 214.40625
+        },
+        {
+          "id": "4:1364",
+          "x": 16,
+          "y": 1298.40625,
+          "width": 288,
+          "height": 263.1875
+        },
+        {
+          "id": "4:1369",
+          "x": 16,
+          "y": 1585.59375,
+          "width": 288,
+          "height": 226.78125
+        },
+        {
+          "id": "4:1379",
+          "x": 16,
+          "y": 1860.375,
+          "width": 288,
+          "height": 288
+        },
+        {
+          "id": "4:1392",
+          "x": 16,
+          "y": 2196.375,
+          "width": 288,
+          "height": 942.359375
+        },
+        {
+          "id": "4:1411",
+          "x": 16,
+          "y": 3186.734375,
+          "width": 288,
+          "height": 229.546875
+        },
+        {
+          "id": "3:1118",
+          "x": 0,
+          "y": 3620.078125,
+          "width": 320,
+          "height": 554
+        }
+      ],
+      "images": [
+        {
+          "src": "/cases/lidport-design-system/hero-layers/base/lada-image-logo.svg?v=fdfd9529fc05",
+          "ok": true
+        },
+        {
+          "src": "/cases/lidport-design-system/hero-layers/base/dillers-portal-design-system.svg?v=5c53e4930f9c",
+          "ok": true
+        },
+        {
+          "src": "inline-svg",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -16,6 +16,7 @@ const meta = {
     onSelect: fn(),
   },
   argTypes: {
+  figmaHref: { control: 'text', description: 'External Figma library URL. Defaults to Chirp for existing consumers.' },
   "title": {
     "description": "Figma TEXT `Title#1016:1`.",
     "control": {
@@ -45,6 +46,27 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const ExternalDestination: Story = {
+  args: { figmaHref: 'https://www.figma.com/design/IfUIEROTKbSr3LIfUh8wPx/LIDPORT-DS?node-id=0-1', showZoom: false },
+  render: args => ({ components: { DsImgTitleToolbar }, setup: () => ({ args }),
+    template: '<div style="width:924px;max-width:100%;padding:16px;box-sizing:border-box"><DsImgTitleToolbar v-bind="args" data-storybook-breakpoint="min-768" /></div>' }),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const previous = window.open
+    const opened = fn()
+    window.open = opened
+    try {
+      const direct = canvas.queryByRole('button', { name: 'Figma', exact: true })
+      if (direct) await userEvent.click(direct)
+      else {
+        await userEvent.click(canvas.getByRole('button', { name: /Overview · Docs · Figma/ }))
+        await userEvent.click(within(document.body).getByText('Figma', { exact: true }))
+      }
+      expect(opened).toHaveBeenCalledWith(args.figmaHref, '_blank', 'noopener,noreferrer')
+    } finally { window.open = previous }
+  },
+}
 
 export const AllVariants: Story = {
   render: (args) => ({

@@ -22,6 +22,8 @@ const props = withDefaults(
   defineProps<{
     /** Figma TEXT property Title#1016:1. */
     title?: string
+    /** External design library; defaults to the existing Chirp destination. */
+    figmaHref?: string
     /** Figma BOOLEAN property Show zoom#1016:11. */
     showZoom?: boolean
     /** Selected internal document. Null preserves the introductory mobile trigger. */
@@ -29,6 +31,7 @@ const props = withDefaults(
   }>(),
   {
     title: 'Value',
+    figmaHref: 'https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc/Chirp-DS?node-id=0-1',
     showZoom: true,
     modelValue: undefined,
   },
@@ -52,18 +55,18 @@ let observer: ResizeObserver | undefined
 let mediaQuery: MediaQueryList | undefined
 let attributeObserver: MutationObserver | undefined
 
-const items: NavigationItem[] = [
+const items = computed<NavigationItem[]>(() => [
   { label: 'Overview', value: 'overview', showIcon: false },
   { label: 'Foundation.md', value: 'foundation', showIcon: false },
   { label: 'Tokens.json', value: 'tokens', showIcon: false },
   {
     label: 'Figma',
     value: 'figma',
-    href: 'https://www.figma.com/design/Rqb5u7DbMstCGWRnVzZEwc/Chirp-DS?node-id=0-1',
+    href: props.figmaHref,
     icon: 'ExternalLink',
     showIcon: true,
   },
-]
+])
 
 const isWeb = computed(() => {
   if (storybookBreakpoint.value === 'base') return false
@@ -72,9 +75,9 @@ const isWeb = computed(() => {
 })
 const selectedValue = computed(() => props.modelValue === undefined ? internalValue.value : props.modelValue)
 const selectedTab = computed<InternalValue>(() => selectedValue.value ?? 'overview')
-const triggerLabel = computed(() => items.find(item => item.value === selectedValue.value)?.label ?? 'Overview · Docs · Figma')
+const triggerLabel = computed(() => items.value.find(item => item.value === selectedValue.value)?.label ?? 'Overview · Docs · Figma')
 const useMenu = computed(() => !isWeb.value || menuForOverflow.value)
-const internalItems = computed(() => items.filter((item): item is NavigationItem & { value: InternalValue } => item.value !== 'figma'))
+const internalItems = computed(() => items.value.filter((item): item is NavigationItem & { value: InternalValue } => item.value !== 'figma'))
 
 function select(value: InternalValue) {
   if (props.modelValue === undefined) internalValue.value = value
@@ -87,7 +90,7 @@ function selectMenuItem(item: NavigationItem) {
 }
 
 function openFigma() {
-  const figmaItem = items.find((item) => item.value === 'figma')
+  const figmaItem = items.value.find((item) => item.value === 'figma')
   if (figmaItem?.href) window.open(figmaItem.href, '_blank', 'noopener,noreferrer')
 }
 
