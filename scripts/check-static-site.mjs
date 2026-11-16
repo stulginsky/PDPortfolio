@@ -28,7 +28,11 @@ const routes = await pageRoutes('app/pages')
 const failures = new Set()
 const source = await fs.readFile('app/utils/site-url.ts', 'utf8')
 async function urlHelpers(base) {
-  const code = ts.transpileModule(source.replace('import.meta.env.VITE_SITE_BASE_URL', JSON.stringify(base)), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
+  const revisionsSource = await fs.readFile('app/generated/public-asset-revisions.ts', 'utf8')
+  const revisionsCode = ts.transpileModule(revisionsSource, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
+  const revisionsUrl = 'data:text/javascript;base64,' + Buffer.from(revisionsCode).toString('base64')
+  const helperSource = source.replace('../generated/public-asset-revisions', revisionsUrl).replace('import.meta.env.VITE_SITE_BASE_URL', JSON.stringify(base))
+  const code = ts.transpileModule(helperSource, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
   return import('data:text/javascript;base64,' + Buffer.from(code).toString('base64'))
 }
 for (const base of ['/', '/PDPortfolio/']) {
