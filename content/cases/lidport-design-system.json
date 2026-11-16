@@ -1,0 +1,280 @@
+{
+  "pageTitle": "LIDPort Design System — Константин Базаров",
+  "hero": {
+    "title": "Diller’s Portal Design System",
+    "role": "Design System Designer · Product Designer",
+    "focus": "Design System Architecture · Design Tokens · UI Foundations · Component Architecture · Figma Library"
+  },
+  "page": {
+    "backLabel": "На витрину",
+    "toolbarTitle": "Web",
+    "documents": {
+      "foundation": "Foundation.md",
+      "tokens": "Tokens.json"
+    },
+    "figmaHref": "https://www.figma.com/design/IfUIEROTKbSr3LIfUh8wPx/LIDPORT-DS?node-id=0-1",
+    "nodes": {
+      "4:1351": "LIDPORT / DESIGN SYSTEM",
+      "4:1356": "LIDPORT Design System",
+      "4:1357": "Light / Figma library / Foundations + Components",
+      "4:1358": "Единая основа для интерфейсов LIDPort: связанные компоненты, семантические переменные и короткие правила применения",
+      "4:1361": "Узнаваемая типографика",
+      "4:1362": "Новый заказ",
+      "4:1363": "LADA Pragmatica для заголовков. Roboto Flex для повседневной работы",
+      "4:1365": "Связанные компоненты",
+      "I4:1366;74:4962": "Создать заявку",
+      "I4:1367;292:5899": "В работе",
+      "4:1368": "Состояния и свойства собраны в понятные примеры",
+      "4:1370": "Цвет по назначению",
+      "4:1378": "38 примитивов. 102 семантические роли. Значения и привязки — в переменных",
+      "4:1381": "34",
+      "4:1382": "Набора компонентов",
+      "4:1384": "653",
+      "4:1385": "Компонента, включая  варианты и иконки",
+      "4:1387": "457",
+      "4:1388": "Переменных",
+      "4:1390": "95",
+      "4:1391": "Иконок",
+      "4:1394": "01",
+      "4:1396": "С чего начать",
+      "4:1397": "Выберите задачу: изучить основу, найти компонент, открыть полный навигатор… Or check the components for production in the collection of the storybook",
+      "4:1400": "Foundations",
+      "4:1401": "Цвета, типографика, размеры, сетки и эффекты",
+      "4:1402": "Открыть →",
+      "4:1404": "Components",
+      "4:1405": "Варианты, свойства, состояния и применение компонентов",
+      "4:1406": "Открыть →",
+      "4:1408": "Library guide",
+      "4:1409": "Навигатор по всем оформленным страницам",
+      "4:1410": "Открыть →",
+      "30:1121": "Storybook",
+      "30:1122": "Front end компоненты",
+      "30:1123": "Coming soon",
+      "4:1413": "02",
+      "4:1415": "Как устроена библиотека",
+      "4:1416": "Компоненты используют общие текстовые стили, семантические цветовые роли и размерные шкалы",
+      "4:1417": "Используйте экземпляры компонентов и предусмотренные свойства. Выбирайте семантические цвета по назначению и сохраняйте иерархию действий",
+      "4:1419": "LIDPORT / START • Light"
+    }
+  },
+  "source": {
+    "fileKey": "KKVyKhWbHxJcCyfGMyISVv",
+    "nodeId": "3:1077",
+    "textNodes": [
+      {
+        "id": "4:1351",
+        "text": "LIDPORT / DESIGN SYSTEM",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1356",
+        "text": "LIDPORT Design System",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1357",
+        "text": "Light / Figma library / Foundations + Components",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1358",
+        "text": "Единая основа для интерфейсов LIDPort: связанные компоненты, семантические переменные и короткие правила применения",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1361",
+        "text": "Узнаваемая типографика",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1362",
+        "text": "Новый заказ",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1363",
+        "text": "LADA Pragmatica для заголовков. Roboto Flex для повседневной работы",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1365",
+        "text": "Связанные компоненты",
+        "hyperlink": null
+      },
+      {
+        "id": "I4:1366; 74:4962",
+        "text": "Создать заявку",
+        "hyperlink": null
+      },
+      {
+        "id": "I4:1367; 292:5899",
+        "text": "В работе",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1368",
+        "text": "Состояния и свойства собраны в понятные примеры",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1370",
+        "text": "Цвет по назначению",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1378",
+        "text": "38 примитивов. 102 семантические роли. Значения и привязки — в переменных",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1381",
+        "text": "34",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1382",
+        "text": "Набора компонентов",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1384",
+        "text": "653",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1385",
+        "text": "Компонента, включая  варианты и иконки",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1387",
+        "text": "461",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1388",
+        "text": "Переменная",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1390",
+        "text": "95",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1391",
+        "text": "Иконок",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1394",
+        "text": "01",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1396",
+        "text": "С чего начать",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1397",
+        "text": "Выберите задачу: изучить основу, найти компонент, открыть полный навигатор… Or check the components for production in the collection of the storybook",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1400",
+        "text": "Foundations",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1401",
+        "text": "Цвета, типографика, размеры, сетки и эффекты",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1402",
+        "text": "Открыть →",
+        "hyperlink": {
+          "type": "URL",
+          "value": "https://www.figma.com/design/IfUIEROTKbSr3LIfUh8wPx/LIDPORT-UI?node-id=8122-2"
+        }
+      },
+      {
+        "id": "4:1404",
+        "text": "Components",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1405",
+        "text": "Варианты, свойства, состояния и применение компонентов",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1406",
+        "text": "Открыть →",
+        "hyperlink": {
+          "type": "URL",
+          "value": "https://www.figma.com/design/IfUIEROTKbSr3LIfUh8wPx/LIDPORT-UI?node-id=8124-162"
+        }
+      },
+      {
+        "id": "4:1408",
+        "text": "Library guide",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1409",
+        "text": "Навигатор по всем оформленным страницам",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1410",
+        "text": "Открыть →",
+        "hyperlink": {
+          "type": "URL",
+          "value": "https://www.figma.com/design/IfUIEROTKbSr3LIfUh8wPx/LIDPORT-UI?node-id=8137-128"
+        }
+      },
+      {
+        "id": "30:1121",
+        "text": "Storybook",
+        "hyperlink": null
+      },
+      {
+        "id": "30:1122",
+        "text": "Front end компоненты",
+        "hyperlink": null
+      },
+      {
+        "id": "30:1123",
+        "text": "Coming soon",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1413",
+        "text": "02",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1415",
+        "text": "Как устроена библиотека",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1416",
+        "text": "Компоненты используют общие текстовые стили, семантические цветовые роли и размерные шкалы",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1417",
+        "text": "Используйте экземпляры компонентов и предусмотренные свойства. Выбирайте семантические цвета по назначению и сохраняйте иерархию действий",
+        "hyperlink": null
+      },
+      {
+        "id": "4:1419",
+        "text": "LIDPORT / START • Light",
+        "hyperlink": null
+      }
+    ]
+  }
+}

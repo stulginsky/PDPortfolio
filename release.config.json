@@ -11,6 +11,7 @@
     ".github/actions/build-storybook/action.yml",
     "scripts/apply-typograf-content.mjs", "scripts/check-case-typography.mjs",
     "scripts/generate-weapon-footer.mjs", "scripts/check-static-site.mjs",
+    "scripts/generate-public-asset-revisions.mjs",
     "scripts/check-release-tree.mjs", "scripts/lib/release-policy.mjs",
     "scripts/assemble-publication.mjs", "scripts/check-storybook-static.mjs",
     "scripts/lib/typograf-shared.mjs", "scripts/lib/case-editorial.mjs"
@@ -22,6 +23,7 @@
   ],
   "releaseScripts": [
     "build", "dev", "generate", "check:static", "check:storybook", "check:release", "preview", "postinstall",
-    "prebuild", "pregenerate", "predev", "generate:weapon-footer", "check:case-typography", "typograf:apply"
+    "prebuild", "pregenerate", "predev", "generate:weapon-footer", "check:case-typography", "typograf:apply",
+    "generate:asset-revisions", "check:asset-revisions"
   ]
 }

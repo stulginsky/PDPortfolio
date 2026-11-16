@@ -1,0 +1,25 @@
+/* Values read from LIDPORT-DS; scoped to this embedded library cover. See content/documents/lidport-design-system/figma-variables.json. */
+.lidport-overview {
+  --lidport-color-text-primary: rgb(27 27 27 / 1);
+  --lidport-color-text-secondary: rgb(77 89 100 / 1);
+  --lidport-color-button-accent-brand-background-default: rgb(185 70 10 / 1);
+  --lidport-color-button-text-inverse: rgb(255 255 255 / 1);
+  --lidport-color-background-subtle: rgb(244 245 246 / 1);
+  --lidport-color-border-subtle: rgb(235 235 235 / 1);
+  --lidport-color-status-info-subtle: rgb(228 235 251 / 1);
+  --lidport-color-palette-neutral-950: rgb(27 27 27 / 1);
+  --lidport-color-palette-slate-700: rgb(77 89 100 / 1);
+  --lidport-color-palette-slate-500: rgb(122 132 141 / 1);
+  --lidport-color-palette-neutral-300: rgb(208 210 211 / 1);
+  --lidport-color-palette-orange-700: rgb(185 70 10 / 1);
+  --lidport-color-palette-orange-800: rgb(165 61 8 / 1);
+  --lidport-typography-heading-h1-font-family: 'LADA Pragmatica';
+  --lidport-typography-heading-h1-font-weight: 700;
+  --lidport-typography-heading-h1-font-size: 32px;
+  --lidport-typography-heading-h1-line-height: 32px;
+  --lidport-typography-heading-h2-font-family: 'LADA Pragmatica';
+  --lidport-typography-heading-h2-font-weight: 700;
+  --lidport-typography-heading-h2-font-size: 24px;
+  --lidport-typography-heading-h2-line-height: 24px;
+}
+

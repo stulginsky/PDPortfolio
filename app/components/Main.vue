@@ -15,7 +15,7 @@ import PDPortfolioDs from './PDPortfolioDs.vue'
 import DCVendorAppPr from './DCVendorAppPr.vue'
 import DCVendorAppUx from './DCVendorAppUx.vue'
 import DCPickerAppUx from './DCPickerAppUx.vue'
-import LIDesignSystem from './LIDesignSystem.vue'
+import LIDPortDsCard from './LIDPortDsCard.vue'
 import Component4Real3Dweapon from './4Real3Dweapon.vue'
 import Skins4Real from './Skins4Real.vue'
 import BlackGold from './BlackGold.vue'
@@ -55,7 +55,7 @@ const cases = [
   { id: 'DragonHeartJw', category: 'jewelry', component: DragonHeartJw, activateHref: '/cases/dragon-heart-jw' },
   { id: 'FoxJw', category: 'jewelry', component: FoxJw, activateHref: '/cases/fox-jw' },
   { id: 'DCPickerAppUx', category: 'ux', component: DCPickerAppUx },
-  { id: 'LIDesignSystem', category: 'design-system', component: LIDesignSystem },
+  { id: 'LIDPortDsCard', category: 'design-system', component: LIDPortDsCard },
   { id: 'Skins4Real', category: 'landing', component: Skins4Real },
   { id: 'BlackGold', category: 'landing', component: BlackGold },
 ] as const
