@@ -11,12 +11,14 @@
     "check:release": "node scripts/check-release-tree.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prebuild": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer",
-    "pregenerate": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer",
-    "predev": "npm run generate:weapon-footer",
+    "prebuild": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer && npm run generate:asset-revisions",
+    "pregenerate": "npm run typograf:apply && npm run check:case-typography && npm run generate:weapon-footer && npm run generate:asset-revisions",
+    "predev": "npm run generate:weapon-footer && npm run generate:asset-revisions",
     "generate:weapon-footer": "node scripts/generate-weapon-footer.mjs",
     "check:case-typography": "node scripts/check-case-typography.mjs",
-    "typograf:apply": "node scripts/apply-typograf-content.mjs"
+    "typograf:apply": "node scripts/apply-typograf-content.mjs",
+    "generate:asset-revisions": "node scripts/generate-public-asset-revisions.mjs",
+    "check:asset-revisions": "node scripts/generate-public-asset-revisions.mjs --check"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

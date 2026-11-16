@@ -134,9 +134,12 @@ const positions = assets.map((_, index) => Object.fromEntries(layouts.flatMap((l
 .ds-overview-cover__cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
 .ds-overview-cover__card { display: flex; flex-direction: column; justify-content: space-between; height: 180px; min-width: 0; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-bg-subtle); }
 .ds-overview-cover__card:last-child { height: auto; }
-.ds-overview-cover a { text-decoration: none; }
-.ds-overview-cover__card a { font-size: var(--text-size-14); line-height: 20px; color: var(--color-action-primary-default); }
+.ds-overview-cover a { --link-color: var(--color-action-primary-default); color: var(--link-color); text-decoration: none; transition: color 150ms ease-out; }
+.ds-overview-cover__card a { font-size: var(--text-size-14); line-height: 20px; }
+.ds-overview-cover > a.ds-overview-cover__muted { --link-color: var(--color-text-secondary); }
+.ds-overview-cover a:hover { color: hsl(from var(--link-color) h s calc(l - 12)); }
 .ds-overview-cover a:focus-visible { outline: 2px solid var(--color-action-primary-default); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .ds-overview-cover a { transition: none; } }
 @media (min-width: 768px) {
   .ds-overview-cover__rule { height: 4px; }
   .ds-overview-cover__intro { flex-direction: row; gap: var(--space-12); }

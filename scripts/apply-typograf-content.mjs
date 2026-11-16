@@ -169,6 +169,8 @@ function typografCase(src) {
 }
 
 const jobs = [
+  { source: "cases/lidport-design-system.json", out: "cases/lidport-design-system.json", transform: typografTree },
+  {source:"lidport-ds-card.json",out:"lidport-ds-card.json",transform:typografTree},
   {source:"cases/fox-jw.json",out:"cases/fox-jw.json",transform:typografTree},
   {source:"cases/dragon-heart-jw.json",out:"cases/dragon-heart-jw.json",transform:typografTree},
   {source:"cases/aqua-maris.json",out:"cases/aqua-maris.json",transform:typografTree},
