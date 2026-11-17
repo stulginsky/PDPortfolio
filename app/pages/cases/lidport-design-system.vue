@@ -161,7 +161,7 @@ const documentLines = computed(() => {
 .lidport-case--dark,.lidport-case--dark .lidport-case__scene { background:#1e1e1e; }
 .lidport-case__hero { position:relative; outline:none; }
 .lidport-case__back { position:absolute; top:0; left:0; height:100px; padding:var(--space-6); display:flex; align-items:center; box-sizing:border-box; z-index:2; }
-.lidport-case__content { display:flex; flex-direction:column; align-items:center; gap:0; padding:var(--space-4) 0 var(--space-8); }
+.lidport-case__content { display:flex; flex-direction:column; align-items:center; gap:0; margin-top:var(--space-8); padding:var(--space-4) 0 var(--space-8); }
 .lidport-case__column { width:calc(100% - 32px); max-width:var(--case-content-max); min-width:0; }
 .lidport-case__document { width:100%; overflow-x:auto; background:#1e1e1e; color:#d4d4d4; padding-block:var(--space-3); border-radius:var(--radius-xlg); }
 .lidport-case__document:focus-visible { outline:2px solid var(--border-focus); outline-offset:2px; }

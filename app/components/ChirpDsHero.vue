@@ -17,7 +17,7 @@ const root=ref<HTMLElement>()
 const panelBox=ref<HTMLElement>()
 const panelHeight=ref<number>()
 const ready=ref(false)
-const heroHeight=computed(()=>reference.value.panel.y*ratio.value+(panelHeight.value??reference.value.panel.height*(breakpoint.value==='base'?1:ratio.value)))
+const heroHeight=computed(()=>reference.value.panel.y*ratio.value+(panelHeight.value??reference.value.panel.height))
 const viewport=ref(320)
 const containerWidth=ref(320)
 const breakpoint=computed(()=>props.breakpoint??getHeroBreakpoint(viewport.value))
@@ -31,13 +31,12 @@ function initialValues(profile: HeroBreakpoint) {
  const reference=heroReferences[profile], scene=defaults[profile]
  const px=(n:number)=>n+'px'
  return {scale:'calc(100cqw / '+reference.width+'px)',width:px(reference.width),
-  panelScale:profile==='base'?'1':'calc(100cqw / '+reference.width+'px)',
-  panelWidth:profile==='base'?'100cqw':px(reference.panel.width),
-  copyWidth:profile==='base'?'calc(100cqw - '+(reference.width-scene[2]!.width)+'px)':px(scene[2]!.width),
+  panelScale:'1',panelWidth:'100cqw',
+  copyWidth:'min('+(924+scene[2]!.width-reference.role.width)+'px, calc(100cqw - 32px))',
   clip:px(reference.clip.height),padding:px(reference.panel.padding),
   titleX:px(scene[0]!.x-reference.clip.x),titleY:px(scene[0]!.y-reference.clip.y),
   birdX:px(scene[1]!.x-scene[1]!.width),birdY:px(scene[1]!.y),birdW:px(scene[1]!.width),birdH:px(scene[1]!.height),
-  copyX:px(scene[2]!.x-reference.panel.x),copyY:px(scene[2]!.y-reference.role.y),copyW:px(scene[2]!.width),
+  copyX:px(scene[2]!.x-reference.role.x),copyY:px(scene[2]!.y-reference.role.y),copyW:px(scene[2]!.width),
   bottom:px(reference.panel.padding+Math.max(0,scene[2]!.y-reference.role.y)),
   base:profile==='base'?'block':'none',web:profile==='base'?'none':'block'}
 }
@@ -98,8 +97,8 @@ defineExpose({ replayIntro, resetMotion })
     <img :src="siteUrl('/cases/chirp-design-system/hero-layers/b05-metaphor-songbird-v1-1.png')" :width="layers[1]!.width" :height="layers[1]!.height" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
    </div>
   </div>
-  <div ref="panelBox" class="chirp-ds-hero__panel" :style="{left:reference.panel.x*ratio+'px',top:reference.panel.y*ratio+'px',width:(breakpoint==='base'?containerWidth:reference.panel.width)+'px',transform:breakpoint==='base'?'none':'scale('+ratio+')',paddingTop:reference.panel.padding+'px',paddingBottom:(reference.panel.padding+Math.max(0,layers[2]!.y-reference.role.y))+'px'}">
-   <div :ref="el=>setLayer(el,2)" data-layer="Role-Focus" :data-source-id="layers[2]!.id" class="chirp-ds-hero__copy" :style="{left:(layers[2]!.x-reference.panel.x)+'px',top:(layers[2]!.y-reference.role.y)+'px',width:(breakpoint==='base'?containerWidth-reference.width+layers[2]!.width:layers[2]!.width)+'px'}">
+  <div ref="panelBox" class="chirp-ds-hero__panel" :style="{left:reference.panel.x*ratio+'px',top:reference.panel.y*ratio+'px',width:containerWidth+'px',paddingTop:reference.panel.padding+'px',paddingBottom:(reference.panel.padding+Math.max(0,layers[2]!.y-reference.role.y))+'px'}">
+   <div :ref="el=>setLayer(el,2)" data-layer="Role-Focus" :data-source-id="layers[2]!.id" class="chirp-ds-hero__copy" :style="{left:(layers[2]!.x-reference.role.x)+'px',top:(layers[2]!.y-reference.role.y)+'px',width:Math.min(containerWidth-32,924+layers[2]!.width-reference.role.width)+'px'}">
     <DsRoleFocus v-if="ready" :role="copy.role" :focus="copy.focus" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" :breakpoint="breakpoint==='base'?'base':'min-768'" />
     <template v-else><div v-for="variant in (['base','min-768'] as const)" :key="variant" :class="'chirp-ds-hero__initial-role--'+variant"><DsRoleFocus :role="copy.role" :focus="copy.focus" :breakpoint="variant" :style="{color:panelAppearance==='on-dark'?'var(--text-inverse)':'var(--text-secondary)'}" /></div></template>
    </div>
@@ -115,7 +114,7 @@ defineExpose({ replayIntro, resetMotion })
 .chirp-ds-hero__title img{display:block;max-width:none;pointer-events:none;user-select:none}
 .chirp-ds-hero__panel{box-sizing:border-box;background:var(--surface-default);transform-origin:top left}
 .chirp-ds-hero[data-panel-appearance='on-light'] .chirp-ds-hero__panel,.chirp-ds-hero[data-panel-appearance='on-dark'] .chirp-ds-hero__panel{background:transparent}
-.chirp-ds-hero__copy{position:relative}
+.chirp-ds-hero__copy{position:relative;margin-inline:auto}
 .chirp-ds-hero__bird{transform:translate3d(var(--motion-x,0px),0,0);pointer-events:none}
 .chirp-ds-hero__bird img{display:block;transform:scaleX(-1);max-width:none}
 .chirp-ds-hero__semantic{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
