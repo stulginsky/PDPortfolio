@@ -34,6 +34,8 @@ export const Sandbox:Story={
   const root=canvasElement.querySelector<HTMLElement>('.chirp-br-hero')!
   await waitFor(()=>expect(root.dataset.ready).toBe('true'))
   await waitFor(()=>expect(root.dataset.mediaState).toBe('ready'))
+  const roleLabel=root.querySelector<HTMLElement>('.ds-role-focus__label')!
+  await expect(Math.abs(roleLabel.getBoundingClientRect().width / roleLabel.offsetWidth - 1)).toBeLessThan(.015)
   await expect(root.querySelectorAll('.chirp-br-hero__initial')).toHaveLength(0)
   await waitFor(()=>expect(root.dataset.breakpoint).toBe(getHeroBreakpoint(window.innerWidth)))
   await waitFor(()=>{const images=[...root.querySelectorAll<HTMLImageElement>('img')].filter(img=>!img.closest('[data-scene-fallback]'));expect(images.length).toBeGreaterThan(10);images.forEach(img=>expect(img.complete&&img.naturalWidth>0).toBe(true))})
