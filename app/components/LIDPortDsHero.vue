@@ -80,7 +80,7 @@ defineExpose({ resetMotion, replayIntro })
     </div>
     <div ref="panel" class="lidport-ds-hero__panel" :style="{ top: `${reference.panel.y * ratio}px`, paddingBlock: `${reference.panel.padding}px` }">
       <div class="lidport-ds-hero__copy" data-layer="Role-Focus" :data-source-id="layers[2]?.id" :style="{ transform: `translate3d(${(layers[2]?.x ?? reference.role.x) - reference.role.x}px,${(layers[2]?.y ?? reference.role.y) - reference.role.y}px,0)` }">
-        <DsRoleFocus :role="role" :focus="focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-768'" />
+        <DsRoleFocus :role="role" :focus="focus" :breakpoint="breakpoint === 'base' ? 'base' : 'min-768'" :style="{ color: panelAppearance === 'on-dark' ? 'var(--text-inverse)' : 'var(--text-secondary)' }" />
       </div>
     </div>
   </section>

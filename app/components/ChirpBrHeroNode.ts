@@ -48,6 +48,11 @@ export default defineComponent({
      transform:`scale(calc(${heroReferences[props.breakpoint].width}px / 100cqw)) translateX(calc(-50% - 6.125px))`,
      transformOrigin:'top left',
     })
+    else Object.assign(style,{
+     left:0,width:'100cqw',height:'auto',
+     transform:`scale(calc(${heroReferences[props.breakpoint].width}px / 100cqw))`,
+     transformOrigin:'top left',
+    })
     return h(DsRoleFocus,{...attrs,role:props.copy.role,focus:props.copy.focus,breakpoint:roleBreakpoint})
    }
    if(node.asset) return h(ChirpBrHeroAsset,{...node.asset,boxStyle:style,media:props.initialMedia,onLoaded:()=>emit('loaded')})
