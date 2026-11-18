@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../Cases"
+		},
+		{
+			"path": "../LIDPort-DS"
 		}
 	],
 	"settings": {}
