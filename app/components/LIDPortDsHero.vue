@@ -27,7 +27,7 @@ const layers = computed(() => (editor?.draft ?? defaults)[breakpoint.value])
 const ratio = computed(() => containerWidth.value / reference.value.width)
 const heroHeight = computed(() => reference.value.panel.y * ratio.value + (panelHeight.value ?? reference.value.panel.height))
 const logoAsset = computed(() => siteUrl(`/cases/lidport-design-system/hero-layers/${breakpoint.value}/lada-image-logo.svg`))
-const headingAsset = computed(() => siteUrl(`/cases/lidport-design-system/hero-layers/${breakpoint.value}/dillers-portal-design-system.svg`))
+const headingAsset = computed(() => siteUrl(`/cases/lidport-design-system/hero-layers/${breakpoint.value}/diller-portal-design-system.svg`))
 const offsets = ref([0, 0, 0])
 let observer: ResizeObserver | undefined
 
@@ -73,7 +73,7 @@ defineExpose({ resetMotion, replayIntro })
         <div class="lidport-ds-hero__graphic" data-layer="LadaImage-logo" :data-source-id="layers[0]?.id" :style="{ left: `${layers[0]?.x}px`, top: `${layers[0]?.y}px`, width: `${layers[0]?.width}px`, height: `${layers[0]?.height}px`, transform: `translate3d(${offsets[0] / ratio}px,0,0)` }">
           <img :src="logoAsset" :width="layers[0]?.width" :height="layers[0]?.height" alt="" aria-hidden="true" draggable="false" @load="maybeIntro" />
         </div>
-        <div class="lidport-ds-hero__graphic" data-layer="Diller’s Portal Design System" :data-source-id="layers[1]?.id" :style="{ left: `${layers[1]?.x}px`, top: `${layers[1]?.y}px`, width: `${layers[1]?.width}px`, height: `${layers[1]?.height}px`, transform: `translate3d(${offsets[1] / ratio}px,0,0)` }">
+        <div class="lidport-ds-hero__graphic" data-layer="Diller Portal Design System" :data-source-id="layers[1]?.id" :style="{ left: `${layers[1]?.x}px`, top: `${layers[1]?.y}px`, width: `${layers[1]?.width}px`, height: `${layers[1]?.height}px`, transform: `translate3d(${offsets[1] / ratio}px,0,0)` }">
           <img :src="headingAsset" :width="layers[1]?.width" :height="layers[1]?.height" alt="" aria-hidden="true" draggable="false" fetchpriority="high" @load="maybeIntro" />
         </div>
       </div>

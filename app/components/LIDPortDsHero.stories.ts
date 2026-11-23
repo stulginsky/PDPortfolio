@@ -5,7 +5,7 @@ import LIDPortDsHeroSandbox from './LIDPortDsHeroSandbox.vue'
 import { getLidPortHeroBreakpoint } from './lidport-ds-hero.scene-context'
 
 const args = {
-  title: 'Diller’s Portal Design System',
+  title: 'Diller Portal Design System',
   role: 'Design System Designer · Product Designer',
   focus: 'Design System Architecture · Design Tokens · UI Foundations · Component Architecture · Figma Library',
   panelAppearance: 'default' as const,
@@ -40,7 +40,7 @@ export const Sandbox: Story = {
     await expect(root.querySelector('h1')).toHaveTextContent(args.title)
     await expect(root.querySelectorAll('.ds-role-focus')).toHaveLength(1)
     await expect(root.querySelector('[data-layer="LadaImage-logo"] img')).toHaveAttribute('src', expect.stringContaining('lada-image-logo.svg'))
-    await expect(root.querySelector('[data-layer="Diller’s Portal Design System"] img')).toHaveAttribute('src', expect.stringContaining('dillers-portal-design-system.svg'))
+    await expect(root.querySelector('[data-layer="Diller Portal Design System"] img')).toHaveAttribute('src', expect.stringContaining('diller-portal-design-system.svg'))
     await expect(canvasElement.querySelectorAll('.hero-sandbox__editor option')).toHaveLength(10)
   },
 }
