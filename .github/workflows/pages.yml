@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: github-pages
@@ -14,6 +15,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
@@ -45,8 +47,50 @@ jobs:
         with:
           path: .output/public
 
+  reuse:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+      - name: Find successful validation for the merged release
+        id: publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          head=$(git rev-parse HEAD^2)
+          tree=$(git rev-parse HEAD^{tree})
+          name="publication-$tree"
+          runs=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/workflows/release-check.yml/runs" -f event=pull_request -f status=success -f head_sha="$head" --jq '.workflow_runs[].id')
+          for run in $runs; do
+            count=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$run/artifacts" -f name="$name" --jq '[.artifacts[] | select(.expired == false)] | length')
+            if [[ "$count" == 1 ]]; then
+              echo "run=$run" >> "$GITHUB_OUTPUT"
+              echo "name=$name" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "::error::No successful validation artifact matches the merged tree."
+          exit 1
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.publication.outputs.name }}
+          run-id: ${{ steps.publication.outputs.run }}
+          github-token: ${{ github.token }}
+          path: validated-publication
+      - uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: validated-publication/artifact.tar
+          if-no-files-found: error
+          retention-days: 1
+
   deploy:
-    needs: build
+    needs: [build, reuse]
+    if: always() && (needs.build.result == 'success' || needs.reuse.result == 'success')
     runs-on: ubuntu-24.04
     permissions:
       pages: write

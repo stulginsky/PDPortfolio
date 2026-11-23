@@ -14,6 +14,35 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Detect LIDPort SVG replacements
+        id: scope
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess
+
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True)
+
+          def changes(base, head, ignored):
+              rows = git('diff', '--no-renames', '--name-status', base, head).splitlines()
+              return {row for row in rows if row.split('\t')[-1] not in ignored}
+
+          if os.environ['GITHUB_EVENT_NAME'] == 'pull_request':
+              old = json.loads(git('show', 'HEAD^1:.release-source.json'))['sourceCommit']
+              new = json.loads(git('show', 'HEAD:.release-source.json'))['sourceCommit']
+              manifest = 'app/generated/public-asset-revisions.ts'
+              source = changes(old, new, {manifest})
+              release = changes('HEAD^1', 'HEAD', {manifest, '.release-source.json'})
+              pattern = r'M\tpublic/cases/lidport-design-system/hero-layers/(?:base|min-\d+)/[^/]+\.svg'
+              if source and source == release and all(re.fullmatch(pattern, row) for row in source):
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+                      print('svg_only=true', file=output)
+                  with open('/tmp/publication-svgs.txt', 'w') as files:
+                      print(*(row.split('\t')[1] for row in sorted(source)), sep='\n', file=files)
+          PY
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -32,5 +61,54 @@ jobs:
           site-base: /PDPortfolio/
       - run: npx playwright install --with-deps chromium
       - run: npm run check:storybook
+        if: steps.scope.outputs.svg_only != 'true'
         env:
           NUXT_APP_BASE_URL: /PDPortfolio/
+      - name: Check replaced SVGs and LIDPort hero
+        if: steps.scope.outputs.svg_only == 'true'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          for name in Path('/tmp/publication-svgs.txt').read_text().splitlines():
+              relative = Path(name).relative_to('public')
+              svg = Path('.output/public') / relative
+              assert svg.read_bytes() == Path(name).read_bytes(), name
+              assert ET.parse(svg).getroot().tag == '{http://www.w3.org/2000/svg}svg', name
+          PY
+          mkdir -p "$RUNNER_TEMP/portfolio"
+          ln -s "$PWD/.output/public" "$RUNNER_TEMP/portfolio/PDPortfolio"
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/portfolio" &
+          server=$!
+          trap 'kill "$server"' EXIT
+          curl --retry 5 --retry-connrefused --silent --fail http://127.0.0.1:4173/PDPortfolio/ > /dev/null
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict'
+          import { chromium } from 'playwright'
+          const browser = await chromium.launch()
+          try {
+            for (const width of [390, 768, 1024, 1280, 1440, 1920]) {
+              const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' })
+              await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173\/)/, route => route.abort())
+              const response = await page.goto('http://127.0.0.1:4173/PDPortfolio/cases/lidport-design-system/')
+              assert.equal(response.status(), 200)
+              const hero = page.locator('.lidport-ds-hero')
+              await hero.waitFor()
+              const images = hero.locator('img')
+              assert(await images.count() > 0)
+              await images.evaluateAll(nodes => Promise.all(nodes.map(node => node.decode())))
+              await page.close()
+            }
+          } finally {
+            await browser.close()
+          }
+          JS
+      - name: Identify validated tree
+        id: publication
+        run: echo "tree=$(git rev-parse HEAD^{tree})" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          name: publication-${{ steps.publication.outputs.tree }}
+          path: .output/public
+          retention-days: 14
