@@ -1,7 +1,7 @@
 {
   "source": {
     "fileKey": "V28Wl8M0ipiH4neDPjxKys",
-    "nodeId": "46:515"
+    "nodeId": "1841:2396"
   },
   "nodes": {
     "1588:8403": {
@@ -10,7 +10,7 @@
       "emphasis": []
     },
     "1588:8404": {
-      "text": "Scope: проектирование B2B‑маркетплейса автозапчастей и OMS-системы для дилеров, магазинов, СТО, оптовых операторов и внутренних команд. Оптимизация сквозных сценариев закупки, перепродажи товарных остатков, управления заказами, логистики,  складов и ERP-интеграций\nScale: 30+ оптовых операторов, 350+ дилеров, 1500 магазинов, >50 СТО\nImpact: — вклад в рост выручки продуктового направления — объединение 4 разрозненных систем в единый операционный интерфейс — сокращение времени обработки заказов более чем на 50% — расширение партнёрской экосистемы — улучшение CX торговых и операционных процессов между партнёрами",
+      "text": "Scope: проектирование B2B‑маркетплейса автозапчастей для дилеров, магазинов, СТО, оптовых операторов и OMS-системы для внутренних команд. Оптимизация сквозных сценариев закупки, перепродажи товарных остатков, управления заказами, логистики,  складов и ERP-интеграций\nScale: 30+ оптовых операторов, 350+ дилеров, 1500 магазинов, >50 СТО\nImpact: — вклад в рост выручки продуктового направления — объединение 4 разрозненных систем в единый операционный интерфейс — сокращение времени обработки заказов более чем на 50% — расширение партнёрской экосистемы — улучшение CX торговых и операционных процессов между партнёрами",
       "unordered": true,
       "emphasis": []
     },
@@ -128,7 +128,7 @@
       "emphasis": []
     },
     "1588:8425": {
-      "text": "Руководил креативными командами, digital-проектами и маркетинговыми\nкоммуникациями для федеральных и международных клиентов. Работал на стыке\ndigital-продуктов, рекламных кампаний, бренд-коммуникации и развития бизнеса.\nУчаствовал в росте доходности агентств, запуске креативного бизнеса с нуля,\nразработке крупных рекламных кампаний, победах на отраслевых фестивалях.  Реализованные мною проекты легли в основу курса лекций на факультете «Маркетинг и реклама» Московского института рекламы.",
+      "text": "Руководил креативными командами, digital-проектами и маркетинговыми\nкоммуникациями для федеральных и международных клиентов. Работал на стыке\ndigital-продуктов, рекламных кампаний, бренд-коммуникации и развития бизнеса.\nУчаствовал в росте доходности агентств, запуске креативного бизнеса с нуля,\nразработке крупных рекламных кампаний, победах на отраслевых фестивалях.  Реализованные мною проекты легли в основу курса лекций на факультете «Маркетинг и реклама» Московского института рекламы",
       "unordered": false,
       "emphasis": []
     },
@@ -161,79 +161,62 @@
       "emphasis": []
     },
     "1588:8434": {
-      "text": "Ключевые результаты",
+      "text": "Product & UX/UI Design",
       "unordered": false,
       "emphasis": []
     },
     "1588:8435": {
-      "text": "влиял на рост выручки продуктовых направлений до 60% за счёт  UX‑улучшений, оптимизации воронок и редизайна операционных процессов\nсокращал время обработки операционных задач на 50%+ через объединение разрозненных интерфейсов и переосмысление workflow\nулучшал продуктовые метрики активности: MAU +20%, DAU +140%\nмасштабы продуктов 53 000+ партнёров, 350 000+ DAU, 70 000+ бизнесов\nработал со сложными доменами: маркетплейсы, SaaS, BI, ERP, логистика, HoReCa, medtech, gamedev, B2B/B2C/B2E-продукты",
-      "unordered": true,
-      "emphasis": [
-        {
-          "text": "50%+",
-          "weight": 600
-        },
-        {
-          "text": "MAU +20%",
-          "weight": 600
-        },
-        {
-          "text": "DAU +140%",
-          "weight": 600
-        },
-        {
-          "text": "53 000+ партнёров, 350 000+ DAU, 70 000+ бизнесов",
-          "weight": 600
-        }
-      ]
+      "text": "End-to-end product design, Design Systems, Design Tokens, Interaction Design (IxD), Prototyping, Wireframing, UX‑patterns, Design Thinking",
+      "unordered": false,
+      "emphasis": []
     },
     "1588:8437": {
-      "text": "Product & Systems Design",
+      "text": "Research & Analytics",
       "unordered": false,
       "emphasis": []
     },
     "1588:8438": {
-      "text": "• сложные продуктовые системы • operational UX • product discovery • UX strategy  • data-driven design • product analytics • optimization of workflow  • information architecture",
+      "text": "Product Discovery, UX Research, JTBD, CJM, Service Design, User Flow, User Story Mapping, Usability Testing, A/B Testing, Data Visualization",
       "unordered": false,
       "emphasis": []
     },
     "1588:8440": {
-      "text": "UX & Interaction Design",
-      "unordered": false,
-      "emphasis": []
-    },
-    "1588:8441": {
-      "text": "• user flows • CJM • JTBD • service design • interaction design • prototyping  • usability testing • A/B testing • custdev",
-      "unordered": false,
-      "emphasis": []
-    },
-    "1588:8443": {
-      "text": "Design Leadership & Collaboration",
-      "unordered": false,
-      "emphasis": []
-    },
-    "1588:8444": {
-      "text": "• дизайн-системы • кросс-функциональное взаимодействие  • управление стейкхолдерами • дизайн-ревью • менторинг • product thinking  • взаимодействие с product, analytics, engineering и business-командами",
-      "unordered": false,
-      "emphasis": []
-    },
-    "1588:8446": {
       "text": "AI & Agentic Workflows",
       "unordered": false,
       "emphasis": []
     },
+    "1588:8441": {
+      "text": "Orchestrating AI agentic workflows in design, LLM-assisted research & code prototyping (Claude, ChatGPT, Codex), AI visual generation (Midjourney, Krea AI, NanoBanana)",
+      "unordered": false,
+      "emphasis": []
+    },
+    "1588:8443": {
+      "text": "Design & Dev Handoff Tools",
+      "unordered": false,
+      "emphasis": []
+    },
+    "1588:8444": {
+      "text": "UI/UX & Prototyping: Figma, Pixso, ProtoPie, Framer.\nDev Collaboration: Storybook, HTML, CSS, JS, Vue, Nuxt, React (understanding of component architecture & frontend handoff)",
+      "unordered": false,
+      "emphasis": []
+    },
+    "1588:8446": {
+      "text": "Graphics",
+      "unordered": false,
+      "emphasis": []
+    },
     "1588:8447": {
-      "text": "Использую AI как современный слой продуктивности и поддержки решений  в дизайн-процессе: для исследований, генерации гипотез, прототипирования,  UX‑writing, визуального поиска, production-задач и оркестрации агентных workflow.",
+      "text": "Adobe Creative Cloud (Photoshop, Illustrator), Corel Painter, SketchBook Pro",
       "unordered": false,
       "emphasis": []
     },
     "1588:8449": {
-      "text": "Инструменты",
+      "text": "Additional: 3D VFX & Motion",
       "unordered": false,
       "emphasis": []
     },
     "1588:8450": {
-      "text": "• Figma • Pixso • ProtoPie • Framer • Adobe CC / Experience Cloud • Power BI • Codex  • Claude • ChatGPT • Midjourney • Nano Banana • Kria",
+      "text": "Cinema 4D, Houdini, Adobe Substance 3D Painter, Adobe After Effects",
       "unordered": false,
       "emphasis": []
     }
