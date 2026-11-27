@@ -883,7 +883,7 @@ export const publicAssetRevisions: Readonly<Record<string, string>> = {
   "/layered-fallbacks/dc-vendor-app-ux/viewport-720.webp": "5c1b2a671b62",
   "/layered-fallbacks/dc-vendor-app-ux/viewport-768.webp": "e98a7d6cddf9",
   "/layered-fallbacks/manifest.json": "b245cb01fea4",
-  "/resume/Bazarov-Product-Designer-Resume.pdf": "0e639aea9fa7",
+  "/resume/Bazarov-Product-Designer-Resume.pdf": "4c3a8e651b81",
   "/resume/quote-close.svg": "c5bd0f3c382c",
   "/resume/quote-open.svg": "43cc9997d07c",
   "/robots.txt": "e1f21c9aa28d",
