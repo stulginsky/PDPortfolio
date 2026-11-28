@@ -88,6 +88,10 @@ onUnmounted(() => observer?.disconnect())
           </section>
         </div>
       </aside>
+      <div class="about-page__qr" data-figma-node="1841:2452">
+        <img :src="siteUrl('/resume/qrcode_stulginsky.github.io 1.png')" width="296" height="302" alt="" />
+        <a :href="nodes['1841:2455']!.text" target="_blank" rel="noopener noreferrer"><TypoText :content="nodes['1841:2455']!.text" /></a>
+      </div>
     </main>
     <div class="about-page__page-up-slot" aria-hidden="true" />
     <DsFooter />
@@ -104,9 +108,9 @@ onUnmounted(() => observer?.disconnect())
 .about-page { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); width: 100%; padding: 0 var(--space-4) var(--space-16); background: var(--surface-default); }
 .about-page__header { width: 100%; }
 .about-page__header:focus { outline: none; }
-.about-page__body { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: var(--space-12); width: 100%; max-width: 1400px; }
-.about-page__experience { display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
-.about-page__sidebar { display: flex; flex-direction: column; gap: 41px; order: -1; min-width: 0; }
+.about-page__body { position: relative; isolation: isolate; display: grid; grid-template-areas: "sidebar" "experience" "qr"; gap: var(--space-12); width: 100%; max-width: 1400px; }
+.about-page__experience { grid-area: experience; display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
+.about-page__sidebar { grid-area: sidebar; display: flex; flex-direction: column; gap: 41px; order: -1; min-width: 0; }
 .about-page__section { display: flex; flex-direction: column; gap: var(--space-2-5); min-width: 0; }
 .about-page__heading { margin: 0; color: var(--text-muted); font-size: var(--text-size-18); font-weight: var(--text-weight-semibold); font-variation-settings: var(--font-variation-heading-md); line-height: 1.45; letter-spacing: .01em; white-space: pre-line; }
 .about-page :deep(.about-copy) { margin: 0; padding: 0; font-size: var(--text-size-16); font-weight: var(--text-weight-regular); font-variation-settings: "YOPQ" 79; line-height: 1.45; }
@@ -121,11 +125,14 @@ onUnmounted(() => observer?.disconnect())
 .about-page__skills { display: flex; flex-direction: column; gap: var(--space-8); }
 .about-page__skills :deep(.about-copy) { font-size: var(--text-size-14); line-height: 1.4; }
 .about-page__skills :deep(ul.about-copy) { letter-spacing: .01em; }
+.about-page__qr { grid-area: qr; align-self: end; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); padding-top: var(--space-16); min-width: 0; }
+.about-page__qr img { width: 296.3669738769531px; height: auto; max-width: 100%; border-radius: var(--radius-lg); }
+.about-page__qr a { color: var(--text-default); font-size: var(--text-size-16); line-height: 1.4; overflow-wrap: anywhere; }
 .about-page__page-up-slot { height: 98px; width: 100%; }
 .about-page__compact { position: fixed; inset: 0 0 auto; z-index: 30; }
 @keyframes about-quote-open-enter { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
 @media (min-width: 768px) {
-  .about-page__body { flex-direction: row; gap: var(--space-6); }
+  .about-page__body { grid-template-areas: "experience sidebar" "experience qr"; grid-template-columns: minmax(0, 734fr) minmax(0, 594fr); grid-template-rows: auto 1fr; gap: var(--space-6); }
   .about-page__experience { flex: 734 1 0; }
   .about-page__sidebar { order: 0; flex: 594 1 0; }
 }
@@ -134,7 +141,8 @@ onUnmounted(() => observer?.disconnect())
 }
 @media (min-width: 1464px) {
   .about-page { padding-inline: var(--space-8); }
-  .about-page__body { flex-direction: row; gap: 72px; }
+  .about-page__body { column-gap: 72px; }
+  .about-page__qr { padding-inline: var(--space-12); }
   .about-page__experience { width: 734px; flex: 1 1 734px; }
   .about-page__sidebar { order: 0; flex: 0 0 594px; }
   .about-page__summary { display: block; padding: 48px 64px 134px 48px; }
